@@ -98,21 +98,19 @@ def to_transactions(rows: list[dict], source: str, settings: BusinessSettings, o
         issues = []
         key = _document_key(row)
         if row.get("mixed_items"):
-            issues.append(issue("mixed_items", "This document mixes items of different kinds but shows one VAT total, "
-                                               "so it was kept as one row; split it by hand if each kind needs its own "
-                                               "account."))
+            issues.append(issue("mixed_items", "Items of different kinds with one VAT total: kept as one row."))
         said_in = row.get("direction") == "in"
         if said_in and amount < 0:
             issues.append(issue("direction_conflict",
-                                "The model said money in but the amount was negative; recorded as money out."))
+                                "Marked money in, but the amount was negative: booked as money out."))
         code = str(row.get("account") or "")[:4]
         if code not in BY_CODE or code == settings.bank_account:
-            issues.append(issue("account_not_recognised", f"'{row.get('account')}' is not an account to post to; "
-                                                          "it went to Suspense for review."))
+            issues.append(issue("account_not_recognised", f"'{row.get('account')}' isn't an account: put in "
+                                                          "Suspense. Choose one."))
             code = SUSPENSE
         elif code == SUSPENSE:
             issues.append(issue("account_not_recognised",
-                                "The model was not sure which account this is; it went to Suspense for review."))
+                                "Account unclear: put in Suspense. Choose one."))
         vat, net = to_money(row.get("vat")), to_money(row.get("document_net"))
         statement = _document_type(row) == "statement"
         tx = Transaction(date=parse_date(row.get("date")), description=str(row.get("description") or ""),

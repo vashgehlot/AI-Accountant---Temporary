@@ -34,10 +34,11 @@ export const kindOf = (tx: Transaction): RowKind => {
 
 // A row as the duplicate check sees it, with what matching already linked it to: what it pays or what paid it, the
 // expense claim it is on, and the receipt or invoice that books it. Linked rows are never each other's duplicates.
-export const paymentRowOf = (tx: Transaction & { upload_id: number }): PaymentRow => ({
+export const paymentRowOf = (tx: Transaction & { upload_id: number; id?: number }): PaymentRow => ({
   sourceId: tx.upload_id, gross: tx.gross, direction: tx.direction, date: tx.date, kind: kindOf(tx), ref: tx.document_ref,
   linked: [...(tx.pays ?? []), ...(tx.paid_by ?? []), tx.claimed_in, tx.recorded_by]
     .filter((s): s is Settlement => !!s).map(s => s.ref),
+  id: tx.id, apart: tx.apart_from ?? [], claim: tx.claimed_in?.ref ?? null,
 })
 
 // The kinds of document whose rows take Add line whether or not they print a total: they often have several lines.
@@ -66,8 +67,8 @@ const optionLabel = (option: Settlement[]) =>
   option.map(s => `${s.description} (${money(s.amount)}, ${shortDate(s.date)})`).join(' + ')
 
 // A button under a row's description: clicking it makes the change, such as a bank line's link (null: match
-// automatically) or the VAT of a receipt.
-export interface RowAction { label: string; change: RowChange }
+// automatically) or the VAT of a receipt, to the row, or to another row (row: its id).
+export interface RowAction { label: string; change: RowChange; row?: number }
 
 // One status line under a row's description. `include` is set on a document that is not a transaction:
 // the Include tick, and whether it is ticked.
@@ -95,12 +96,32 @@ const paidBy = (by: Settlement) =>
   `Paid by ${by.kind === 'agent_statement' ? by.description : 'bank line'} on ${shortDate(by.date)}`
 
 // The status lines under a row's description, with the person's choices: Include, Link, Unlink, Book VAT, and the
-// date the row's other record shows (its claim line, receipt or card payment) when the two disagree.
-export function rowStatus(tx: Transaction): RowStatus[] {
+// date or the amount the row's other record shows (its claim line, receipt or card payment) when the two disagree.
+export function rowStatus(tx: Transaction, find?: (id: number) => Transaction | undefined): RowStatus[] {
   const dated = tx.date_found ? [{ text: 'Which date is right?',
                                    actions: [{ label: `Use ${longDate(tx.date_found)}`, change: { date: tx.date_found } }] }]
     : []
-  return [...statusLines(tx), ...dated]
+  return [...statusLines(tx), ...dated, ...amountChoice(tx, find)]
+}
+
+// Where an amount came from, for a choice between two.
+const SOURCES: Record<string, string> = { expense_claim: 'the claim', statement: 'the bank', receipt: 'the receipt',
+                                          invoice: 'the invoice' }
+const source = (tx: Transaction) => SOURCES[tx.document_type ?? 'receipt'] ?? 'the document'
+
+// Which amount is right: each choice sets the record that differs to it, so the two pair and count once. When the
+// other record asks too (a claim line and its receipt) either can change, the claim's amount first on both rows; a
+// bank line's amount stands.
+function amountChoice(tx: Transaction, find?: (id: number) => Transaction | undefined): RowStatus[] {
+  if (!tx.amount_found) return []
+  const partner = tx.issues.find(i => i.code === 'amount_conflict')?.related?.[0]
+  const other = partner === undefined ? undefined : find?.(partner)
+  if (!other) return [{ text: 'Which amount is right?', actions: [{ label: `Use ${money(tx.amount_found)}`,
+                                                                    change: { gross: tx.amount_found } }] }]
+  const theirs = { label: `${money(tx.amount_found)} (${source(other)})`, change: { gross: tx.amount_found } }
+  const mine = { label: `${money(tx.gross)} (${source(tx)})`, change: { gross: tx.gross }, row: partner }
+  const choices = other.amount_found ? (tx.document_type === 'expense_claim' ? [mine, theirs] : [theirs, mine]) : [theirs]
+  return [{ text: 'Which amount is right?', actions: choices }]
 }
 
 // A choice between documents can also be declined: "None of these" makes it an ordinary bank line.
@@ -144,6 +165,9 @@ function statusLines(tx: Transaction): RowStatus[] {
     // An item of an agent's statement also moved money: a bill the agent paid is paid by it.
     return [...(owed ? [owed] : []), ...(type === 'agent_statement' ? lineStatus(tx) : [])]
   }
+  if (tx.recorded_by && tx.amount_found) {   // held while the amounts differ: the other record counts meanwhile
+    return [{ text: `Not booked while the amounts differ: ${optionLabel([tx.recorded_by])} is booked meanwhile`, actions: [] }]
+  }
   if (tx.recorded_by) {
     return [{ text: `Booked from the receipt: ${optionLabel([tx.recorded_by])}`,
               actions: [{ label: 'Unlink', change: { link: [] } }] }]
@@ -181,7 +205,7 @@ const ISSUE_TITLES: Record<string, string> = {
   vat_arithmetic: 'Impossible VAT', vat_rate_mismatch: 'Unusual VAT',
   vat_estimated: 'VAT estimated', vat_not_applicable: 'VAT ignored', vat_blocked: "VAT can't be reclaimed",
   date_conflict: 'Which date?', file_date: 'Date to check', date_from_claim: 'Date from the claim',
-  date_from_bank: 'Date from the bank', booked_twice: 'Booked twice',
+  date_from_bank: 'Date from the bank', booked_twice: 'Booked twice', amount_conflict: 'Which amount?',
   account_not_recognised: 'Account to check', unknown_account: 'Unknown account', same_account: 'Same account twice',
   non_gbp_currency: 'Not in pounds', date_missing: 'No date', date_out_of_period: 'Outside the period',
   unusual_direction: 'Unusual direction', director_loan: 'Owner account', not_booked: 'Not booked',
@@ -190,6 +214,43 @@ const ISSUE_TITLES: Record<string, string> = {
 }
 
 export const issueTitle = (code: string) => ISSUE_TITLES[code] ?? 'Check this'
+
+// The Check column's hover: the names of the row's issues, once each. The Description column has the messages.
+export const checkHover = (issues: Issue[]) =>
+  issues.length ? [...new Set(issues.map(i => issueTitle(i.code)))].join(', ') : 'No issues'
+
+// The Account column: the account's name, never its code; for a bank line that pays a document, the account it
+// settles. An account not in the chart has no name.
+export const accountName = (tx: Transaction): string =>
+  (tx.paid_against ? tx.paid_against_name : tx.account_name) || 'Unknown account'
+
+// The title as the start of the message: a sentence, unless it is a question already.
+export const issueHeading = (code: string) => {
+  const title = issueTitle(code)
+  return /[?!.]$/.test(title) ? title : `${title}.`
+}
+
+// The issues about this row and others, which offer Show both (Show its lines, for a document's total): the rows side
+// by side, without searching the table.
+const ABOUT_ANOTHER_ROW = new Set(['possible_duplicate', 'date_conflict', 'amount_conflict', 'booked_twice',
+                                   'total_mismatch'])
+export const aboutAnotherRow = (code: string) => ABOUT_ANOTHER_ROW.has(code)
+export const showLabel = (code: string) => (code === 'total_mismatch' ? 'Show its lines' : 'Show both')
+
+// The issues where two records may be one, which a person can answer Not the same.
+const MAY_BE_ONE = new Set(['possible_duplicate', 'date_conflict', 'amount_conflict'])
+export const canBeApart = (code: string) => MAY_BE_ONE.has(code)
+
+// Not the same: the row is kept apart from the rows the issue was about, as well as any it already was.
+export const apartChange = (tx: Transaction, related: number[]): RowChange =>
+  ({ apart_from: [...new Set([...(tx.apart_from ?? []), ...related])] })
+
+// The status line of a row a person kept apart from others, with Undo; none when those rows are gone.
+export function apartStatus(tx: Transaction, describe: (id: number) => string | undefined): RowStatus | null {
+  const names = (tx.apart_from ?? []).map(describe).filter((name): name is string => !!name)
+  return names.length ? { text: `Not the same as ${names.map(n => `"${n}"`).join(', ')} (you said)`,
+                          actions: [{ label: 'Undo', change: { apart_from: [] } }] } : null
+}
 
 export interface ReviewItem { code: string; title: string; severity: 'warning' | 'error'; rows: number }
 

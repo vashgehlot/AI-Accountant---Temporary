@@ -14,6 +14,7 @@ from .errors import ClientArchived, InvalidInput, InvalidTransactions, NotFound
 from .export import file_name, workbook
 from .file_dates import check_file_date
 from .matching import match
+from .money import to_money
 from .models import (BusinessSettings, Client, ClientFields, ClientPatch, ClientSummary, Ledger, ManualUpload,
                      RowPatch, SavedRow, StatementCheck, Transaction, TrialBalance, Upload)
 from .posting import trial_balance as post
@@ -71,7 +72,16 @@ def build(store: Store, client_id: int) -> Ledger:
     client = store.get_client(client_id)
     stored = store.rows(client_id)
     settings = settings_for(client)
-    ready = match([normalise(row.tx, settings) for row in stored], settings)
+    # What people decided, for matching: each row's amount as it was read before a person changed it, and the rows
+    # they said are not the same, from row ids to places in the list (both ways).
+    read = [to_money(row.original.get("gross")) if row.original else None for row in stored]
+    place = {row.id: n for n, row in enumerate(stored)}
+    apart: list[set[int]] = [set() for _ in stored]
+    for n, row in enumerate(stored):
+        for other in (place[i] for i in row.tx.apart_from if i in place):
+            apart[n].add(other)
+            apart[other].add(n)
+    ready = match([normalise(row.tx, settings) for row in stored], settings, read=read, apart=apart)
     positions: dict[int, list[int]] = defaultdict(list)
     for n, row in enumerate(stored):
         positions[row.upload_id].append(n)
@@ -83,7 +93,11 @@ def build(store: Store, client_id: int) -> Ledger:
         checked = check_file_date(checked, names.get(upload_id, ""))
         for n, tx in zip(ns, checked):
             ready[n] = tx
-    transactions = [SavedRow(**tx.model_dump(), id=row.id, upload_id=row.upload_id,
+    # The rows each issue is about, from their place in the rows matched to their row ids.
+    transactions = [SavedRow(**{**tx.model_dump(), "issues": [
+                                 {**i.model_dump(), "related": [stored[p].id for p in i.related]} for i in tx.issues]},
+                             id=row.id,
+                             upload_id=row.upload_id,
                              edited=row.original is not None, original=row.original)
                     for row, tx in zip(stored, ready)]
     uploads = [Upload(id=u["id"], name=u["name"], kind=u["kind"], sha256=u["sha256"], model=u["model"],
@@ -126,7 +140,7 @@ def _check_edit(patch: RowPatch, sent: set[str], tx: Transaction, client: Client
             "statement", "agent_statement"):
         raise InvalidInput("Only a bank line, or an item of an agent's statement, can be linked to documents.")
     if "account_code" in sent and patch.account_code not in {a.code for a in choosable(client.business_type)}:
-        raise InvalidInput(f"Account {patch.account_code} can't be chosen for {client.name}.")
+        raise InvalidInput(f"This account can't be chosen for {client.name}.")
     gross = patch.gross if "gross" in sent else tx.gross
     vat = patch.vat if "vat" in sent else tx.vat
     if gross <= 0:
@@ -141,9 +155,13 @@ def change_row(store: Store, client_id: int, row_id: int, patch: RowPatch) -> Le
     """Saves a person's change to a row once it makes sense, and returns the ledger worked out again."""
     client = store.get_client(client_id)
     require_active(client)
-    row = next((r for r in store.rows(client_id) if r.id == row_id), None)
+    rows = store.rows(client_id)
+    row = next((r for r in rows if r.id == row_id), None)
     if row is None:
         raise NotFound("This row was not found.")
+    if "apart_from" in patch.model_fields_set and (
+            patch.apart_from is None or not set(patch.apart_from) <= {r.id for r in rows} - {row_id}):
+        raise InvalidInput("Not the same can only name other rows of this client.")
     if patch.revert:
         store.patch_row(client_id, row_id, {}, revert=True)
     else:
@@ -158,6 +176,9 @@ def add_manual(store: Store, client_id: int, upload: ManualUpload) -> Ledger:
     require_active(client)
     if not upload.transactions:
         raise InvalidInput("Add at least one row.")
+    # As in an edit: only an account of the chart this kind of business uses, so a row can always be booked.
+    if any(tx.account_code not in {a.code for a in choosable(client.business_type)} for tx in upload.transactions):
+        raise InvalidInput(f"This account can't be chosen for {client.name}.")
     store.add_upload(client_id, upload.name.strip() or "Manual entry", upload.kind, upload.transactions)
     return build(store, client_id)
 

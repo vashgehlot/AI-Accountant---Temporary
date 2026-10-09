@@ -241,7 +241,7 @@ def test_an_account_the_ledger_cannot_post_to_lands_in_suspense(make_client, acc
 
 
 def test_health_tells_the_ui_how_many_files_to_send_at_once(make_client):
-    assert make_client().get("/api/health").json()["max_parallel_jobs"] == 2
+    assert make_client().get("/api/health").json()["max_parallel_jobs"] == 5
 
 
 def test_validate_matches_a_payment_to_its_bill(make_client):

@@ -41,9 +41,6 @@ export default function TrialBalancePanel({ clientId, version, hasRows }: {
           {busy ? <><span className="spinner" aria-hidden="true" /> Generating...</> : 'Generate trial balance'}
         </button>
       </div>
-      {!result && !error && (
-        <p className="muted small">Built from every saved row that is booked. Rows marked ? need fixing first.</p>
-      )}
       {error && <div className="notice notice-error">{error}</div>}
       {result && (
         <>

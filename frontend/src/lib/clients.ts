@@ -63,6 +63,7 @@ export interface Ledger {
 export type RowChange = Partial<Record<EditableField, string | null>> & {
   link?: string[] | null
   include?: boolean
+  apart_from?: number[]
   revert?: boolean
 }
 

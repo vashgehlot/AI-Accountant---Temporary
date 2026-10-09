@@ -40,8 +40,6 @@ def check_file_date(rows: list[Transaction], name: str) -> list[Transaction]:
         return rows
     if first.date is not None and abs(first.date - named) <= NEAR:
         return rows
-    kind = first.document_type
-    read = f"was read as {long_date(first.date)}" if first.date else "shows no date"
-    asks = issue("file_date", f"Its file name says {long_date(named)}, but this {kind} {read}. Check the {kind}: if "
-                              f"its date was misread, click Use {long_date(named)}.")
+    read = f"Read as {long_date(first.date)}" if first.date else "No date"
+    asks = issue("file_date", f"{read}; the file name says {long_date(named)}.")
     return [first.model_copy(update={"date_found": named, "issues": first.issues + [asks]}), *rows[1:]]

@@ -5,7 +5,7 @@ import type { Transaction } from './api.ts'
 import type { ClientSummary, SavedRow, Upload } from './clients.ts'
 import type { PickedFile } from './clientRules.ts'
 import {
-  changesOf, clientFormErrors, dayMonth, draftOf, emptyListText, figuresOf, lineTemplate, newRowFrom, requeue,
+  accountList, changesOf, clientFormErrors, dayMonth, draftOf, emptyListText, figuresOf, lineTemplate, newRowFrom, requeue,
   rowEditErrors, sameFileAs, searchClients, showsInvitation, statementText, transactionCount,
 } from './clientRules.ts'
 
@@ -132,4 +132,17 @@ test('a transaction added on its own is a new document, and empty fields are lef
     date: null, description: 'Office chair', counterparty: null, direction: 'out', gross: '120.00', vat: null,
     account_code: '0040', document_type: 'receipt',
   })
+})
+
+
+test('the Edit list of accounts is in name order, with a saved account the business cannot choose first', () => {
+  // Without their codes, accounts in code order (Office Equipment, Furniture, Cars, Vans, Bank Deposit…) were hard to scan.
+  const account = (code: string, name: string) => ({ code, name, type: '', vat: '' })
+  const chart = [account('7502', 'Telephone and Internet'), account('0040', 'Office Equipment'), account('7402', 'Hotels')]
+  assert.deepEqual(accountList(chart, { code: '7402', name: 'Hotels' }, '7402').map(a => a.name),
+                   ['Hotels', 'Office Equipment', 'Telephone and Internet'])
+  assert.deepEqual(accountList(chart, { code: '3260', name: 'Drawings' }, '3260').map(a => a.name),
+                   ['Drawings', 'Hotels', 'Office Equipment', 'Telephone and Internet'])
+  assert.equal(accountList(chart, { code: '9999', name: null }, '9999')[0].name, 'Unknown account')   // not in the chart
+  assert.deepEqual(accountList(chart, { code: '', name: null }, '').map(a => a.code), ['7402', '0040', '7502'])
 })

@@ -35,6 +35,8 @@ class Issue(BaseModel):
     code: str
     message: str
     severity: Literal["info", "warning", "error"]
+    related: list[int] = Field(default_factory=list)   # the other rows it is about (Show both): places in the rows
+                                                       # matched; in a client's ledger, their row ids
 
 
 class BusinessSettings(BaseModel):
@@ -94,6 +96,8 @@ class Transaction(BaseModel):
     not_vat_invoice: bool = False                  # its document says it is not a VAT invoice
     document_ref: Optional[str] = None
     include: bool = False
+    apart_from: list[int] = Field(default_factory=list)   # rows a person said are not the same as this one, by row
+                                                   # id (Not the same): never paired with it or asked about
     link: Optional[list[str]] = None               # a person's decision on a bank line: None automatic,
                                                    # [] not a payment of any document, refs: pays these
     # Inputs too, on a bank statement row: the running balance printed on its line and the statement's
@@ -116,8 +120,10 @@ class Transaction(BaseModel):
     claimed_in: Optional[Settlement] = None        # a receipt or invoice on an expense claim: owed to the claimant
     vat_found: Optional[Decimal] = None            # a receipt or invoice on a claim: VAT its prices and the claim agree
                                                    # on, not booked because it says it is not a VAT invoice (Book VAT)
-    date_found: Optional[dt.date] = None           # a receipt, or a claim line, whose other record (the claim line, the
-                                                   # receipt, the card payment) agrees on all but the date: its date (Use)
+    date_found: Optional[dt.date] = None           # a receipt, or a claim line, whose other record (its claim line,
+                                                   # receipt or card payment) agrees on all but the date: its date (Use)
+    amount_found: Optional[Decimal] = None         # the same, when the two agree on the shop and the day but not the
+                                                   # amount: the other record's amount (Use)
     issues: list[Issue] = Field(default_factory=list)
 
     @field_validator("gross", mode="before")
@@ -129,7 +135,7 @@ class Transaction(BaseModel):
         return money
 
     @field_validator("vat", "vat_posted", "net", "owed", "balance", "opening_balance", "closing_balance",
-                     "document_total", "document_net", "vat_found", mode="before")
+                     "document_total", "document_net", "vat_found", "amount_found", mode="before")
     @classmethod
     def _pennies(cls, value):
         if value is None:
@@ -267,10 +273,11 @@ class Ledger(BaseModel):
 
 
 class RowPatch(BaseModel):
-    """A person's change to a saved row: Link or Include, an edit of what was read, or revert. Only the fields
-    sent change; ledger.change_row checks them."""
+    """A person's change to a saved row: Link, Include or Not the same, an edit of what was read, or revert. Only
+    the fields sent change; ledger.change_row checks them."""
     link: Optional[list[str]] = None
     include: Optional[bool] = None
+    apart_from: Optional[list[int]] = None
     date: Optional[dt.date] = None
     description: Optional[str] = None
     counterparty: Optional[str] = None

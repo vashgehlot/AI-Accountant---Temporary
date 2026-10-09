@@ -86,6 +86,7 @@ def test_an_upload_keeps_its_rows_in_order_and_only_their_inputs(store):
     client = store.create_client(CUBE)
     worked_out = bill(document_ref="bt", document_number="BT-0905", agent="R+R PR Ltd", vat_posted="12.00",
                       net="60.00", owed="72.00", document_net="60.00", not_vat_invoice=True, vat_found="12.00",
+                      apart_from=[7],
                       issues=[issue("mixed_items", "One VAT total."), issue("not_booked", "x", "info")])
     upload_id = store.add_upload(client.id, "BT-0905.pdf", "pdf", [worked_out, bill(document_ref="bt", gross="10.00")],
                                  sha256="ab12", model="fake-model", warnings=["Row 3 skipped"])
@@ -94,6 +95,7 @@ def test_an_upload_keeps_its_rows_in_order_and_only_their_inputs(store):
     assert (first.tx.vat_posted, first.tx.net, first.tx.owed, first.tx.vat_found) == (None,) * 4   # worked out
     assert (first.tx.document_number, first.tx.agent) == ("BT-0905", "R+R PR Ltd")    # read from the document
     assert (first.tx.document_net, first.tx.not_vat_invoice) == (Decimal("60.00"), True)
+    assert first.tx.apart_from == [7]                                   # a person's decision, kept
     assert [i.code for i in first.tx.issues] == ["mixed_items"]                         # the adapter's own check
     [upload] = store.uploads(client.id)
     assert (upload["name"], upload["kind"], upload["sha256"], upload["model"], upload["warnings"],

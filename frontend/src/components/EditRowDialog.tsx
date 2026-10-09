@@ -3,7 +3,7 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import type { Transaction } from '@/lib/api'
 import { listAccounts, type AccountChoice, type BusinessType, type RowChange, type SavedRow } from '@/lib/clients'
-import { changesOf, DOCUMENT_TYPES, draftOf, rowEditErrors, type EditDraft, type EditErrors } from '@/lib/clientRules'
+import { accountList, changesOf, DOCUMENT_TYPES, draftOf, rowEditErrors, type EditDraft, type EditErrors } from '@/lib/clientRules'
 
 // Corrects what the model read on one row (counterparty and document type change for the whole document), or, with
 // onAdd, adds a row: a new transaction, or a line of an existing document from a template (clientRules.lineTemplate).
@@ -50,9 +50,7 @@ export default function EditRowDialog({ row, businessType, onCancel, onSave, onA
     }
   }
 
-  // The saved account stays listed even when this kind of business can't choose it, so the form shows the truth.
-  const options = !row.account_code || accounts.some(a => a.code === draft.account_code)
-    ? accounts : [{ code: row.account_code, name: row.account_name ?? '', type: '', vat: '' }, ...accounts]
+  const options = accountList(accounts, { code: row.account_code, name: row.account_name }, draft.account_code)
 
   return (
     <div className="overlay" role="presentation" onMouseDown={e => { if (e.target === e.currentTarget) onCancel() }}
@@ -112,7 +110,7 @@ export default function EditRowDialog({ row, businessType, onCancel, onSave, onA
             <span>Account</span>
             <select className="input" value={draft.account_code} onChange={e => set('account_code', e.target.value)}>
               {!draft.account_code && <option value="">Choose an account</option>}
-              {options.map(a => <option key={a.code} value={a.code}>{a.code} {a.name}</option>)}
+              {options.map(a => <option key={a.code} value={a.code}>{a.name}</option>)}
             </select>
             {fieldError('account_code')}
           </label>

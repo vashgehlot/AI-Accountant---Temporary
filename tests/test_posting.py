@@ -74,7 +74,7 @@ def test_cancelling_transactions_leave_no_zero_lines():
 def test_unknown_account_blocks_the_trial_balance():
     with pytest.raises(InvalidTransactions, match="#2") as info:
         trial_balance([tx("out", "10.00", "7502"), tx("out", "10.00", "9999")], REGISTERED)
-    assert "9999" in info.value.message
+    assert "#2: This account isn't in the chart." in info.value.message   # the row, not the code
 
 
 def test_trial_balance_always_balances_for_random_ledgers():
