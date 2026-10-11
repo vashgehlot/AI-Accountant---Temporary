@@ -46,6 +46,61 @@ def test_a_receipt_dated_away_from_its_file_names_date_asks_and_using_it_settles
     assert (photo.date, photo.date_found, photo.issues, photo.edited) == (dt.date(2026, 9, 9), None, [], True)
 
 
+def test_rows_a_question_is_about_are_given_by_their_row_ids(store):
+    # Show both: the table shows the receipt and the claim line that ask which date is right, side by side.
+    client = store.create_client(CUBE)
+    store.add_upload(client.id, "claim.xlsx", "table", [row(document_type="expense_claim", counterparty="Jenny Hogg",
+                     description="Jenny Hogg - Southgate Bath Car Park", gross="36.00", account_code="7400",
+                     date=dt.date(2026, 9, 9), document_ref="claim")])
+    store.add_upload(client.id, "photo.jpg", "image", [row(document_type="receipt", counterparty="Southgate Bath Car Park",
+                     gross="36.00", account_code="7400", date=dt.date(2026, 8, 9), document_ref="photo")])
+    line, receipt = ledger.build(store, client.id).transactions
+    assert (line.issues[0].related, receipt.issues[0].related) == ([receipt.id], [line.id])
+
+
+def claim_and_photo(store):
+    client = store.create_client(CUBE)
+    store.add_upload(client.id, "claim.xlsx", "table", [row(document_type="expense_claim", counterparty="Jenny Hogg",
+                     description="Jenny Hogg - Southgate Bath Car Park", gross="36.00", account_code="7400",
+                     date=dt.date(2026, 9, 9), document_ref="claim")])
+    store.add_upload(client.id, "photo.jpg", "image", [row(document_type="receipt", counterparty="Southgate Bath Car Park",
+                     gross="36.00", account_code="7400", date=dt.date(2026, 8, 9), document_ref="photo")])
+    return client
+
+
+def test_not_the_same_is_kept_on_the_row_and_ends_the_question_until_undone(store):
+    client = claim_and_photo(store)
+    line, photo = ledger.build(store, client.id).transactions
+    line, photo = ledger.change_row(store, client.id, photo.id, RowPatch(apart_from=[line.id])).transactions
+    assert (photo.apart_from, photo.edited, photo.date_found, line.date_found) == ([line.id], False, None, None)
+    assert [i.code for i in line.issues + photo.issues] == []
+    line, photo = ledger.change_row(store, client.id, photo.id, RowPatch(apart_from=[])).transactions   # Undo
+    assert [i.code for i in photo.issues] == ["date_conflict"]
+
+
+@pytest.mark.parametrize("names", ["itself", "another client's row"])
+def test_not_the_same_names_only_another_row_of_the_client(store, names):
+    client = claim_and_photo(store)
+    _, photo = ledger.build(store, client.id).transactions
+    other = store.create_client(CUBE)
+    store.add_upload(other.id, "x.pdf", "pdf", [row(document_ref="x")])
+    wrong = photo.id if names == "itself" else store.rows(other.id)[0].id
+    with pytest.raises(InvalidInput):
+        ledger.change_row(store, client.id, photo.id, RowPatch(apart_from=[wrong]))
+
+
+def test_a_total_put_out_by_a_persons_change_is_said_on_the_line_they_changed(store):
+    client = store.create_client(CUBE)
+    lines = [row(document_type="expense_claim", counterparty="Matt Barnes", description=f"Matt Barnes - {shop}",
+                 gross=gross, account_code="7400", document_ref="claim", document_total="201.25")
+             for shop, gross in (("Clayton Hotel", "173.75"), ("EE, mobile phone bill", "27.50"))]
+    store.add_upload(client.id, "Matt.xlsx", "table", lines)
+    hotel, ee = ledger.build(store, client.id).transactions
+    hotel, ee = ledger.change_row(store, client.id, ee.id, RowPatch(gross=Decimal("30.22"))).transactions
+    assert ([i.code for i in hotel.issues], [i.code for i in ee.issues], ee.issues[0].related) == (
+        [], ["total_mismatch"], [hotel.id])
+
+
 def test_the_clients_vat_setting_and_kind_of_business_are_applied(store):
     client = store.create_client(CUBE.model_copy(update={"vat_registered": False}))
     store.add_upload(client.id, "a.pdf", "pdf", [row(vat="12.00"), row(account_code="3260", document_type="receipt")])
@@ -105,7 +160,7 @@ def test_an_edit_is_checked_before_it_is_saved(store):
     for patch, message in ((RowPatch(gross="0"), "The amount must be above zero."),
                            (RowPatch(vat="72.00"), "VAT must be below the amount."),
                            (RowPatch(description=" "), "Enter a description."),
-                           (RowPatch(account_code="3260"), "Account 3260 can't be chosen for Business Cube Ltd."),
+                           (RowPatch(account_code="3260"), "This account can't be chosen for Business Cube Ltd."),
                            (RowPatch(link=[]),
                             "Only a bank line, or an item of an agent's statement, can be linked to documents.")):
         with pytest.raises(InvalidInput, match=re.escape(message)):
@@ -177,6 +232,15 @@ def test_a_manual_entry_is_saved_as_its_own_upload(store):
     assert [(u.name, u.kind, u.rows) for u in built.uploads] == [("Manual entry", "manual", 1)]
     with pytest.raises(InvalidInput):
         ledger.add_manual(store, client.id, ManualUpload(transactions=[]))
+
+
+@pytest.mark.parametrize("code", ["9999", "3260"])   # not in the chart; Drawings, not for a limited company
+def test_a_row_added_by_hand_needs_an_account_the_client_can_use(store, code):
+    # Rows sent to the API by hand were saved with any account, and one not in the chart blocked the trial balance.
+    client = store.create_client(CUBE)
+    with pytest.raises(InvalidInput, match="This account can't be chosen for Business Cube Ltd."):
+        ledger.add_manual(store, client.id, ManualUpload(transactions=[row(document_type="receipt", account_code=code)]))
+    assert store.uploads(client.id) == []
 
 
 def test_the_trial_balance_comes_from_the_saved_rows(store):

@@ -1,4 +1,4 @@
-"""Runtime settings, read once from environment variables and the project's .env file."""
+﻿"""Runtime settings, read once from environment variables and the project's .env file."""
 from __future__ import annotations
 
 import os
@@ -47,35 +47,29 @@ class Settings:
     max_upload_mb: int = 20
     max_pdf_pages: int = 30
     job_ttl_seconds: float = 3600.0
-    max_parallel_jobs: int = 2            # documents read at once, from any input; 1 reads them one at a time
+    max_parallel_jobs: int = 5            # documents read at once, from any input; 1 reads them one at a time
     log_level: str = "INFO"
     # The hosted vision model, through an OpenAI-compatible API: OpenRouter when its key is set,
     # otherwise Groq (see `provider`). The keys live in .env.
     openrouter_api_key: str = field(default="", repr=False)   # never printed or logged
     openrouter_model: str = "qwen/qwen3.8-27b"                # the model Groq serves, under the same name
     openrouter_base_url: str = "https://openrouter.ai/api/v1"
-    # OpenRouter counts the model's thinking in this limit too. A 60-row statement's answer alone is
-    # about 9,000 tokens, and at 8,192 one was cut off after 4,083 tokens of thinking (2026-10-07).
-    # 32,768 is the most every host of the model allows; only the tokens used are paid for.
     openrouter_max_output_tokens: int = 32768
-    # The hosts OpenRouter may send documents to. Left to choose, it sent every read to one 4-bit host, which
-    # left a line out of an expense claim in 13 reads of 13; other hosts missed it less often (2026-10-08).
-    # So a full-precision host is asked first, then any running the model at one of these precisions: never 4-bit.
     openrouter_providers: tuple[str, ...] = ("deepinfra/bf16",)
     openrouter_quantizations: tuple[str, ...] = ("bf16", "fp16", "fp32", "fp8")
     groq_api_key: str = field(default="", repr=False)   # never printed or logged
     groq_model: str = "qwen/qwen3.8-27b"
     groq_base_url: str = "https://api.groq.com/openai/v1"
-    # The rest apply to either provider; they keep their Groq names.
     groq_timeout: float = 60.0
-    # Room for long statements: a 60-row statement's answer, with document_total, document_vat and
-    # mixed_items on every row, is over 4K tokens.
     groq_max_output_tokens: int = 8192
-    groq_reasoning_effort: str = "high"   # thinking keeps the model to the receipt rules; "none" is ~10x faster than "low"
-    groq_max_images: int = 3              # pages per request, Groq's most; set 1 on the free plan: 3 overflow its 8K tokens/min
-    health_ttl: float = 300.0             # the UI polls health every 30 s; the free plan counts requests
-    business_name: str = ""               # whose books these are: tells sales invoices from purchases
+    groq_reasoning_effort: str = "high"
+    groq_max_images: int = 3
+    health_ttl: float = 300.0
+    business_name: str = ""
     db_path: Path = DEFAULT_DB            # the local database of clients and their saved rows
+    # MongoDB storage: if set, MongoStore is used instead of SQLite
+    mongodb_uri: str = ""                 # e.g. "mongodb://localhost:27017"
+    mongodb_db_name: str = "ledgersync"
 
     @property
     def max_upload_bytes(self) -> int:
@@ -136,4 +130,6 @@ class Settings:
             business_name=env.get("LEDGERSYNC_BUSINESS_NAME", "").strip(),
             db_path=(Path(env["LEDGERSYNC_DB_PATH"].strip()).expanduser()
                      if env.get("LEDGERSYNC_DB_PATH", "").strip() else d.db_path),
+            mongodb_uri=env.get("MONGODB_URI", "").strip(),
+            mongodb_db_name=env.get("MONGODB_DB_NAME", "ledgersync").strip(),
         )

@@ -54,5 +54,12 @@ def trial_balance(transactions: list[Transaction], settings: BusinessSettings) -
              for code, balance in sorted(balances.items(), key=_vat_last) if balance != 0]
     total_debits = sum((l.debit for l in lines), ZERO)
     total_credits = sum((l.credit for l in lines), ZERO)
+    total_income = sum((l.credit - l.debit for l in lines if l.type == AccountType.INCOME.value), ZERO)
+    total_expenses = sum((l.debit - l.credit for l in lines if l.type == AccountType.EXPENSE.value), ZERO)
+    net_profit = total_income - total_expenses
+    total_assets = sum((l.debit - l.credit for l in lines if l.type == AccountType.ASSET.value), ZERO)
+    total_liabilities = sum((l.credit - l.debit for l in lines if l.type == AccountType.LIABILITY.value), ZERO)
     return TrialBalance(lines=lines, total_debits=total_debits, total_credits=total_credits,
-                        is_balanced=total_debits == total_credits, journal=journal)
+                        is_balanced=total_debits == total_credits, journal=journal,
+                        total_income=total_income, total_expenses=total_expenses,
+                        net_profit=net_profit, total_assets=total_assets, total_liabilities=total_liabilities)

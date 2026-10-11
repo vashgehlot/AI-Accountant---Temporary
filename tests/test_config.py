@@ -97,8 +97,8 @@ def test_a_missing_env_file_gives_no_values(tmp_path):
     assert read_env_file(tmp_path / "absent.env") == {}
 
 
-def test_two_files_are_read_at_once_unless_set_otherwise():
-    assert Settings.from_env({}).max_parallel_jobs == 2
+def test_five_files_are_read_at_once_unless_set_otherwise():
+    assert Settings.from_env({}).max_parallel_jobs == 5
     assert Settings.from_env({"LEDGERSYNC_MAX_PARALLEL_JOBS": "1"}).max_parallel_jobs == 1
     assert Settings.from_env({"LEDGERSYNC_MAX_PARALLEL_JOBS": "0"}).max_parallel_jobs == 1   # never below one
 

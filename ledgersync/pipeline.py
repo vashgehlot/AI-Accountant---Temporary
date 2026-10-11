@@ -28,7 +28,7 @@ def analyze(intake: Intake, extractor, ctx: JobContext):
     return extractor.extract_accounting_data(text_input=text, images=None)
 
 
-def prepare_image(data: bytes, max_side: int = 1600) -> str:
+def prepare_image(data: bytes, max_side: int = 1200) -> str:
     """A photo or page as a vision model should get it: upright (the camera's EXIF orientation
     applied), at most max_side pixels on its long side, as a base64 JPEG."""
     from PIL import Image, ImageOps
@@ -36,7 +36,7 @@ def prepare_image(data: bytes, max_side: int = 1600) -> str:
         upright = ImageOps.exif_transpose(img).convert("RGB")
     upright.thumbnail((max_side, max_side))
     buf = io.BytesIO()
-    upright.save(buf, "JPEG", quality=85)
+    upright.save(buf, "JPEG", quality=75)
     return base64.b64encode(buf.getvalue()).decode("ascii")
 
 

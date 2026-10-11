@@ -74,7 +74,7 @@ def test_cancelling_transactions_leave_no_zero_lines():
 def test_unknown_account_blocks_the_trial_balance():
     with pytest.raises(InvalidTransactions, match="#2") as info:
         trial_balance([tx("out", "10.00", "7502"), tx("out", "10.00", "9999")], REGISTERED)
-    assert "9999" in info.value.message
+    assert "#2: This account isn't in the chart." in info.value.message   # the row, not the code
 
 
 def test_trial_balance_always_balances_for_random_ledgers():
@@ -192,3 +192,15 @@ def test_a_claim_and_its_receipts_owe_the_claimant_once_with_the_receipts_vat():
     tb = trial_balance(rows, REGISTERED)
     assert [(l.code, str(l.debit), str(l.credit)) for l in tb.lines] == [
         ("2110", "0.00", "240.65"), ("7400", "60.90", "0.00"), ("7402", "173.75", "0.00"), ("2201", "6.00", "0.00")]
+
+
+
+def test_trial_balance_financial_summaries():
+    sale = Transaction(direction="in", gross="1200.00", vat="200.00", account_code="4000", counterparty="Acme Corp",
+                       description="Consultancy", date=dt.date(2026, 9, 14), document_type="invoice")
+    expense = Transaction(direction="out", gross="300.00", vat="50.00", account_code="7500", counterparty="Software Co",
+                          description="SaaS Subscription", date=dt.date(2026, 9, 14), document_type="receipt")
+    tb = trial_balance([sale, expense], REGISTERED)
+    assert str(tb.total_income) == "1000.00"
+    assert str(tb.total_expenses) == "250.00"
+    assert str(tb.net_profit) == "750.00"

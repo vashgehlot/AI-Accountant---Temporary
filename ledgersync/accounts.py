@@ -95,6 +95,7 @@ BANK, SALES_VAT, PURCHASE_VAT, SUSPENSE = "1200", "2200", "2201", "9998"
 DEBTORS, CREDITORS, STAFF_EXPENSES = "1100", "2100", "2110"
 DIRECTORS_LOAN, CAPITAL, DRAWINGS = "2250", "3000", "3260"
 VAT_LIABILITY = "2202"
+HOTELS = "7402"
 # The VAT accounts, which the trial balance lists last, after every other account.
 VAT_ACCOUNTS = frozenset({SALES_VAT, PURCHASE_VAT, VAT_LIABILITY})
 # Picked by the ledger, never chosen for a row: the bank (the other side of each posting), the VAT control

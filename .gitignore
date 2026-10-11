@@ -21,3 +21,5 @@ eval/private/
 
 # The local database of clients and their saved rows (LEDGERSYNC_DB_PATH)
 data/
+
+models/

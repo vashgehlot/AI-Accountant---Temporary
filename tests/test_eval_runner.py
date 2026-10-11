@@ -1,3 +1,4 @@
+import shutil
 import json
 import subprocess
 from datetime import date
@@ -183,7 +184,10 @@ def test_filtered_rerun_keeps_the_other_cases(api, tmp_path):
 
 def test_existing_report_is_not_replaced_without_resume(capsys, tmp_path, monkeypatch):
     monkeypatch.setattr("run_eval.EVAL_DIR", tmp_path)
-    (tmp_path / "fixtures").symlink_to(FIXTURES)
+    try:
+        (tmp_path / "fixtures").symlink_to(FIXTURES)
+    except OSError:
+        shutil.copytree(FIXTURES, tmp_path / "fixtures")
     existing = results_dir(private=False) / f"{date.today().isoformat()}-t.json"
     existing.parent.mkdir(parents=True)
     existing.write_text("KEEP")
@@ -227,7 +231,10 @@ def test_rescore_updates_saved_results_without_the_api(tmp_path):
 
 def test_unreachable_api_exits_with_advice(capsys, tmp_path, monkeypatch):
     monkeypatch.setattr("run_eval.EVAL_DIR", tmp_path)
-    (tmp_path / "fixtures").symlink_to(FIXTURES)
+    try:
+        (tmp_path / "fixtures").symlink_to(FIXTURES)
+    except OSError:
+        shutil.copytree(FIXTURES, tmp_path / "fixtures")
     assert main(["--api", "http://127.0.0.1:9", "--label", "t"]) == 2
     assert "server.py" in capsys.readouterr().err
     assert not (tmp_path / "results").exists()

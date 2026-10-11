@@ -102,7 +102,7 @@ def test_photos_go_to_the_model_as_images():
 def test_a_sideways_phone_photo_is_sent_upright_small_and_as_jpeg():
     # EXIF orientation 6: the phone was turned 90 degrees; the pixels are stored sideways.
     sent = Image.open(io.BytesIO(base64.b64decode(prepare_image(photo((3000, 1000), orientation=6)))))
-    assert sent.format == "JPEG" and max(sent.size) == 1600 and sent.size[0] < sent.size[1]
+    assert sent.format == "JPEG" and max(sent.size) == 1200 and sent.size[0] < sent.size[1]
 
 
 def test_scanned_pages_go_three_per_request_and_warnings_name_their_pages():

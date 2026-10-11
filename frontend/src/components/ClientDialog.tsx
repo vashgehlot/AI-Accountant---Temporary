@@ -46,7 +46,7 @@ export default function ClientDialog({ client, onCancel, onSave }: {
         <label className="field">
           <span>Company name</span>
           <input className="input" autoFocus value={fields.name} onChange={e => set('name', e.target.value)}
-                 placeholder="Business Cube Ltd" />
+                 placeholder="e.g. Acme Corp Ltd" />
           {showErrors && errors.name && <span className="field-error">{errors.name}</span>}
         </label>
         <label className="field">
@@ -59,20 +59,20 @@ export default function ClientDialog({ client, onCancel, onSave }: {
         <label className="field">
           <span>Responsible person</span>
           <input className="input" value={fields.contact_name} onChange={e => set('contact_name', e.target.value)}
-                 placeholder="Jenny Clarke" />
+                 placeholder="e.g. Full Name" />
           {showErrors && errors.contact_name && <span className="field-error">{errors.contact_name}</span>}
         </label>
         <div className="field-row">
           <label className="field">
             <span>Email</span>
             <input className="input" type="email" value={fields.contact_email}
-                   onChange={e => set('contact_email', e.target.value)} placeholder="jenny@businesscube.co.uk" />
+                   onChange={e => set('contact_email', e.target.value)} placeholder="e.g. name@company.co.uk" />
             {showErrors && errors.contact_email && <span className="field-error">{errors.contact_email}</span>}
           </label>
           <label className="field">
             <span>Phone</span>
             <input className="input" type="tel" value={fields.contact_phone}
-                   onChange={e => set('contact_phone', e.target.value)} placeholder="07700 900123" />
+                   onChange={e => set('contact_phone', e.target.value)} placeholder="e.g. +44 7700 900123" />
           </label>
         </div>
         <label className="switch">

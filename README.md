@@ -43,14 +43,16 @@ cp .env.example .env                      # then paste your key after OPENROUTER
 
 Analyses run as background jobs: `POST /api/analyze` returns `{job_id}`, then
 `GET /api/jobs/{job_id}` reports progress and the result; `DELETE` cancels. The API takes an analysis
-only with an `X-LedgerSync` header, which the pages send and a form on another web site can't. Up to two
+only with an `X-LedgerSync` header, which the pages send and a form on another web site can't. Up to five
 jobs run at once (`LEDGERSYNC_MAX_PARALLEL_JOBS`), and the UI sends that many files of an upload at a time; on
 Groq's free plan they mostly wait on its per-minute limits, so the gain shows on a paid plan.
 
 Each client's page keeps one table across its uploads and catches what was entered twice. A file already
 uploaded for that client, on any day, or picked twice, is skipped without being read. A row with the same
 amount and direction as a row from another upload, dated within three days of it (a receipt and its bank
-line, say), is flagged "possible duplicate" and left for a person to decide.
+line, say), is flagged "possible duplicate" and left for a person to decide; two receipts on one expense claim
+are not, as the claim has a line for each. Show both puts the two side by side, and Not the same keeps them
+apart for good (with Undo).
 Without a key or an internet connection the API answers 503 with how to fix it; it never guesses.
 
 The ledger endpoints use double entry: `GET /api/accounts` lists the chart (Sage 50-style
@@ -68,8 +70,9 @@ none, because VAT can only be reclaimed when it was charged.
 Documents are booked the way an accountant would (accruals):
 
 - A till or card receipt, or a bank line, is money that moved: it posts against 1200 Bank Current Account.
-  A receipt and the card payment for it on a bank statement (the same amount and shop, within three days)
-  are booked once, from the receipt, which shows the VAT; Unlink on the bank line books them apart.
+  A receipt and the card payment for it on a bank statement (the same amount, within three days) are booked
+  once, from the receipt, which shows the VAT; Unlink on the bank line books them apart. The amount and the date
+  decide, since a bank names a shop its own way; the shop's name only chooses between payments that both fit.
 - An invoice starts unpaid. A bill, or a supplier's credit note, posts against 2100 Creditors; a sales
   invoice, or a credit note to a customer, against 1100 Debtors; an expense claim against 2110 Expenses
   Owed to Staff.
@@ -83,15 +86,23 @@ Documents are booked the way an accountant would (accruals):
   only suggested. Unlink undoes a match.
 - A document with the same number, counterparty, direction and total as an earlier one (a reminder of a
   bill; a receipt photographed twice, on the same day) is a copy: it is not booked unless you tick Include.
-- The receipt or invoice for a line of an expense claim (the same amount, within three days, the line naming the
-  shop) is booked instead of that line, owed to the claimant: the document shows the VAT that can be reclaimed.
-  The claim line is greyed out; tick it to book it as well (only when it is a different purchase: ticking it
-  books the cost twice). A claim line showing more VAT than its document is flagged, unless the document's own
-  prices show it: when a receipt on one account prints its total before VAT and that is its total less the
+- The receipt or invoice for a line of an expense claim (the same amount, within three days) is booked instead
+  of that line, owed to the claimant: the document shows the VAT that can be reclaimed. The amount and the date
+  decide, so a mileage log or a booking that names no one pairs too; the shop's name (initials count: NCP for
+  National Car Parks) only chooses between documents that both fit, nearest date first. The claim line is greyed
+  out; tick it to book it as well, which warns Booked twice (only for a different purchase). A claim line showing
+  more VAT than its document is flagged, unless the document's own prices show it: when a receipt on one account prints its total before VAT and that is its total less the
   claim's VAT, the VAT is booked. If the receipt says it is not a VAT invoice, the VAT is not booked but offered:
   get the VAT invoice, then click Book VAT on the receipt (an edit, which Revert undoes).
-- Each document is checked against the total printed on it, once, on its first row, with what is missing or too
-  much. The check is worked out afresh, so it clears when you add the line that wasn't read (Add line on any row
+- When a receipt and its claim line or card payment agree on all but the date, or on the shop and the day but
+  not the amount, nothing is guessed: they stay apart and ask which is right, with a Use button (an edit, which
+  Revert undoes), Show both, and Not the same for two purchases. A claim line whose claim adds up to its total
+  doesn't offer the receipt's amount: the total confirms it. A receipt with no date takes the date of its claim
+  line or card payment. A receipt or invoice
+  on its own is also checked against a date in its file name (an expense app's export names the day).
+- Each document is checked against the total printed on it, once, with what is missing or too much, on the row
+  that explains it when one does (a line someone changed by just that much, a line read twice, the one line of
+  that much) and otherwise on its first row, with Show its lines. The check is worked out afresh, so it clears when you add the line that wasn't read (Add line on any row
   of the document) or remove a row read twice (Remove on the row).
 - A letting or managing agent's statement books the rent it collected and the fees and bills it took off,
   each on its own account, against 1100 Debtors: the agent holds the money. The bank line of the net it
@@ -189,7 +200,7 @@ Settings come from environment variables or `.env` (environment variables win).
 | `LEDGERSYNC_CORS_ORIGINS` | `http://localhost:3000,http://127.0.0.1:3000` | Allowed browser origins |
 | `LEDGERSYNC_MAX_UPLOAD_MB` | `20` | Largest accepted upload |
 | `LEDGERSYNC_MAX_PDF_PAGES` | `30` | Most pages accepted in one PDF |
-| `LEDGERSYNC_MAX_PARALLEL_JOBS` | `2` | Documents read at once; `1` reads them one at a time |
+| `LEDGERSYNC_MAX_PARALLEL_JOBS` | `5` | Documents read at once; `1` reads them one at a time |
 | `LEDGERSYNC_LOG_LEVEL` | `INFO` | Log level (document contents are never logged) |
 | `LEDGERSYNC_DB_PATH` | `data/ledgersync.db` | The local database of clients and their saved rows |
 | `API_URL` (frontend) | `http://127.0.0.1:8085` | Where the Next.js `/api` rewrite sends requests |
