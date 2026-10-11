@@ -1,4 +1,4 @@
-"""FastAPI entry point: a thin HTTP layer over the ledgersync package."""
+﻿"""FastAPI entry point: a thin HTTP layer over the ledgersync package."""
 import datetime as dt
 import hashlib
 import logging
@@ -25,6 +25,7 @@ from ledgersync.models import (AnalysisResult, BusinessSettings, BusinessType, C
                                ClientSummary, Ledger, LedgerRequest, ManualUpload, RowPatch, TransactionList,
                                TrialBalance)
 from ledgersync.store import Store
+from ledgersync.store_mongo import MongoStore
 
 logger = logging.getLogger("ledgersync.server")
 
@@ -42,7 +43,11 @@ def create_app(settings: Optional[Settings] = None, *, model_client=None, store:
     settings = settings or Settings.from_env()
     configure_logging(settings.log_level)
     model_client = model_client or ModelClient(settings)
-    store = store or Store(settings.db_path)   # opened on first use, not now
+    if store is None:
+        if settings.mongodb_uri:
+            store = MongoStore(settings.mongodb_uri, settings.mongodb_db_name)
+        else:
+            store = Store(settings.db_path)
     extractor = TransactionExtractor(model_client, business_name=settings.business_name)
     jobs = JobStore(ttl_seconds=settings.job_ttl_seconds, max_workers=settings.max_parallel_jobs)
 
