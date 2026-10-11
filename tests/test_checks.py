@@ -7,7 +7,7 @@ from pydantic import ValidationError
 
 from ledgersync.accounts import BANK, CHART
 from ledgersync.checks import normalise
-from ledgersync.models import BusinessSettings, Transaction
+from ledgersync.models import BusinessSettings, Issue, Transaction
 from ledgersync.posting import trial_balance
 
 REGISTERED = BusinessSettings()
@@ -86,6 +86,32 @@ def test_money_in_on_an_expense_account_is_flagged_as_a_likely_refund():
 
 def test_odd_vat_on_a_standard_rated_account_is_flagged():
     assert ("vat_rate_mismatch", "info") in codes(normalise(tx(vat="5.00"), REGISTERED))
+
+
+def test_vat_below_the_rate_says_how_much_of_the_amount_has_none():
+    # wagamama: VAT £3.88 on £25.63, as the £2.33 tip has none. "Mixed rates?" left a person guessing.
+    [found] = normalise(tx(gross="25.63", vat="3.88", account="7406"), REGISTERED).issues
+    assert (found.code, found.severity) == ("vat_rate_mismatch", "info")
+    assert found.message == "£3.88 is 20% VAT on £23.28; £2.35 has no VAT (a tip or service charge?)."
+
+
+MIXED = Issue(code="mixed_items", severity="warning", message="This document mixes items of different kinds.")
+
+
+def test_a_hotel_bill_of_mixed_items_is_one_note_with_its_vat():
+    # Fawsley Hall: the stay, a conference room and meals with one VAT total, £62.35 on £381.86. It showed Mixed items
+    # and Unusual VAT, two messages for one cause, and a warning for a bill booked to Hotels as a hotel bill usually is.
+    t = normalise(tx(gross="381.86", vat="62.35", account="7402", issues=[MIXED]), REGISTERED)
+    assert codes(t) == [("mixed_items", "info")]
+    assert t.issues[0].message == "Kept as one row on Hotels. VAT £62.35 is on £374.10; £7.76 has none."
+    assert normalise(t, REGISTERED).issues == t.issues      # worked out the same on every pass
+
+
+def test_mixed_items_on_another_account_still_ask_for_a_split():
+    t = normalise(tx(gross="120.00", vat="20.00", account="7502", issues=[MIXED]), REGISTERED)
+    assert codes(t) == [("mixed_items", "warning")]
+    assert t.issues[0].message == "Items of different kinds with one VAT total: kept as one row on Telephone and Internet. Split it by hand if needed."
+    assert "has none" not in t.issues[0].message           # its VAT is all at 20%: nothing to explain
 
 
 def test_vat_at_the_reduced_rate_is_not_flagged():
@@ -212,7 +238,7 @@ def test_vat_on_business_entertainment_stays_in_the_cost():
     t = normalise(tx(account="7403", gross="38.20", vat="6.37"), REGISTERED)
     assert (t.vat_posted, t.net) == (Decimal("0.00"), Decimal("38.20"))
     assert codes(t) == [("vat_blocked", "info")]
-    assert t.issues[0].message == "VAT on Entertainment can't be reclaimed, so the £6.37 stays in the cost."
+    assert t.issues[0].message == "VAT £6.37 on Entertainment can't be reclaimed: kept in the cost."
     assert codes(normalise(t, REGISTERED)) == [("vat_blocked", "info")]   # validating again doesn't repeat it
 
 
@@ -226,12 +252,14 @@ def test_a_cars_vat_stays_in_its_cost_but_a_vans_is_reclaimed():
 def test_a_limited_companys_owners_go_through_the_directors_loan_account():
     drawings = normalise(tx(account="3260", gross="500.00"), LIMITED)
     assert codes(drawings) == [("director_loan", "warning")]
-    assert drawings.issues[0].message == "For a limited company, use 2250 Director's Loan Account instead of Drawings."
+    assert drawings.issues[0].message == "Use Director's Loan Account, not Drawings, for a limited company."
     assert codes(normalise(tx(account="2250", gross="500.00"), LIMITED)) == []
 
 
 def test_a_sole_trader_has_no_directors_loan_account():
-    assert codes(normalise(tx(account="2250", gross="500.00"), TRADER)) == [("director_loan", "warning")]
+    loan = normalise(tx(account="2250", gross="500.00"), TRADER)
+    assert codes(loan) == [("director_loan", "warning")]
+    assert loan.issues[0].message == "Director's Loan Account is for companies only. Use Drawings or Capital Introduced."
     assert codes(normalise(tx(account="3260", gross="500.00"), TRADER)) == []
 
 

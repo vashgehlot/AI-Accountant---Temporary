@@ -58,7 +58,7 @@ _CLIENT_FIELDS = ("name", "business_type", "contact_name", "contact_email", "con
 # What is kept of a row: the inputs a document or a person gave. Everything else is worked out on read.
 INPUTS = {"date", "description", "direction", "gross", "vat", "vat_treatment", "account_code", "contra_account_code",
           "currency", "source", "method", "evidence", "document_type", "counterparty", "document_number", "agent", "document_total",
-          "document_net", "not_vat_invoice", "document_ref", "include", "link", "balance", "opening_balance",
+          "document_net", "not_vat_invoice", "document_ref", "include", "apart_from", "link", "balance", "opening_balance",
           "closing_balance"}
 # The fields a person can edit; a row's first edit keeps what they held as `original`.
 EDITABLE = ("date", "description", "counterparty", "direction", "gross", "vat", "account_code", "document_type")

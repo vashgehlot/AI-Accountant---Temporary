@@ -47,7 +47,7 @@ class Settings:
     max_upload_mb: int = 20
     max_pdf_pages: int = 30
     job_ttl_seconds: float = 3600.0
-    max_parallel_jobs: int = 2            # documents read at once, from any input; 1 reads them one at a time
+    max_parallel_jobs: int = 5            # documents read at once, from any input; 1 reads them one at a time
     log_level: str = "INFO"
     # The hosted vision model, through an OpenAI-compatible API: OpenRouter when its key is set,
     # otherwise Groq (see `provider`). The keys live in .env.

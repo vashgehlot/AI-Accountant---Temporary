@@ -54,7 +54,7 @@ def test_while_rows_need_fixing_the_trial_balance_sheet_says_what(store):
     store.add_upload(client.id, "a.pdf", "pdf", [receipt(account_code="9999")])
     tb, _, _ = sheets(store, client.id)
     assert (tb["A2"].value, tb["A3"].value) == ("The trial balance can't be produced yet:",
-                                                "#1: Account 9999 is not in the chart of accounts.")
+                                                "#1: This account isn't in the chart.")
 
 
 def test_an_edited_row_says_so(store):

@@ -1,6 +1,7 @@
 // Rules the client pages share, kept apart from the network so node --test can run them.
 import type { Transaction } from './api'
-import type { BusinessType, ClientFields, ClientSummary, EditableField, RowChange, SavedRow, StatementCheck, Upload } from './clients'
+import type { AccountChoice, BusinessType, ClientFields, ClientSummary, EditableField, RowChange, SavedRow, StatementCheck,
+              Upload } from './clients'
 import { money, totalsOf } from './ledger.ts'
 
 export const BUSINESS_TYPES: Record<BusinessType, string> = {
@@ -161,4 +162,15 @@ export function changesOf(row: Transaction, draft: EditDraft): RowChange {
     change[field] = value === '' && (field === 'date' || field === 'vat' || field === 'counterparty') ? null : value
   }
   return change
+}
+
+
+// The Edit list of accounts, in name order (they show without their codes). The row's saved account stays listed,
+// first, while it is chosen and this kind of business can't choose it, so the form shows the truth; an account not in
+// the chart has no name.
+export function accountList(accounts: AccountChoice[], saved: { code: string; name: string | null | undefined },
+                            current: string): AccountChoice[] {
+  const sorted = [...accounts].sort((a, b) => a.name.localeCompare(b.name, 'en-GB'))
+  return !saved.code || accounts.some(a => a.code === current) ? sorted
+    : [{ code: saved.code, name: saved.name || 'Unknown account', type: '', vat: '' }, ...sorted]
 }

@@ -5,6 +5,7 @@ export interface Issue {
   code: string
   message: string
   severity: 'info' | 'warning' | 'error'
+  related?: number[]   // the other rows it is about, by row id (Show both)
 }
 
 export interface Settlement {
@@ -56,6 +57,8 @@ export interface Transaction {
                                      // not booked because it is not a VAT invoice (Book VAT)
   date_found?: string | null         // set by the API: the date of the row's other record (its claim line, receipt or
                                      // card payment) when it agrees on all but the date (Use)
+  amount_found?: string | null       // set by the API: that record's amount, when the two agree on the shop and the day (Use)
+  apart_from?: number[]              // rows a person said are not the same as this one, by row id (Not the same)
 }
 
 export interface AnalyzeResult {

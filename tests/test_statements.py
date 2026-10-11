@@ -19,10 +19,8 @@ def test_a_skipped_line_is_flagged_where_the_balance_breaks():
     checked, summary = check_statement(rows)
     assert (summary.status, summary.difference) == ("gap", Decimal("12.40"))
     assert [[i.code for i in tx.issues] for tx in checked] == [[], [], ["statement_gap", "statement_total"]]
-    assert checked[2].issues[0].message == ("The balance after this line should be £1,020.00; "
-                                            "the statement shows £1,007.60.")
-    assert checked[2].issues[1].message == ("Opening £1,000.00 plus these rows gives £1,020.00, but the "
-                                            "statement closes at £1,007.60 (£12.40 apart).")
+    assert checked[2].issues[0].message == "Balance should be £1,020.00; the statement shows £1,007.60."
+    assert checked[2].issues[1].message == "Opening £1,000.00 plus these rows is £1,020.00; the statement closes at £1,007.60."
 
 
 def test_a_statement_that_adds_up_is_ok():
@@ -45,7 +43,7 @@ def test_a_balance_printed_once_a_day_is_followed_across_the_lines_without_one()
 
 def test_an_overdrawn_balance_reads_as_a_minus():
     [_, second], summary = check_statement([line("out", "50.00", "-30.00"), line("out", "20.00", "-60.00")])
-    assert second.issues[0].message == "The balance after this line should be -£50.00; the statement shows -£60.00."
+    assert second.issues[0].message == "Balance should be -£50.00; the statement shows -£60.00."
     assert (summary.status, summary.difference) == ("gap", Decimal("10.00"))
 
 

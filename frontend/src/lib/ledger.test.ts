@@ -3,7 +3,8 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import type { Transaction } from './api.ts'
 import { possibleDuplicates } from './duplicates.ts'
-import { issueTitle, kindOf, paymentRowOf, reviewSummary, rowStatus, takesLines, totalsOf } from './ledger.ts'
+import { aboutAnotherRow, accountName, apartChange, apartStatus, canBeApart, checkHover, issueHeading, issueTitle, kindOf, paymentRowOf, reviewSummary,
+         rowStatus, showLabel, takesLines, totalsOf } from './ledger.ts'
 
 // A transaction as the API returns it (an unpaid rent bill), with what a test needs changed.
 const tx = (change: Partial<Transaction> = {}): Transaction => ({
@@ -172,6 +173,72 @@ test('the date another record shows is used with one click', () => {
   assert.equal(rowStatus({ ...receipt, date_found: null }).length, 0)
 })
 
+test('a warning about this row and another offers Show both; one about this row alone does not', () => {
+  // A possible duplicate named the other row, but finding it meant going through every transaction.
+  for (const code of ['possible_duplicate', 'date_conflict', 'amount_conflict', 'booked_twice', 'total_mismatch']) {
+    assert.equal(aboutAnotherRow(code), true, code)
+  }
+  for (const code of ['vat_rate_mismatch', 'mixed_items']) assert.equal(aboutAnotherRow(code), false, code)
+  assert.deepEqual([showLabel('possible_duplicate'), showLabel('total_mismatch')], ['Show both', 'Show its lines'])
+})
+
+test('two records can be said not to be the same, and the decision undone', () => {
+  // Not the same is offered where two records may be one; a line booked twice is unticked instead.
+  for (const code of ['possible_duplicate', 'date_conflict', 'amount_conflict']) assert.equal(canBeApart(code), true, code)
+  for (const code of ['booked_twice', 'total_mismatch']) assert.equal(canBeApart(code), false, code)
+  const row = { ...tx(), apart_from: [3] }
+  assert.deepEqual(apartChange(row, [4, 3]), { apart_from: [3, 4] })
+  const names = new Map([[3, 'EE monthly phone charges'], [4, 'M6toll toll charge']])
+  assert.deepEqual(apartStatus({ ...row, apart_from: [3, 9] }, id => names.get(id)),
+                   { text: 'Not the same as "EE monthly phone charges" (you said)', actions: [{ label: 'Undo', change: { apart_from: [] } }] })
+  assert.equal(apartStatus({ ...row, apart_from: [9] }, id => names.get(id)), null)   // the other row is gone
+  assert.equal(apartStatus(tx(), id => names.get(id)), null)
+})
+
+test('the amount another record shows is used with one click', () => {
+  // Matt's M6 toll receipt was read as £14.00; his claim line for it says £12.00.
+  const receipt = tx({ document_type: 'receipt', owed: null, gross: '14.00', amount_found: '12.00' })
+  assert.deepEqual(rowStatus(receipt).at(-1), { text: 'Which amount is right?',
+                                                actions: [{ label: 'Use £12.00', change: { gross: '12.00' } }] })
+  assert.equal(rowStatus({ ...receipt, amount_found: null }).length, 0)
+})
+
+test('a pair asking which amount is right offers both amounts, each setting the other record to match', () => {
+  // Matt's EE bill of £30.22 and his claim line of £27.50: only one of the two answers was on offer.
+  const asks = (other: number) => [{ code: 'amount_conflict', severity: 'warning' as const, message: '', related: [other] }]
+  const line = tx({ document_type: 'expense_claim', gross: '27.50', amount_found: '30.22', issues: asks(6) })
+  const bill = tx({ document_type: 'invoice', gross: '30.22', amount_found: '27.50', issues: asks(5), owed: null,
+                    recorded_by: { ref: 'claim', amount: '27.50', date: '2026-09-03', description: 'Matt Barnes — EE',
+                                   kind: 'expense_claim' } })
+  const rows = new Map([[5, line], [6, bill]])
+  assert.deepEqual(rowStatus(bill, id => rows.get(id)), [
+    { text: 'Not booked while the amounts differ: Matt Barnes — EE (£27.50, 3 Sept) is booked meanwhile', actions: [] },
+    { text: 'Which amount is right?', actions: [{ label: '£27.50 (the claim)', change: { gross: '27.50' } },
+                                                 { label: '£30.22 (the invoice)', change: { gross: '30.22' }, row: 5 }] },
+  ])
+  assert.deepEqual(rowStatus(line, id => rows.get(id)).at(-1)?.actions.map(a => a.label),   // the same order on both rows
+                   ['£27.50 (the claim)', '£30.22 (the invoice)'])
+  // Against a bank line only the bank's amount is offered: the bank line does not ask.
+  const card = tx({ document_type: 'statement', gross: '12.00' })
+  const toll = tx({ document_type: 'receipt', gross: '14.00', amount_found: '12.00', issues: asks(7), owed: null })
+  assert.deepEqual(rowStatus(toll, id => new Map([[7, card]]).get(id)).at(-1),
+                   { text: 'Which amount is right?', actions: [{ label: '£12.00 (the bank)', change: { gross: '12.00' } }] })
+})
+
+test('the Check column hover names the warnings, once each', () => {
+  // It repeated every warning in full, which the Description column already shows.
+  const issue = (code: string) => ({ code, severity: 'warning' as const, message: 'long text' })
+  assert.equal(checkHover([issue('amount_conflict'), issue('booked_twice'), issue('amount_conflict')]),
+               'Which amount?, Booked twice')
+  assert.equal(checkHover([]), 'No issues')
+})
+
+test('the Account column shows the account name only, never its code', () => {
+  assert.equal(accountName(tx({ account_code: '7402', account_name: 'Hotels' })), 'Hotels')
+  assert.equal(accountName(tx({ paid_against: '2100', paid_against_name: 'Creditors' })), 'Creditors')
+  assert.equal(accountName(tx({ account_code: '9999', account_name: null })), 'Unknown account')   // not in the chart
+})
+
 test('VAT a receipt shows only in its prices is booked with one click once the VAT invoice is in', () => {
   // The Amazon receipt says it is not a VAT invoice; the claim and its prices agree the VAT is £3.00.
   const receipt = tx({ document_type: 'receipt', gross: '17.99', vat: null, vat_posted: '0.00', net: '17.99', owed: null,
@@ -188,8 +255,11 @@ test('issues are named, and the review summary counts each kind once per row', (
   const note = { code: 'vat_blocked', severity: 'info' as const, message: "VAT can't be reclaimed." }
   assert.equal(issueTitle('total_mismatch'), "Total doesn't add up")
   assert.equal(issueTitle('something_new'), 'Check this')
+  // A heading is its title as a sentence: "Which amount?." read badly.
+  assert.deepEqual([issueHeading('total_mismatch'), issueHeading('amount_conflict')],
+                   ["Total doesn't add up.", 'Which amount?'])
   for (const code of ['vat_worked_out', 'not_vat_invoice', 'date_conflict', 'file_date', 'date_from_claim',
-                      'date_from_bank', 'booked_twice']) assert.notEqual(issueTitle(code), 'Check this', code)
+                      'date_from_bank', 'booked_twice', 'amount_conflict']) assert.notEqual(issueTitle(code), 'Check this', code)
   assert.deepEqual(reviewSummary([[missing, missing], [missing], [note], []]), [
     { code: 'total_mismatch', title: "Total doesn't add up", severity: 'warning', rows: 2 },
   ])

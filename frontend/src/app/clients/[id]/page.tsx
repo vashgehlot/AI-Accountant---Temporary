@@ -153,6 +153,12 @@ export default function ClientPage() {
         <UploadsList uploads={ledger.uploads} readOnly={client.archived} onRemove={remove} />
       </div>
       <TrialBalancePanel clientId={client.id} version={version} hasRows={ledger.transactions.length > 0} />
+      {/* The last step, in name only for now: it will add the books to the client's accounts, and does nothing yet. */}
+      {!client.archived && (
+        <div className="final-actions">
+          <button type="button" className="btn btn-primary" title="Not connected yet">Add to account</button>
+        </div>
+      )}
       {editingClient && <ClientDialog client={client} onCancel={() => setEditingClient(false)} onSave={saveDetails} />}
       {editingRow && (
         <EditRowDialog row={editingRow} businessType={client.business_type}

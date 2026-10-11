@@ -56,6 +56,20 @@ Date,Merchant,Category,Gross,VAT
         assert sorted(amounts) == [12.40, 18.00, 29.60], amounts
 
 
+def test_an_amount_charged_is_not_added_to_the_vat_printed_under_it():
+    # Matt's M6 toll receipt prints "Charged Amount £12.00" and "VAT (20%) £2.00": it was read as £14.00.
+    path = PRIVATE / "matt" / "M6toll-2026-09-14_14_55_26.jpg"
+    if not path.is_file():
+        pytest.skip(f"needs {path.relative_to(PRIVATE.parent.parent)}")
+    client = live_client()
+    reader = TransactionExtractor(client, business_name="Matts", business_type="limited_company")
+    photo = prepare_image(path.read_bytes())
+    with ThreadPoolExecutor(4) as pool:
+        reads = list(pool.map(lambda _: [(t.amount, t.vat) for t in reader.extract_accounting_data(images=[photo]).data],
+                              range(4)))
+    assert reads == [[(12.0, 2.0)]] * 4, reads
+
+
 def test_the_model_reads_a_receipt_photo():
     client = live_client()
     photo = (FIXTURES / "img-train-ticket" / "input.png").read_bytes()

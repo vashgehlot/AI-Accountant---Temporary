@@ -49,7 +49,7 @@ def check_statement(rows: list[Transaction]) -> tuple[list[Transaction], Optiona
             gaps.append(abs(want - printed))
             found.setdefault(lines[k], []).append(issue(
                 "statement_gap",
-                f"The balance after this line should be {_gbp(want)}; the statement shows {_gbp(printed)}."))
+                f"Balance should be {_gbp(want)}; the statement shows {_gbp(printed)}."))
 
     # The opening balance plus every line must reach the closing balance.
     openings = [rows[n].opening_balance for n in lines if rows[n].opening_balance is not None]
@@ -62,8 +62,8 @@ def check_statement(rows: list[Transaction]) -> tuple[list[Transaction], Optiona
             gaps.insert(0, apart)
             found.setdefault(lines[-1], []).append(issue(
                 "statement_total",
-                f"Opening {_gbp(openings[0])} plus these rows gives {_gbp(total)}, but the statement closes at "
-                f"{_gbp(closings[-1])} ({_gbp(apart)} apart)."))
+                f"Opening {_gbp(openings[0])} plus these rows is {_gbp(total)}; the statement closes at "
+                f"{_gbp(closings[-1])}."))
 
     on_lines = set(lines)
     checked = [tx.model_copy(update={"issues": [i for i in tx.issues if i.code not in STATEMENT_ISSUES]
