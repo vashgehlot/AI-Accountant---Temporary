@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-04",
+  "read": "model",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 79.5,
+      "client_id": 169,
+      "thread_id": "7d93ba55a50746d69003fc067cbb5355",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "pagecraft-invoice-PC-5512.pdf",
+            "description": "Pagecraft: Brother TN-2420 toner cartridge"
+          },
+          "found": {
+            "file": "pagecraft-invoice-PC-5512.pdf",
+            "description": "PAGECRAFT STATIONERS LTD - Brother TN-2420 toner cartridge"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Pagecraft - toner cartridge"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Pagecraft toner cartridge"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 14,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "conflict-invoice-vs-expense-report-r1.json"
+    }
+  ]
+}

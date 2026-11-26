@@ -1,0 +1,1712 @@
+{
+  "case": "combined-vat",
+  "run": 1,
+  "thread_id": "4115d797d469439494a080ef5b312ea4",
+  "client_id": 2,
+  "hosts": [
+    "Claude Platform on AWS"
+  ],
+  "messages": [
+    {
+      "type": "human",
+      "content": "Review these documents"
+    },
+    {
+      "type": "ai",
+      "content": "",
+      "reasoning": [
+        {
+          "from": "additional_kwargs.reasoning_content",
+          "text": "I'm going to check the documents and rows the user wants reviewed, starting with a parallel call to list the documents and issues. The overview is already in hand, and one row has a combined VAT issue, so I'll pull up that receipt and possibly the bank statement too, reading upload 5 and row 10.\n\n"
+        },
+        {
+          "from": "additional_kwargs.reasoning_details",
+          "details": [
+            {
+              "type": "reasoning.text",
+              "format": "anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1",
+              "index": 0,
+              "text": "I'm going to check the documents and rows the user wants reviewed, starting with a parallel call to list the documents and issues. The overview is already in hand, and one row has a combined VAT issue, so I'll pull up that receipt and possibly the bank statement too, reading upload 5 and row 10.\n\n",
+              "signature": "CAQSuQcKEAgTGAI4AUIIdGhpbmtpbmcSDBN7n+mwqcp8SNnUcBoMXlyA+u/k72erI8VQIjBDwu/SudeHKpD43IzpalJ7vxvYfFDD9j2YVDpbQukhSWGMH7S62Fpu5XJPq8HG6K0q1gY065kLLZFgMMHYLHdzoup5wWUX/+nA03Bpb1H12xusizKt7Uts5X251Nz0+4P5GpULRkYL5Hi7C8NRXeJZvJmy9VTrXV83vfCYr6nl2RBgCYuIGOJL7PptByF9Cy3r4m9Ue9LtVIu1soj+9vmkdLnTQytkYpZYJfQ5g6SGtlYAUY7bHIYcGqxEoZvAUMkLzDWit0ze09OA4mpZQnpCBbRevJQRt+0I+9Vg09R+asezQMZRlZ169V8eyewETXPlRLEyAsTyGcVAELQddt4zFx4Vg3hFP5RxOuby6zPF8Qqlf/3zu96+uZmlCS7KEJTW3Y3F42aR5t9CPBRUw/Lt52uT5eb8ka6GeJ2HLX5ZCUC4iFXhwRZ8TpnE8tvePeIrIGo4Z/KLjRlMZrJfc2DcLsVHQmi8RBUxpWiH2/QMoTocQJh6WJHNZtqSmckrqDOF1LH+fymnRrlPDWiEdYC1ehiPaHHJGh6K6179NuPlJB5aw1LtaPm5EteYRfuzO8pxNpF6UFYICRsM2AyOTUa8WF3q6Ne/iBeyxU5rt3jEOq0ADUCdK5lk3Dbwm7EBCTZMtlzQmxOphRq+vKQYM9vpDriBtliRskJm8GTZSibsG1ta3Z3o/8Q6Hq5GkGXydflJQVEmWXp95/UuxInDy4TQqX1ED7pT3B/6GA6FSPNq9fqDQr0Z4xGLvUpTEFf+GwzrIdQQKDTYbTYxvpysmXlQnPWFHTeuJVfQtwDslLCj98uDrKVV5Lh8N/6iBasVH1DcqOjSD/cgx3treAz52NLcWybQvd16IweafmFn1Mq90iVr14ltFPrGT9yFDImqlyAKyg5dFY2OOCueLCrwh0h7G2no8DVPsttmoV2dgPg+Qpno7FVAVcXCKJi+BzeyqVBhRbjy4ihewf6ojjj3/uMPnashwr61l4WUdjIhtJHB/jrk4Nl043j9oYYt7FQAGT5skVDrjxR8ACGr/YCbdcZpHTsGUgbv+N9H+ZjKjOLdPxbQ7BCnw/9r2gNVk0ipsr5FWuaw2W7kardDzcOfLanM7NB6GxzBmDVMOMdfwPbkTSAdOcShtvaUmd5s9uJhuiwGjpWWETDoi6t3Faj6O/p67KdWC1qmhKQGI56M3mQoT5sg48zotX+jThgB.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "list_documents",
+          "args": {},
+          "id": "toolu_01BtwXF5zpipoi2k9DJsXycD"
+        },
+        {
+          "name": "get_row",
+          "args": {
+            "row_id": 10
+          },
+          "id": "toolu_015bqTqzGYYR8pMms6kd49xL"
+        },
+        {
+          "name": "read_document",
+          "args": {
+            "upload_id": 5
+          },
+          "id": "toolu_01Q7RDuLtTybLMdV7ypRtodL"
+        }
+      ],
+      "finish_reason": "tool_calls",
+      "served_by": {
+        "model_name": "anthropic/claude-haiku-5.5",
+        "generation_id": "gen-1794741910-h5WOY49FIRP8zhgVd0WT",
+        "provider": "Claude Platform on AWS",
+        "latency_ms": 1722,
+        "generation_time_ms": 1726
+      }
+    },
+    {
+      "type": "tool",
+      "content": "{\"documents\": [{\"upload_id\": 5, \"name\": \"bulkbuy-receipt.txt\", \"kind\": \"text\", \"rows\": 1, \"added\": \"2026-11-15T11:25:10+00:00\"}, {\"upload_id\": 4, \"name\": \"barclays-october.csv\", \"kind\": \"table\", \"rows\": 2, \"added\": \"2026-11-15T11:25:10+00:00\", \"bank_account\": \"1200\", \"statement_check\": {\"status\": \"none\"}}]}",
+      "name": "list_documents",
+      "tool_call_id": "toolu_01BtwXF5zpipoi2k9DJsXycD",
+      "status": "success"
+    },
+    {
+      "type": "tool",
+      "content": "{\"row_id\": 10, \"upload_id\": 5, \"file\": \"bulkbuy-receipt.txt\", \"kind\": \"receipt\", \"date\": \"2026-10-19\", \"description\": \"Bulkbuy: cleaning supplies, tea, coffee, milk and sugar\", \"counterparty\": \"Bulkbuy Cash & Carry Ltd\", \"direction\": \"out\", \"gross\": \"64.00\", \"vat\": \"7.60\", \"account_code\": \"7801\", \"account_name\": \"Cleaning\", \"issues\": [{\"code\": \"mixed_items\", \"family\": \"combined_vat\", \"severity\": \"warning\", \"message\": \"Items of different kinds with one VAT total: kept as one row on Cleaning. Split it by hand if needed. VAT £7.60 is on £45.60; £18.40 has none.\"}], \"booked\": true, \"vat_posted\": \"7.60\", \"net\": \"56.40\", \"contra_account_code\": \"1200\", \"document_total\": \"64.00\", \"supplier_vat_number\": \"GB999553076\", \"paid_by\": [{\"ref\": \"bk-01\", \"amount\": \"64.00\", \"date\": \"2026-10-19\", \"description\": \"BULKBUY CASH AND CARRY\", \"kind\": \"statement\"}], \"related\": [{\"row_id\": 8, \"upload_id\": 4, \"file\": \"barclays-october.csv\", \"kind\": \"statement\", \"date\": \"2026-10-19\", \"description\": \"BULKBUY CASH AND CARRY\", \"counterparty\": \"Bulkbuy Cash and Carry\", \"direction\": \"out\", \"gross\": \"64.00\", \"account_code\": \"7801\", \"account_name\": \"Cleaning\"}]}",
+      "name": "get_row",
+      "tool_call_id": "toolu_015bqTqzGYYR8pMms6kd49xL",
+      "status": "success"
+    },
+    {
+      "type": "tool",
+      "content": "{\"upload_id\": 5, \"name\": \"bulkbuy-receipt.txt\", \"page\": 1, \"pages\": 1, \"text\": \"BULKBUY CASH & CARRY LTD\\nLeeds Depot\\nVAT Reg No: GB 999 5530 76\\n\\nDate 19/10/2026   Till 07\\n\\nWASHING UP LIQUID 5L            9.60 S\\nBIN BAGS 200                   14.40 S\\nKITCHEN ROLL 24                12.00 S\\nANTIBAC SPRAY X6                9.60 S\\nSEMI SKIMMED MILK 6PT           2.40 Z\\nTEA BAGS 1100                   9.50 Z\\nINSTANT COFFEE 750G             5.20 Z\\nGRANULATED SUGAR 2KG            1.30 Z\\n\\nTOTAL                          64.00\\nDEBIT CARD                     64.00\\n\\nVAT SUMMARY    NET     VAT    GROSS\\nS 20%         38.00    7.60   45.60\\nZ 0%          18.40    0.00   18.40\\nTOTAL VAT              7.60\"}",
+      "name": "read_document",
+      "tool_call_id": "toolu_01Q7RDuLtTybLMdV7ypRtodL",
+      "status": "success"
+    },
+    {
+      "type": "ai",
+      "content": "The receipt prints a VAT summary: standard-rated items of £45.60 gross (VAT £7.60) and zero-rated food of £18.40. I'll split the row along those lines.",
+      "reasoning": [
+        {
+          "from": "additional_kwargs.reasoning_content",
+          "text": "Splitting the receipt by rate: the standard-rated cleaning items come to 45.60 gross, which goes to account 7801 at the standard rate. The zero-rated food items (milk, tea, coffee, sugar) total 18.40 and look like refreshments, so 8205 fits them at a zero rate.\n\nI'm picking a VAT summary line as the evidence to quote, then checking whether the bank line's 64.00 matters here. It probably doesn't, since the split has to add up exactly and the bank line is a contra entry I can set aside.\n\n"
+        },
+        {
+          "from": "additional_kwargs.reasoning_details",
+          "details": [
+            {
+              "type": "reasoning.text",
+              "format": "anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1",
+              "index": 0,
+              "text": "Splitting the receipt by rate: the standard-rated cleaning items come to 45.60 gross, which goes to account 7801 at the standard rate. The zero-rated food items (milk, tea, coffee, sugar) total 18.40 and look like refreshments, so 8205 fits them at a zero rate.\n\nI'm picking a VAT summary line as the evidence to quote, then checking whether the bank line's 64.00 matters here. It probably doesn't, since the split has to add up exactly and the bank line is a contra entry I can set aside.\n\n",
+              "signature": "CAQS1AoKEAgTGAI4AUIIdGhpbmtpbmcSDFkSa9Mkm8Zo4Uc2EhoMfs3fHBhOYBo1lXNGIjBx0B2d5ouQ3MLOGewMPavoPsmrt101Sncq/OztJNIGY5n4+W8szkwAGvJk1mYoEPsq8QnK6KTyF7OB2Nro8ZbJsLUKxwtAUpXV5xkKAK4YnG0hqM+4YAroY4+v1IclhUfEmOjJ7e6Dpca8glR5r6qgKu6iT10DVvSED2IQbpalTU64G7zXqTuLA9/9XnUy1GvdCP0svQG7nnQcTJfbz0ohI0+RuSbisyo8TNkTRpB/jD9H7NjicLyGckINxAoAbEXYCZ1m7zMEHi31Gu9/ZhyfWQMIB1gp4j+a5OdjDUT1Rb1doK1LFpCt6e3kDHFS/tEFIM4ifFu4fFZ9JY0fkJJ8D7N94VJVoCChbXkqCwjU19OGe7EQdWHbrDhIncnQHEHyGOZWcWywSiyG9UGN/jRFGpL36zrR6VZ+ZRuJqkU5Vxu5vhja5X81m2UbSyBuztLNCrabRtAXZHz8nsdbDEiq40c8DQBm8Kt8wH+fmrp1cYRDHm52pYwYfX5HqGLx/naNoe7Cpd2r6q6tD80IG6lN6DXUs9+jyCCZGk0RHpdkAwdBT0JHJ5BEdSy/E/sawYfarU4PVe4Vdox8GV8AUf5DookDeevUnxp5rlDbp7J0Gp+VojfTCnhzNGV7wlabT38OBDQBTMDWdOrXYShLQvvKloiKwps5Lk1co3IvqwpU3lqjPuMFhL/EloqmbOhlt/ZlIGo+L5WcQvj813L14n/AwyJuozZY4NjzNPD6+PsnHoKvB98pzH3CeQnjjjPW3TdjPU+0oJwMo4zotRjC2QsG60uxex1yALTyZO5FfftknVp1eGCZaurQaGpsAzff2Tp9fgjYIs+E5GFzLX6wIiwTd1ytmnJZtBTzhFj2G77cIk+pp9VuDJ1W746aTGTkpNnDKaO/aHksZ07v3htMW4HKM+52G+sfRHjWLzT1eZdmANLj7OuZAxet/+DKFT/ax98kjYoDiiGAQ3np33/e2fCwh7jvg65Z3Q2Tjkf83iXBbrqKYfHOVWAgMkbVRGZVZeKvOqtFWc3kQY1KdYFJ6o69vGouy5efnl34/VWrl/MjzASLds1LT3gjadjiGO7ZiFhSPQgjG/Z6mMVE/J+3a+PfL+DrUfxTZ4/ozI14VLyHxenIBhxtckkDlkms6Ptywe7pqL25M1uN3OAUcEP+CmFBEipPvk1Wo/Z3sgilKmaOTDG8P26436W/sKmXkHDnIp0+pGErG3HRQQWb/BFXf0TtW6BtBDPGdp3FS5ca1aSQa8n+LHqKdHI6j07VxfpdpPSoEQYpCmYrTMmW9QfNDitE7Bkiz7LZMnniA8aXzc2Q+8eoIEV8X7T387ZInbPUpMXtpnGIcF1dVGrtwC628ZegrBVpnCTDXaCbjfKjPiDGcr+FBPjVqkvFyXqWcGHDYkT7peHeYtzN0NwCXJnt+Ru/Pz9a9lZ5WXyhpcHilh2Z/sPEX4O8MRdT/nNRnZzbtQkRJ8ImCP1cEb4tziV6rN4WaykA2zF2+tLq2Z7UCeDOkKvJYAw2RyVPGO+JFRT4n6/ZKxk+aIzHU3Bgu/lG8knyncCx2TxpFW2QvzAZLy9L0AnY+NkcC8N6Uj27oWz9Hfai4kf/PY0xGfPpxF4pj32aEyGcE7Y/W2Q2jvPnVWPH3lOc3p/NNrYJF3L2h1Q6kF5GIsweWACJ7e6ZZFQZ+NN3HUiBwXTUzuyiISmsVgqT/q3Drv7oFawmgCO+p31Me5/BWjlaBoWsbz0hjN0KICivyejoMRgB.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "resolve_issue",
+          "args": {
+            "row_id": 10,
+            "resolution": {
+              "action": "split_vat",
+              "parts": [
+                {
+                  "description": "Bulkbuy: cleaning supplies, standard-rated (washing up liquid, bin bags, kitchen roll, antibac spray)",
+                  "account_code": "7801",
+                  "gross": 45.6,
+                  "rate": "standard"
+                },
+                {
+                  "description": "Bulkbuy: zero-rated tea, coffee, milk and sugar",
+                  "account_code": "8205",
+                  "gross": 18.4,
+                  "rate": "zero"
+                }
+              ]
+            },
+            "evidence": [
+              {
+                "upload_id": 5,
+                "quote": "S 20%         38.00    7.60   45.60"
+              },
+              {
+                "upload_id": 5,
+                "quote": "Z 0%          18.40    0.00   18.40"
+              }
+            ],
+            "reason": "The Bulkbuy receipt prints VAT at 20% only on the cleaning items (£45.60 gross, £7.60 VAT) and nothing on the zero-rated food (£18.40), so the one row is split to match."
+          },
+          "id": "toolu_013qxACZSnKafnURC8YnbVzU"
+        }
+      ],
+      "finish_reason": "tool_calls",
+      "served_by": {
+        "model_name": "anthropic/claude-haiku-5.5",
+        "generation_id": "gen-1794741912-VAKL8CKQy3SAVl97E4pt",
+        "provider": "Claude Platform on AWS",
+        "latency_ms": 1640,
+        "generation_time_ms": 3670
+      }
+    },
+    {
+      "type": "tool",
+      "content": "{\"decision_id\": \"9b668cdb41fe48e9b342048384d0be8a\", \"status\": \"applied\", \"rule\": \"R3 Mixed VAT: split by rate\", \"before\": {\"10\": {\"superseded_by\": null}}, \"after\": {\"10\": {\"superseded_by\": \"9b668cdb41fe48e9b342048384d0be8a\"}, \"11\": {\"description\": \"Bulkbuy: cleaning supplies, standard-rated (washing up liquid, bin bags, kitchen roll, antibac spray)\", \"gross\": \"45.6\", \"vat\": \"7.60\", \"vat_treatment\": \"standard\", \"account_code\": \"7801\"}, \"12\": {\"description\": \"Bulkbuy: zero-rated tea, coffee, milk and sugar\", \"gross\": \"18.4\", \"vat\": \"0.00\", \"vat_treatment\": \"zero\", \"account_code\": \"8205\"}}}",
+      "name": "resolve_issue",
+      "tool_call_id": "toolu_013qxACZSnKafnURC8YnbVzU",
+      "status": "success"
+    },
+    {
+      "type": "ai",
+      "content": "I split the Bulkbuy Cash & Carry receipt of 19 Oct 2026 (£64.00) into two parts. The cleaning items (£45.60 gross, £7.60 VAT at 20%) stay on Cleaning, and the zero-rated tea, coffee, milk and sugar (£18.40, no VAT) now sit on Subsistence (8205). The receipt's own VAT summary settled the split, so nothing needs asking. The bank line for the same payment was already matched and is unchanged.\n\nTwo documents are in the books: the receipt and the Barclays October statement (barclays-october.csv). The Barclays account still doesn't agree with its statement: the books show -£72.50 and there are no statement lines for April to September 2026. Adding those months' statements is the outstanding item on that account.",
+      "reasoning": [
+        {
+          "from": "additional_kwargs.reasoning_content",
+          "text": "The split has been applied, so now I'm checking the bank statement issue, where the overview shows Barclays at -72.50 with no statement on file. The CSV only has two rows, and the overview flags statements for April through September as missing. I'm not sure I need to dig further into the CSV, since the only flagged row was row 10, and I'm leaning toward wrapping up after a quick look at the issues list.\n\nI'll confirm there are no remaining issues by checking the issues list, keeping it brief.\n\n"
+        },
+        {
+          "from": "additional_kwargs.reasoning_details",
+          "details": [
+            {
+              "type": "reasoning.text",
+              "format": "anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1",
+              "index": 0,
+              "text": "The split has been applied, so now I'm checking the bank statement issue, where the overview shows Barclays at -72.50 with no statement on file. The CSV only has two rows, and the overview flags statements for April through September as missing. I'm not sure I need to dig further into the CSV, since the only flagged row was row 10, and I'm leaning toward wrapping up after a quick look at the issues list.\n\nI'll confirm there are no remaining issues by checking the issues list, keeping it brief.\n\n",
+              "signature": "CAQS8QgKEAgTGAI4AUIIdGhpbmtpbmcSDLMg5cNW9+rQ5fMm5xoMdmVYVuuo5TiB+3v+IjDBR1B10UlkbE5MMXnYe/WM74aRmparbhEe4VUOE4MrYQW1W2oXDbC/u5SlMa3opGsqjgiYgucQQPU8iFd+8/1FuWHeSTXgA6hBWG6QR319gjzxVZTL9uk+10jxucV8BY8y+4yHy0KtjvFv4zWvpNaaMSkOXxeFVe/uhi2MqCxKxsINb0eIOZc24MoWgNIX+crthLXttK1cKlStJzuR9/2tpyJp0ZrZK1fb6/qHt1xzsL/595Him12161Ddnekj95CWPeLjouOdOK7TXAA+j4Tf0361O9zOGkHAKIcTIpWxQTiUqY05nw+x4s6GDofZ8umxVP2YCYViwDt7wU772RQhdZtrDCIvCR/qUHa9i92RitstlGAe3+8KzWdL3L8hX3dZ+DanV+VQQVQlJllM2C8G7EPGhjlgzSv/ymRJu6HZbbXPjdU0kGMSUOa7b7LouNr5KCmKardRTHq+Ijb66tVUSB+s0JD9xQGE8JL9AErKP1o/xMJAKzL5CzWXPIBpO7TSM2yUuNWeKgAmMisut9tBduoUECfUph1aq0jeal6Wn9HGQqkgIypTOJfB9z4/IgnVBwhom6XS06BPn6yqyOX9sU7xtxzuSuUUfGiVn1kAgCiEzouQQbnCkrwiW1vFjNtzSj5YE2erC6e5Vu1sFVt9BeDsj3hBivj+j4xM36H7coGSan4L2yhvOfbHWl4E06cpT4XZirnc45OoJys0MX9enyQdAK1+2Zbj1E7AKjRtbH50Y+qrHmgg0motw80XVPLHHRgg3GABEXGaLD1z6x9wWxeN8Za4wB9f0t3Tq2tv2jUbu7Aqm2GuZB+Jelr6i7vKojxiNTuPvLGEjOnBlP/Vq6WRHil7/t8668JmmGWx3btljyLVgXz18GJVf4X8gJ2FDI9VZWVtuv2+gS8U6dbpGsXjVBAwatmh4zzk4AHkCHKXAh1K1VzVsZPeMTRT+IyjMA5Qpibx6ZCPqWNXomLd3nWMwySFJFBvfRa/XrE7PM0OFgYWnVUYw4BNMwB1Sa2HCXNSxKnD175xZsVyR/EHg4xGTBwM9GEasb5FIdbOMq8IQZkh82oJZxorD4/oO6TzKYF4UVBy/6CnWBFcNnBefNwgkq+1eESYhxWwCEx0Nj/1y8KOaAnmzvt/ay+I9CKseLKPfMoiM5fR5cBP0rFCtT8Qy5DDS0Co+iqPQnldVeYaejZ6LOKy9ffvBpklvheDhbnkwdnF8Q3U+bPn+sRqrhEcA6eoJ+ruZug0BEd+3nGQda21JBiol+I+qoz6ebGqoxQIpey2lumQcyuhIln9iKpbFUQiUe7x1DzXIrWR+DF05bZbYgufsx3akS0sep/wBwnKCbQbJ963bRhId7Bw8EV6bE2Ih/6tOp7bXmd8bA0W0DIcVYI1Sv3JuBv812zE+3RaqTwgNZZDOwvTPlSIqUOEysHw8bhddY4nzSL3/SwYAQ==.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      ],
+      "tool_calls": [],
+      "finish_reason": "stop",
+      "served_by": {
+        "model_name": "anthropic/claude-haiku-5.5",
+        "generation_id": "gen-1794741916-AogrPSDJEwoyI5nolP6S",
+        "provider": "Claude Platform on AWS",
+        "latency_ms": 2629,
+        "generation_time_ms": 2631
+      }
+    }
+  ],
+  "events": [
+    [
+      "status",
+      {
+        "text": "Reading 2 files…"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-0",
+        "text": "Reading barclays-october.csv…",
+        "state": "running",
+        "file": "barclays-october.csv"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-1",
+        "text": "Reading bulkbuy-receipt.txt…",
+        "state": "running",
+        "file": "bulkbuy-receipt.txt"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-0",
+        "text": "Read barclays-october.csv (2 rows)",
+        "state": "done",
+        "file": "barclays-october.csv",
+        "rows": 2
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-1",
+        "text": "Read bulkbuy-receipt.txt (1 row)",
+        "state": "done",
+        "file": "bulkbuy-receipt.txt",
+        "rows": 1
+      }
+    ],
+    [
+      "status",
+      {
+        "text": "Reviewing the books…"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01BtwXF5zpipoi2k9DJsXycD",
+        "text": "Listing the documents…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_015bqTqzGYYR8pMms6kd49xL",
+        "text": "Looking at row 10…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01BtwXF5zpipoi2k9DJsXycD",
+        "text": "Listed 2 documents",
+        "state": "done"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_015bqTqzGYYR8pMms6kd49xL",
+        "text": "Looked at row 10",
+        "state": "done"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01Q7RDuLtTybLMdV7ypRtodL",
+        "text": "Opening bulkbuy-receipt.txt…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01Q7RDuLtTybLMdV7ypRtodL",
+        "text": "Opened bulkbuy-receipt.txt",
+        "state": "done"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "The"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " receipt pr"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ints a"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " VAT summary:"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " standard-"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "rated items of"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " £45.60 g"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ross (V"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "AT £7.60) and"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " zero-rated food"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " of £18.40. I'"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ll split the row along"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " those lines."
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_013qxACZSnKafnURC8YnbVzU",
+        "text": "Checking row 10…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_013qxACZSnKafnURC8YnbVzU",
+        "text": "Row 10: R3 Mixed VAT: split by rate",
+        "state": "done"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "\n\nI split the B"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ulkbuy"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Cash & Carry receip"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "t of"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " 19 Oct 2026"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " ("
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "£64.00) into two par"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ts. The c"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "leaning items"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " ("
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "£45.60 gross,"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " £"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "7.60 VAT at"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " 20%) stay on C"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "leaning, and the zero"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "-rated t"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ea, coffee, milk"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " and sugar (£18."
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "40,"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " no VAT) now"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " s"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "it on Sub"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "sistence ("
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "8205). The rece"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ipt's own VAT summ"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ary sett"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "led the split, so"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " n"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "othing needs"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " as"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "king."
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " The bank line for"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " the same payment was already mat"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ched and is un"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "changed."
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "\n\nTwo"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " documents are in"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " the books: the rece"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ipt and the Barclays"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " October statement (barclays-"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "october.csv). The Bar"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "clays account still"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " doesn't agree with its"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " statement: the books show -"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "£72.50 and there are"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " no statement lines for April to"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " September 2026."
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Adding those months' statements is"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " the out"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "standing item on"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " that account"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "."
+      }
+    ],
+    [
+      "status",
+      {
+        "text": "Posting the books…"
+      }
+    ],
+    [
+      "result",
+      {
+        "sorted": [
+          {
+            "client_id": 2,
+            "thread_id": "4115d797d469439494a080ef5b312ea4",
+            "year_start": "2026-04-01",
+            "action": "split_vat",
+            "rule": "R3 Mixed VAT: split by rate",
+            "status": "applied",
+            "row_ids": [
+              10,
+              11,
+              12
+            ],
+            "evidence": [
+              {
+                "upload_id": 5,
+                "upload_name": "bulkbuy-receipt.txt",
+                "quote": "S 20%         38.00    7.60   45.60"
+              },
+              {
+                "upload_id": 5,
+                "upload_name": "bulkbuy-receipt.txt",
+                "quote": "Z 0%          18.40    0.00   18.40"
+              }
+            ],
+            "reason": "The Bulkbuy receipt prints VAT at 20% only on the cleaning items (£45.60 gross, £7.60 VAT) and nothing on the zero-rated food (£18.40), so the one row is split to match.",
+            "before": {
+              "10": {
+                "superseded_by": null
+              }
+            },
+            "after": {
+              "10": {
+                "superseded_by": "9b668cdb41fe48e9b342048384d0be8a"
+              },
+              "11": {
+                "description": "Bulkbuy: cleaning supplies, standard-rated (washing up liquid, bin bags, kitchen roll, antibac spray)",
+                "gross": "45.6",
+                "vat": "7.60",
+                "vat_treatment": "standard",
+                "account_code": "7801"
+              },
+              "12": {
+                "description": "Bulkbuy: zero-rated tea, coffee, milk and sugar",
+                "gross": "18.4",
+                "vat": "0.00",
+                "vat_treatment": "zero",
+                "account_code": "8205"
+              }
+            },
+            "actor": "agent:anthropic/claude-haiku-5.5",
+            "reverses": null,
+            "trigger": "chat",
+            "review_id": null,
+            "resolution": null,
+            "id": "9b668cdb41fe48e9b342048384d0be8a",
+            "created_at": "2026-11-15T11:25:16+00:00",
+            "prev_hash": "",
+            "hash": "3bb8e757a51ea125a83ac6e607eaf2a38a24f79e97114108b396c6e9160db6f9"
+          }
+        ],
+        "questions": [],
+        "trial_balance": {
+          "lines": [
+            {
+              "code": "1200",
+              "name": "Bank Current Account",
+              "type": "asset",
+              "heading": "Cash at bank and in hand",
+              "tax": null,
+              "debit": "0.00",
+              "credit": "72.50"
+            },
+            {
+              "code": "7801",
+              "name": "Cleaning",
+              "type": "expense",
+              "heading": "Administrative expenses",
+              "tax": "allowable",
+              "debit": "38.00",
+              "credit": "0.00"
+            },
+            {
+              "code": "7901",
+              "name": "Bank Charges",
+              "type": "expense",
+              "heading": "Administrative expenses",
+              "tax": "allowable",
+              "debit": "8.50",
+              "credit": "0.00"
+            },
+            {
+              "code": "8205",
+              "name": "Refreshments",
+              "type": "expense",
+              "heading": "Administrative expenses",
+              "tax": "allowable",
+              "debit": "18.40",
+              "credit": "0.00"
+            },
+            {
+              "code": "2201",
+              "name": "Purchase VAT",
+              "type": "liability",
+              "heading": "Creditors: amounts falling due within one year",
+              "tax": null,
+              "debit": "7.60",
+              "credit": "0.00"
+            }
+          ],
+          "opening": [],
+          "total_debits": "72.50",
+          "total_credits": "72.50",
+          "is_balanced": true,
+          "journal": [
+            {
+              "transaction": 9,
+              "code": "7901",
+              "debit": "8.50",
+              "credit": "0.00",
+              "description": "BARCLAYS ACCOUNT FEE"
+            },
+            {
+              "transaction": 9,
+              "code": "1200",
+              "debit": "0.00",
+              "credit": "8.50",
+              "description": "BARCLAYS ACCOUNT FEE"
+            },
+            {
+              "transaction": 11,
+              "code": "7801",
+              "debit": "38.00",
+              "credit": "0.00",
+              "description": "Bulkbuy: cleaning supplies, standard-rated (washing up liquid, bin bags, kitchen roll, antibac spray)"
+            },
+            {
+              "transaction": 11,
+              "code": "2201",
+              "debit": "7.60",
+              "credit": "0.00",
+              "description": "Bulkbuy: cleaning supplies, standard-rated (washing up liquid, bin bags, kitchen roll, antibac spray)"
+            },
+            {
+              "transaction": 11,
+              "code": "1200",
+              "debit": "0.00",
+              "credit": "45.60",
+              "description": "Bulkbuy: cleaning supplies, standard-rated (washing up liquid, bin bags, kitchen roll, antibac spray)"
+            },
+            {
+              "transaction": 12,
+              "code": "8205",
+              "debit": "18.40",
+              "credit": "0.00",
+              "description": "Bulkbuy: zero-rated tea, coffee, milk and sugar"
+            },
+            {
+              "transaction": 12,
+              "code": "1200",
+              "debit": "0.00",
+              "credit": "18.40",
+              "description": "Bulkbuy: zero-rated tea, coffee, milk and sugar"
+            }
+          ],
+          "total_income": "0.00",
+          "total_expenses": "64.90",
+          "net_profit": "-64.90",
+          "total_assets": "-72.50",
+          "total_liabilities": "-7.60",
+          "left_out": [],
+          "suspense": [],
+          "unposted_changes": 0,
+          "problems": []
+        },
+        "post": {
+          "batch_id": "b29a6812076f45b88fa8b75f8b4a379b",
+          "entries_added": 7,
+          "reversals_added": 0,
+          "total_debits": "72.50",
+          "total_credits": "72.50",
+          "problems": []
+        }
+      }
+    ],
+    [
+      "done",
+      {}
+    ]
+  ],
+  "answers": [],
+  "rows_after_review": [
+    {
+      "id": 8,
+      "upload_id": 4,
+      "date": "2026-10-19",
+      "description": "BULKBUY CASH AND CARRY",
+      "direction": "out",
+      "gross": "64.00",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7801",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "Bulkbuy Cash and Carry",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-01",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Cleaning",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 9,
+      "upload_id": 4,
+      "date": "2026-10-30",
+      "description": "BARCLAYS ACCOUNT FEE",
+      "direction": "out",
+      "gross": "8.50",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7901",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "Barclays",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-02",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Bank Charges",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 10,
+      "upload_id": 5,
+      "date": "2026-10-19",
+      "description": "Bulkbuy: cleaning supplies, tea, coffee, milk and sugar",
+      "direction": "out",
+      "gross": "64.00",
+      "vat": "7.60",
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7801",
+      "contra_account_code": "1200",
+      "bank_account": null,
+      "currency": "GBP",
+      "source": "text",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "receipt",
+      "counterparty": "Bulkbuy Cash & Carry Ltd",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": "64.00",
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bulkbuy-1910",
+      "include": false,
+      "excluded": false,
+      "superseded_by": "9b668cdb41fe48e9b342048384d0be8a",
+      "decision_ids": [
+        "9b668cdb41fe48e9b342048384d0be8a"
+      ],
+      "supplier_vat_number": "GB999553076",
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [
+        {
+          "code": "mixed_items",
+          "message": "Items of different kinds with one VAT total: kept as one row on Cleaning. Split it by hand if needed. VAT £7.60 is on £45.60; £18.40 has none.",
+          "severity": "warning",
+          "related": []
+        }
+      ],
+      "account_name": "Cleaning",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 11,
+      "upload_id": 6,
+      "date": "2026-10-19",
+      "description": "Bulkbuy: cleaning supplies, standard-rated (washing up liquid, bin bags, kitchen roll, antibac spray)",
+      "direction": "out",
+      "gross": "45.60",
+      "vat": "7.60",
+      "vat_treatment": "standard",
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7801",
+      "contra_account_code": "1200",
+      "bank_account": null,
+      "currency": "GBP",
+      "source": "text",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "receipt",
+      "counterparty": "Bulkbuy Cash & Carry Ltd",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": "64.00",
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bulkbuy-1910",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [
+        "9b668cdb41fe48e9b342048384d0be8a"
+      ],
+      "supplier_vat_number": "GB999553076",
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Cleaning",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 12,
+      "upload_id": 6,
+      "date": "2026-10-19",
+      "description": "Bulkbuy: zero-rated tea, coffee, milk and sugar",
+      "direction": "out",
+      "gross": "18.40",
+      "vat": "0.00",
+      "vat_treatment": "zero",
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "8205",
+      "contra_account_code": "1200",
+      "bank_account": null,
+      "currency": "GBP",
+      "source": "text",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "receipt",
+      "counterparty": "Bulkbuy Cash & Carry Ltd",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": "64.00",
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bulkbuy-1910",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [
+        "9b668cdb41fe48e9b342048384d0be8a"
+      ],
+      "supplier_vat_number": "GB999553076",
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Refreshments",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    }
+  ],
+  "questions_after_review": [],
+  "rows_final": [
+    {
+      "id": 8,
+      "upload_id": 4,
+      "date": "2026-10-19",
+      "description": "BULKBUY CASH AND CARRY",
+      "direction": "out",
+      "gross": "64.00",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7801",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "Bulkbuy Cash and Carry",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-01",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Cleaning",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 9,
+      "upload_id": 4,
+      "date": "2026-10-30",
+      "description": "BARCLAYS ACCOUNT FEE",
+      "direction": "out",
+      "gross": "8.50",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7901",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "Barclays",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-02",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Bank Charges",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 10,
+      "upload_id": 5,
+      "date": "2026-10-19",
+      "description": "Bulkbuy: cleaning supplies, tea, coffee, milk and sugar",
+      "direction": "out",
+      "gross": "64.00",
+      "vat": "7.60",
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7801",
+      "contra_account_code": "1200",
+      "bank_account": null,
+      "currency": "GBP",
+      "source": "text",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "receipt",
+      "counterparty": "Bulkbuy Cash & Carry Ltd",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": "64.00",
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bulkbuy-1910",
+      "include": false,
+      "excluded": false,
+      "superseded_by": "9b668cdb41fe48e9b342048384d0be8a",
+      "decision_ids": [
+        "9b668cdb41fe48e9b342048384d0be8a"
+      ],
+      "supplier_vat_number": "GB999553076",
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [
+        {
+          "code": "mixed_items",
+          "message": "Items of different kinds with one VAT total: kept as one row on Cleaning. Split it by hand if needed. VAT £7.60 is on £45.60; £18.40 has none.",
+          "severity": "warning",
+          "related": []
+        }
+      ],
+      "account_name": "Cleaning",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 11,
+      "upload_id": 6,
+      "date": "2026-10-19",
+      "description": "Bulkbuy: cleaning supplies, standard-rated (washing up liquid, bin bags, kitchen roll, antibac spray)",
+      "direction": "out",
+      "gross": "45.60",
+      "vat": "7.60",
+      "vat_treatment": "standard",
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7801",
+      "contra_account_code": "1200",
+      "bank_account": null,
+      "currency": "GBP",
+      "source": "text",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "receipt",
+      "counterparty": "Bulkbuy Cash & Carry Ltd",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": "64.00",
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bulkbuy-1910",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [
+        "9b668cdb41fe48e9b342048384d0be8a"
+      ],
+      "supplier_vat_number": "GB999553076",
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Cleaning",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 12,
+      "upload_id": 6,
+      "date": "2026-10-19",
+      "description": "Bulkbuy: zero-rated tea, coffee, milk and sugar",
+      "direction": "out",
+      "gross": "18.40",
+      "vat": "0.00",
+      "vat_treatment": "zero",
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "8205",
+      "contra_account_code": "1200",
+      "bank_account": null,
+      "currency": "GBP",
+      "source": "text",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "receipt",
+      "counterparty": "Bulkbuy Cash & Carry Ltd",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": "64.00",
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bulkbuy-1910",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [
+        "9b668cdb41fe48e9b342048384d0be8a"
+      ],
+      "supplier_vat_number": "GB999553076",
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Refreshments",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    }
+  ],
+  "decisions": [
+    {
+      "client_id": 2,
+      "thread_id": "4115d797d469439494a080ef5b312ea4",
+      "year_start": "2026-04-01",
+      "action": "split_vat",
+      "rule": "R3 Mixed VAT: split by rate",
+      "status": "applied",
+      "row_ids": [
+        10,
+        11,
+        12
+      ],
+      "evidence": [
+        {
+          "upload_id": 5,
+          "upload_name": "bulkbuy-receipt.txt",
+          "quote": "S 20%         38.00    7.60   45.60"
+        },
+        {
+          "upload_id": 5,
+          "upload_name": "bulkbuy-receipt.txt",
+          "quote": "Z 0%          18.40    0.00   18.40"
+        }
+      ],
+      "reason": "The Bulkbuy receipt prints VAT at 20% only on the cleaning items (£45.60 gross, £7.60 VAT) and nothing on the zero-rated food (£18.40), so the one row is split to match.",
+      "before": {
+        "10": {
+          "superseded_by": null
+        }
+      },
+      "after": {
+        "10": {
+          "superseded_by": "9b668cdb41fe48e9b342048384d0be8a"
+        },
+        "11": {
+          "description": "Bulkbuy: cleaning supplies, standard-rated (washing up liquid, bin bags, kitchen roll, antibac spray)",
+          "gross": "45.6",
+          "vat": "7.60",
+          "vat_treatment": "standard",
+          "account_code": "7801"
+        },
+        "12": {
+          "description": "Bulkbuy: zero-rated tea, coffee, milk and sugar",
+          "gross": "18.4",
+          "vat": "0.00",
+          "vat_treatment": "zero",
+          "account_code": "8205"
+        }
+      },
+      "actor": "agent:anthropic/claude-haiku-5.5",
+      "reverses": null,
+      "trigger": "chat",
+      "review_id": null,
+      "resolution": null,
+      "id": "9b668cdb41fe48e9b342048384d0be8a",
+      "created_at": "2026-11-15T11:25:16+00:00",
+      "prev_hash": "",
+      "hash": "3bb8e757a51ea125a83ac6e607eaf2a38a24f79e97114108b396c6e9160db6f9"
+    }
+  ],
+  "result": {
+    "case": "combined-vat",
+    "model": "qwen/qwen3.8-27b",
+    "seconds": 8.6,
+    "client_id": 2,
+    "thread_id": "4115d797d469439494a080ef5b312ea4",
+    "trial_balance": {
+      "passed": true,
+      "differences": []
+    },
+    "decisions": {
+      "passed": true,
+      "differences": [],
+      "already_in_reading": []
+    },
+    "questions": {
+      "passed": true,
+      "differences": []
+    },
+    "problems": [],
+    "row_fallbacks": [],
+    "unmatched_names": [],
+    "posted_problems": [],
+    "steps": 6,
+    "failed_steps": [],
+    "error_events": [],
+    "refused_decisions": [],
+    "answers_not_applied": [],
+    "run": 1,
+    "hosts": [
+      "Claude Platform on AWS"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "file": "barclays-october.csv",
+  "kind": "table",
+  "bank_account": "1200",
+  "transactions": [
+    {
+      "date": "2026-10-22",
+      "description": "VOLT ELECTRICAL",
+      "direction": "out",
+      "gross": "499.00",
+      "account_code": "0030",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Volt Electrical",
+      "document_ref": "bk-01"
+    },
+    {
+      "date": "2026-10-27",
+      "description": "SEATWISE OFFICE FURN",
+      "direction": "out",
+      "gross": "250.00",
+      "account_code": "0040",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Seatwise Office Furniture",
+      "document_ref": "bk-02"
+    }
+  ]
+}

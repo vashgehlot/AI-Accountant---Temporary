@@ -21,6 +21,9 @@ logger = logging.getLogger(__name__)
 
 USER_AGENT = "LedgerSync/0.3"   # urllib's default agent is refused by some API gateways
 _STRICT_KEYWORDS = {"type", "properties", "required", "items", "enum", "anyOf", "description"}
+TRANSCRIBE_RULES = ("You transcribe documents. Write out the complete text of the image, line by line, exactly as "
+                    "printed: every word, number, date and amount unchanged, tables row by row with cells "
+                    "separated by tabs. Add no commentary, summary or corrections.")
 RATE_LIMIT_WAIT = 60.0      # most seconds one call waits out 429s before giving up
 DEFAULT_RETRY_AFTER = 10.0  # when a 429 has no Retry-After header
 RECHECK_FAILURE = 15.0      # a failed health check is tried again this soon (successes: settings.health_ttl)
@@ -70,6 +73,34 @@ def strict_schema(schema: dict) -> dict:
     return convert(schema)
 
 
+def openrouter_route(settings: Settings, *, require_parameters: bool = False) -> dict:
+    """OpenRouter's `provider` routing for the one model, shared by everything that asks it (the reader here and the
+    chat agent): the hosts set are asked first (settings.openrouter_providers), and only hosts running the model at a
+    precision set are used (settings.openrouter_quantizations), so never a 4-bit one; a blank setting leaves that to
+    OpenRouter. With require_parameters, a host that would ignore a parameter of the request is not used."""
+    route = {"require_parameters": True} if require_parameters else {}
+    if settings.openrouter_providers:
+        route["order"] = list(settings.openrouter_providers)
+    if settings.openrouter_quantizations:
+        route["quantizations"] = list(settings.openrouter_quantizations)
+    return route
+
+
+RUNAWAY, RUNAWAY_SPACE = "runaway", 512   # an answer stopped after this much whitespace: no JSON pads that much
+
+
+def _closed(content: str) -> Optional[str]:
+    """A trailed-off answer as JSON: as it stands, or with the one closing brace the model never wrote; None when
+    neither parses (it stopped part way through)."""
+    for text in (content.rstrip(), content.rstrip() + "}"):
+        try:
+            json.loads(text)
+            return text
+        except json.JSONDecodeError:
+            continue
+    return None
+
+
 class ModelClient:
     def __init__(self, settings: Settings, opener: Callable = urllib.request.urlopen,
                  clock: Callable[[], float] = time.monotonic,
@@ -97,7 +128,7 @@ class ModelClient:
 
     @property
     def max_images(self) -> int:
-        return self._s.groq_max_images
+        return self._s.max_images
 
     def health(self, force: bool = False) -> ModelHealth:
         with self._health_lock:
@@ -113,9 +144,11 @@ class ModelClient:
         if not health.model_available:
             raise ModelUnavailable(health.error or self._unreachable_message())
 
-    def chat_json(self, messages: list[dict], schema: dict, images: Optional[list[str]] = None) -> ModelAnswer:
+    def chat_json(self, messages: list[dict], schema: dict, images: Optional[list[str]] = None,
+                  reasoning_effort: Optional[str] = None) -> ModelAnswer:
         """The model's JSON text, held to `schema` by strict structured outputs, with the host that wrote it.
-        Images are base64 JPEGs (pipeline.prepare_image), added to the last message."""
+        Images are base64 JPEGs (pipeline.prepare_image), added to the last message. reasoning_effort, when given,
+        replaces the setting for this call (coding lines read in code needs little thinking)."""
         messages = [dict(m) for m in messages]
         if images:
             messages[-1]["content"] = [
@@ -133,20 +166,23 @@ class ModelClient:
             "response_format": {"type": "json_schema", "json_schema": {
                 "name": "transactions", "schema": strict_schema(schema), "strict": True}},
         }
-        if self._s.groq_reasoning_effort:
-            payload["reasoning_effort"] = self._s.groq_reasoning_effort
+        if self._openrouter:   # streamed, so an answer that trails off into whitespace is stopped, not waited out
+            payload["stream"] = True   # (_read_stream); Groq doesn't stream structured outputs
+        effort = self._s.reasoning_effort if reasoning_effort is None else reasoning_effort
+        if effort:
+            payload["reasoning_effort"] = effort
         if self._openrouter:
             # Only to providers that honour every parameter above, the strict schema above all;
-            # otherwise OpenRouter may pick one that ignores it. The hosts set are asked first, and only
-            # hosts running the model at a precision set are used (settings.openrouter_quantizations).
-            route = {"require_parameters": True}
-            if self._s.openrouter_providers:
-                route["order"] = list(self._s.openrouter_providers)
-            if self._s.openrouter_quantizations:
-                route["quantizations"] = list(self._s.openrouter_quantizations)
-            payload["provider"] = route
+            # otherwise OpenRouter may pick one that ignores it.
+            payload["provider"] = self._route(require_parameters=True)
         response = self._chat(payload)
         choice = (response.get("choices") or [{}])[0]
+        if choice.get("finish_reason") == RUNAWAY:
+            content = _closed((choice.get("message") or {}).get("content") or "")
+            if content is None:
+                raise ModelError("The AI model's answer trailed off before it was complete. Try again.",
+                                 code="ai_output_invalid")
+            return ModelAnswer(content, host=response.get("provider"))
         if choice.get("finish_reason") == "length":
             raise ModelError("The document is too long for the AI model to answer in one pass. "
                              "Split it into smaller files and try again.", code="ai_output_truncated")
@@ -154,6 +190,38 @@ class ModelClient:
         if not content.strip():
             raise ModelError("The AI model returned an empty answer.", code="ai_output_invalid")
         return ModelAnswer(content, host=response.get("provider"))
+
+    def _route(self, require_parameters: bool = False) -> dict:
+        """OpenRouter's routing for a read: openrouter_route(), the same the chat agent is held to."""
+        return openrouter_route(self._s, require_parameters=require_parameters)
+
+    def transcribe(self, image_b64: str) -> str:
+        """Everything printed on one page image (a base64 JPEG from pipeline.prepare_image), as plain text:
+        a faithful transcript, not an extraction. Raises ModelError if the model answers with nothing."""
+        payload = {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": TRANSCRIBE_RULES},
+                {"role": "user", "content": [
+                    {"type": "text", "text": "Transcribe this document."},
+                    {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{image_b64}"}}]},
+            ],
+            "temperature": 0,
+            "max_tokens" if self._openrouter else "max_completion_tokens": self._s.max_output_tokens,
+        }
+        if self._s.reasoning_effort:
+            payload["reasoning_effort"] = self._s.reasoning_effort
+        if self._openrouter and (route := self._route()):
+            payload["provider"] = route   # a transcript is kept for good: not from a low-precision host
+        response = self._chat(payload)
+        choice = (response.get("choices") or [{}])[0]
+        if choice.get("finish_reason") == "length":
+            raise ModelError("The page is too long for the AI model to transcribe in one pass.",
+                             code="ai_output_truncated")
+        content = ((choice.get("message") or {}).get("content") or "").strip()
+        if not content:
+            raise ModelError("The AI model returned an empty answer.", code="ai_output_invalid")
+        return content
 
     def warm_up(self) -> None:
         """Nothing to load on a hosted model: checks the key and model once. Never raises."""
@@ -166,7 +234,18 @@ class ModelClient:
     def _check(self) -> ModelHealth:
         if not self._s.api_key:
             return ModelHealth(False, False, "Set OPENROUTER_API_KEY or GROQ_API_KEY in .env, then restart the API.")
-        # OpenRouter's /models answers without a key; /models/user needs one, so it checks the key too.
+        if self._openrouter:
+            # OpenRouter's /models answers without a key, and /models/user still lists the models for a key that has
+            # expired, so the header said "AI online" while every call was refused. The key's own record doesn't
+            # answer for a key that is wrong or has expired. Any other trouble with it (a gateway that doesn't serve
+            # it, a rate limit, no connection) is left to the listing below.
+            try:
+                self._request("GET", "/key", None, timeout=10)
+            except urllib.error.HTTPError as exc:
+                if exc.code in (401, 403):
+                    return ModelHealth(True, False, self._http_error(exc.code, self._detail(exc)).message)
+            except Exception:   # noqa: BLE001 - the listing says whether the provider can be reached
+                pass
         path = "/models/user" if self._openrouter else "/models"
         try:
             listing = self._request("GET", path, None, timeout=10)
@@ -189,7 +268,7 @@ class ModelClient:
         waited, retried = 0.0, False
         while True:
             try:
-                return self._request("POST", "/chat/completions", payload, timeout=self._s.groq_timeout)
+                return self._request("POST", "/chat/completions", payload, timeout=self._s.model_timeout)
             except urllib.error.HTTPError as exc:
                 if exc.code == 429:
                     wait = self._retry_after(exc)
@@ -222,6 +301,9 @@ class ModelClient:
     def _http_error(self, status: int, detail: str) -> Exception:
         if status in (401, 403):
             self._health = None
+            if "expired" in detail.lower():   # the provider's own word for it: a new key is needed, not a check of this one
+                return ModelUnavailable(f"{self._s.provider}'s API key has expired. Put a new key in "
+                                        f"{self._setting('API_KEY')} in .env, then restart the API.")
             return ModelUnavailable(f"{self._s.provider} rejected the API key. "
                                     f"Check {self._setting('API_KEY')} in .env, then restart the API.")
         if status == 404:   # OpenRouter's reason can be that no host fits, e.g. the account's privacy settings
@@ -259,8 +341,8 @@ class ModelClient:
             return DEFAULT_RETRY_AFTER
 
     def _timeout_message(self) -> str:
-        return (f"{self._s.provider} did not answer within {self._s.groq_timeout:.0f} seconds. "
-                "Try again, or raise GROQ_TIMEOUT.")
+        return (f"{self._s.provider} sent nothing for {self._s.model_timeout:.0f} seconds. "
+                "Try again, or raise OPENROUTER_TIMEOUT.")
 
     def _request(self, method: str, path: str, payload: Optional[dict], timeout: float) -> dict:
         data = json.dumps(payload).encode("utf-8") if payload is not None else None
@@ -270,7 +352,40 @@ class ModelClient:
             "User-Agent": USER_AGENT,
         })
         with self._open(req, timeout=timeout) as resp:
+            if payload is not None and payload.get("stream"):
+                return self._read_stream(resp)
             return json.loads(resp.read())
+
+    def _read_stream(self, resp) -> dict:
+        """A streamed chat completion put together as an unstreamed one is: its content, finish_reason, host and usage.
+        Read line by line, so it stops early: once the content ends in more than RUNAWAY_SPACE characters of
+        whitespace (a model that has finished its JSON but not closed it can write nothing else to the token cap;
+        finish_reason RUNAWAY), and once the whole answer has taken longer than model_total_timeout. Silence is
+        the connection's own timeout (model_timeout), between one piece and the next."""
+        started, parts, finish, provider, usage, space = self._clock(), [], None, None, None, 0
+        for raw in resp:
+            if self._clock() - started > self._s.model_total_timeout:
+                raise ModelTimeout(f"{self._s.provider} had not finished reading the document after "
+                                   f"{self._s.model_total_timeout:.0f} seconds. Try again, or raise "
+                                   "OPENROUTER_TOTAL_TIMEOUT.")
+            line = raw.decode("utf-8", "replace").strip()
+            if not line.startswith("data:"):
+                continue
+            data = line[5:].strip()
+            if data == "[DONE]":
+                break
+            chunk = json.loads(data)
+            provider, usage = chunk.get("provider") or provider, chunk.get("usage") or usage
+            choice = (chunk.get("choices") or [{}])[0]
+            piece = (choice.get("delta") or {}).get("content") or ""
+            parts.append(piece)
+            space = space + len(piece) if not piece.strip() else len(piece) - len(piece.rstrip())
+            finish = choice.get("finish_reason") or finish
+            if space > RUNAWAY_SPACE:
+                finish = RUNAWAY
+                break
+        return {"choices": [{"message": {"content": "".join(parts)}, "finish_reason": finish}],
+                "provider": provider, "usage": usage}
 
     def _unreachable_message(self) -> str:
         return (f"Cannot reach {self._s.provider} at {self._s.base_url}. "

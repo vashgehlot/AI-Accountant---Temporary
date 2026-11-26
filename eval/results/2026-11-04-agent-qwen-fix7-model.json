@@ -1,0 +1,311 @@
+{
+  "date": "2026-11-04",
+  "read": "model",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "combined-vat",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 140.6,
+      "client_id": 161,
+      "thread_id": "2e4373624f3d4a3ca6d5b96b8cb9b2f0",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "bulkbuy-receipt.txt",
+            "description": "Bulkbuy: cleaning supplies, tea, coffee, milk and sugar"
+          },
+          "found": {
+            "file": "bulkbuy-receipt.txt",
+            "description": "BULKBUY CASH & CARRY LTD - washing up liquid, bin bags, kitchen roll, antibac spray, milk, tea bags, instant coffee, sugar"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 12,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "combined-vat-r1.json"
+    },
+    {
+      "case": "combined-vat",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 202.1,
+      "client_id": 162,
+      "thread_id": "1fa8b093959840c780a0c8cf4c3d2107",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "bulkbuy-receipt.txt",
+            "description": "Bulkbuy: cleaning supplies, tea, coffee, milk and sugar"
+          },
+          "found": {
+            "file": "bulkbuy-receipt.txt",
+            "description": "BULKBUY CASH & CARRY LTD - cleaning supplies and refreshments"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 11,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "combined-vat-r2.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 399.7,
+      "client_id": 1,
+      "thread_id": "94dc0b625e8040e796527dec847459b4",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": [
+          {
+            "rule": "R5 VAT from the document",
+            "row": {
+              "file": "inkwell-invoice-INK-4471.pdf",
+              "description": "Inkwell: HP 305XL black ink cartridges x2"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "costco-receipt-21-10.txt",
+            "description": "Costco: copier paper, box files, milk, coffee and tea"
+          },
+          "found": {
+            "file": "costco-receipt-21-10.txt",
+            "description": "Costco Wholesale UK Ltd - A4 copier paper and box files"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Costco - office supplies and kitchen"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah claiming Costco - office supplies and kitchen"
+          }
+        },
+        {
+          "expected": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell: HP 305XL black ink cartridges x2"
+          },
+          "found": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell Supplies Ltd - HP 305XL black ink cartridges"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Inkwell - printer ink"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah claiming Inkwell - printer ink"
+          }
+        },
+        {
+          "expected": {
+            "file": "parking-photo.png",
+            "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+          },
+          "found": {
+            "file": "parking-photo.png",
+            "description": "NCP Leeds Wellington Street car park, parking tariff up to 3 hours"
+          }
+        },
+        {
+          "expected": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+          },
+          "found": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs, taxi journey Leeds Station to Kirkstall"
+          }
+        },
+        {
+          "expected": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT"
+          },
+          "found": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT, bill payment"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 23,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "demo-r1.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 415.0,
+      "client_id": 1,
+      "thread_id": "a0d3e3c83cda4d98a129fefc7ef4e5c2",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": [
+          {
+            "rule": "R5 VAT from the document",
+            "row": {
+              "file": "inkwell-invoice-INK-4471.pdf",
+              "description": "Inkwell: HP 305XL black ink cartridges x2"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "costco-receipt-21-10.txt",
+            "description": "Costco: copier paper, box files, milk, coffee and tea"
+          },
+          "found": {
+            "file": "costco-receipt-21-10.txt",
+            "description": "Costco Wholesale UK Ltd – A4 copier paper and box files"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Costco - office supplies and kitchen"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Costco office supplies and kitchen"
+          }
+        },
+        {
+          "expected": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell: HP 305XL black ink cartridges x2"
+          },
+          "found": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell Supplies Ltd - HP 305XL black ink cartridges"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Inkwell - printer ink"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Inkwell printer ink"
+          }
+        },
+        {
+          "expected": {
+            "file": "parking-photo.png",
+            "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+          },
+          "found": {
+            "file": "parking-photo.png",
+            "description": "NCP Leeds Wellington Street car park parking"
+          }
+        },
+        {
+          "expected": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+          },
+          "found": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs, taxi journey Leeds Station to Kirkstall"
+          }
+        },
+        {
+          "expected": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT"
+          },
+          "found": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT, bill payment for printing"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 24,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "demo-r2.json"
+    }
+  ]
+}

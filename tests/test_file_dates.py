@@ -12,6 +12,7 @@ from ledgersync.models import Settlement, Transaction
     ("IMG_20260909_195200.jpg", dt.date(2026, 9, 9)),                             # a phone's photo
     ("receipt 09.09.2026.pdf", dt.date(2026, 9, 9)),                              # day first, as in the UK
     ("Jenny (1).xlsx", None),
+    ("parkside-rent-invoice-PE-2026-0619.txt", None),                             # an invoice number, not a date
     ("Statement 2026-09-01 to 2026-09-30.pdf", None),                             # two dates: neither is the one
     ("Invoice 2026-13-45.pdf", None),                                             # not a date
     ("Order 204-0803551-5813137.pdf", None),                                      # an order number
@@ -67,3 +68,7 @@ def test_an_invoices_payment_weeks_later_does_not_confirm_its_date():
     invoice = receipt(paid_by=[CARD]).model_copy(update={"document_type": "invoice"})
     [checked] = check_file_date([invoice], NAME)
     assert (checked.date_found, codes(checked)) == (dt.date(2026, 9, 9), [("file_date", "warning")])
+
+
+def test_a_date_a_person_confirmed_is_not_asked_about_again():
+    assert codes(check_file_date([receipt(accepted=["file_date"])], NAME)[0]) == []

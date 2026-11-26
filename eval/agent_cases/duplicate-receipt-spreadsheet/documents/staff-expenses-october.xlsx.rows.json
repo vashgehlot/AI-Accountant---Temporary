@@ -1,0 +1,31 @@
+{
+  "file": "staff-expenses-october.xlsx",
+  "kind": "table",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-13",
+      "description": "Staples - printer paper and toner",
+      "direction": "out",
+      "gross": "64.80",
+      "account_code": "7504",
+      "source": "table",
+      "method": "llm",
+      "document_type": "expense_claim",
+      "counterparty": "Priya Shah",
+      "document_ref": "sheet-01"
+    },
+    {
+      "date": "2026-10-20",
+      "description": "Train to Manchester, client meeting",
+      "direction": "out",
+      "gross": "34.60",
+      "account_code": "7400",
+      "source": "table",
+      "method": "llm",
+      "document_type": "expense_claim",
+      "counterparty": "Priya Shah",
+      "document_ref": "sheet-02"
+    }
+  ]
+}

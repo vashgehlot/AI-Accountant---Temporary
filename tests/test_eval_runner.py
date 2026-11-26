@@ -19,11 +19,11 @@ HMRC_ROW = {"description": "HMRC VAT settlement payment", "date": "2026-09-07", 
 
 
 @pytest.fixture
-def api():
+def api(mongo_store):
     clients = []
 
     def _make(model):
-        client = TestClient(create_app(Settings(warmup=False), model_client=model))
+        client = TestClient(create_app(Settings(warmup=False), model_client=model, store=mongo_store))
         client.__enter__()
         clients.append(client)
         return client

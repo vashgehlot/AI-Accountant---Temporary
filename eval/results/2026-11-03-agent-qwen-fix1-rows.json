@@ -1,0 +1,478 @@
+{
+  "date": "2026-11-03",
+  "read": "rows",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 42.5,
+      "client_id": 117,
+      "thread_id": "b5dfb32d3ea042af9d5b5e44b2f95324",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 15,
+      "failed_steps": [
+        "Didn't change row 832"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 832, 834, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "conflict-invoice-vs-expense-report-r1.json"
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 48.2,
+      "client_id": 118,
+      "thread_id": "3636756692e84c0cad77751392c0f5e0",
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "2110",
+            "expected": "-18.00",
+            "actual": "-60.00",
+            "difference": "-42.00"
+          },
+          {
+            "code": "2201",
+            "expected": "7.80",
+            "actual": "0.00",
+            "difference": "-7.80"
+          },
+          {
+            "code": "7504",
+            "expected": "39.00",
+            "actual": "88.80",
+            "difference": "49.80"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R4 Conflict: used the invoice",
+              "row": {
+                "file": "pagecraft-invoice-PC-5512.pdf",
+                "description": "Pagecraft: Brother TN-2420 toner cartridge"
+              }
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "pagecraft-invoice-PC-5512.pdf",
+              "Pagecraft: Brother TN-2420 toner cartridge"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "pagecraft-invoice-PC-5512.pdf",
+              "Pagecraft: Brother TN-2420 toner cartridge"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [
+        "Didn't change row 837"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 837, 838, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "conflict-invoice-vs-expense-report-r2.json"
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 39.2,
+      "client_id": 119,
+      "thread_id": "b7129a72820842309eb4dd8928ea8796",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 15,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "conflict-invoice-vs-expense-report-r3.json"
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 126.7,
+      "client_id": 120,
+      "thread_id": "022edadb8f91446a920537a469b59f6a",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "staples-receipt.txt",
+                "description": "Staples: A4 printer paper and toner"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                845,
+                846,
+                848
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 19,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "duplicate-receipt-spreadsheet-r1.json"
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 55.3,
+      "client_id": 121,
+      "thread_id": "46bc91482032401d990b4caffe1a8f58",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "staples-receipt.txt",
+                "description": "Staples: A4 printer paper and toner"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                850,
+                851,
+                853
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "duplicate-receipt-spreadsheet-r2.json"
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 58.8,
+      "client_id": 122,
+      "thread_id": "c8370227831947dfa7ceadbf466e9021",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "staples-receipt.txt",
+                "description": "Staples: A4 printer paper and toner"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                855,
+                856,
+                858
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 16,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "duplicate-receipt-spreadsheet-r3.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 297.0,
+      "client_id": 1,
+      "thread_id": "f6b0411dc16940029efd720b489b909f",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                873,
+                877,
+                882
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 27,
+      "failed_steps": [
+        "Didn't change row 878"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 878, 880, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "demo-r1.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 132.3,
+      "client_id": 1,
+      "thread_id": "be4ded8a24a045d29faee0af3e40e738",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                900,
+                904,
+                909
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 27,
+      "failed_steps": [
+        "Didn't change row 905"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 905, 907, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "demo-r2.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 173.1,
+      "client_id": 1,
+      "thread_id": "4514dfd7c7414d74a0fb32a71cf347b0",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                927,
+                931,
+                936
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 24,
+      "failed_steps": [
+        "Didn't change row 932"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 932, 934, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "demo-r3.json"
+    }
+  ]
+}

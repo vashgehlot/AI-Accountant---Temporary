@@ -89,6 +89,13 @@ class InvalidInput(LedgerSyncError):
     code = "invalid_input"
 
 
+class SameFile(LedgerSyncError):
+    """A file already saved for the client, or being read for it now: read again, its rows would be booked twice."""
+
+    status_code = 409
+    code = "same_file"
+
+
 class RefusedRequest(LedgerSyncError):
     """A request any web page could have sent unasked: it lacks the header the LedgerSync pages send."""
 
@@ -97,7 +104,29 @@ class RefusedRequest(LedgerSyncError):
 
 
 class StorageError(LedgerSyncError):
-    """The local database could not be read or written; the server log says why."""
+    """The database could not be used, or its address is not set; the server log says why."""
 
     status_code = 500
     code = "storage_error"
+
+
+class ChangedMeanwhile(LedgerSyncError):
+    """A change lost the race with other writes to the same client every time it was tried."""
+
+    status_code = 409
+    code = "changed_meanwhile"
+
+
+
+class YearClosed(LedgerSyncError):
+    """A change to a closed year: it must be reopened first."""
+
+    status_code = 409
+    code = "year_closed"
+
+
+class StillWorking(LedgerSyncError):
+    """A message, an answer or a delete for a chat while its last message is still being worked on."""
+
+    status_code = 409
+    code = "still_working"

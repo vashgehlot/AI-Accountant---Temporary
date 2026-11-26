@@ -1,0 +1,6 @@
+Date,Counter Party,Reference,Type,Amount (GBP),Balance (GBP),Spending Category,Notes
+01/10/2026,Opening Balance,,,0.00,8000.00,,
+06/10/2026,Pennine Telecom,Broadband October,DIRECT DEBIT,-54.00,7946.00,BILLS_AND_SERVICES,
+12/10/2026,Greywell Surveying Savings,Transfer to savings,TRANSFER,-5000.00,2946.00,TRANSFERS,
+20/10/2026,Bank charges,Monthly account fee,FEE,-7.50,2938.50,BILLS_AND_SERVICES,
+31/10/2026,Closing Balance,,,0.00,2938.50,,

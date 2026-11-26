@@ -1,0 +1,55 @@
+code,name,kind,heading,tax
+0030,Office equipment (computers) - cost,asset,Fixed assets,capital
+0031,Office equipment (computers) - depreciation,asset,Fixed assets,capital
+0040,Furniture and fixtures - cost,asset,Fixed assets,capital
+0041,Furniture and fixtures - depreciation,asset,Fixed assets,capital
+1100,Debtors control,asset,Current assets,n/a
+1103,Prepayments,asset,Prepayments and accrued income,n/a
+1200,Bank current account,asset,Current assets,n/a
+1210,Bank deposit account,asset,Current assets,n/a
+1240,Company credit card,liability,Creditors: amounts falling due within one year,n/a
+1250,Payment processor clearing,asset,Current assets,n/a
+1290,Transfers in transit,asset,Current assets,n/a
+2100,Creditors control,liability,Creditors: amounts falling due within one year,n/a
+2109,Accruals,liability,Accruals and deferred income,n/a
+2125,Deferred income,liability,Accruals and deferred income,n/a
+2200,VAT on sales,liability,Creditors: amounts falling due within one year,n/a
+2201,VAT on purchases,liability,Creditors: amounts falling due within one year,n/a
+2202,VAT liability,liability,Creditors: amounts falling due within one year,n/a
+2210,PAYE and NI,liability,Creditors: amounts falling due within one year,n/a
+2220,Net wages,liability,Creditors: amounts falling due within one year,n/a
+2230,Pension contributions,liability,Creditors: amounts falling due within one year,n/a
+2250,Director's loan - Sam Carter,liability,Creditors: amounts falling due within one year,n/a
+2251,Director's loan - second director,liability,Creditors: amounts falling due within one year,n/a
+2320,Corporation tax,liability,Creditors: amounts falling due within one year,n/a
+3000,Ordinary shares,equity,Capital and reserves,n/a
+3200,Profit and loss account,equity,Capital and reserves,n/a
+3260,Dividends,equity,Capital and reserves,n/a
+4000,Sales - retainers,income,Turnover,allowable
+4010,Sales - projects,income,Turnover,allowable
+4906,Bank interest received,income,Other income,not_trading
+5100,Freelancers,expense,Other charges,allowable
+7000,Gross wages,expense,Staff costs,allowable
+7001,Directors' salaries,expense,Staff costs,allowable
+7006,Employer's NI,expense,Staff costs,allowable
+7007,Employer's pension,expense,Staff costs,allowable
+7100,Rent,expense,Other charges,allowable
+7200,Electricity,expense,Other charges,allowable
+7400,Travel,expense,Other charges,allowable
+7403,Client entertainment,expense,Other charges,disallowable
+7406,Subsistence,expense,Other charges,allowable
+7410,Car lease,expense,Other charges,allowable
+7500,Printing,expense,Other charges,allowable
+7502,Telephone and internet,expense,Other charges,allowable
+7504,Office stationery and small equipment,expense,Other charges,allowable
+7550,Software and subscriptions,expense,Other charges,allowable
+7601,Accountancy fees,expense,Other charges,allowable
+7901,Bank charges,expense,Other charges,allowable
+7905,Card processing fees,expense,Other charges,allowable
+8000,Depreciation,expense,Depreciation and other amounts written off assets,disallowable
+8100,Bad debts,expense,Other charges,allowable
+8204,Insurance,expense,Other charges,allowable
+8205,Staff welfare and entertainment,expense,Other charges,allowable
+8250,Sundry and corrections,expense,Other charges,allowable
+9100,Corporation tax charge,expense,Tax,n/a
+9998,Suspense,asset,Current assets,n/a

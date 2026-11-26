@@ -1,0 +1,6 @@
+Date,Counter Party,Reference,Type,Amount (GBP),Balance (GBP),Spending Category,Notes
+01/09/2026,Opening Balance,,,0.00,6000.00,,
+03/09/2026,Northern Electric,Electricity September,DIRECT DEBIT,-86.40,5913.60,BILLS_AND_SERVICES,
+22/09/2026,Calder & Rowe Print Ltd,CR-5521,FASTER PAYMENT,-480.00,5433.60,GENERAL,
+30/09/2026,Bank charges,Monthly account fee,FEE,-8.00,5425.60,BILLS_AND_SERVICES,
+30/09/2026,Closing Balance,,,0.00,5425.60,,

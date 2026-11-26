@@ -1,0 +1,23 @@
+{
+  "file": "staples-receipt.txt",
+  "kind": "text",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-13",
+      "description": "Staples: A4 printer paper and toner",
+      "direction": "out",
+      "gross": "64.80",
+      "vat": "10.80",
+      "account_code": "7504",
+      "source": "text",
+      "method": "llm",
+      "document_type": "receipt",
+      "counterparty": "Staples",
+      "document_number": "4471",
+      "document_total": "64.80",
+      "supplier_vat_number": "GB999330752",
+      "document_ref": "staples-4471"
+    }
+  ]
+}

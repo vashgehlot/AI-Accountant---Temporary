@@ -1,0 +1,147 @@
+{
+  "resolutions": [
+    {
+      "action": "keep_one",
+      "rule": "R2 Duplicate: kept the receipt",
+      "row": {
+        "file": "costco-receipt-21-10.txt",
+        "description": "Costco: copier paper, box files, milk, coffee and tea"
+      },
+      "arguments": {
+        "keep": {
+          "file": "costco-receipt-21-10.txt",
+          "description": "Costco: copier paper, box files, milk, coffee and tea"
+        },
+        "drop": [
+          {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Costco - office supplies and kitchen"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "file": "costco-receipt-21-10.txt",
+          "quote": "TOTAL 58.00"
+        },
+        {
+          "file": "staff-expenses-october.xlsx",
+          "quote": "Costco - office supplies and kitchen"
+        }
+      ],
+      "reason": "The Costco receipt of 21 Oct for £58.00 and the expenses sheet line are the same purchase, paid by Visa debit from Barclays the same day. Kept the receipt; the sheet line comes out."
+    },
+    {
+      "action": "split_vat",
+      "rule": "R3 Mixed VAT: split by rate",
+      "row": {
+        "file": "costco-receipt-21-10.txt",
+        "description": "Costco: copier paper, box files, milk, coffee and tea"
+      },
+      "arguments": {
+        "parts": [
+          {
+            "description": "Copier paper and box files",
+            "account_code": "7504",
+            "gross": "36.00",
+            "rate": "standard"
+          },
+          {
+            "description": "Milk, coffee and tea for the office",
+            "account_code": "8205",
+            "gross": "22.00",
+            "rate": "zero"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "file": "costco-receipt-21-10.txt",
+          "quote": "A 20.00% 30.00 6.00 36.00"
+        },
+        {
+          "file": "costco-receipt-21-10.txt",
+          "quote": "Z 0.00% 22.00 0.00 22.00"
+        }
+      ],
+      "reason": "The receipt's VAT analysis puts £6.00 VAT on £36.00 of standard-rated stationery and none on £22.00 of zero-rated milk, coffee and tea. Split by rate."
+    },
+    {
+      "action": "use_primary",
+      "rule": "R4 Conflict: used the invoice",
+      "row": {
+        "file": "inkwell-invoice-INK-4471.pdf",
+        "description": "Inkwell: HP 305XL black ink cartridges x2"
+      },
+      "arguments": {
+        "primary": {
+          "file": "inkwell-invoice-INK-4471.pdf",
+          "description": "Inkwell: HP 305XL black ink cartridges x2"
+        },
+        "other": {
+          "file": "staff-expenses-october.xlsx",
+          "description": "Inkwell - printer ink"
+        }
+      },
+      "evidence": [
+        {
+          "file": "inkwell-invoice-INK-4471.pdf",
+          "quote": "Total due: £30.22"
+        },
+        {
+          "file": "staff-expenses-october.xlsx",
+          "quote": "Inkwell - printer ink"
+        }
+      ],
+      "reason": "Invoice INK-4471 says £30.22 and the expenses sheet says £27.50 for the same ink. The invoice ranks above the sheet, and Barclays paid £30.22 on 12 Oct. Used the invoice."
+    },
+    {
+      "action": "set_vat_from_document",
+      "rule": "R5 VAT from the document",
+      "row": {
+        "file": "inkwell-invoice-INK-4471.pdf",
+        "description": "Inkwell: HP 305XL black ink cartridges x2"
+      },
+      "arguments": {
+        "vat": "5.04"
+      },
+      "evidence": [
+        {
+          "file": "inkwell-invoice-INK-4471.pdf",
+          "quote": "VAT at 20%: £5.04"
+        }
+      ],
+      "reason": "Invoice INK-4471 prints VAT of £5.04 on £25.18; the entry had none."
+    }
+  ],
+  "automatic": [
+    {
+      "action": "set_date",
+      "rule": "R1 Date from the bank",
+      "actor": "rules",
+      "row": {
+        "file": "parking-photo.png",
+        "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+      },
+      "date": "2026-10-14",
+      "evidence": [
+        {
+          "file": "barclays-october.csv",
+          "quote": "NCP LEEDS"
+        }
+      ]
+    }
+  ],
+  "from_answers": [
+    {
+      "action": "set_date",
+      "rule": "R1 Date from the person",
+      "actor": "user",
+      "row": {
+        "file": "IMG_20261009_081502.png",
+        "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+      },
+      "date": "2026-10-08"
+    }
+  ]
+}

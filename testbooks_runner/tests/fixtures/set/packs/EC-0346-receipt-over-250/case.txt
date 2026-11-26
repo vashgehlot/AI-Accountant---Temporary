@@ -1,0 +1,4 @@
+EC-0346: £320 till receipt printing VAT but not a full invoice
+Category: Coding, VAT, payroll and CIS
+An accountant expects: Cost booked; VAT held until a full invoice comes
+Stakes: Tax

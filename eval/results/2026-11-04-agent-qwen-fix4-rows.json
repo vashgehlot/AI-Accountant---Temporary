@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-04",
+  "read": "rows",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 57.9,
+      "client_id": 135,
+      "thread_id": "d7a45f4d97724aff86432be4ddfc4106",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 14,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "duplicate-receipt-spreadsheet-r1.json"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "about": "A two-partner design studio, VAT registered: office milk and biscuits, a team lunch, software.",
+  "client": {"name": "Fold Studio", "business_type": "partnership", "contact_name": "Mia Chen",
+             "first_year_end": "2027-03-31", "vat_registered": true,
+             "owners": [{"name": "Mia Chen", "share": "50"}, {"name": "Tom Reed", "share": "50"}]},
+  "uploads": [
+    {"name": "fees.pdf", "rows": [
+      {"date": "2026-10-01", "description": "Brand identity, phase 2", "counterparty": "Kiln Coffee Roasters Ltd",
+       "direction": "in", "gross": "9000.00", "vat": "1500.00", "account_code": "4000", "document_type": "invoice",
+       "expect": {"never": ["meal_check"]}}]},
+    {"name": "tesco-studio.jpg", "rows": [
+      {"date": "2026-10-07", "description": "Tesco, milk, tea bags and biscuits for the studio", "counterparty": "Tesco",
+       "direction": "out", "gross": "6.40", "account_code": "8205", "bought": "groceries",
+       "expect": {"never": ["meal_check"], "account": "8205"}}]},
+    {"name": "wahaca.jpg", "rows": [
+      {"date": "2026-10-16", "description": "Wahaca, team lunch", "counterparty": "Wahaca", "direction": "out",
+       "gross": "96.00", "vat": "16.00", "account_code": "8206", "bought": "meal_out", "people": "several",
+       "expect": {"never": ["meal_check"], "account": "8206"}}]},
+    {"name": "adobe.pdf", "rows": [
+      {"date": "2026-10-18", "description": "Adobe Creative Cloud, monthly", "counterparty": "Adobe",
+       "direction": "out", "gross": "59.99", "vat": "10.00", "account_code": "8201", "document_type": "invoice",
+       "expect": {"never": ["meal_check", "prepayment", "sundry_check"]}}]}
+  ]
+}

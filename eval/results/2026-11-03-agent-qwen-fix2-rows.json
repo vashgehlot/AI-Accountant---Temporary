@@ -1,0 +1,247 @@
+{
+  "date": "2026-11-03",
+  "read": "rows",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 33.9,
+      "client_id": 123,
+      "thread_id": "3972bf5482bf4c88bb3c3774c8d5d21e",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "conflict-invoice-vs-expense-report-r1.json"
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 54.4,
+      "client_id": 124,
+      "thread_id": "857ed498d9704e088d6142ce8806b51a",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "conflict-invoice-vs-expense-report-r2.json"
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 40.3,
+      "client_id": 125,
+      "thread_id": "146fc1234ce044ed81665656418b93de",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "conflict-invoice-vs-expense-report-r3.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 648.7,
+      "client_id": 1,
+      "thread_id": "fd73a2ebc24040c295f7f7433b8e9ad8",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                966,
+                970,
+                975
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 24,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "demo-r1.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 225.0,
+      "client_id": 1,
+      "thread_id": "c1eb5e79f2474af4922a340e6217ca1c",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                993,
+                997,
+                1002
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 24,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "demo-r2.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 117.0,
+      "client_id": 1,
+      "thread_id": "c90c75d908ac429892a67f6ffeaff387",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                1020,
+                1024,
+                1029
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 26,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "demo-r3.json"
+    }
+  ]
+}

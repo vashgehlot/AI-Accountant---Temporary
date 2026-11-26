@@ -1,0 +1,33 @@
+{
+  "file": "barclays-october.csv",
+  "kind": "table",
+  "bank_account": "1200",
+  "transactions": [
+    {
+      "date": "2026-10-03",
+      "description": "BT GROUP PLC",
+      "direction": "out",
+      "gross": "42.00",
+      "account_code": "7502",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "BT Group",
+      "document_ref": "bk-01"
+    },
+    {
+      "date": "2026-10-13",
+      "description": "STAPLES",
+      "direction": "out",
+      "gross": "64.80",
+      "account_code": "7504",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Staples",
+      "document_ref": "bk-02"
+    }
+  ]
+}

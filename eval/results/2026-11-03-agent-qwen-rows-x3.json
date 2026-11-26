@@ -1,0 +1,1323 @@
+{
+  "date": "2026-11-03",
+  "read": "rows",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "clean-month",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 23.0,
+      "client_id": 81,
+      "thread_id": "ca7b3799082c422a965baa3d658209bc",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 12,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "clean-month-r1.json"
+    },
+    {
+      "case": "clean-month",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 49.3,
+      "client_id": 82,
+      "thread_id": "5888cb7b417b4b20ae5dc6e2f6903bee",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 48,
+      "failed_steps": [
+        "Looking at row 1",
+        "Looking at row 2",
+        "Looking at row 3",
+        "Looking at row 4",
+        "Looking at row 5",
+        "Looking at row 6",
+        "Looking at row 7",
+        "Looking at row 8",
+        "Looking at row 9",
+        "Looking at row 10",
+        "Looking at row 11",
+        "Looking at row 12",
+        "Looking at row 13",
+        "Looking at row 14",
+        "Looking at row 15",
+        "Looking at row 16",
+        "Looking at row 17",
+        "Looking at row 18",
+        "Looking at row 19",
+        "Looking at row 20",
+        "Looking at row 21",
+        "Looking at row 25",
+        "Looking at row 30",
+        "Looking at row 50",
+        "Looking at row 100",
+        "Looking at row 200",
+        "Looking at row 285",
+        "Looking at row 286",
+        "Looking at row 287",
+        "Looking at row 2",
+        "Looking at row 3",
+        "Looking at row 4",
+        "Looking at row 5",
+        "Looking at row 6",
+        "Looking at row 7"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "clean-month-r2.json"
+    },
+    {
+      "case": "clean-month",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 55.7,
+      "client_id": 83,
+      "thread_id": "cd23bd0d29234f189345f621f408caa3",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 19,
+      "failed_steps": [
+        "Looking at row 1",
+        "Looking at row 2",
+        "Looking at row 3",
+        "Looking at row 4",
+        "Looking at row 5",
+        "Looking at row 6",
+        "Looking at row 7"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "clean-month-r3.json"
+    },
+    {
+      "case": "combined-vat",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 64.4,
+      "client_id": 84,
+      "thread_id": "fd6c4d13639543bfa11a9e7459264bb3",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 10,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "combined-vat-r1.json"
+    },
+    {
+      "case": "combined-vat",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 20.6,
+      "client_id": 85,
+      "thread_id": "5253d94d14f542f3afe0ddc021732bfc",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "combined-vat-r2.json"
+    },
+    {
+      "case": "combined-vat",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 462.7,
+      "client_id": 86,
+      "thread_id": "0ac0e0d0258f4b2a9e1dbd8b2e4765c5",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "combined-vat-r3.json"
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 149.6,
+      "client_id": 87,
+      "thread_id": "824085d836dc4ce693acde21653b60cb",
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "2110",
+            "expected": "-18.00",
+            "actual": "-60.00",
+            "difference": "-42.00"
+          },
+          {
+            "code": "2201",
+            "expected": "7.80",
+            "actual": "0.00",
+            "difference": "-7.80"
+          },
+          {
+            "code": "7504",
+            "expected": "39.00",
+            "actual": "88.80",
+            "difference": "49.80"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R4 Conflict: used the invoice",
+              "row": {
+                "file": "pagecraft-invoice-PC-5512.pdf",
+                "description": "Pagecraft: Brother TN-2420 toner cartridge"
+              }
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "pagecraft-invoice-PC-5512.pdf",
+              "Pagecraft: Brother TN-2420 toner cartridge"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "pagecraft-invoice-PC-5512.pdf",
+              "Pagecraft: Brother TN-2420 toner cartridge"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 12,
+      "failed_steps": [
+        "Didn't change row 606"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 606, 607, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "conflict-invoice-vs-expense-report-r1.json"
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 34.2,
+      "client_id": 88,
+      "thread_id": "df9410f8cd6c4f4987489b36a0399e10",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 16,
+      "failed_steps": [
+        "Didn't change row 610"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 610, 611, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "conflict-invoice-vs-expense-report-r2.json"
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 23.5,
+      "client_id": 89,
+      "thread_id": "5d146a16899c4740aad952828615df31",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 14,
+      "failed_steps": [
+        "Didn't change row 614"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 614, 615, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "conflict-invoice-vs-expense-report-r3.json"
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 110.5,
+      "client_id": 90,
+      "thread_id": "e4e43723634944578b46f4f1ee66cd90",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "staples-receipt.txt",
+                "description": "Staples: A4 printer paper and toner"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                618,
+                619,
+                621
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 17,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "duplicate-receipt-spreadsheet-r1.json"
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 160.8,
+      "client_id": 91,
+      "thread_id": "339f987c54fc4564880ab783a1fd3b84",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "staples-receipt.txt",
+                "description": "Staples: A4 printer paper and toner"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                623,
+                624,
+                626
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 17,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "duplicate-receipt-spreadsheet-r2.json"
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 170.4,
+      "client_id": 92,
+      "thread_id": "4fb9bf9114cf4af184af887e8ca3b2d3",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "staples-receipt.txt",
+                "description": "Staples: A4 printer paper and toner"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                628,
+                629,
+                631
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 16,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "duplicate-receipt-spreadsheet-r3.json"
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 26.8,
+      "client_id": 93,
+      "thread_id": "984399dfb3204855819f894174c6c33b",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 10,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "missing-date-from-bank-r1.json"
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 28.3,
+      "client_id": 94,
+      "thread_id": "f282fd31c7754f73b7e23afbbdbce156",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 10,
+      "failed_steps": [
+        "Looking at row 1"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "missing-date-from-bank-r2.json"
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 24.5,
+      "client_id": 95,
+      "thread_id": "1b4a4e21be3a493f8356697c80c50b01",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [
+        "Looking at row 1",
+        "Looking at row 2",
+        "Looking at row 3",
+        "Looking at row 4"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "missing-date-from-bank-r3.json"
+    },
+    {
+      "case": "missing-date-must-ask",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 20.0,
+      "client_id": 96,
+      "thread_id": "0ff9696c5db14985ac663b7b1b410745",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "missing-date-must-ask-r1.json"
+    },
+    {
+      "case": "missing-date-must-ask",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 18.8,
+      "client_id": 97,
+      "thread_id": "e3f75b5ed35444c5aa05b2f0bec451c7",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "missing-date-must-ask-r2.json"
+    },
+    {
+      "case": "missing-date-must-ask",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 25.4,
+      "client_id": 98,
+      "thread_id": "2011b25036ac44e3840988d896a8fa59",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "missing-date-must-ask-r3.json"
+    },
+    {
+      "case": "no-invoice-over-50-suspense",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 25.2,
+      "client_id": 99,
+      "thread_id": "431729c818ca4d97a2ec5a4b3d77a9db",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "no-invoice-over-50-suspense-r1.json"
+    },
+    {
+      "case": "no-invoice-over-50-suspense",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 22.7,
+      "client_id": 100,
+      "thread_id": "5942771f5086437ab531ba895d6c52bf",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "no-invoice-over-50-suspense-r2.json"
+    },
+    {
+      "case": "no-invoice-over-50-suspense",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 40.5,
+      "client_id": 101,
+      "thread_id": "dcddc777fb7046bca120db65bd3ca070",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "no-invoice-over-50-suspense-r3.json"
+    },
+    {
+      "case": "receipt-over-250-needs-invoice",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 44.1,
+      "client_id": 102,
+      "thread_id": "40b474bfe6ba4cfd928e3d0b99ee9a5f",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "receipt-over-250-needs-invoice-r1.json"
+    },
+    {
+      "case": "receipt-over-250-needs-invoice",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 31.9,
+      "client_id": 103,
+      "thread_id": "98f6d9615c5045be9689a221c382f5e1",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 12,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "receipt-over-250-needs-invoice-r2.json"
+    },
+    {
+      "case": "receipt-over-250-needs-invoice",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 19.5,
+      "client_id": 104,
+      "thread_id": "b903c27a01c54a8693b274901d307c28",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 11,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "receipt-over-250-needs-invoice-r3.json"
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 11.6,
+      "client_id": 105,
+      "thread_id": "76caf9dc6530465eac998fbdea703680",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "vat-on-invoice-missing-from-entry-r1.json"
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 17.7,
+      "client_id": 106,
+      "thread_id": "db29d1d5f0d04c089c7bd97ce0453abe",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "vat-on-invoice-missing-from-entry-r2.json"
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 20.7,
+      "client_id": 107,
+      "thread_id": "5f59e349424d449da1f84c6fb0de0486",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 11,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "vat-on-invoice-missing-from-entry-r3.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 336.3,
+      "client_id": 1,
+      "thread_id": "c15f47dd0821412c972257f3e6d7b0ae",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                700,
+                704,
+                709
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 30,
+      "failed_steps": [
+        "Didn't change row 705"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 705, 707, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "demo-r1.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 167.2,
+      "client_id": 1,
+      "thread_id": "f2898e5be07e4afba53430e492dca594",
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "after answers",
+            "code": "2110",
+            "expected": "-22.50",
+            "actual": "-50.00",
+            "difference": "-27.50"
+          },
+          {
+            "stage": "after answers",
+            "code": "2201",
+            "expected": "72.11",
+            "actual": "67.07",
+            "difference": "-5.04"
+          },
+          {
+            "stage": "after answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "107.67",
+            "difference": "32.54"
+          },
+          {
+            "stage": "before answers",
+            "code": "2110",
+            "expected": "-22.50",
+            "actual": "-50.00",
+            "difference": "-27.50"
+          },
+          {
+            "stage": "before answers",
+            "code": "2201",
+            "expected": "32.11",
+            "actual": "27.07",
+            "difference": "-5.04"
+          },
+          {
+            "stage": "before answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "107.67",
+            "difference": "32.54"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "missing": {
+              "rule": "R4 Conflict: used the invoice",
+              "row": {
+                "file": "inkwell-invoice-INK-4471.pdf",
+                "description": "Inkwell: HP 305XL black ink cartridges x2"
+              }
+            }
+          },
+          {
+            "missing": {
+              "rule": "R5 VAT from the document",
+              "row": {
+                "file": "inkwell-invoice-INK-4471.pdf",
+                "description": "Inkwell: HP 305XL black ink cartridges x2"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                727,
+                731,
+                736
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "inkwell-invoice-INK-4471.pdf",
+              "Inkwell: HP 305XL black ink cartridges x2"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "inkwell-invoice-INK-4471.pdf",
+              "Inkwell: HP 305XL black ink cartridges x2"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 27,
+      "failed_steps": [
+        "Opening barclays-september.csv",
+        "Didn't change row 732"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 732, 734, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "demo-r2.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 94.4,
+      "client_id": 1,
+      "thread_id": "b8ba356b3c804f68b1de1297225ce278",
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "after answers",
+            "code": "2110",
+            "expected": "-22.50",
+            "actual": "-50.00",
+            "difference": "-27.50"
+          },
+          {
+            "stage": "after answers",
+            "code": "2201",
+            "expected": "72.11",
+            "actual": "67.07",
+            "difference": "-5.04"
+          },
+          {
+            "stage": "after answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "107.67",
+            "difference": "32.54"
+          },
+          {
+            "stage": "before answers",
+            "code": "2110",
+            "expected": "-22.50",
+            "actual": "-50.00",
+            "difference": "-27.50"
+          },
+          {
+            "stage": "before answers",
+            "code": "2201",
+            "expected": "32.11",
+            "actual": "27.07",
+            "difference": "-5.04"
+          },
+          {
+            "stage": "before answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "107.67",
+            "difference": "32.54"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "missing": {
+              "rule": "R4 Conflict: used the invoice",
+              "row": {
+                "file": "inkwell-invoice-INK-4471.pdf",
+                "description": "Inkwell: HP 305XL black ink cartridges x2"
+              }
+            }
+          },
+          {
+            "missing": {
+              "rule": "R5 VAT from the document",
+              "row": {
+                "file": "inkwell-invoice-INK-4471.pdf",
+                "description": "Inkwell: HP 305XL black ink cartridges x2"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                754,
+                758,
+                763
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "inkwell-invoice-INK-4471.pdf",
+              "Inkwell: HP 305XL black ink cartridges x2"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "inkwell-invoice-INK-4471.pdf",
+              "Inkwell: HP 305XL black ink cartridges x2"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 24,
+      "failed_steps": [
+        "Didn't change row 759"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 759, 761, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "demo-r3.json"
+    }
+  ]
+}

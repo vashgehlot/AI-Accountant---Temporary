@@ -1,0 +1,8 @@
+Date,Counter Party,Reference,Type,Amount (GBP),Balance (GBP),Spending Category,Notes
+28/10/2026,Opening Balance,,,0.00,12000.00,,
+28/10/2026,Elif Demir,Salary October,FASTER PAYMENT,-1750.00,10250.00,GENERAL,
+28/10/2026,Owen Price,Salary October,FASTER PAYMENT,-1500.00,8750.00,GENERAL,
+30/10/2026,Bank charges,Monthly account fee,FEE,-6.50,8743.50,BILLS_AND_SERVICES,
+05/11/2026,Aviva Workplace Pension,Pension October,DIRECT DEBIT,-280.00,8463.50,GENERAL,
+22/11/2026,HMRC PAYE,Office reference 120PA00123456,FASTER PAYMENT,-1025.00,7438.50,GENERAL,
+22/11/2026,Closing Balance,,,0.00,7438.50,,

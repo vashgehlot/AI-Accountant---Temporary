@@ -1,0 +1,210 @@
+{
+  "date": "2026-11-04",
+  "read": "rows",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "clean-month",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 37.8,
+      "client_id": 148,
+      "thread_id": "6f7d56aafed24f278963fd839723a26e",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "clean-month-r1.json"
+    },
+    {
+      "case": "clean-month",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 76.0,
+      "client_id": 149,
+      "thread_id": "20ef9e2d4972408fbb77a5f85a663e5f",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 19,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "clean-month-r2.json"
+    },
+    {
+      "case": "clean-month",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 61.3,
+      "client_id": 150,
+      "thread_id": "70513ec98708494dbeac394cb9124bad",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 15,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "clean-month-r3.json"
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 25.7,
+      "client_id": 151,
+      "thread_id": "b218c4e8906740c98f8dad111d55e925",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "missing-date-from-bank-r1.json"
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 43.2,
+      "client_id": 152,
+      "thread_id": "c9bccd3e9b4944da92c3679d1d5023c5",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "missing-date-from-bank-r2.json"
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 88.0,
+      "client_id": 153,
+      "thread_id": "ae45bfbaa389435785b1e714d6db7961",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "BT GROUP PLC"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "BT GROUP PLC"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 14,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "missing-date-from-bank-r3.json"
+    }
+  ]
+}

@@ -85,10 +85,10 @@ def test_a_paid_invoice_is_covered():
 
 def test_mixed_vat_receipt_is_covered():
     # Spec: receipts including mixed VAT, where "document VAT wins" and a gross/6 estimate differ.
-    # Groceries and cleaning supplies are two accounts, and the VAT summary divides by rate: two rows.
+    # Zero-rated food and standard-rated cleaning supplies: its VAT summary divides by rate, not by account, so
+    # the reader keeps it whole (mixed_items) and the agent splits it.
     rows = spec_of(FIXTURES / "img-supermarket-mixed-vat")["rows"]
-    assert [(r["gross"], r["vat"], r["account_code"]) for r in rows] == [("3.75", "0.00", "8205"),
-                                                                        ("4.20", "0.70", "7801")]
+    assert [(r["gross"], r["vat"], r["account_code"]) for r in rows] == [("7.95", "0.70", "7801")]
 
 
 def test_a_note_of_mixed_expenses_is_split_by_account():

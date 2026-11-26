@@ -1,0 +1,6 @@
+Date,Counter Party,Reference,Type,Amount (GBP),Balance (GBP),Spending Category,Notes
+01/10/2026,Opening Balance,,,0.00,5000.00,,
+09/10/2026,Harbour Street Stationers,VISA 4417,CARD,-24.00,4976.00,GENERAL,
+16/10/2026,Pemberton & Hale,PH-2026-114,FASTER PAYMENT,-216.00,4760.00,GENERAL,
+31/10/2026,Bank charges,Monthly account fee,FEE,-6.50,4753.50,BILLS_AND_SERVICES,
+31/10/2026,Closing Balance,,,0.00,4753.50,,

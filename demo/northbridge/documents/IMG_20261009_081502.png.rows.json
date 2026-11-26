@@ -1,0 +1,19 @@
+{
+  "file": "IMG_20261009_081502.png",
+  "kind": "image",
+  "bank_account": null,
+  "transactions": [
+    {
+      "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall",
+      "direction": "out",
+      "gross": "18.00",
+      "account_code": "7400",
+      "source": "image",
+      "method": "llm",
+      "document_type": "receipt",
+      "counterparty": "Leeds City Cabs",
+      "document_total": "18.00",
+      "document_ref": "taxi-0001"
+    }
+  ]
+}

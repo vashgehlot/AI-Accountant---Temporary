@@ -1,0 +1,507 @@
+{
+  "date": "2026-11-04",
+  "read": "model",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 52.6,
+      "client_id": 131,
+      "thread_id": "1dfa09e078b34d0aa38c33aa5f30e301",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "pagecraft-invoice-PC-5512.pdf",
+            "description": "Pagecraft: Brother TN-2420 toner cartridge"
+          },
+          "found": {
+            "file": "pagecraft-invoice-PC-5512.pdf",
+            "description": "Pagecraft Stationers Ltd - Brother TN-2420 toner cartridge"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Pagecraft - toner cartridge"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Pagecraft toner cartridge"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "conflict-invoice-vs-expense-report-r1.json"
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 44.8,
+      "client_id": 132,
+      "thread_id": "67a412195b524ffe84490f896e04dded",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "pagecraft-invoice-PC-5512.pdf",
+            "description": "Pagecraft: Brother TN-2420 toner cartridge"
+          },
+          "found": {
+            "file": "pagecraft-invoice-PC-5512.pdf",
+            "description": "PAGECRAFT STATIONERS LTD - Brother TN-2420 toner cartridge"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Pagecraft - toner cartridge"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Pagecraft toner cartridge"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "conflict-invoice-vs-expense-report-r2.json"
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 52.0,
+      "client_id": 133,
+      "thread_id": "4930e26349444bcdbde5c6b7d45f8710",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "staples-receipt.txt",
+            "description": "Staples: A4 printer paper and toner"
+          },
+          "found": {
+            "file": "staples-receipt.txt",
+            "description": "Staples - A4 printer paper and Brother TN-2420 toner"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Staples - printer paper and toner"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Staples, printer paper and toner"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 15,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "duplicate-receipt-spreadsheet-r1.json"
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 57.5,
+      "client_id": 134,
+      "thread_id": "57f37dbfed384b9dba579edbfb851b3a",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "staples-receipt.txt",
+            "description": "Staples: A4 printer paper and toner"
+          },
+          "found": {
+            "file": "staples-receipt.txt",
+            "description": "Staples - A4 printer paper and Brother toner"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Staples - printer paper and toner"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Staples, printer paper and toner"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 16,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "duplicate-receipt-spreadsheet-r2.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 203.1,
+      "client_id": 1,
+      "thread_id": "400f84cbdf8e405db368c56a5334a4e7",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "missing": {
+              "rule": "R3 Mixed VAT: split by rate",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "missing": {
+              "rule": "R5 VAT from the document",
+              "row": {
+                "file": "inkwell-invoice-INK-4471.pdf",
+                "description": "Inkwell: HP 305XL black ink cartridges x2"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                1166,
+                1170
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "COSTCO WHOLESALE, card purchase"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "COSTCO WHOLESALE, card purchase"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Costco - office supplies and kitchen"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Costco office supplies and kitchen"
+          }
+        },
+        {
+          "expected": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell: HP 305XL black ink cartridges x2"
+          },
+          "found": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell Supplies Ltd - HP 305XL black ink cartridges"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Inkwell - printer ink"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Inkwell printer ink"
+          }
+        },
+        {
+          "expected": {
+            "file": "parking-photo.png",
+            "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+          },
+          "found": {
+            "file": "parking-photo.png",
+            "description": "NCP parking, Leeds Wellington Street car park"
+          }
+        },
+        {
+          "expected": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+          },
+          "found": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs, taxi journey Leeds Station to Kirkstall"
+          }
+        },
+        {
+          "expected": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT"
+          },
+          "found": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT, bill payment (printing)"
+          }
+        }
+      ],
+      "unmatched_names": [
+        {
+          "name": {
+            "file": "costco-receipt-21-10.txt",
+            "description": "Costco: copier paper, box files, milk, coffee and tea"
+          },
+          "why": "0 rows in the file have the same amount, direction and date"
+        }
+      ],
+      "posted_problems": [],
+      "steps": 23,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "demo-r1.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 182.8,
+      "client_id": 1,
+      "thread_id": "b5350067d2f64d9bab816abff9821fa3",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "missing": {
+              "rule": "R3 Mixed VAT: split by rate",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "missing": {
+              "rule": "R5 VAT from the document",
+              "row": {
+                "file": "inkwell-invoice-INK-4471.pdf",
+                "description": "Inkwell: HP 305XL black ink cartridges x2"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                1192,
+                1196
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Costco - office supplies and kitchen"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Costco office supplies and kitchen"
+          }
+        },
+        {
+          "expected": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell: HP 305XL black ink cartridges x2"
+          },
+          "found": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "INKWELL SUPPLIES LTD - HP 305XL black ink cartridges (2)"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Inkwell - printer ink"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Inkwell printer ink"
+          }
+        },
+        {
+          "expected": {
+            "file": "parking-photo.png",
+            "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+          },
+          "found": {
+            "file": "parking-photo.png",
+            "description": "NCP Leeds Wellington Street car park, parking tariff up to 3 hours"
+          }
+        },
+        {
+          "expected": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+          },
+          "found": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs, taxi journey Leeds Station to Kirkstall"
+          }
+        },
+        {
+          "expected": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT"
+          },
+          "found": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT, bill payment (printing)"
+          }
+        }
+      ],
+      "unmatched_names": [
+        {
+          "name": {
+            "file": "costco-receipt-21-10.txt",
+            "description": "Costco: copier paper, box files, milk, coffee and tea"
+          },
+          "why": "0 rows in the file have the same amount, direction and date"
+        }
+      ],
+      "posted_problems": [],
+      "steps": 25,
+      "failed_steps": [
+        "Didn't change row 1202"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R2 Duplicate",
+          "reason": "Row 1202 is the bank line that pays the receipt kept, not a duplicate. Send the call with the receipt as row_id, and drop only the expenses-sheet line; the bank line then pays it."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "demo-r2.json"
+    }
+  ]
+}

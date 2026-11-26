@@ -1,0 +1,4 @@
+Expenses 12/09/2026
+Breakfast £18.00
+Taxi to client £32.00
+Total £50.00

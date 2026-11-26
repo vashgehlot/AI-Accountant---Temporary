@@ -1,0 +1,24 @@
+{
+  "resolutions": [
+    {
+      "action": "set_vat_from_document",
+      "rule": "R5 VAT from the document",
+      "row": {
+        "file": "northern-fibre-invoice-NFB-88213.pdf",
+        "description": "Northern Fibre: Business Fibre 500, October 2026"
+      },
+      "arguments": {
+        "vat": "12.00"
+      },
+      "evidence": [
+        {
+          "file": "northern-fibre-invoice-NFB-88213.pdf",
+          "quote": "VAT @ 20% £12.00"
+        }
+      ],
+      "reason": "The invoice prints VAT of £12.00 on £60.00; the entry had none."
+    }
+  ],
+  "automatic": [],
+  "from_answers": []
+}

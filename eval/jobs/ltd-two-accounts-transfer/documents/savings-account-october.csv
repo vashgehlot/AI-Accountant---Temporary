@@ -1,0 +1,5 @@
+Date,Counter Party,Reference,Type,Amount (GBP),Balance (GBP),Spending Category,Notes
+01/10/2026,Opening Balance,,,0.00,1000.00,,
+12/10/2026,Greywell Surveying Current,Transfer from current,TRANSFER,5000.00,6000.00,TRANSFERS,
+31/10/2026,Interest,Gross interest October,INTEREST,4.20,6004.20,INCOME,
+31/10/2026,Closing Balance,,,0.00,6004.20,,

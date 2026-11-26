@@ -1,0 +1,22 @@
+{
+  "before_answers": [
+    {
+      "kind": "vat_invoice",
+      "row": {
+        "file": "volt-receipt.txt",
+        "description": "Lenovo ThinkPad E14 laptop"
+      },
+      "status": "open"
+    }
+  ],
+  "after_answers": [
+    {
+      "kind": "vat_invoice",
+      "row": {
+        "file": "volt-receipt.txt",
+        "description": "Lenovo ThinkPad E14 laptop"
+      },
+      "status": "open"
+    }
+  ]
+}

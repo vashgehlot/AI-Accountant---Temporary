@@ -6,19 +6,10 @@
     {
       "date": "2026-09-18",
       "direction": "out",
-      "gross": "3.75",
-      "vat": "0.00",
-      "account_code": "8205",
-      "description": "Sainsbury's Local groceries",
-      "document_type": "receipt"
-    },
-    {
-      "date": "2026-09-18",
-      "direction": "out",
-      "gross": "4.20",
+      "gross": "7.95",
       "vat": "0.70",
       "account_code": "7801",
-      "description": "Sainsbury's Local cleaning supplies",
+      "description": "Sainsbury's Local",
       "document_type": "receipt"
     }
   ]

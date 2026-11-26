@@ -11,17 +11,22 @@ from .models import Direction, Issue, StatementCheck, Transaction
 from .money import ZERO
 
 
-def _signed(tx: Transaction) -> Decimal:
-    return tx.gross if tx.direction == Direction.IN else -tx.gross
+def signed(tx: Transaction, credit_card: bool) -> Decimal:
+    """How the line moves the balance the statement prints: money in raises a bank's balance; on a credit card,
+    whose balance is what is owed, spending raises it and a repayment lowers it."""
+    gross = tx.gross if tx.direction == Direction.IN else -tx.gross
+    return -gross if credit_card else gross
 
 
 def _gbp(amount: Decimal) -> str:
     return f"£{amount:,.2f}" if amount >= 0 else f"-£{-amount:,.2f}"
 
 
-def check_statement(rows: list[Transaction]) -> tuple[list[Transaction], Optional[StatementCheck]]:
+def check_statement(rows: list[Transaction], credit_card: bool = False) -> tuple[list[Transaction],
+                                                                                Optional[StatementCheck]]:
     """One upload's rows, its bank lines carrying statement_gap or statement_total warnings where they don't
-    agree with the printed balances, and the upload's summary; the summary is None when it has no bank lines."""
+    agree with the printed balances, and the upload's summary; the summary is None when it has no bank lines.
+    credit_card: the statement is a card's, whose balances are what is owed on it."""
     lines = [n for n, tx in enumerate(rows) if tx.document_type == "statement"]
     if not lines:
         return rows, None
@@ -31,7 +36,7 @@ def check_statement(rows: list[Transaction]) -> tuple[list[Transaction], Optiona
 
     def moved(start: int, stop: int) -> Decimal:
         """The money in less the money out of lines[start:stop]."""
-        return sum((_signed(rows[lines[k]]) for k in range(start, stop)), ZERO)
+        return sum((signed(rows[lines[k]], credit_card) for k in range(start, stop)), ZERO)
 
     def fits(expected: list[tuple[int, Decimal]]) -> int:
         return sum(rows[lines[k]].balance == want for k, want in expected)

@@ -1,0 +1,1979 @@
+{
+  "case": "clean-month",
+  "run": 1,
+  "thread_id": "c03d721910a84d8d94940587b0a5367e",
+  "client_id": 1,
+  "hosts": [
+    "Claude Platform on AWS"
+  ],
+  "messages": [
+    {
+      "type": "human",
+      "content": "Review these documents"
+    },
+    {
+      "type": "ai",
+      "content": "",
+      "reasoning": [
+        {
+          "from": "additional_kwargs.reasoning_content",
+          "text": "I'm going to start by calling get_overview to get the lay of the land, and I'll run list_documents at the same time so I can see what's there.\n\n"
+        },
+        {
+          "from": "additional_kwargs.reasoning_details",
+          "details": [
+            {
+              "type": "reasoning.text",
+              "format": "anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1",
+              "index": 0,
+              "text": "I'm going to start by calling get_overview to get the lay of the land, and I'll run list_documents at the same time so I can see what's there.\n\n",
+              "signature": "CAQSiwYKEAgTGAI4AUIIdGhpbmtpbmcSDFVbq8BojSHnokLNVhoMVMOrpiUjIIVs+qpcIjA1Ip5MDoDeAJVSvBVBJRshnyCfvTi8+0Mql/Xo3WigYl8QrWZQaCk/V88tU9y9muUqqAXk0UQqFMWRW1nqW+o3e0oNQ4r8jlnLhdkKkLL9PuijKhRMyUC0tfZBLh3XhiAJxlylZQMZJlOLPW8mfGZe6huSXFxkLXCP670bFg0FfWGzAhx2HFH/rv61mL1IG5T1Ky1ULYRjjCqO1XgrxV52Ug+5OuRV/VgrwssF9Bt/UG9iFTFXqCSLK1w8Br3Y04zBSgRbSxSuOMm3Qcfkf0b+FCFy7TcZuNQOX8ki54CqinBNEBkboq8KgC2i4Ij5ac+BZnUwaUio3/BVyHWbqaoAWCOHxTZtwHWcf2ad246EWtcpF6a9U0RQ3VflByXWHebcxT8WFv0Z2YGuLTU4luLObwAWP+loKugqwwAamitaYn2gLKzHBnSwLiwRxxPTnn6dQBCtSW0e6PN+RE8e0wOt+sZpfdyCt4D8wgeo15ZaVWWacJMj7sIVXUP6blnUL15TYcBFX2SO9F+Y4B+D2YegQn6D/RMdIezJ2zTNq+mcCjlB4ImdUQ7CW6LwB4tg0fQkDNFO5GqvVjroz0I+LFqjuiIIpCKuOpXSSm7WwFK+HTLDhj55TT2cf3vHqzoSziYOHdOIk5bq6s8XyPeY3LOW2U0vS7qKqtyYWVaI9sM+a7G6JRzkuysqhOXTzYEelRp1JL823m2zWIWigRbGwN0Qov+xVqifIcMHcACQX96X5HiExgxd1TNMHHtunLiDdSrcDZoHsf0xhZTpxBcg3LQxFC8VOyL+ZMcjj/r9qu7JD8u/ToNiKw+hIdg1qY+h95EPezN86qAQIq4Bhu3db+r+m+2ly9ADxouJgfs5lYScejwEH5ksAWEfaEZNnm6qLE50s453jdQ9INOzgyCOGo9pE8t9jHr/QzbfC1D4AG0mKkTTGKT7R7UOg3PlD45ycocRggJtE27hSS6L8RgB.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "get_overview",
+          "args": {},
+          "id": "toolu_01EcThfGzLFmRDFzp3GyS1iQ"
+        },
+        {
+          "name": "list_documents",
+          "args": {},
+          "id": "toolu_01GPpvr6uFgf6cxTiVDDcQJC"
+        }
+      ],
+      "finish_reason": "tool_calls",
+      "served_by": {
+        "model_name": "anthropic/claude-haiku-5.5",
+        "generation_id": "gen-1794741865-ie5XViVgq2wVeR2Wy0y2"
+      }
+    },
+    {
+      "type": "tool",
+      "content": "{\"client\": {\"name\": \"Northbridge Consulting Ltd\", \"business_type\": \"limited_company\", \"vat_registered\": true}, \"years\": [\"Year to 31 Mar 2027\"], \"year\": {\"start\": \"2026-04-01\", \"end\": \"2027-03-31\", \"label\": \"Year to 31 Mar 2027\", \"closed\": false}, \"rows\": 7, \"documents\": 3, \"need_a_look\": {}, \"held_in_suspense\": 0, \"open_questions\": 0, \"decisions\": 0, \"background_reviews_since_last_chat\": [], \"accounts\": [{\"code\": \"0001\", \"name\": \"Goodwill\"}, {\"code\": \"0010\", \"name\": \"Freehold Property\"}, {\"code\": \"0015\", \"name\": \"Leasehold Improvements\"}, {\"code\": \"0020\", \"name\": \"Plant and Machinery\"}, {\"code\": \"0030\", \"name\": \"Office Equipment\"}, {\"code\": \"0040\", \"name\": \"Furniture and Fixtures\"}, {\"code\": \"0050\", \"name\": \"Cars\"}, {\"code\": \"0055\", \"name\": \"Vans\"}, {\"code\": \"0060\", \"name\": \"Investments\"}, {\"code\": \"1210\", \"name\": \"Bank Deposit Account\"}, {\"code\": \"1230\", \"name\": \"Petty Cash\"}, {\"code\": \"1250\", \"name\": \"Payment Processor Clearing\"}, {\"code\": \"2202\", \"name\": \"VAT Liability\"}, {\"code\": \"2210\", \"name\": \"PAYE and National Insurance\"}, {\"code\": \"2220\", \"name\": \"Net Wages\"}, {\"code\": \"2230\", \"name\": \"Pension Fund\"}, {\"code\": \"2250\", \"name\": \"Director's Loan Account\"}, {\"code\": \"2300\", \"name\": \"Loans\"}, {\"code\": \"2310\", \"name\": \"Hire Purchase\"}, {\"code\": \"2320\", \"name\": \"Corporation Tax\"}, {\"code\": \"3000\", \"name\": \"Ordinary Shares\"}, {\"code\": \"3250\", \"name\": \"Dividends\"}, {\"code\": \"4000\", \"name\": \"Sales\"}, {\"code\": \"4900\", \"name\": \"Other Income\"}, {\"code\": \"4902\", \"name\": \"Bank Interest Received\"}, {\"code\": \"4904\", \"name\": \"Rent Income\"}, {\"code\": \"4905\", \"name\": \"Dividends Received\"}, {\"code\": \"4906\", \"name\": \"Grants Received\"}, {\"code\": \"5000\", \"name\": \"Purchases\"}, {\"code\": \"5002\", \"name\": \"Subcontractor Costs\"}, {\"code\": \"6201\", \"name\": \"Advertising and Marketing\"}, {\"code\": \"7000\", \"name\": \"Gross Wages\"}, {\"code\": \"7001\", \"name\": \"Directors' Salaries\"}, {\"code\": \"7006\", \"name\": \"Employer's National Insurance\"}, {\"code\": \"7007\", \"name\": \"Employer's Pension Contributions\"}, {\"code\": \"7100\", \"name\": \"Rent\"}, {\"code\": \"7103\", \"name\": \"Business Rates\"}, {\"code\": \"7200\", \"name\": \"Electricity\"}, {\"code\": \"7201\", \"name\": \"Gas\"}, {\"code\": \"7202\", \"name\": \"Water\"}, {\"code\": \"7300\", \"name\": \"Fuel and Oil\"}, {\"code\": \"7301\", \"name\": \"Vehicle Repairs and Servicing\"}, {\"code\": \"7302\", \"name\": \"Vehicle Licences\"}, {\"code\": \"7303\", \"name\": \"Vehicle Insurance\"}, {\"code\": \"7304\", \"name\": \"Vehicle Leasing\"}, {\"code\": \"7305\", \"name\": \"Mileage Allowance\"}, {\"code\": \"7400\", \"name\": \"Travel\"}, {\"code\": \"7402\", \"name\": \"Hotels\"}, {\"code\": \"7403\", \"name\": \"Entertainment\"}, {\"code\": \"7406\", \"name\": \"Subsistence\"}, {\"code\": \"7500\", \"name\": \"Printing\"}, {\"code\": \"7501\", \"name\": \"Postage and Carriage\"}, {\"code\": \"7502\", \"name\": \"Telephone and Internet\"}, {\"code\": \"7504\", \"name\": \"Office Stationery\"}, {\"code\": \"7600\", \"name\": \"Legal Fees\"}, {\"code\": \"7601\", \"name\": \"Accountancy Fees\"}, {\"code\": \"7602\", \"name\": \"Consultancy Fees\"}, {\"code\": \"7603\", \"name\": \"Professional Fees\"}, {\"code\": \"7700\", \"name\": \"Equipment Hire\"}, {\"code\": \"7800\", \"name\": \"Repairs and Renewals\"}, {\"code\": \"7801\", \"name\": \"Cleaning\"}, {\"code\": \"7900\", \"name\": \"Bank Interest Paid\"}, {\"code\": \"7901\", \"name\": \"Bank Charges\"}, {\"code\": \"7903\", \"name\": \"Loan and Hire Purchase Interest\"}, {\"code\": \"8200\", \"name\": \"Donations\"}, {\"code\": \"8201\", \"name\": \"Subscriptions and Software\"}, {\"code\": \"8203\", \"name\": \"Training\"}, {\"code\": \"8204\", \"name\": \"Insurance\"}, {\"code\": \"8205\", \"name\": \"Refreshments\"}, {\"code\": \"8206\", \"name\": \"Staff Welfare\"}, {\"code\": \"8207\", \"name\": \"Sundry Expenses\"}, {\"code\": \"8208\", \"name\": \"Use of Home\"}, {\"code\": \"8250\", \"name\": \"Fines and Penalties\"}, {\"code\": \"9998\", \"name\": \"Suspense\"}], \"bank\": [{\"account\": \"Barclays current account\", \"code\": \"1200\", \"books\": \"191.05\", \"statement\": null, \"statement_date\": null, \"difference\": null, \"agrees\": false}], \"missing_paperwork\": [\"Barclays current account: no statement lines for April to September 2026. The statement from 1 Oct 2026 prints no balance to check, so add those months' statements if the account was in use.\"]}",
+      "name": "get_overview",
+      "tool_call_id": "toolu_01EcThfGzLFmRDFzp3GyS1iQ",
+      "status": "success"
+    },
+    {
+      "type": "tool",
+      "content": "{\"documents\": [{\"upload_id\": 3, \"name\": \"barclays-october.csv\", \"kind\": \"table\", \"rows\": 5, \"added\": \"2026-11-15T11:24:25+00:00\", \"bank_account\": \"1200\", \"statement_check\": {\"status\": \"none\"}}, {\"upload_id\": 2, \"name\": \"pret-receipt.txt\", \"kind\": \"text\", \"rows\": 1, \"added\": \"2026-11-15T11:24:25+00:00\"}, {\"upload_id\": 1, \"name\": \"ardent-rent-invoice-AP-10-2026.pdf\", \"kind\": \"pdf\", \"rows\": 1, \"added\": \"2026-11-15T11:24:25+00:00\"}]}",
+      "name": "list_documents",
+      "tool_call_id": "toolu_01GPpvr6uFgf6cxTiVDDcQJC",
+      "status": "success"
+    },
+    {
+      "type": "ai",
+      "content": "",
+      "tool_calls": [
+        {
+          "name": "list_issues",
+          "args": {},
+          "id": "toolu_018ZJR3J2n2VXUZLjAj1PEfp"
+        },
+        {
+          "name": "list_rows",
+          "args": {},
+          "id": "toolu_018a4tfKZ8QVBXw43K4xmcq9"
+        }
+      ],
+      "finish_reason": "tool_calls",
+      "served_by": {
+        "model_name": "anthropic/claude-haiku-5.5",
+        "generation_id": "gen-1794741867-x8K29IfR8201tAMm9Mss"
+      }
+    },
+    {
+      "type": "tool",
+      "content": "{}",
+      "name": "list_issues",
+      "tool_call_id": "toolu_018ZJR3J2n2VXUZLjAj1PEfp",
+      "status": "success"
+    },
+    {
+      "type": "tool",
+      "content": "{\"rows\": [{\"row_id\": 1, \"upload_id\": 1, \"file\": \"ardent-rent-invoice-AP-10-2026.pdf\", \"kind\": \"invoice\", \"date\": \"2026-10-01\", \"description\": \"Ardent Property: office rent, Suite 3, 14 Wharf Street, October 2026\", \"counterparty\": \"Ardent Property Ltd\", \"direction\": \"out\", \"gross\": \"750.00\", \"account_code\": \"7100\", \"account_name\": \"Rent\", \"booked\": true}, {\"row_id\": 2, \"upload_id\": 2, \"file\": \"pret-receipt.txt\", \"kind\": \"receipt\", \"date\": \"2026-10-13\", \"description\": \"Pret A Manger: chicken caesar baguette and flat white\", \"counterparty\": \"Pret A Manger\", \"direction\": \"out\", \"gross\": \"8.45\", \"vat\": \"1.41\", \"account_code\": \"7406\", \"account_name\": \"Subsistence\", \"booked\": true}, {\"row_id\": 3, \"upload_id\": 3, \"file\": \"barclays-october.csv\", \"kind\": \"statement\", \"date\": \"2026-10-01\", \"description\": \"J NORTH LOAN TO COMPANY\", \"counterparty\": \"J North\", \"direction\": \"in\", \"gross\": \"1000.00\", \"account_code\": \"2250\", \"account_name\": \"Director's Loan Account\", \"booked\": true}, {\"row_id\": 4, \"upload_id\": 3, \"file\": \"barclays-october.csv\", \"kind\": \"statement\", \"date\": \"2026-10-02\", \"description\": \"ARDENT PROPERTY\", \"counterparty\": \"Ardent Property\", \"direction\": \"out\", \"gross\": \"750.00\", \"account_code\": \"7100\", \"account_name\": \"Rent\", \"booked\": true}, {\"row_id\": 5, \"upload_id\": 3, \"file\": \"barclays-october.csv\", \"kind\": \"statement\", \"date\": \"2026-10-03\", \"description\": \"BT GROUP PLC\", \"counterparty\": \"BT Group\", \"direction\": \"out\", \"gross\": \"42.00\", \"account_code\": \"7502\", \"account_name\": \"Telephone and Internet\", \"issues\": [{\"code\": \"vat_unclaimed\", \"family\": \"other\", \"severity\": \"info\", \"message\": \"No VAT reclaimed: booked from the bank line. Add its receipt or invoice to reclaim up to £7.00.\"}], \"booked\": true}, {\"row_id\": 6, \"upload_id\": 3, \"file\": \"barclays-october.csv\", \"kind\": \"statement\", \"date\": \"2026-10-13\", \"description\": \"PRET A MANGER\", \"counterparty\": \"Pret A Manger\", \"direction\": \"out\", \"gross\": \"8.45\", \"account_code\": \"7406\", \"account_name\": \"Subsistence\", \"booked\": false}, {\"row_id\": 7, \"upload_id\": 3, \"file\": \"barclays-october.csv\", \"kind\": \"statement\", \"date\": \"2026-10-30\", \"description\": \"BARCLAYS ACCOUNT FEE\", \"counterparty\": \"Barclays\", \"direction\": \"out\", \"gross\": \"8.50\", \"account_code\": \"7901\", \"account_name\": \"Bank Charges\", \"booked\": true}]}",
+      "name": "list_rows",
+      "tool_call_id": "toolu_018a4tfKZ8QVBXw43K4xmcq9",
+      "status": "success"
+    },
+    {
+      "type": "ai",
+      "content": "",
+      "reasoning": [
+        {
+          "from": "additional_kwargs.reasoning_content",
+          "text": "I'm checking the documents to confirm everything is correct, starting with the invoice, receipt and statement. The Pret receipt's VAT works out to one-sixth of the net amount, which is 20%, so that matches. I still need to see whether the 750 rent invoice has VAT on it.\n\nI'm still working out whether the 750 rent invoice carries VAT, since the rent is probably standard-rated but nothing shows VAT as booked. Reading the invoice to see.\n\n"
+        },
+        {
+          "from": "additional_kwargs.reasoning_details",
+          "details": [
+            {
+              "type": "reasoning.text",
+              "format": "anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1",
+              "index": 0,
+              "text": "I'm checking the documents to confirm everything is correct, starting with the invoice, receipt and statement. The Pret receipt's VAT works out to one-sixth of the net amount, which is 20%, so that matches. I still need to see whether the 750 rent invoice has VAT on it.\n\nI'm still working out whether the 750 rent invoice carries VAT, since the rent is probably standard-rated but nothing shows VAT as booked. Reading the invoice to see.\n\n",
+              "signature": "CAQSzQgKEAgTGAI4AUIIdGhpbmtpbmcSDKsiWrrg9x9dvRzxoxoMAwvzVoCiEDPWbMxxIjCqSAY7A/sOU341qQ6oHwqSAOcDZaasajuvjYOklMsw/ABqFn6NhBzvfJhRfDWvH1wq6gf9sZlFXb6BSkCvnGt4ca0Rh/sQC/w8CK9OZs+Yzyuu2/wN40l1eQJwwEtvdtJA7P/dc95IwoVWLMQebwsy54r+oioRJifmFkZc/X5h9rnsjN3QRT9mbEavqBWJXg57oC7EEJXBiVAJ0L4+oNsJdkb34njOSFoJDjBAm7qpj39+ML0BPShFX0dpiCr4864KqdKOb2GA2erEE7BYDdJO+7+Gb0XRfvGJhcFyap8PJBo5jF2EIctJ6Q3DHGBfbWsM52d660KZgNU5rEOEzGgrLinNNrmBky2tQJgb1Xhr1oRYLFBWtO9rv3BVWK7vmW94RBI+Awxb/CcqcwOfeRmrJAYX5oo6T9FqUMMLFcZ6Si+TXlHp2yQWnKqPgZbSDtgWuwm00Z1lv6nhbd650o5UO53Tvi72QJ0tIun1TYXzbplUYmJ3aHnEKJpRM2uaOfGzKbgEzNO+dFqTrd4mNt4VxECBOowezuaM4hGVRVmgo6RA3YuPWOfLtp3dyQu3j90HjIHl/t5DlUMzBgHRS3kfPk+3/c1a9ig6slE/RV5om6WroCkB3GKrPMMUfwPaMOBgN4RzxU+yD3jIRG3+4o9XO90dIQkxrjYGbM4Ccm9LGam6urWGyGwg4zFJl/6cWBwWVDS4zjPW0DCFzZjuRjsQSp5bKQJJea4p8MbBYTX6rpx3VO+rLJQItTb2Lo9N3tgLD4tO7YvJaAqRon7WZ7GpIQoxvTnwudIJh9rR+ocfHqY7SvS5TpVoB9NpNnR3EW0v/fofdkUZG/x4HOEUuldD4P91pACzoDlHvfipPjs9caIjQlgWBrKyMLfKgwmU2ZqpSmSswxjkDOVfmVutHfV+PX92OPXMn5RotVXu5jb4OrZcJd2wnB6hvFeu3jucHZj1gFyCTOTlRXfc2zxHIkqDAg2Zgra0iUeryTE0u9R8a2tNRAVdVPsAWf+jagAGkiFUjZHbOVPUFXZVjjX8J3ybL/uTQS18UhjwFsIXVa3icbe9D2tVMzTbhXYw6+Tdj9T4bWt7p+dJ6kCQdLY0ADDU/eR+Smc9RUyxpJqI/1UpIK9WuE9i/isXWlRjMTF15wh5bbUVATZhQe9HbXvA8IjnfdCmr/Spk30A5bjQLRkgy7vBzQ066lcRV2tdhtOewwkpssv/QXLuqElSSNVVk2gn0GiAbc2hlE3Bb3swGF2876pinZpjGB6kJFbNH8l9M1Aj1r4oOekqI9jUFPx8ztzfGXJp4QIu42qmk2YcOPX9BIoARoLES1AkNaLdt+pni/4cib6eRb81AxpaZzL7C5mmgR3zeuuzb8H0Z+8Yd1ecDc39Uh26hzxOkpo23b8YAQ==.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "read_document",
+          "args": {
+            "upload_id": 1
+          },
+          "id": "toolu_015FhRGD7jbUQKydtb3hxNej"
+        },
+        {
+          "name": "read_document",
+          "args": {
+            "upload_id": 2
+          },
+          "id": "toolu_01VGB6Fph5oRSxssn18YRaBX"
+        },
+        {
+          "name": "read_document",
+          "args": {
+            "upload_id": 3
+          },
+          "id": "toolu_011RvhoBwsMVhv5hTu2Lh6Lj"
+        }
+      ],
+      "finish_reason": "tool_calls",
+      "served_by": {
+        "model_name": "anthropic/claude-haiku-5.5",
+        "generation_id": "gen-1794741868-5422KNkmxeENnFS3slLU",
+        "provider": "Claude Platform on AWS",
+        "latency_ms": 2613,
+        "generation_time_ms": 2613
+      }
+    },
+    {
+      "type": "tool",
+      "content": "{\"upload_id\": 1, \"name\": \"ardent-rent-invoice-AP-10-2026.pdf\", \"page\": 1, \"pages\": 1, \"text\": \"ARDENT PROPERTY LTD\\n3 Park Square East, Leeds LS1 2NE\\n\\nInvoice AP-10-2026\\nDate: 01/10/2026\\nTo: Northbridge Consulting Ltd\\n\\nOffice rent, Suite 3, 14 Wharf Street, Leeds: October 2026  750.00\\n\\nNo VAT is charged on this rent.\\nTotal due: £750.00\"}",
+      "name": "read_document",
+      "tool_call_id": "toolu_015FhRGD7jbUQKydtb3hxNej",
+      "status": "success"
+    },
+    {
+      "type": "tool",
+      "content": "{\"upload_id\": 2, \"name\": \"pret-receipt.txt\", \"page\": 1, \"pages\": 1, \"text\": \"PRET A MANGER\\nLeeds Station\\nVAT No: GB 999 8812 45\\n\\n13/10/2026  12:31   Eat in\\n\\nCHICKEN CAESAR BAGUETTE          5.95\\nFLAT WHITE                       2.50\\n\\nTOTAL                            8.45\\nVAT 20%                          1.41\\nVISA DEBIT                       8.45\"}",
+      "name": "read_document",
+      "tool_call_id": "toolu_01VGB6Fph5oRSxssn18YRaBX",
+      "status": "success"
+    },
+    {
+      "type": "tool",
+      "content": "{\"upload_id\": 3, \"name\": \"barclays-october.csv\", \"page\": 1, \"pages\": 1, \"text\": \"Number,Date,Account,Amount,Subcategory,Memo\\n,01/10/2026,20-32-06 13576543,1000.00,Bank Credit,J NORTH LOAN TO COMPANY\\n,02/10/2026,20-32-06 13576543,-750.00,Bill Payment,ARDENT PROPERTY\\n,03/10/2026,20-32-06 13576543,-42.00,Direct Debit,BT GROUP PLC\\n,13/10/2026,20-32-06 13576543,-8.45,Card Purchase,PRET A MANGER\\n,30/10/2026,20-32-06 13576543,-8.50,Charges,BARCLAYS ACCOUNT FEE\"}",
+      "name": "read_document",
+      "tool_call_id": "toolu_011RvhoBwsMVhv5hTu2Lh6Lj",
+      "status": "success"
+    },
+    {
+      "type": "ai",
+      "content": "I reviewed the three documents: the Ardent Property rent invoice, the Pret A Manger receipt, and the October Barclays statement. Nothing needs a decision. The rent invoice (£750.00, 1 Oct 2026) charges no VAT and is booked to Rent. The Pret receipt (£8.45, 13 Oct 2026, including £1.41 VAT) is booked to Subsistence, and its matching bank line is not booked again, so it isn't double-counted. The J North loan of £1,000.00 is booked to the Director's Loan Account, and the BT and Barclays charges are booked from their bank lines.\n\nTwo things remain open on the paperwork side. The BT Group payment of £42.00 on 3 Oct 2026 has no bill, so £7.00 of VAT is not reclaimed until one is added. The Barclays account still has no statements for April to September 2026, and its books balance of £191.05 can't be checked against a statement yet.",
+      "reasoning": [
+        {
+          "from": "additional_kwargs.reasoning_content",
+          "text": "The overview reports no issues, and the Pret bank line on row 6 is already booked as false, which matches the receipt on row 2. The Ardent invoice has no VAT, which is fine. The bank balance of 191.05 has no statement to check against, and the outstanding paperwork is the Apr-Sep statements, so there's nothing to resolve yet. I'll look at row 5's unclaimed VAT info next.\n\nNext I'm checking whether the Pret receipt has its bank line matched. Row 2 is booked and row 6 isn't, but the receipt's record points to row 2, so that looks fine. Nothing else needs doing, so I'll keep the answer brief.\n\n"
+        },
+        {
+          "from": "additional_kwargs.reasoning_details",
+          "details": [
+            {
+              "type": "reasoning.text",
+              "format": "anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1",
+              "index": 0,
+              "text": "The overview reports no issues, and the Pret bank line on row 6 is already booked as false, which matches the receipt on row 2. The Ardent invoice has no VAT, which is fine. The bank balance of 191.05 has no statement to check against, and the outstanding paperwork is the Apr-Sep statements, so there's nothing to resolve yet. I'll look at row 5's unclaimed VAT info next.\n\nNext I'm checking whether the Pret receipt has its bank line matched. Row 2 is booked and row 6 isn't, but the receipt's record points to row 2, so that looks fine. Nothing else needs doing, so I'll keep the answer brief.\n\n",
+              "signature": "CAQSlwoKEAgTGAI4AUIIdGhpbmtpbmcSDLiflG5Yuj7LdrLsdRoMYGAAxte7SVSCmNzIIjBACZTbDB3PYRWCguX7XERADZ4j2Fw+ELZe3gjEknh0XWXqp1oiiTafkDZd2dCio2UqtAlQVgqNWuUKGpHRCGbV1QZB3gN9GXKT8CO+n2sQN9yAZoMhqfxHYAqHes310EPjl04m1lP21EXk4XIpU/KZisPGMsmFsLVNrO/tCHWHKXw52Zw9EdjFbxJs8d5WEMTWgjE3v2T376xQBrZkRRAegHsDjTfSrWcA5d1PcWN1IP79qAZK9VE4Ggo9AVUDli7aBWMwV6On+N4aH5XsAwXB+AOElvKMrgk3BqvEzjsHsJtj1Y+FFqbs3rc4cKkehhNM8Blj4Dx+7h/BpzHEawUyqS1O0CEwpNTKfhLM5zYHCuBAazJLFIuEGYswlgrX2gieBUQ73LoomtVgsJPUtttutZ9/E4kiekavVV3jcIR7IPbztdi/fq4HdMViI3PKx1JtDZ2agRlP78iHoEEoyq03/tXNhofSzY9fvjOPM+pXc81Wuz4ao1d9q/hdDA2E9SexAHKoJsOtK/7JC5AEoHJMCv3MtaqRj3lKHp7hdMNFV1CVJQ0SA7fM5UkbLHDGmF1OaAeJLT7Cd50IE+hI8offxC0zvX27TXOYwdoK9qdTq5HosryPLuOgv3GgwyuC8rZFmfNAQN72rGwrlvQFLIJJEletyVTmVV7zg1m7evQhyJ0QS4H0zSj4zLAL/Cy3DKdJXJ7uA68jpMd3DgVRiSFgnfCwztOUrCuSif9sfnK2nXQqu1q2vQDtLxj7RgtYBLLjsdHRa4jiSRyy3idQcVk8Unpwsm2SXJYTdDL3akTdG1Hu8rusou51TojNefGXIiruLqDpiHzqWdpn8VwdGMUtz177PwF1K1duOXHyEv+0o2FhxhNk9TBfGffaSD+NWS8aU22/61im0nqRvBC0sZs8v0RY6EWKJmQczjlkWMQD/rd5kL4jHBPEyAW7RxLrFHD22oFgGCiLvmhtbeH24dX26IP/Exz+OhXQ6fgrKhxuy6t4qWuo3C7I2jetv8/xER3YByEUTmrk1CVIpeAQN2lZS2ki6Z1BHIj4uFNgwx4kJhzcE71UdP7D4oNsFpWF2NNR+3+NMoQis4k6BeINy6yBk3bWQddAmvS/NTRMyAypGv1tyyj+IiOyZ/qhUJZefMblkvfakAT5NbDlVWpZHp5Khln4ytxfXK9ExFCo+bktAa8QcZnZX+VUEg//kEe1hDnZh7TNnfNMhsv3MDKd8WDOul/OW307nRpE86HygCYHm6Xu3RcrG8MJFdKTRkSGYAaandN7H1FeJUTK6JZ7oEHTjfVK3SnfR+wqkRiCXXepYk66f/D2+7FOUqUFWej4VJudOIGAOQxMNMeKdSAfJ9Wqgp6TuXr2kHH0BQC/INiwQy2TbcyQGB7zH07FNqwHl0S0t9n/36QBfHJ4vK1iyCSxbMWcbcofcjvffl6DNLgioI8nJx/ROd5i5vzI6NDiJQT4KKV/TmKTnnn3N9uqZxuq/wI1/kwlL1T/TQ87Kup4JkO2xJqg6Hy9zQGUk9N/5s2pip7xXs2YvTSsYGIwpnb6KwiVyrbFOL6SDG8N9xLVPZxRupWJR9SCxEg3si4KbpCzvlMjIF9+UYuHfHCHXRa0RBBBhHT63u5cIPqxT2faCsizoJ8WFXwzwOqV4ZVtX3/8QFnaiz+EGAE=.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      ],
+      "tool_calls": [],
+      "finish_reason": "stop",
+      "served_by": {
+        "model_name": "anthropic/claude-haiku-5.5",
+        "generation_id": "gen-1794741871-dGzAdTgXe2eGlyBcKqe1",
+        "provider": "Claude Platform on AWS",
+        "latency_ms": 1762,
+        "generation_time_ms": 3343
+      }
+    }
+  ],
+  "events": [
+    [
+      "status",
+      {
+        "text": "Reading 3 files…"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-0",
+        "text": "Reading ardent-rent-invoice-AP-10-2026.pdf…",
+        "state": "running",
+        "file": "ardent-rent-invoice-AP-10-2026.pdf"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-1",
+        "text": "Reading barclays-october.csv…",
+        "state": "running",
+        "file": "barclays-october.csv"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-2",
+        "text": "Reading pret-receipt.txt…",
+        "state": "running",
+        "file": "pret-receipt.txt"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-0",
+        "text": "Read ardent-rent-invoice-AP-10-2026.pdf (1 row)",
+        "state": "done",
+        "file": "ardent-rent-invoice-AP-10-2026.pdf",
+        "rows": 1
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-1",
+        "text": "Read barclays-october.csv (5 rows)",
+        "state": "done",
+        "file": "barclays-october.csv",
+        "rows": 5
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-2",
+        "text": "Read pret-receipt.txt (1 row)",
+        "state": "done",
+        "file": "pret-receipt.txt",
+        "rows": 1
+      }
+    ],
+    [
+      "status",
+      {
+        "text": "Working on it…"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01EcThfGzLFmRDFzp3GyS1iQ",
+        "text": "Looking over the books…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01GPpvr6uFgf6cxTiVDDcQJC",
+        "text": "Listing the documents…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01GPpvr6uFgf6cxTiVDDcQJC",
+        "text": "Listed 3 documents",
+        "state": "done"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01EcThfGzLFmRDFzp3GyS1iQ",
+        "text": "Looked over the books",
+        "state": "done"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_018ZJR3J2n2VXUZLjAj1PEfp",
+        "text": "Listing what needs a look…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_018a4tfKZ8QVBXw43K4xmcq9",
+        "text": "Listing the rows…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_018ZJR3J2n2VXUZLjAj1PEfp",
+        "text": "Found 0 rows that need a look",
+        "state": "done"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_018a4tfKZ8QVBXw43K4xmcq9",
+        "text": "Listed 7 rows",
+        "state": "done"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_015FhRGD7jbUQKydtb3hxNej",
+        "text": "Opening ardent-rent-invoice-AP-10-2026.pdf…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_011RvhoBwsMVhv5hTu2Lh6Lj",
+        "text": "Opening barclays-october.csv…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01VGB6Fph5oRSxssn18YRaBX",
+        "text": "Opening pret-receipt.txt…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_015FhRGD7jbUQKydtb3hxNej",
+        "text": "Opened ardent-rent-invoice-AP-10-2026.pdf",
+        "state": "done"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_011RvhoBwsMVhv5hTu2Lh6Lj",
+        "text": "Opened barclays-october.csv",
+        "state": "done"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01VGB6Fph5oRSxssn18YRaBX",
+        "text": "Opened pret-receipt.txt",
+        "state": "done"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "I"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " re"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "viewed the three documents:"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " the Ardent"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Property r"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ent invoice, the P"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ret A Manger receipt"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": ", and the October"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Barclays statement. N"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "othing needs a dec"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ision."
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " The"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " rent invoice ("
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "£750.00,"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " 1 Oct 2"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "026) char"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ges no VAT and is boo"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ked to Rent."
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " The Pret receipt ("
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "£8.45, 13"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Oct 2026, including"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " £"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "1.41 VAT)"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " is"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " booked to Subsistence"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": ", and its"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " matching bank line is"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " not boo"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ked again,"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " so it is"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "n't double-counted. The"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " J North loan of"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " £1,000.00 is"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " boo"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ked to the"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Director's Loan Account"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": ", and the BT and"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Barclays char"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ges are booked from"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " their"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " bank lines."
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "\n\nTwo things rem"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ain open on"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " the pa"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "perwork side"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": ". The BT"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Group payment of £42.00"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " on 3 Oct"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " 2026 has no b"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ill,"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " so £"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "7.00 of"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " VAT is not recla"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "imed until"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " one"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " is added. The Barclays"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " account still has no statements"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " for April to September 2026,"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " and its"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " books bal"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ance of £191.05 can"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "'t be checked against a"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " statement y"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "et."
+      }
+    ],
+    [
+      "status",
+      {
+        "text": "Posting the books…"
+      }
+    ],
+    [
+      "result",
+      {
+        "sorted": [],
+        "questions": [],
+        "trial_balance": {
+          "lines": [
+            {
+              "code": "1200",
+              "name": "Bank Current Account",
+              "type": "asset",
+              "heading": "Cash at bank and in hand",
+              "tax": null,
+              "debit": "191.05",
+              "credit": "0.00"
+            },
+            {
+              "code": "2250",
+              "name": "Director's Loan Account",
+              "type": "liability",
+              "heading": "Creditors: amounts falling due within one year",
+              "tax": null,
+              "debit": "0.00",
+              "credit": "1000.00"
+            },
+            {
+              "code": "7100",
+              "name": "Rent",
+              "type": "expense",
+              "heading": "Administrative expenses",
+              "tax": "allowable",
+              "debit": "750.00",
+              "credit": "0.00"
+            },
+            {
+              "code": "7406",
+              "name": "Subsistence",
+              "type": "expense",
+              "heading": "Administrative expenses",
+              "tax": "allowable",
+              "debit": "7.04",
+              "credit": "0.00"
+            },
+            {
+              "code": "7502",
+              "name": "Telephone and Internet",
+              "type": "expense",
+              "heading": "Administrative expenses",
+              "tax": "check",
+              "debit": "42.00",
+              "credit": "0.00"
+            },
+            {
+              "code": "7901",
+              "name": "Bank Charges",
+              "type": "expense",
+              "heading": "Administrative expenses",
+              "tax": "allowable",
+              "debit": "8.50",
+              "credit": "0.00"
+            },
+            {
+              "code": "2201",
+              "name": "Purchase VAT",
+              "type": "liability",
+              "heading": "Creditors: amounts falling due within one year",
+              "tax": null,
+              "debit": "1.41",
+              "credit": "0.00"
+            }
+          ],
+          "opening": [],
+          "total_debits": "1000.00",
+          "total_credits": "1000.00",
+          "is_balanced": true,
+          "journal": [
+            {
+              "transaction": 1,
+              "code": "7100",
+              "debit": "750.00",
+              "credit": "0.00",
+              "description": "Ardent Property: office rent, Suite 3, 14 Wharf Street, October 2026"
+            },
+            {
+              "transaction": 1,
+              "code": "2100",
+              "debit": "0.00",
+              "credit": "750.00",
+              "description": "Ardent Property: office rent, Suite 3, 14 Wharf Street, October 2026"
+            },
+            {
+              "transaction": 2,
+              "code": "7406",
+              "debit": "7.04",
+              "credit": "0.00",
+              "description": "Pret A Manger: chicken caesar baguette and flat white"
+            },
+            {
+              "transaction": 2,
+              "code": "2201",
+              "debit": "1.41",
+              "credit": "0.00",
+              "description": "Pret A Manger: chicken caesar baguette and flat white"
+            },
+            {
+              "transaction": 2,
+              "code": "1200",
+              "debit": "0.00",
+              "credit": "8.45",
+              "description": "Pret A Manger: chicken caesar baguette and flat white"
+            },
+            {
+              "transaction": 3,
+              "code": "2250",
+              "debit": "0.00",
+              "credit": "1000.00",
+              "description": "J NORTH LOAN TO COMPANY"
+            },
+            {
+              "transaction": 3,
+              "code": "1200",
+              "debit": "1000.00",
+              "credit": "0.00",
+              "description": "J NORTH LOAN TO COMPANY"
+            },
+            {
+              "transaction": 4,
+              "code": "2100",
+              "debit": "750.00",
+              "credit": "0.00",
+              "description": "ARDENT PROPERTY"
+            },
+            {
+              "transaction": 4,
+              "code": "1200",
+              "debit": "0.00",
+              "credit": "750.00",
+              "description": "ARDENT PROPERTY"
+            },
+            {
+              "transaction": 5,
+              "code": "7502",
+              "debit": "42.00",
+              "credit": "0.00",
+              "description": "BT GROUP PLC"
+            },
+            {
+              "transaction": 5,
+              "code": "1200",
+              "debit": "0.00",
+              "credit": "42.00",
+              "description": "BT GROUP PLC"
+            },
+            {
+              "transaction": 7,
+              "code": "7901",
+              "debit": "8.50",
+              "credit": "0.00",
+              "description": "BARCLAYS ACCOUNT FEE"
+            },
+            {
+              "transaction": 7,
+              "code": "1200",
+              "debit": "0.00",
+              "credit": "8.50",
+              "description": "BARCLAYS ACCOUNT FEE"
+            }
+          ],
+          "total_income": "0.00",
+          "total_expenses": "807.54",
+          "net_profit": "-807.54",
+          "total_assets": "191.05",
+          "total_liabilities": "998.59",
+          "left_out": [],
+          "suspense": [],
+          "unposted_changes": 0,
+          "problems": []
+        },
+        "post": {
+          "batch_id": "21c4ff0125af49fdaf1ba9ea84529783",
+          "entries_added": 13,
+          "reversals_added": 0,
+          "total_debits": "2558.95",
+          "total_credits": "2558.95",
+          "problems": []
+        }
+      }
+    ],
+    [
+      "done",
+      {}
+    ]
+  ],
+  "answers": [],
+  "rows_after_review": [
+    {
+      "id": 1,
+      "upload_id": 1,
+      "date": "2026-10-01",
+      "description": "Ardent Property: office rent, Suite 3, 14 Wharf Street, October 2026",
+      "direction": "out",
+      "gross": "750.00",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7100",
+      "contra_account_code": "2100",
+      "bank_account": null,
+      "currency": "GBP",
+      "source": "pdf",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "invoice",
+      "counterparty": "Ardent Property Ltd",
+      "document_number": "AP-10-2026",
+      "agent": null,
+      "owed_to": null,
+      "document_total": "750.00",
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "ardent-ap102026",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Rent",
+      "contra_account_name": "Creditors",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 2,
+      "upload_id": 2,
+      "date": "2026-10-13",
+      "description": "Pret A Manger: chicken caesar baguette and flat white",
+      "direction": "out",
+      "gross": "8.45",
+      "vat": "1.41",
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7406",
+      "contra_account_code": "1200",
+      "bank_account": null,
+      "currency": "GBP",
+      "source": "text",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "receipt",
+      "counterparty": "Pret A Manger",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": "8.45",
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "pret-1310",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": "GB999881245",
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Subsistence",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 3,
+      "upload_id": 3,
+      "date": "2026-10-01",
+      "description": "J NORTH LOAN TO COMPANY",
+      "direction": "in",
+      "gross": "1000.00",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "2250",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "J North",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-01",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Director's Loan Account",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 4,
+      "upload_id": 3,
+      "date": "2026-10-02",
+      "description": "ARDENT PROPERTY",
+      "direction": "out",
+      "gross": "750.00",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7100",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "Ardent Property",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-02",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Rent",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 5,
+      "upload_id": 3,
+      "date": "2026-10-03",
+      "description": "BT GROUP PLC",
+      "direction": "out",
+      "gross": "42.00",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7502",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "BT Group",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-03",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Telephone and Internet",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 6,
+      "upload_id": 3,
+      "date": "2026-10-13",
+      "description": "PRET A MANGER",
+      "direction": "out",
+      "gross": "8.45",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7406",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "Pret A Manger",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-04",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Subsistence",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 7,
+      "upload_id": 3,
+      "date": "2026-10-30",
+      "description": "BARCLAYS ACCOUNT FEE",
+      "direction": "out",
+      "gross": "8.50",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7901",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "Barclays",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-05",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Bank Charges",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    }
+  ],
+  "questions_after_review": [],
+  "rows_final": [
+    {
+      "id": 1,
+      "upload_id": 1,
+      "date": "2026-10-01",
+      "description": "Ardent Property: office rent, Suite 3, 14 Wharf Street, October 2026",
+      "direction": "out",
+      "gross": "750.00",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7100",
+      "contra_account_code": "2100",
+      "bank_account": null,
+      "currency": "GBP",
+      "source": "pdf",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "invoice",
+      "counterparty": "Ardent Property Ltd",
+      "document_number": "AP-10-2026",
+      "agent": null,
+      "owed_to": null,
+      "document_total": "750.00",
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "ardent-ap102026",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Rent",
+      "contra_account_name": "Creditors",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 2,
+      "upload_id": 2,
+      "date": "2026-10-13",
+      "description": "Pret A Manger: chicken caesar baguette and flat white",
+      "direction": "out",
+      "gross": "8.45",
+      "vat": "1.41",
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7406",
+      "contra_account_code": "1200",
+      "bank_account": null,
+      "currency": "GBP",
+      "source": "text",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "receipt",
+      "counterparty": "Pret A Manger",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": "8.45",
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "pret-1310",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": "GB999881245",
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Subsistence",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 3,
+      "upload_id": 3,
+      "date": "2026-10-01",
+      "description": "J NORTH LOAN TO COMPANY",
+      "direction": "in",
+      "gross": "1000.00",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "2250",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "J North",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-01",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Director's Loan Account",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 4,
+      "upload_id": 3,
+      "date": "2026-10-02",
+      "description": "ARDENT PROPERTY",
+      "direction": "out",
+      "gross": "750.00",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7100",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "Ardent Property",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-02",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Rent",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 5,
+      "upload_id": 3,
+      "date": "2026-10-03",
+      "description": "BT GROUP PLC",
+      "direction": "out",
+      "gross": "42.00",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7502",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "BT Group",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-03",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Telephone and Internet",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 6,
+      "upload_id": 3,
+      "date": "2026-10-13",
+      "description": "PRET A MANGER",
+      "direction": "out",
+      "gross": "8.45",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7406",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "Pret A Manger",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-04",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Subsistence",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 7,
+      "upload_id": 3,
+      "date": "2026-10-30",
+      "description": "BARCLAYS ACCOUNT FEE",
+      "direction": "out",
+      "gross": "8.50",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7901",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "Barclays",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-05",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Bank Charges",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    }
+  ],
+  "decisions": [],
+  "result": {
+    "case": "clean-month",
+    "model": "qwen/qwen3.8-27b",
+    "seconds": 11.0,
+    "client_id": 1,
+    "thread_id": "c03d721910a84d8d94940587b0a5367e",
+    "trial_balance": {
+      "passed": true,
+      "differences": []
+    },
+    "decisions": {
+      "passed": true,
+      "differences": [],
+      "already_in_reading": []
+    },
+    "questions": {
+      "passed": true,
+      "differences": []
+    },
+    "problems": [],
+    "row_fallbacks": [],
+    "unmatched_names": [],
+    "posted_problems": [],
+    "steps": 10,
+    "failed_steps": [],
+    "error_events": [],
+    "refused_decisions": [],
+    "answers_not_applied": [],
+    "run": 1,
+    "hosts": [
+      "Claude Platform on AWS"
+    ]
+  }
+}

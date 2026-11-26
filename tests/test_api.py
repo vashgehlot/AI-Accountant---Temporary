@@ -8,18 +8,53 @@ from fakes import ROW, FakeModel, FakeUrlopen, http_error, transactions_json
 from fastapi.testclient import TestClient
 
 from ledgersync.config import Settings
-from ledgersync.errors import ModelTimeout, ModelUnavailable
+from ledgersync.errors import ModelTimeout, ModelUnavailable, StorageError
 from ledgersync.model_client import ModelClient
 from server import create_app
 
 
+def test_without_mongodb_the_api_refuses_to_start():
+    with pytest.raises(StorageError, match="Set MONGODB_URI in .env"):
+        create_app(Settings(mongodb_uri=""), model_client=FakeModel())
+
+
+class SpyStore:
+    """Stands in for a MongoStore and records whether it was closed."""
+    db = None
+
+    def __init__(self, *args, **kwargs):
+        self.closed = False
+
+    def close(self):
+        self.closed = True
+
+
+def test_the_app_leaves_a_store_it_was_given_open_at_shutdown():
+    store = SpyStore()
+    app = create_app(Settings(warmup=False), model_client=FakeModel(), store=store, blobs=object())
+    with TestClient(app):
+        pass
+    assert not store.closed
+
+
+def test_the_app_closes_the_store_it_opened_at_shutdown(monkeypatch):
+    opened = []
+    monkeypatch.setattr("server.MongoStore", lambda *args, **kwargs: opened.append(SpyStore()) or opened[-1])
+    app = create_app(Settings(warmup=False, mongodb_uri="mongodb://localhost:1"), model_client=FakeModel(),
+                     blobs=object())
+    with TestClient(app):
+        assert not opened[0].closed
+    assert opened[0].closed
+
+
 @pytest.fixture
-def make_client():
+def make_client(mongo_store):
     clients = []
 
     def _make(model=None):
         settings = Settings(warmup=False, max_upload_mb=1, max_pdf_pages=3)
-        app = create_app(settings, model_client=model or FakeModel([transactions_json(ROW)]))
+        app = create_app(settings, model_client=model or FakeModel([transactions_json(ROW)]),
+                         store=mongo_store)
         client = TestClient(app, headers={"X-LedgerSync": "1"})   # as the LedgerSync pages send
         client.__enter__()
         clients.append(client)
@@ -127,7 +162,7 @@ def test_cancel_running_job_via_api(make_client):
             super().__init__()
             self.entered, self.release = threading.Event(), threading.Event()
 
-        def chat_json(self, messages, schema, images=None):
+        def chat_json(self, messages, schema, images=None, reasoning_effort=None):
             self.entered.set()
             self.release.wait(5)
             return transactions_json(ROW)
@@ -153,7 +188,8 @@ BT = {"direction": "out", "gross": "72.00", "account_code": "7502", "date": "202
 
 def test_accounts_are_listed(make_client):
     accounts = make_client().get("/api/accounts").json()
-    assert {"code": "7502", "name": "Telephone and Internet", "type": "expense", "vat": "standard"} in accounts
+    assert {"code": "7502", "name": "Telephone and Internet", "type": "expense", "vat": "standard",
+            "heading": "Administrative expenses", "tax": "check", "sa103": 23} in accounts
 
 
 def test_validate_books_no_vat_when_the_document_shows_none(make_client):
@@ -186,7 +222,7 @@ def test_trial_balance_balances_with_bank_and_vat_legs(make_client):
 def test_trial_balance_rejects_unpostable_rows_with_422(make_client):
     resp = make_client().post("/api/trial-balance", json={"transactions": [BT, {**BT, "account_code": "9999"}]})
     assert resp.status_code == 422 and resp.json()["detail"]["code"] == "transactions_need_fixing"
-    assert "#2" in resp.json()["detail"]["message"]
+    assert "): This account isn't in the chart." in resp.json()["detail"]["message"]   # the row is named
 
 
 def test_non_vat_registered_business_gets_gross_postings(make_client):
@@ -223,9 +259,10 @@ def test_health_never_shows_the_api_key(make_client):
     assert "gsk-secret" not in body and "rejected the API key" in body
 
 
-def test_the_business_name_setting_reaches_the_model():
+def test_the_business_name_setting_reaches_the_model(mongo_store):
     model = FakeModel([transactions_json(ROW)])
-    with TestClient(create_app(Settings(warmup=False, business_name="Acme Ltd"), model_client=model),
+    with TestClient(create_app(Settings(warmup=False, business_name="Acme Ltd"), model_client=model,
+                               store=mongo_store),
                     headers={"X-LedgerSync": "1"}) as client:
         run_text_job(client)
     assert "Acme Ltd" in model.calls[0]["messages"][0]["content"]
@@ -257,8 +294,33 @@ def test_validate_matches_a_payment_to_its_bill(make_client):
 
 
 def test_trial_balance_waits_for_a_person_to_choose_a_payment(make_client):
-    bills = [{**BT, "document_type": "invoice", "counterparty": "BT Business", "document_ref": r} for r in "ab"]
+    # Part of one of two bills: which one is for a person (two of the same amount pay the oldest).
+    bills = [{**BT, "document_type": "invoice", "counterparty": "BT Business", "document_ref": r, "gross": g}
+             for r, g in (("a", "500.00"), ("b", "450.00"))]
     line = {**BT, "date": "2026-09-05", "document_type": "statement", "counterparty": "BT BUSINESS",
-            "document_ref": "l"}
+            "document_ref": "l", "gross": "300.00"}
     resp = make_client().post("/api/trial-balance", json={"transactions": [*bills, line]})
     assert resp.status_code == 422 and "Choose one" in resp.json()["detail"]["message"]
+
+
+def test_the_agent_and_request_routes_are_gone(make_client):
+    paths = {route.path for route in make_client().app.routes}
+    assert not any(p.startswith(("/api/agent-jobs", "/api/requests")) or "agent-jobs" in p for p in paths)
+
+
+def test_a_claim_total_the_upload_does_not_print_is_dropped_from_the_rows(make_client):
+    # The reader added the claim's lines up to make 60.00; the file prints no such figure.
+    claim = dict(ROW, document_type="expense_claim", counterparty="Matt", document_total=60.0)
+    model = FakeModel([transactions_json(dict(claim, amount=42.0, date="2026-10-02"),
+                                         dict(claim, amount=18.0, date="2026-10-03"))])
+    job = run_text_job(make_client(model), text="Date,Item,Amount\n2026-10-02,Pagecraft,42.00\n2026-10-03,Taxi,18.00")
+    rows = job["result"]["transactions"]
+    assert [r["document_total"] for r in rows] == [None, None] and rows[0]["document_ref"] != rows[1]["document_ref"]
+
+
+def test_a_claim_total_the_upload_prints_is_kept_in_the_rows(make_client):
+    claim = dict(ROW, document_type="expense_claim", counterparty="Matt", document_total=60.0)
+    model = FakeModel([transactions_json(dict(claim, amount=42.0, date="2026-10-02"),
+                                         dict(claim, amount=18.0, date="2026-10-03"))])
+    job = run_text_job(make_client(model), text="Pagecraft 42.00\nTaxi 18.00\nTotal 60.00")
+    assert [r["document_total"] for r in job["result"]["transactions"]] == ["60.00", "60.00"]

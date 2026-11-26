@@ -1,0 +1,559 @@
+{
+  "date": "2026-11-06",
+  "read": "model",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "clean-month",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 103.2,
+      "client_id": 234,
+      "thread_id": "034ffe32a2f9405ebff4fe3a67d06fa3",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "DeepInfra"
+      ],
+      "transcript": "clean-month-r1.json"
+    },
+    {
+      "case": "combined-vat",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 112.8,
+      "client_id": 235,
+      "thread_id": "160a31424e9444a0b8ad9fcdeaa751e9",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "bulkbuy-receipt.txt",
+            "description": "Bulkbuy: cleaning supplies, tea, coffee, milk and sugar"
+          },
+          "found": {
+            "file": "bulkbuy-receipt.txt",
+            "description": "BULKBUY CASH & CARRY LTD - cleaning supplies, kitchen roll, milk, tea, coffee and sugar"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "DeepInfra"
+      ],
+      "transcript": "combined-vat-r1.json"
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 77.7,
+      "client_id": 236,
+      "thread_id": "ef7f87b6659046a5b8974e6db2fb3277",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "pagecraft-invoice-PC-5512.pdf",
+            "description": "Pagecraft: Brother TN-2420 toner cartridge"
+          },
+          "found": {
+            "file": "pagecraft-invoice-PC-5512.pdf",
+            "description": "PAGECRAFT STATIONERS LTD - Brother TN-2420 toner cartridge"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Pagecraft - toner cartridge"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Pagecraft toner cartridge"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 12,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "DeepInfra"
+      ],
+      "transcript": "conflict-invoice-vs-expense-report-r1.json"
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 93.0,
+      "client_id": 237,
+      "thread_id": "7e08bf738ecc480e993eb817c835794d",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "staples-receipt.txt",
+            "description": "Staples: A4 printer paper and toner"
+          },
+          "found": {
+            "file": "staples-receipt.txt",
+            "description": "Staples, A4 printer paper and Brother TN-2420 toner"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Staples - printer paper and toner"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Staples, printer paper and toner"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [
+        "Didn't change row 2063"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R2 Duplicate",
+          "reason": "Row 2063 is the bank line that pays the receipt kept, not a duplicate. Send the call with the receipt as row_id, and drop only the expenses-sheet line; the bank line then pays it."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "DeepInfra"
+      ],
+      "transcript": "duplicate-receipt-spreadsheet-r1.json"
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 52.3,
+      "client_id": 238,
+      "thread_id": "1c74aadafa3142aab56341f66eea91c1",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "parking-photo.png",
+            "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+          },
+          "found": {
+            "file": "parking-photo.png",
+            "description": "NCP Leeds Wellington Street car park, parking tariff up to 3 hours"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 7,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "DeepInfra"
+      ],
+      "transcript": "missing-date-from-bank-r1.json"
+    },
+    {
+      "case": "missing-date-must-ask",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 39.6,
+      "client_id": 239,
+      "thread_id": "2dfc334b06be49fab07a4c77c39baba3",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+          },
+          "found": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs, taxi journey Leeds Station to Kirkstall"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "DeepInfra"
+      ],
+      "transcript": "missing-date-must-ask-r1.json"
+    },
+    {
+      "case": "no-invoice-over-50-suspense",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 63.9,
+      "client_id": 240,
+      "thread_id": "1860d79852a3411ab0a9e0193c00a3a4",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "barclays-october.csv",
+            "description": "AMAZON MKTPLACE"
+          },
+          "found": {
+            "file": "barclays-october.csv",
+            "description": "Amazon Marketplace, card purchase"
+          }
+        },
+        {
+          "expected": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT"
+          },
+          "found": {
+            "file": "barclays-october.csv",
+            "description": "Brightline Print, printing services"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 7,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "DeepInfra"
+      ],
+      "transcript": "no-invoice-over-50-suspense-r1.json"
+    },
+    {
+      "case": "receipt-over-250-needs-invoice",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 53.7,
+      "client_id": 241,
+      "thread_id": "52e2efc67e8b435daaf4420a3bde625e",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "volt-receipt.txt",
+            "description": "Lenovo ThinkPad E14 laptop"
+          },
+          "found": {
+            "file": "volt-receipt.txt",
+            "description": "VOLT ELECTRICAL LTD - Lenovo ThinkPad E14 laptop"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 12,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "DeepInfra"
+      ],
+      "transcript": "receipt-over-250-needs-invoice-r1.json"
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 39.0,
+      "client_id": 242,
+      "thread_id": "92d3b6a0ca7b4fc4ba4a18e37ae4b517",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": [
+          {
+            "rule": "R5 VAT from the document",
+            "row": {
+              "file": "northern-fibre-invoice-NFB-88213.pdf",
+              "description": "Northern Fibre: Business Fibre 500, October 2026"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "northern-fibre-invoice-NFB-88213.pdf",
+            "description": "Northern Fibre: Business Fibre 500, October 2026"
+          },
+          "found": {
+            "file": "northern-fibre-invoice-NFB-88213.pdf",
+            "description": "Northern Fibre Broadband Ltd, Business Fibre 500 October 2026"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 10,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "DeepInfra"
+      ],
+      "transcript": "vat-on-invoice-missing-from-entry-r1.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 173.8,
+      "client_id": 1,
+      "thread_id": "f8942cd2d3f24bd89f8a8214b53bdd11",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": [
+          {
+            "rule": "R5 VAT from the document",
+            "row": {
+              "file": "inkwell-invoice-INK-4471.pdf",
+              "description": "Inkwell: HP 305XL black ink cartridges x2"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "costco-receipt-21-10.txt",
+            "description": "Costco: copier paper, box files, milk, coffee and tea"
+          },
+          "found": {
+            "file": "costco-receipt-21-10.txt",
+            "description": "Costco Wholesale UK Ltd - A4 copier paper, box files, milk, coffee, tea bags"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Costco - office supplies and kitchen"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Costco, office supplies and kitchen"
+          }
+        },
+        {
+          "expected": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell: HP 305XL black ink cartridges x2"
+          },
+          "found": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell Supplies Ltd - HP 305XL black ink cartridges"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Inkwell - printer ink"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Inkwell, printer ink"
+          }
+        },
+        {
+          "expected": {
+            "file": "parking-photo.png",
+            "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+          },
+          "found": {
+            "file": "parking-photo.png",
+            "description": "NCP Leeds Wellington Street car park parking, tariff up to 3 hours"
+          }
+        },
+        {
+          "expected": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+          },
+          "found": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs, taxi journey Leeds Station to Kirkstall"
+          }
+        },
+        {
+          "expected": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT"
+          },
+          "found": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT, bill payment (printing)"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 21,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "DeepInfra"
+      ],
+      "transcript": "demo-r1.json"
+    }
+  ]
+}

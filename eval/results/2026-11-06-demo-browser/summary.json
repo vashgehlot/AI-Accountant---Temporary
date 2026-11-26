@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-06",
+  "what": "Northbridge demo script (spec 2026-11-02-accountant-chat-design.md, 'The demo, in order'), once in the browser with the real model reading the files",
+  "model": "qwen/qwen3.8-27b",
+  "code": "first turn on d6492f3 + 455a020 (docs only); later steps on f5ad7d2 (reply whitespace fix), a production build of the frontend at d6492f3",
+  "steps": [
+    {"step": 1, "what": "reset the demo, new chat, pick Northbridge", "result": "pass"},
+    {"step": 2, "what": "drop the 6 October files, ask to review them", "result": "pass", "notes": "25 steps; files read 9+1+1+3+1+1 rows"},
+    {"step": 3, "what": "summary", "result": "pass",
+     "sorted": ["R4 conflict: used the invoice (Inkwell)", "R2 duplicate: kept the receipt (Costco)", "R3 mixed VAT: split by rate (Costco)", "R1 date from the bank (parking)"],
+     "already_in_reading": ["R5 VAT from the Inkwell invoice (ruled 2026-11-06: accepted)"],
+     "questions": ["taxi date (Leeds City Cabs, £18.00)", "receipt or invoice for BRIGHTLINE PRINT £240.00"],
+     "posted": "balanced, £240.00 in Suspense"},
+    {"step": 4, "what": "answer the taxi date (8 Oct 2026), upload brightline-invoice-BP-2210.pdf", "result": "pass",
+     "notes": "cards: 'Answered: 8 Oct 2026', 'Answered: Matched to brightline-invoice-BP-2210.pdf · Posted · balanced · nothing in Suspense'; posted trial balance equals expected_trial_balance_after_answers.json to the penny (posted-trial-balance-after-answers.json). The first reply's own table still shows that turn's posting (£240 in Suspense), as the chat-replies spec has it (screenshot 04)."},
+    {"step": 5, "what": "ask 'Why did you use £30.22?'", "result": "pass", "notes": "answered from the chat's memory: invoice total and the bank payment agree, no tool steps"},
+    {"step": 6, "what": "Transactions: agent badges and the removed duplicate", "result": "pass", "notes": "sheet's Costco line struck through, Agent badge, 'Left out' reason; receipt 'Replaced' by its split"},
+    {"step": 7, "what": "new chat on Northbridge", "result": "pass", "notes": "'What needs my attention?' → nothing open; no mention of the earlier conversation"}
+  ],
+  "found": [
+    {"what": "replies showed runs of up to 13 newlines (Qwen's whitespace around tool calls)", "fixed_in": "f5ad7d2", "screenshots": ["00-before-fix-blank-runs.jpg", "01-review-reply.jpg"]}
+  ]
+}

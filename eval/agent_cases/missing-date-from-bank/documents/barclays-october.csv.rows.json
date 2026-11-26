@@ -1,0 +1,46 @@
+{
+  "file": "barclays-october.csv",
+  "kind": "table",
+  "bank_account": "1200",
+  "transactions": [
+    {
+      "date": "2026-10-03",
+      "description": "BT GROUP PLC",
+      "direction": "out",
+      "gross": "42.00",
+      "account_code": "7502",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "BT Group",
+      "document_ref": "bk-01"
+    },
+    {
+      "date": "2026-10-14",
+      "description": "NCP LEEDS",
+      "direction": "out",
+      "gross": "6.50",
+      "account_code": "7400",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "NCP Leeds",
+      "document_ref": "bk-02"
+    },
+    {
+      "date": "2026-10-30",
+      "description": "BARCLAYS ACCOUNT FEE",
+      "direction": "out",
+      "gross": "8.50",
+      "account_code": "7901",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Barclays",
+      "document_ref": "bk-03"
+    }
+  ]
+}

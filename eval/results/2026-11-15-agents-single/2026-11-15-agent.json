@@ -1,0 +1,463 @@
+{
+  "date": "2026-11-15",
+  "read": "rows",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "clean-month",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 11.0,
+      "client_id": 1,
+      "thread_id": "c03d721910a84d8d94940587b0a5367e",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 10,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "Claude Platform on AWS"
+      ],
+      "transcript": "clean-month-r1.json"
+    },
+    {
+      "case": "combined-vat",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 14.4,
+      "client_id": 2,
+      "thread_id": "41f48fa560d04c2d92f8a60b255c1770",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 11,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "Claude Platform on AWS"
+      ],
+      "transcript": "combined-vat-r1.json"
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 12.9,
+      "client_id": 3,
+      "thread_id": "3766042e4eb54edda9c5d7644fccef66",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 14,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "Claude Platform on AWS"
+      ],
+      "transcript": "conflict-invoice-vs-expense-report-r1.json"
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 12.2,
+      "client_id": 4,
+      "thread_id": "d2ca89caab874be5887b1e66d18cef5d",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "Claude Platform on AWS"
+      ],
+      "transcript": "duplicate-receipt-spreadsheet-r1.json"
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 11.3,
+      "client_id": 5,
+      "thread_id": "9625f3cbcb9449858c352c4dd6581579",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 10,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "Claude Platform on AWS"
+      ],
+      "transcript": "missing-date-from-bank-r1.json"
+    },
+    {
+      "case": "missing-date-must-ask",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 15.3,
+      "client_id": 6,
+      "thread_id": "fa293e1427a94002b615a878c97b798e",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R1 Date from the person",
+              "row": {
+                "file": "IMG_20261009_081502.png",
+                "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                26
+              ],
+              "rule": "R1 Date from another record"
+            }
+          }
+        ],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "missing": [
+              "date",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          }
+        ]
+      },
+      "problems": [
+        "answer not applied: No date question is open on {'file': 'IMG_20261009_081502.png', 'description': 'Leeds City Cabs taxi, Leeds Station to Kirkstall'}."
+      ],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 11,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [
+        "No date question is open on {'file': 'IMG_20261009_081502.png', 'description': 'Leeds City Cabs taxi, Leeds Station to Kirkstall'}."
+      ],
+      "run": 1,
+      "hosts": [
+        "Claude Platform on AWS"
+      ],
+      "transcript": "missing-date-must-ask-r1.json"
+    },
+    {
+      "case": "no-invoice-over-50-suspense",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 7.2,
+      "client_id": 7,
+      "thread_id": "f719e22dcb04431bbae74381bef007d5",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 6,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "Claude Platform on AWS"
+      ],
+      "transcript": "no-invoice-over-50-suspense-r1.json"
+    },
+    {
+      "case": "receipt-over-250-needs-invoice",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 9.2,
+      "client_id": 8,
+      "thread_id": "48c6896047cc4704839680547919dd06",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 10,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "Claude Platform on AWS"
+      ],
+      "transcript": "receipt-over-250-needs-invoice-r1.json"
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 16.6,
+      "client_id": 9,
+      "thread_id": "3a256ce6092244f79fae4e67337a510c",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 14,
+      "failed_steps": [
+        "Didn't change row 39"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R5 VAT from the document",
+          "reason": "barclays-october.csv can't be quoted for rows 39: it isn't one of their documents, nor a record matched with them, nor a bank line paying the one kept. This is only about which documents can be quoted. Quote from: northern-fibre-invoice-NFB-88213.pdf."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 1,
+      "hosts": [
+        "Claude Platform on AWS"
+      ],
+      "transcript": "vat-on-invoice-missing-from-entry-r1.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 37.0,
+      "client_id": 9,
+      "thread_id": "4bd4136d12024ac9a9f231ed93031a02",
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "code": "1200",
+            "expected": "17404.34",
+            "actual": "17422.34",
+            "difference": "18.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "9998",
+            "expected": "240.00",
+            "actual": "222.00",
+            "difference": "-18.00"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R1 Date from the person",
+              "row": {
+                "file": "IMG_20261009_081502.png",
+                "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                48
+              ],
+              "rule": "R1 Date from another record"
+            }
+          }
+        ],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "missing": [
+              "date",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          }
+        ]
+      },
+      "problems": [
+        "answer not applied: No date question is open on {'file': 'IMG_20261009_081502.png', 'description': 'Leeds City Cabs taxi, Leeds Station to Kirkstall'}."
+      ],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 25,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [
+        "No date question is open on {'file': 'IMG_20261009_081502.png', 'description': 'Leeds City Cabs taxi, Leeds Station to Kirkstall'}."
+      ],
+      "run": 1,
+      "hosts": [
+        "Claude Platform on AWS"
+      ],
+      "transcript": "demo-r1.json"
+    }
+  ]
+}

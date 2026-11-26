@@ -6,6 +6,8 @@ export interface Issue {
   message: string
   severity: 'info' | 'warning' | 'error'
   related?: number[]   // the other rows it is about, by row id (Show both)
+  about?: 'row' | 'document'   // what it is a problem with: the row (when absent too), or its whole document
+  difference?: string | null   // a total that doesn't add up: what it is out by (positive: short; negative: over)
 }
 
 export interface Settlement {
@@ -25,9 +27,17 @@ export interface Transaction {
   vat_treatment: string | null  // rate a person picked, to estimate VAT not shown; null = none picked
   vat_posted: string | null     // set by the API: the VAT the ledger books
   net: string | null            // set by the API: gross minus vat_posted
+  // Set by the API: the part of vat_posted the books do not reclaim (the row is held in Suspense for its VAT
+  // invoice, or its document isn't a VAT invoice), and why. The books hold the whole amount with no VAT.
+  vat_not_reclaimed?: string | null
+  vat_confirmed?: boolean           // a person entered the VAT, or said to reclaim it: reclaimed on their say
+  vat_from_claim?: boolean          // set by the API: its VAT is what its expense claim shows, its receipt showing none
+  vat_not_reclaimed_why?: string | null
   account_code: string
   account_name?: string | null
+  contra_account_name?: string | null   // the name of the other side: a journal's credit account
   contra_account_code: string | null
+  bank_account?: string | null      // a bank line: the account or card its statement is for
   currency: string
   source: string
   method: string
@@ -50,6 +60,10 @@ export interface Transaction {
   copy_of?: Settlement | null        // set by the API: the earlier document this one repeats; not booked unless included
   recorded_by?: Settlement | null    // set by the API: the receipt or invoice for this bank or claim line, booked instead
   claimed_in?: Settlement | null     // set by the API on a receipt or invoice: the expense claim it is owed on
+  recorded_by_refs?: string[]        // set by the API on a claim line booked from several receipts of one document:
+                                     // each one's ref (recorded_by then stands for them all)
+  left_off_claim?: Settlement | null // set by the API on a receipt of that document the claim leaves out: the claim;
+                                     // the claimant paid it, so not booked unless included
   document_total?: string | null     // the total printed on its document, which the API checks the rows against
   document_net?: string | null       // the total before VAT printed on its document
   not_vat_invoice?: boolean          // its document says it is not a VAT invoice
@@ -59,6 +73,14 @@ export interface Transaction {
                                      // card payment) when it agrees on all but the date (Use)
   amount_found?: string | null       // set by the API: that record's amount, when the two agree on the shop and the day (Use)
   apart_from?: number[]              // rows a person said are not the same as this one, by row id (Not the same)
+  accepted?: string[]                // warnings a person said are fine, by code (It's fine)
+  reverse_charge?: boolean           // a service from abroad with no VAT charged: the VAT is due and reclaimed
+  without_document?: string | null   // a person booked it without its receipt or invoice, for this reason
+  excluded?: boolean                 // a decision left it out of the books
+  removed?: boolean                  // a person removed it: out of the books (excluded too) until they Put back
+  total_accepted?: string | null     // the difference from its document's total a person said to leave as it is
+  superseded_by?: string | null      // the decision that replaced it with other rows
+  decision_ids?: string[]            // the decisions that changed it
 }
 
 export interface AnalyzeResult {
@@ -73,12 +95,14 @@ export interface TrialBalanceLine {
   code: string
   name: string
   type: string
+  heading?: string      // where it goes in the accounts, such as 'Tangible assets'; missing from older APIs
   debit: string
   credit: string
 }
 
 export interface TrialBalanceResult {
-  lines: TrialBalanceLine[]
+  lines: TrialBalanceLine[]       // the closing balances: the opening balances plus the year's movements
+  opening?: TrialBalanceLine[]    // the opening balances alone; missing from older APIs
   total_debits: string
   total_credits: string
   is_balanced: boolean
@@ -87,6 +111,7 @@ export interface TrialBalanceResult {
   net_profit?: string
   total_assets?: string
   total_liabilities?: string
+  left_out?: string[]             // rows with a problem to fix, left out of these figures, each named in words
 }
 
 export interface Health {
@@ -96,6 +121,7 @@ export interface Health {
   ai_error: string | null
   max_upload_mb: number
   max_parallel_jobs?: number    // files the API reads at once; missing from older APIs
+  demo?: boolean                // LEDGERSYNC_DEMO=1: the header offers Reset demo
 }
 
 interface Job {
@@ -118,7 +144,7 @@ export class ApiError extends Error {
 
 const POLL_INTERVAL_MS = 1_000
 const MAX_POLL_FAILURES = 10 // ~10 s: long enough for the API to restart
-const API_DOWN = 'The Super Accountant API is not running or failed. Check that `python server.py` is running and see its log.'
+const API_DOWN = 'Super Accountant could not be reached. Try again in a moment; if it keeps happening, the person who runs it needs to check the server is up.'
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -129,14 +155,15 @@ export async function request<T>(path: string, init: RequestInit = {}, timeoutMs
     .catch(() => {
       throw controller.signal.aborted
         ? new ApiError('The Super Accountant API did not respond in time.', 'timeout')
-        : new ApiError('Cannot reach the Super Accountant API. Is `python server.py` running?', 'network')
+        : new ApiError('Super Accountant could not be reached. Try again in a moment; if it keeps happening, the person who runs it needs to check the server is up.', 'network')
     })
     .finally(() => clearTimeout(timer))
   if (!res.ok) throw await errorFrom(res)
+  if (res.status === 204) return undefined as T     // done, with nothing to read back
   return (await res.json()) as T
 }
 
-async function errorFrom(res: Response): Promise<ApiError> {
+export async function errorFrom(res: Response): Promise<ApiError> {
   let detail: unknown
   try {
     detail = (await res.json()).detail
@@ -161,6 +188,22 @@ export function getHealth(): Promise<Health> {
   return request<Health>('/api/health', {}, 10_000)
 }
 
+// The form /api/analyze takes: one file or some pasted text. For a client's documents it also names the client, the
+// year they go to and the bank account a statement is on; the API refuses a statement without an account when the
+// client has several.
+export function analysisForm(source: { file?: Blob; text?: string },
+                             where?: { clientId: number; yearStart: string; bankAccount: string }): FormData {
+  const data = new FormData()
+  if (source.file) data.append('file', source.file)
+  if (source.text !== undefined) data.append('text', source.text)
+  if (where) {
+    data.append('client_id', String(where.clientId))
+    data.append('year_start', where.yearStart)
+    if (where.bankAccount) data.append('bank_account', where.bankAccount)
+  }
+  return data
+}
+
 // Starts an analysis job and polls it until it finishes, reporting progress along the way.
 // isCancelled is checked between polls. Cancelling asks the server to stop the job, then waits for the job's
 // own answer: a job that saved a client's rows before the cancel arrived still succeeds, and calling it
@@ -170,9 +213,24 @@ export async function analyze(
   onProgress: (progress: string) => void,
   isCancelled: () => boolean,
 ): Promise<AnalyzeResult> {
+  return waitForJob(await startAnalysis(formData), onProgress, isCancelled)
+}
+
+// Sends an input to be analysed and returns its job's id at once: the API reads it and, for a client, saves its rows
+// whatever the page does next, so a refresh after this loses nothing.
+export async function startAnalysis(formData: FormData): Promise<string> {
   // The API takes analyses only with this header, which a form on another web site can't send.
   const init = { method: 'POST', body: formData, headers: { 'X-LedgerSync': '1' } }
   const { job_id } = await request<{ job_id: string }>('/api/analyze', init, 120_000)
+  return job_id
+}
+
+// Polls a job (one analyze started) until it finishes.
+export async function waitForJob(
+  job_id: string,
+  onProgress: (progress: string) => void,
+  isCancelled: () => boolean,
+): Promise<AnalyzeResult> {
   let failures = 0
   let cancelSent = false
   for (;;) {
@@ -218,3 +276,11 @@ export function trialBalance(transactions: Transaction[]): Promise<TrialBalanceR
     body: JSON.stringify({ transactions }),
   })
 }
+
+// What the client pages show of the accountant chat, read from its routes (the types are in chat.ts).
+export const getMateriality = (clientId: number, yearStart: string) =>
+  request<import('./ledger.ts').Levels | null>(`/api/clients/${clientId}/years/${yearStart}/materiality`)
+export const clientDecisions = (clientId: number, yearStart: string) =>
+  request<import('./chat.ts').Decision[]>(`/api/clients/${clientId}/decisions?year_start=${yearStart}`)
+export const postedTrialBalance = (clientId: number, yearStart: string) =>
+  request<import('./chat.ts').PostedTrialBalance>(`/api/clients/${clientId}/years/${yearStart}/posted-trial-balance`)

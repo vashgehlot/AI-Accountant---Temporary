@@ -1,0 +1,384 @@
+{
+  "date": "2026-11-04",
+  "read": "model",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "combined-vat",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 121.2,
+      "client_id": 136,
+      "thread_id": "8abba2d143f04567a6050b2c01b5da06",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R3 Mixed VAT: split by rate",
+              "row": {
+                "file": "bulkbuy-receipt.txt",
+                "description": "Bulkbuy: cleaning supplies, tea, coffee, milk and sugar"
+              }
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [
+        {
+          "name": {
+            "file": "bulkbuy-receipt.txt",
+            "description": "Bulkbuy: cleaning supplies, tea, coffee, milk and sugar"
+          },
+          "why": "0 rows in the file have the same amount, direction and date"
+        }
+      ],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "combined-vat-r1.json"
+    },
+    {
+      "case": "combined-vat",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 153.6,
+      "client_id": 137,
+      "thread_id": "abb9b3bd3458475f92d91456e9720d1c",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R3 Mixed VAT: split by rate",
+              "row": {
+                "file": "bulkbuy-receipt.txt",
+                "description": "Bulkbuy: cleaning supplies, tea, coffee, milk and sugar"
+              }
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [
+        {
+          "name": {
+            "file": "bulkbuy-receipt.txt",
+            "description": "Bulkbuy: cleaning supplies, tea, coffee, milk and sugar"
+          },
+          "why": "0 rows in the file have the same amount, direction and date"
+        }
+      ],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "combined-vat-r2.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 647.7,
+      "client_id": 1,
+      "thread_id": "d545306fc09d412f81f773a71113ef7b",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "missing": {
+              "rule": "R3 Mixed VAT: split by rate",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "missing": {
+              "rule": "R5 VAT from the document",
+              "row": {
+                "file": "inkwell-invoice-INK-4471.pdf",
+                "description": "Inkwell: HP 305XL black ink cartridges x2"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                1231,
+                1235
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Costco - office supplies and kitchen"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Costco office supplies and kitchen"
+          }
+        },
+        {
+          "expected": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell: HP 305XL black ink cartridges x2"
+          },
+          "found": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell Supplies Ltd - HP 305XL black ink cartridges"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Inkwell - printer ink"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Inkwell printer ink"
+          }
+        },
+        {
+          "expected": {
+            "file": "parking-photo.png",
+            "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+          },
+          "found": {
+            "file": "parking-photo.png",
+            "description": "NCP parking, Leeds Wellington Street car park"
+          }
+        },
+        {
+          "expected": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+          },
+          "found": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs, taxi journey Leeds Station to Kirkstall"
+          }
+        },
+        {
+          "expected": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT"
+          },
+          "found": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT, bill payment (printing)"
+          }
+        }
+      ],
+      "unmatched_names": [
+        {
+          "name": {
+            "file": "costco-receipt-21-10.txt",
+            "description": "Costco: copier paper, box files, milk, coffee and tea"
+          },
+          "why": "0 rows in the file have the same amount, direction and date"
+        }
+      ],
+      "posted_problems": [],
+      "steps": 24,
+      "failed_steps": [
+        "Opening barclays-september.csv"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "demo-r1.json"
+    },
+    {
+      "case": "northbridge",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 298.7,
+      "client_id": 1,
+      "thread_id": "6199bfafdb424e348da97113342ce108",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "missing": {
+              "rule": "R3 Mixed VAT: split by rate",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "missing": {
+              "rule": "R5 VAT from the document",
+              "row": {
+                "file": "inkwell-invoice-INK-4471.pdf",
+                "description": "Inkwell: HP 305XL black ink cartridges x2"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                1257,
+                1261
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Costco - office supplies and kitchen"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Costco office supplies and kitchen"
+          }
+        },
+        {
+          "expected": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell: HP 305XL black ink cartridges x2"
+          },
+          "found": {
+            "file": "inkwell-invoice-INK-4471.pdf",
+            "description": "Inkwell Supplies Ltd - HP 305XL black ink cartridges"
+          }
+        },
+        {
+          "expected": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Inkwell - printer ink"
+          },
+          "found": {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Priya Shah - Inkwell printer ink"
+          }
+        },
+        {
+          "expected": {
+            "file": "parking-photo.png",
+            "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+          },
+          "found": {
+            "file": "parking-photo.png",
+            "description": "NCP parking, Leeds Wellington Street car park"
+          }
+        },
+        {
+          "expected": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+          },
+          "found": {
+            "file": "IMG_20261009_081502.png",
+            "description": "Leeds City Cabs, taxi journey Leeds Station to Kirkstall"
+          }
+        },
+        {
+          "expected": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT"
+          },
+          "found": {
+            "file": "barclays-october.csv",
+            "description": "BRIGHTLINE PRINT, bill payment (printing)"
+          }
+        }
+      ],
+      "unmatched_names": [
+        {
+          "name": {
+            "file": "costco-receipt-21-10.txt",
+            "description": "Costco: copier paper, box files, milk, coffee and tea"
+          },
+          "why": "0 rows in the file have the same amount, direction and date"
+        }
+      ],
+      "posted_problems": [],
+      "steps": 20,
+      "failed_steps": [
+        "Didn't change row 1267"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R2 Duplicate",
+          "reason": "Row 1267 is the bank line that pays the receipt kept, not a duplicate. Send the call with the receipt as row_id, and drop only the expenses-sheet line; the bank line then pays it."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "demo-r2.json"
+    }
+  ]
+}

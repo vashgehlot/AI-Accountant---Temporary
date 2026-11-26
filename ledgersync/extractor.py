@@ -3,13 +3,16 @@ and per-row validation."""
 import json
 import logging
 import re
-from typing import List, Literal, Optional
+from typing import TYPE_CHECKING, List, Literal, Optional
 
 from pydantic import BaseModel, Field, ValidationError, field_validator
 
 from .accounts import choosable, model_accounts
 from .errors import ModelError
-from .models import DOCUMENT_TYPES
+from .models import BOUGHT, DOCUMENT_TYPES, Bought
+
+if TYPE_CHECKING:
+    from .tables import Statement
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +20,7 @@ logger = logging.getLogger(__name__)
 # for the business being read.
 ACCOUNT_CHOICES: tuple[str, ...] = tuple(f"{a.code} {a.name}" for a in model_accounts())
 # The document types a model may give; anything else becomes "other" in the adapter.
-MODEL_DOCUMENT_TYPES: tuple[str, ...] = tuple(t for t in DOCUMENT_TYPES if t != "other")
+MODEL_DOCUMENT_TYPES: tuple[str, ...] = tuple(t for t in DOCUMENT_TYPES if t not in ("other", "journal", "write_off"))
 # How the prompt names each kind of business (models.BusinessType).
 BUSINESS_WORDS = {"limited_company": "limited company", "sole_trader": "sole trader",
                   "partnership": "partnership", "llp": "limited liability partnership"}
@@ -52,10 +55,17 @@ class AccountingTransaction(BaseModel):
         None, description="The total before VAT printed on that receipt or invoice (a subtotal or price excluding "
                           "VAT), the same on every transaction from it; null when none is printed, and for bank "
                           "statement or spreadsheet rows")
+    cis_deducted: Optional[float] = Field(
+        None, description="On an invoice under the Construction Industry Scheme: the CIS deduction printed on it, "
+                          "as a positive number; null when none is printed")
     not_vat_invoice: bool = Field(False, description="true when the document says it is not a VAT invoice")
-    mixed_items: bool = Field(False, description="true when this one transaction covers items of different "
-                                                 "accounts because the document shows one VAT total that "
-                                                 "cannot be divided between them")
+    # Lets the ledger work VAT out of the amount when the document says it is there but not how much.
+    vat_stated: bool = Field(False, description="true when the receipt or invoice says VAT is charged or included "
+                                                "(the word VAT, a VAT rate, or prices including VAT) for this "
+                                                "transaction but prints no VAT amount for it; false otherwise")
+    mixed_items: bool = Field(False, description="true when this one transaction covers items at different "
+                                                 "VAT rates, or of different accounts, with one VAT total "
+                                                 "that cannot be divided between them")
     # Which kind of document the row comes from: the ledger books an unpaid invoice or claim as owed, and
     # leaves a quote, a pro forma or the like for a person to check. Any other text passes here; the
     # adapter treats it as a document that is not a transaction.
@@ -68,13 +78,68 @@ class AccountingTransaction(BaseModel):
                                                              "receipt or claim (its invoice, receipt or transaction "
                                                              "number), the same on every transaction from it; null "
                                                              "when none is printed, and for bank statement rows")
+    # What a payroll report's row is owed to, which the adapter turns into the account that holds it.
+    owed_to: Optional[Literal["net_pay", "paye_ni", "pension"]] = Field(
+        None, description="On a payroll report: what the row is owed to, net_pay (the staff), paye_ni (HMRC) or "
+                          "pension (the pension provider); null on every other kind of row")
+    # Lets the ledger tell whether the VAT on a receipt can be reclaimed: only a VAT number backs it.
+    supplier_vat_number: Optional[str] = Field(
+        None, description="The supplier's VAT registration number printed on the receipt or invoice, the same on "
+                          "every transaction from that document; null when none is printed")
+    # Lets the ledger ask whether a company's purchase was the director's own: its papers name who was billed.
+    addressed_to: Optional[str] = Field(
+        None, description="Who the receipt or invoice is addressed to (billed to, the customer), as printed: the "
+                          "name only, the same on every transaction from that document; null when it names no one, "
+                          "and for bank statement rows")
+    # Lets the ledger tell a hotel stay in the UK, which carries UK VAT, from one abroad, which carries none.
+    abroad: bool = Field(False, description="true when what was bought was supplied outside the UK (a hotel stay, a "
+                                            "meal or a service abroad), as the document's address or currency shows; "
+                                            "false in the UK or when the document doesn't say")
+    # Lets the ledger account for the VAT on a service bought from abroad, which the supplier doesn't charge.
+    reverse_charge: bool = Field(False, description="true when an invoice or receipt from a supplier outside the UK "
+                                                    "charges no VAT on a service and says the reverse charge applies "
+                                                    "or the customer is to account for the VAT")
     # On a bank statement row: the balance printed on its line, so the ledger can check no line was missed or
     # misread. The statement's opening and closing balances come once, with the answer (ExtractedTransactions).
     balance: Optional[float] = Field(None, description="On a bank statement row: the running balance printed on "
                                                        "its line, after it; null when the line shows none, and on "
                                                        "every other kind of row")
 
-    @field_validator("mixed_items", "not_vat_invoice", mode="before")
+    # Lets the ledger tell who a meal was for without asking: one person's sandwich is their own subsistence.
+    people: Optional[Literal["one", "several"]] = Field(
+        None, description="For food or drink: one when the items are one person's (one meal, one drink, one snack), "
+                          "several when they are for more than one person (several meals, drinks or pastries), "
+                          "null when it is unclear, and for anything that is not food or drink")
+    # Lets the ledger tell who food or drink was likely for, as an accountant does, from what was bought.
+    bought: Optional[Bought] = Field(
+        None, description="For food or drink, what kind was bought: groceries (from a shop), food_to_go (a coffee, a "
+                          "sandwich, a snack, a meal deal), meal_out (a sit-down meal), drinks_out (at a pub or bar), "
+                          "catering (food ordered for a group: platters, a buffet, a hospitality order); null for "
+                          "anything that is not food or drink")
+    # Lets the ledger ask when another account would change the tax or the VAT, and not when only the name differs.
+    alternatives: list[str] = Field(
+        default_factory=list, description="Up to two other accounts from the chart this could fairly be on, as code "
+                                          "and name; an empty list when the account is clear",
+        json_schema_extra={"items": {"type": "string", "enum": list(ACCOUNT_CHOICES)}})
+
+    @field_validator("people", mode="before")
+    @classmethod
+    def _people(cls, v):
+        v = v.strip().lower() if isinstance(v, str) else v
+        return v if v in ("one", "several") else None
+
+    @field_validator("bought", mode="before")
+    @classmethod
+    def _bought(cls, v):
+        v = "_".join(v.strip().lower().split()) if isinstance(v, str) else v
+        return v if v in BOUGHT else None
+
+    @field_validator("alternatives", mode="before")
+    @classmethod
+    def _alternatives(cls, v):
+        return [str(a) for a in (v or [])][:2]
+
+    @field_validator("mixed_items", "not_vat_invoice", "vat_stated", "reverse_charge", "abroad", mode="before")
     @classmethod
     def _flag(cls, v):
         return v.strip().lower() == "true" if isinstance(v, str) else bool(v)
@@ -129,14 +194,42 @@ class TransactionExtractionResult(BaseModel):
         return len(self.data)
 
 
+_FIELDS = AccountingTransaction.model_fields
+CODING_BATCH = 50   # lines of a statement read in code per coding request
+
+
+class CodedLine(BaseModel):
+    """How one line of a statement read in code is coded: its figures are the file's, never the model's."""
+    n: int = Field(..., description="The line's number, as given")
+    account: str = Field(..., description=_FIELDS["account"].description,
+                         json_schema_extra={"enum": list(ACCOUNT_CHOICES)})
+    counterparty: Optional[str] = Field(None, description="Who was paid or who paid, as the line names them")
+    alternatives: list[str] = Field(default_factory=list, description=_FIELDS["alternatives"].description,
+                                    json_schema_extra={"items": {"type": "string", "enum": list(ACCOUNT_CHOICES)}})
+    bought: Optional[Bought] = Field(None, description=_FIELDS["bought"].description)
+    people: Optional[Literal["one", "several"]] = Field(None, description=_FIELDS["people"].description)
+
+
+class CodedLines(BaseModel):
+    """Top-level shape of a coding answer."""
+    lines: List[CodedLine]
+
+
+_ACCOUNT_WORDS = {"current": "a current account", "savings": "a savings account", "credit_card": "a credit card",
+                  "petty_cash": "petty cash"}
+
+
 class TransactionExtractor:
     """Builds the prompt, calls the model through the model client and validates each row.
 
     There is deliberately no heuristic fallback: when the model is unavailable the caller gets
     ModelUnavailable / ModelTimeout instead of plausible-looking wrong numbers."""
 
-    def __init__(self, client, business_name: str = "", business_type: Optional[str] = None):
+    def __init__(self, client, business_name: str = "", business_type: Optional[str] = None,
+                 bank_codes: tuple[str, ...] = (), owners: tuple[tuple[int, str], ...] = ()):
         self.client = client
+        self.bank_codes = bank_codes   # the client's own bank accounts and cards; () when no client
+        self.owners = owners           # its directors, partners or members (accounts.choosable's owners)
         self.business_name = business_name
         self.business_type = business_type   # models.BusinessType, or None when not known
 
@@ -147,6 +240,64 @@ class TransactionExtractor:
         raw_output = self.client.chat_json(messages, ExtractedTransactions.model_json_schema(), images=images)
         return self._validate_and_parse_json(raw_output)
 
+    def code_statement(self, statement: "Statement", account_kind: Optional[str]) -> TransactionExtractionResult:
+        """The rows of a statement read in code (tables.statement): each line's date, amount, direction, balance and
+        currency as the file states them, and only its account, payee and alternatives from the model, CODING_BATCH
+        lines a request at low thinking. A line the answer leaves out is on Suspense, with a warning."""
+        lines, rows, warnings, model = statement.lines, [], [], self.client.model
+        for start in range(0, len(lines), CODING_BATCH):
+            batch = list(enumerate(lines[start:start + CODING_BATCH], start=start + 1))
+            listed = "\n".join(f"{n} | {line.date.isoformat()} | {line.direction} | {line.amount:.2f} | "
+                               f"{f'{line.kind} ' if line.kind else ''}{line.text}" for n, line in batch)
+            whose = _ACCOUNT_WORDS.get(account_kind or "", "the business's bank account")
+            heading = f"{statement.heading}\n" if statement.heading else ""
+            messages = [{"role": "system", "content": self._coding_instructions()},
+                        {"role": "user", "content": f"A statement of {whose}.\n{heading}"
+                                                    f"<lines>\nn | date | in/out | amount | text\n{listed}\n</lines>"}]
+            raw = self.client.chat_json(messages, CodedLines.model_json_schema(), reasoning_effort="low")
+            host = getattr(raw, "host", None)
+            model = f"{self.client.model} via {host}" if host else self.client.model
+            coded = self._coded(raw)
+            for n, line in batch:
+                answer = coded.get(n)
+                if answer is None:
+                    warnings.append(f"Line {n} ({line.date:%d %b %Y}, {line.amount:,.2f}) was not coded by the AI "
+                                    "model: it is on Suspense for a person to code.")
+                rows.append(AccountingTransaction(
+                    description=line.text, date=line.date.isoformat(), amount=float(line.amount),
+                    direction=line.direction, account=answer.account if answer else "9998", currency=line.currency,
+                    document_type="statement", counterparty=answer.counterparty if answer else None,
+                    alternatives=answer.alternatives if answer else [], bought=answer.bought if answer else None,
+                    people=answer.people if answer else None,
+                    balance=float(line.balance) if line.balance is not None else None))
+        return TransactionExtractionResult(
+            data=rows, warnings=warnings, model=model,
+            opening_balance=float(statement.opening_balance) if statement.opening_balance is not None else None,
+            closing_balance=float(statement.closing_balance) if statement.closing_balance is not None else None)
+
+    def _coding_instructions(self) -> str:
+        return ("The lines of a bank or card statement are listed below, each with its number, date, direction and "
+                "amount read exactly from the file: never change them. For each line give only its account, its "
+                "counterparty (who was paid or who paid), alternatives, bought and people, by the rules below, as "
+                '{"lines": [{"n": 1, "account": "...", "counterparty": "...", "alternatives": [], "bought": null, '
+                '"people": null}]}, one object per line, n as given. The "transactions" shape the rules end with is '
+                "not used here.\n\n" + self._instructions())
+
+    def _coded(self, raw: str) -> dict[int, CodedLine]:
+        """The coding answer's lines by number; a line that doesn't validate is left out (and so goes to Suspense)."""
+        try:
+            parsed = json.loads(str(raw).strip())
+        except json.JSONDecodeError:
+            raise ModelError("The AI model's answer was not valid JSON.", code="ai_output_invalid") from None
+        found = {}
+        for item in (parsed.get("lines") if isinstance(parsed, dict) else None) or []:
+            try:
+                line = CodedLine.model_validate(item)
+            except ValidationError:
+                continue
+            found.setdefault(line.n, line)
+        return found
+
     def _instructions(self) -> str:
         """What to extract and how; the document itself travels in a separate message."""
         name = self.business_name
@@ -154,17 +305,18 @@ class TransactionExtractor:
         whose = f"{name}, {kind}" if name else kind
         invoices = (f" An invoice issued by {name} is a sale (in); an invoice or receipt addressed to {name} "
                     "is a purchase (out)." if name else "")
-        chart = "\n".join(f"{a.code} {a.name}: {a.definition}" for a in choosable(self.business_type))
+        chart = "\n".join(f"{a.code} {a.name}: {a.definition}" for a in choosable(self.business_type, self.bank_codes,
+                                                                                     self.owners))
         return f"""You keep the books of {whose}. List each movement of money into or out of the business's bank account that the document records, as a JSON object with a "transactions" array.
 
 Rules:
-1. Direction: "in" is money the business received (sales, refunds from suppliers, loans received, capital paid in); "out" is money it paid (purchases, expenses, bills, wages, taxes to HMRC, refunds to customers, the owner's drawings, transfers to savings).{invoices}
-2. Document type: give every transaction the type of the document it comes from. "receipt": a till or card receipt, or a ticket, paid when it was issued. "invoice": an invoice or bill asking for payment, even when it says paid; a credit note is an invoice with the money going the other way. "expense_claim": an expense claim or expense report. "statement": a bank statement, or bank lines pasted or typed. "agent_statement": a letting or managing agent's statement to the business (a landlord statement), of the rent or other money it collected for the business, the fees and bills it took off, and the net it paid over: give one transaction per item, with what it collected as "in" and each fee or bill it paid as "out", each on the account of what it was for and with who paid or was paid as counterparty; the net it paid over is not a transaction. Give every transaction from it the statement's date, the net paid over as document_total (negative when the business owes the agent), document_vat null, and the agent's name as "agent", once, next to the transactions array. A quote, a pro forma invoice, a purchase order, a remittance advice and a supplier's statement of account are not transactions: still list their amounts, with the type "quote", "pro_forma", "purchase_order", "remittance_advice" or "supplier_statement", so a person can check them. Give as counterparty who was paid or who paid, as printed: the supplier, the customer or the payee. Give the number printed on the document (its invoice, credit note, receipt, transaction or claim number) as document_number on each of its transactions; a reminder or a copy of a document keeps the original's number. Bank statement rows have none.
-3. A receipt or an invoice is recorded whether it is still to be paid or already paid (an amount due of 0.00 means it has been paid, not that there is nothing to record). Give one transaction per account, not per item: add together the items that belong to the same account, so a receipt or invoice whose items all belong to one account is ONE transaction for its total, including VAT. When its items belong to different accounts, give one transaction per account for that account's share of the total, including its VAT, but only if the VAT can be divided between them (it is shown per item or per rate, or no VAT is shown). If the document shows a single VAT total that cannot be divided, give ONE transaction for the total on the account of the biggest items and set mixed_items to true. The transactions from one document add up to its total: give that printed total as document_total, and its printed VAT total as document_vat (null when none is shown), on each of them. Subtotals, discounts, cash tendered, change, card-payment, amount-paid and amount-due lines, and payment instructions, are not transactions.
-4. An expense claim or expense report lists separate expenses, each with its own receipt, date and payee. Give one transaction per expense line, copying that line's date, payee, amount and the VAT printed on that line. List every line, even when its payee or amount repeats another line or a note queries it. Never add expense lines together, even when they belong to the same account. Subtotals and the claim total are not transactions. Give the claim's grand total as document_total on every line; document_vat is null, because each line carries its own VAT. The counterparty of every line is the person claiming, not the shop. Before answering, add up your lines and compare them with each subtotal and the total printed, and count them against any number of lines printed: if they don't agree, you have probably missed a line, often the last one before a subtotal, so look again and add it. Never add a line that isn't printed: when every printed line is listed and they still don't agree, leave them as printed.
+1. Direction: "in" is money the business received (sales, refunds from suppliers, loans received, capital paid in); "out" is money it paid (purchases, expenses, bills, wages, taxes to HMRC, refunds to customers, the owner's drawings, transfers to savings).{invoices} A receipt a shop or other supplier gave for something bought from it is a purchase (out) even when it names no customer and prints the word "Sale", which is the shop's sale; it is money in only when it says it is a refund.
+2. Document type: give every transaction the type of the document it comes from. "receipt": a till or card receipt, or a ticket, paid when it was issued. "invoice": an invoice or bill asking for payment, even when it says paid, and any document that calls itself a VAT invoice or tax invoice, even one a shop prints with the words "Receipt / VAT Invoice"; a credit note is an invoice with the money going the other way. "expense_claim": an expense claim or expense report. "statement": a bank statement, or bank lines pasted or typed: the statement a bank or card company gives of the business's own account or card, listing its payments to and from everyone. A supplier's own list of what it charged to a card (Transport for London's contactless or Oyster "Payment Statement", a taxi or ride app's trips, a toll or parking account) is not a bank statement, whatever it calls itself: each charge is a receipt of its own, with the type "receipt", the supplier as counterparty, the day it was charged as its date, and the amount charged as its amount and its document_total (where it lists a day's journeys under one charge for that day, the day's charge, not each journey). "agent_statement": a letting or managing agent's statement to the business (a landlord statement), of the rent or other money it collected for the business, the fees and bills it took off, and the net it paid over: give one transaction per item, with what it collected as "in" and each fee or bill it paid as "out", each on the account of what it was for and with who paid or was paid as counterparty; the net it paid over is not a transaction. Give every transaction from it the statement's date, the net paid over as document_total (negative when the business owes the agent), document_vat null, and the agent's name as "agent", once, next to the transactions array. A payment processor's payout report (Stripe, PayPal, Square, SumUp, Zettle, Shopify Payments and the like) is an agent's statement too: the charges or sales it collected are "in" on the sales account, with any VAT it prints, its fees and the refunds it paid are "out", the payout is the net paid over, and the processor is the agent. "payroll": a payroll report or payroll summary from payroll software: give, as separate transactions, all "out" and dated the pay date, the net pay (account 7000, or 7001 for directors) with owed_to "net_pay", the employees' tax and NI (7000 or 7001) with owed_to "paye_ni", the employees' pension (7000 or 7001) with owed_to "pension", the employer's NI (7006) with owed_to "paye_ni" and the employer's pension (7007) with owed_to "pension"; owed_to is null on every other kind of row. A quote, a pro forma invoice, a purchase order, a remittance advice and a supplier's statement of account are not transactions: still list their amounts, with the type "quote", "pro_forma", "purchase_order", "remittance_advice" or "supplier_statement", so a person can check them. A hire purchase, lease, finance or loan agreement is not a transaction either: give ONE row for the amount financed or lent, with the type "finance_agreement"; its deposit, repayments and interest are on the bank statement, and are not transactions here. Give as counterparty who was paid or who paid, as printed: the supplier, the customer or the payee. On a receipt the supplier is the business whose name is printed at the top, never the person who served (a server, waiter or cashier named on it). Give who the receipt or invoice is addressed to (billed to), when it names anyone, as addressed_to: the name only. Give the number printed on the document (its invoice, credit note, receipt, transaction or claim number) as document_number on each of its transactions; a reminder or a copy of a document keeps the original's number. Bank statement rows have none. Give the supplier's VAT registration number, when the document prints one, as supplier_vat_number on each of its transactions; null when none is printed.
+3. A receipt or an invoice is recorded whether it is still to be paid or already paid (an amount due of 0.00 means it has been paid, not that there is nothing to record). Give one transaction per account, not per item: add together the items that belong to the same account, so a receipt or invoice whose items all belong to one account is ONE transaction for its total, including VAT. When its items belong to different accounts, give one transaction per account for that account's share of the total, including its VAT, but only if the VAT can be divided between them (it is shown per item, or no VAT is shown). If the document shows a single VAT total that cannot be divided, give ONE transaction for the total on the account of the biggest items and set mixed_items to true. When the items are at different VAT rates and the VAT is printed only as one total or per rate, give ONE transaction for the total on the account of the biggest items and set mixed_items to true. Never divide one rate's VAT between accounts. The transactions from one document add up to its total: give that printed total as document_total, and its printed VAT total as document_vat (null when none is shown), on each of them. Subtotals, discounts, cash tendered, change, card-payment, amount-paid and amount-due lines, and payment instructions, are not transactions. A till summary or Z-reading (a day's or a week's takings) is a receipt with the money coming in: give its sales as one transaction, or one per VAT rate when it prints them, described as "Till takings" with the day or week. Give nothing else from it: the cash banked, the card total, the cash kept and the float it prints say where the takings went, and are not transactions.
+4. An expense claim or expense report lists separate expenses, each with its own receipt, date and payee. Give one transaction per expense line, copying that line's date, payee, amount and the VAT printed on that line. List every line, even when its payee or amount repeats another line or a note queries it. Never add expense lines together, even when they belong to the same account. Subtotals and the claim total are not transactions. Give the grand total printed on the claim as document_total on every line; null when the claim prints no total. Never add the lines up to make one. document_vat is null, because each line carries its own VAT. The counterparty of every line is the person claiming, not the shop. Before answering, add up your lines and compare them with each subtotal and the total printed, if any, and count them against any number of lines printed: if they don't agree, you have probably missed a line, often the last one before a subtotal, so look again and add it. Never add a line that isn't printed: when every printed line is listed and they still don't agree, leave them as printed.
 5.A bank statement or spreadsheet has one transaction per payment row. The amount is the money that moved, as a positive number; take the direction from the paid in / paid out columns or the sign. Balances and totals are not transactions, and document_total and document_vat are null. On a bank statement, give the balance printed on each line as balance, and give the statement's opening balance (brought forward) and closing balance (carried forward) as opening_balance and closing_balance once, next to the transactions array; use null for any it does not print. An overdrawn balance (shown with OD, D or a minus sign) is negative.
-6. Account: choose by what was bought and why, not by the shop, because most shops sell many kinds of things. On a receipt or invoice, go by the items listed. On a bank line that names only the payee, go by what that kind of business usually sells to a business like this one. Use "9998 Suspense" when the payee could be selling almost anything (such as an online marketplace or a department store) and nothing says what was bought, or when no account below fits. A card line at a cash machine is cash taken out: 1230 Petty Cash. Such a line often names a bank and a place (such as LOYD, HSBC, NWB or LINK) or a fee for the withdrawal; don't guess another kind of business from it.
-7. VAT: the VAT amount printed on the document for that transaction, or null when none is printed. Never calculate VAT. The amount is what was charged or paid in all, VAT included: when a receipt prints the amount charged with its VAT on a line under it (Charged Amount £12.00, VAT £2.00), the VAT is part of that amount, so the amount is £12.00; never add the VAT to an amount charged or paid. When a receipt or invoice prints its total before VAT (a subtotal or price excluding VAT), give it as document_net; never work it out. When it says it is not a VAT invoice, set not_vat_invoice to true.
+6. Account: choose by what was bought and why, not by the shop, because most shops sell many kinds of things. On a receipt or invoice, go by the items listed. On a bank line that names only the payee, go by what that kind of business usually sells to a business like this one. Describe each item as the document words it; never guess what kind of thing a product name is. Equipment and furniture accounts (0020 to 0055) are for things kept for over a year that cost £100 or more: a cheaper item (a cable, a mouse, a charger) is a cost, on the account of its kind. Goods bought to give away to customers or carrying the business's name (promotional items) are 6201 Advertising and Marketing. Use "9998 Suspense" when the payee could be selling almost anything (such as an online marketplace or a department store) and nothing says what was bought, or when no account below fits. On a bank statement, net pay to staff is coded 2220 Net Wages, payments to HMRC for PAYE and NI 2210, and payments to the pension provider 2230. Money paid in by a payment processor (a payout from Stripe, PayPal, Square, SumUp, Zettle, Shopify, GoCardless, Amazon, eBay or Etsy) is 1250 Payment Processor Clearing, not a sale: it is sales less the processor's fees. A card line at a cash machine is cash taken out: 1230 Petty Cash. Such a line often names a bank and a place (such as LOYD, HSBC, NWB or LINK) or a fee for the withdrawal; don't guess another kind of business from it. Give as alternatives up to two other accounts from the chart the transaction could fairly be on, when what was bought or why leaves it open (a meal could be Subsistence, Staff Welfare or Entertainment depending on who ate); an empty list when the account is clear. For food or drink, give bought: "groceries" for a shop's groceries or provisions, "food_to_go" for a coffee, sandwich, snack or meal deal to take away, "meal_out" for a sit-down meal, "drinks_out" for drinks at a pub or bar, "catering" for food ordered for a group (platters, a buffet, a hospitality order); null for anything else. For food or drink, give people: "one" when the items are one person's (one meal, one sandwich, one drink, one snack), "several" when they are for more than one person (several meals, several drinks, platters, pastries for a group, rounds); null when you can't tell, and for anything that is not food or drink.
+7. VAT: the VAT amount printed on the document for that transaction, or null when none is printed. Never calculate VAT. The amount is what was charged or paid in all, VAT included: when a receipt prints the amount charged with its VAT on a line under it (Charged Amount £12.00, VAT £2.00), the VAT is part of that amount, so the amount is £12.00; never add the VAT to an amount charged or paid. When a receipt or invoice prints its total before VAT (a subtotal or price excluding VAT), give it as document_net; never work it out. When it says it is not a VAT invoice, set not_vat_invoice to true. When it says VAT is charged or included (the word VAT, a VAT rate, or prices that include VAT) but prints no VAT amount for the transaction, leave vat null and set vat_stated to true; printing only a VAT registration number is not saying so. When an invoice takes a Construction Industry Scheme (CIS) deduction off its total, the amount is the amount due after the deduction, document_net is the total before VAT and before the deduction, and the deduction is cis_deducted. When a supplier outside the UK charges no VAT on a service and the document says the reverse charge applies (or that the customer accounts for the VAT), set reverse_charge to true; never for goods. When what was bought was supplied outside the UK (a hotel stay, a meal or a service abroad, as the address or the currency shows), set abroad to true; false in the UK or when the document doesn't say.
 8. Dates are UK format (DD/MM/YYYY): "03/09/2026" is 3 September 2026, written "2026-09-03". Use null when there is no date.
 9. If there are no transactions, return {{"transactions": []}}.
 
@@ -172,7 +324,7 @@ Chart of accounts:
 {chart}
 
 Answer with JSON only, in this shape (one object per transaction):
-{{"transactions": [{{"description": "who was paid or who paid, and what for", "date": "YYYY-MM-DD" or null, "amount": 12.50, "direction": "in" or "out", "account": "<code> <name> from the chart, e.g. 7502 Telephone and Internet", "vat": 2.08 or null, "currency": "GBP", "document_total": 12.50 or null, "document_vat": 2.08 or null, "document_net": 10.42 or null, "not_vat_invoice": false, "mixed_items": false, "document_type": "receipt", "counterparty": "who was paid or who paid", "document_number": "INV-1042" or null, "balance": 1250.00 or null}}], "opening_balance": 1500.00 or null, "closing_balance": 980.50 or null, "agent": "the agent's name" or null}}"""
+{{"transactions": [{{"description": "who was paid or who paid, and what for", "date": "YYYY-MM-DD" or null, "amount": 12.50, "direction": "in" or "out", "account": "<code> <name> from the chart, e.g. 7502 Telephone and Internet", "vat": 2.08 or null, "currency": "GBP", "document_total": 12.50 or null, "document_vat": 2.08 or null, "document_net": 10.42 or null, "cis_deducted": null, "not_vat_invoice": false, "vat_stated": false, "mixed_items": false, "document_type": "receipt", "counterparty": "who was paid or who paid", "document_number": "INV-1042" or null, "supplier_vat_number": "GB123456789" or null, "addressed_to": "who it is addressed to" or null, "reverse_charge": false, "abroad": false, "owed_to": "net_pay" or "paye_ni" or "pension" or null, "balance": 1250.00 or null, "people": "one" or "several" or null, "bought": "groceries" or "food_to_go" or "meal_out" or "drinks_out" or "catering" or null, "alternatives": ["7504 Office Stationery"] or []}}], "opening_balance": 1500.00 or null, "closing_balance": 980.50 or null, "agent": "the agent's name" or null}}"""
 
     @staticmethod
     def _document(text_input: Optional[str], images: Optional[List[str]]) -> str:

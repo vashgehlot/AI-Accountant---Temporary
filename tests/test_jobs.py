@@ -156,3 +156,26 @@ def test_one_worker_runs_jobs_one_after_another():
         assert most[0] == 1
     finally:
         store.shutdown()
+
+
+@pytest.mark.parametrize("how", ["succeeds", "fails", "is cancelled while queued"])
+def test_on_finish_runs_once_however_the_job_ends(how):
+    store = JobStore(max_workers=1)
+    ended, blocker = [], threading.Event()
+    try:
+        if how == "is cancelled while queued":
+            store.submit(lambda ctx: blocker.wait(5))   # keeps the only worker busy
+        if how == "fails":
+            def work(ctx):
+                raise ModelTimeout("slow")
+        else:
+            def work(ctx):
+                return "ok"
+        job = store.submit(work, on_finish=lambda: ended.append(1))
+        if how == "is cancelled while queued":
+            store.cancel(job.id)
+        assert job.done.wait(5)
+        assert ended == [1]
+    finally:
+        blocker.set()
+        store.shutdown()

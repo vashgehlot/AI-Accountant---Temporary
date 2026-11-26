@@ -1,0 +1,59 @@
+{
+  "file": "barclays-october.csv",
+  "kind": "table",
+  "bank_account": "1200",
+  "transactions": [
+    {
+      "date": "2026-10-06",
+      "description": "OFFICE DEPOT",
+      "direction": "out",
+      "gross": "49.99",
+      "account_code": "7504",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Office Depot",
+      "document_ref": "bk-01"
+    },
+    {
+      "date": "2026-10-09",
+      "description": "AMAZON MKTPLACE",
+      "direction": "out",
+      "gross": "50.00",
+      "account_code": "7504",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Amazon",
+      "document_ref": "bk-02"
+    },
+    {
+      "date": "2026-10-20",
+      "description": "HMRC CORPORATION TAX",
+      "direction": "out",
+      "gross": "500.00",
+      "account_code": "2320",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "HMRC",
+      "document_ref": "bk-03"
+    },
+    {
+      "date": "2026-10-22",
+      "description": "BRIGHTLINE PRINT",
+      "direction": "out",
+      "gross": "240.00",
+      "account_code": "7500",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Brightline Print",
+      "document_ref": "bk-04"
+    }
+  ]
+}

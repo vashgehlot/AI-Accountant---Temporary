@@ -1,0 +1,7 @@
+doc_id,file,arrived,kind,issuer,recipient,number,date,currency,net,vat,gross,treatment,reason,cases
+hsbc-statement-20240601-20240630,inbox/2024-07-01/2024-06-01_hsbc-statement_2024-06-30.csv,2024-07-01,bank_statement,Severn Bank,Fernbrook Consulting Ltd,01 Jun 2024 to 30 Jun 2024,2024-06-01,GBP,,,,evidence,Business current statement export,EC-0152
+PK-D0001,inbox/2024-06-04/2024-06-03_fernbrook-consulting-ltd_fc-0412.pdf,2024-06-04,sales_invoice,Fernbrook Consulting Ltd,Ridgeway Garden Centre Ltd,FC-0412,2024-06-03,GBP,2500.00,500.00,3000.00,book,,
+PK-D0002,inbox/2024-06-11/2024-06-10_wharfside-office-interiors_0911-04.pdf,2024-06-11,receipt,Wharfside Office Interiors,,0911-04,2024-06-10,GBP,266.67,53.33,320.00,book,,EC-0346
+PK-D0003,answers/2024-06-14/2024-06-10_wharfside-office-interiors_woi-5120.pdf,2024-06-14,purchase_invoice,Wharfside Office Interiors,Fernbrook Consulting Ltd,WOI-5120,2024-06-10,GBP,266.67,53.33,320.00,evidence,The full VAT invoice for the till receipt of the same purchase: it lets the VAT be reclaimed,EC-0346
+PK-D0004,inbox/2024-06-12/2024-06-11_the-brunswick-cafe_2418-19.pdf,2024-06-12,receipt,The Brunswick Cafe,,2418-19,2024-06-11,GBP,10.33,2.07,12.40,book,,
+PK-D0005,inbox/2024-06-20/2024-06-19_kingsholm-deli_1660-93.pdf,2024-06-20,receipt,Kingsholm Deli,,1660-93,2024-06-19,GBP,7.46,1.49,8.95,book,,

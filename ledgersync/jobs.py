@@ -34,6 +34,7 @@ class Job:
     error: Optional[dict] = None
     finished_at: Optional[float] = None
     committed: bool = False   # its work has been saved: a cancel can no longer discard it
+    on_finish: Optional[Callable[[], None]] = None   # called once when it ends, however it ends
     cancel_requested: threading.Event = field(default_factory=threading.Event)
     done: threading.Event = field(default_factory=threading.Event)
 
@@ -72,8 +73,10 @@ class JobStore:
         self._lock = threading.Lock()
         self._executor = ThreadPoolExecutor(max_workers=max(1, max_workers), thread_name_prefix="ledgersync-job")
 
-    def submit(self, work: Callable[[JobContext], Any]) -> Job:
-        job = Job(id=uuid.uuid4().hex)
+    def submit(self, work: Callable[[JobContext], Any], on_finish: Optional[Callable[[], None]] = None) -> Job:
+        """Queues work. on_finish runs when the job succeeds, fails or is cancelled (even while still queued), with the
+        store's lock held: it must be quick and must not call the store."""
+        job = Job(id=uuid.uuid4().hex, on_finish=on_finish)
         with self._lock:
             self._purge_expired()
             self._jobs[job.id] = job
@@ -127,6 +130,8 @@ class JobStore:
         job.status, job.progress, job.result, job.error = status, progress, result, error
         job.finished_at = self._clock()
         job.done.set()
+        if job.on_finish is not None:
+            job.on_finish()
 
     def _get_locked(self, job_id: str) -> Job:
         self._purge_expired()

@@ -1,0 +1,815 @@
+{
+  "date": "2026-11-03",
+  "read": "model",
+  "model": "openai/gpt-oss-120b",
+  "runs": [
+    {
+      "case": "clean-month",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 34.5,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 6,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "combined-vat",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 49.5,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "7504",
+            "expected": "0.00",
+            "actual": "22.00",
+            "difference": "22.00"
+          },
+          {
+            "code": "7801",
+            "expected": "38.00",
+            "actual": "16.00",
+            "difference": "-22.00"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "bulkbuy-receipt.txt",
+              "Bulkbuy: cleaning supplies, tea, coffee, milk and sugar",
+              "R3 Mixed VAT: split by rate"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 6,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 37.3,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "2110",
+            "expected": "-18.00",
+            "actual": "-60.00",
+            "difference": "-42.00"
+          },
+          {
+            "code": "2201",
+            "expected": "7.80",
+            "actual": "0.00",
+            "difference": "-7.80"
+          },
+          {
+            "code": "7504",
+            "expected": "39.00",
+            "actual": "88.80",
+            "difference": "49.80"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "pagecraft-invoice-PC-5512.pdf",
+              "Pagecraft: Brother TN-2420 toner cartridge",
+              "R4 Conflict: used the invoice"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "pagecraft-invoice-PC-5512.pdf",
+              "Pagecraft Stationers Ltd - Brother TN-2420 toner cartridge"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "pagecraft-invoice-PC-5512.pdf",
+              "Pagecraft Stationers Ltd - Brother TN-2420 toner cartridge"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 132.1,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "staples-receipt.txt",
+              "Staples: A4 printer paper and toner",
+              "R2 Duplicate: kept the receipt"
+            ]
+          },
+          {
+            "unexpected": [
+              "barclays-october.csv",
+              "STAPLES, office stationery",
+              "R2 Duplicate: kept the receipt"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "staff-expenses-october.xlsx",
+              "Priya Shah - Train to Manchester, client meeting"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "staff-expenses-october.xlsx",
+              "Priya Shah - Train to Manchester, client meeting"
+            ]
+          }
+        ]
+      },
+      "problems": [
+        "error event: agent_failed: Something went wrong while I was working, so I stopped. The server log says what.",
+        "failed step: Listing what needs a look"
+      ],
+      "posted_problems": [],
+      "steps": 15,
+      "failed_steps": [
+        "Listing what needs a look"
+      ],
+      "error_events": [
+        {
+          "code": "agent_failed",
+          "message": "Something went wrong while I was working, so I stopped. The server log says what."
+        }
+      ],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 31.1,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "parking-photo.png",
+              "NCP parking, Leeds Wellington Street (up to 3 hours)",
+              "R1 Date from the bank"
+            ]
+          },
+          {
+            "unexpected": [
+              "parking-photo.png",
+              "NCP Leeds Wellington Street car park, parking (tariff up to 3 hours)",
+              "R1 Date from the bank"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 6,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "missing-date-must-ask",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 36.2,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall",
+              "R1 Date from the person"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "missing": [
+              "date",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "date",
+              "IMG_20261009_081502.png",
+              "LEEDS CITY CABS, taxi journey Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "LEEDS CITY CABS, taxi journey Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "date",
+              "IMG_20261009_081502.png",
+              "LEEDS CITY CABS, taxi journey Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "LEEDS CITY CABS, taxi journey Leeds Station to Kirkstall"
+            ]
+          }
+        ]
+      },
+      "problems": [
+        "answer not applied: 0 rows are named {'file': 'IMG_20261009_081502.png', 'description': 'Leeds City Cabs taxi, Leeds Station to Kirkstall'}, not one."
+      ],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [
+        "0 rows are named {'file': 'IMG_20261009_081502.png', 'description': 'Leeds City Cabs taxi, Leeds Station to Kirkstall'}, not one."
+      ],
+      "run": 1
+    },
+    {
+      "case": "no-invoice-over-50-suspense",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 47.9,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "missing": [
+              "receipt_or_invoice",
+              "barclays-october.csv",
+              "AMAZON MKTPLACE"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "missing": [
+              "receipt_or_invoice",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "Amazon Marketplace, card purchase"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "Brightline Print, printing services"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "receipt_or_invoice",
+              "barclays-october.csv",
+              "Brightline Print, printing services"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "missing": [
+              "receipt_or_invoice",
+              "barclays-october.csv",
+              "AMAZON MKTPLACE"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "missing": [
+              "receipt_or_invoice",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "Amazon Marketplace, card purchase"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "Brightline Print, printing services"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "receipt_or_invoice",
+              "barclays-october.csv",
+              "Brightline Print, printing services"
+            ]
+          }
+        ]
+      },
+      "problems": [
+        "answer not applied: 0 rows are named {'file': 'barclays-october.csv', 'description': 'BRIGHTLINE PRINT'}, not one."
+      ],
+      "posted_problems": [],
+      "steps": 6,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [
+        "0 rows are named {'file': 'barclays-october.csv', 'description': 'BRIGHTLINE PRINT'}, not one."
+      ],
+      "run": 1
+    },
+    {
+      "case": "receipt-over-250-needs-invoice",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 47.9,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "missing": [
+              "vat_invoice",
+              "volt-receipt.txt",
+              "Lenovo ThinkPad E14 laptop"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "volt-receipt.txt",
+              "VOLT ELECTRICAL LTD - Lenovo ThinkPad E14 laptop"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "vat_invoice",
+              "volt-receipt.txt",
+              "VOLT ELECTRICAL LTD - Lenovo ThinkPad E14 laptop"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "missing": [
+              "vat_invoice",
+              "volt-receipt.txt",
+              "Lenovo ThinkPad E14 laptop"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "volt-receipt.txt",
+              "VOLT ELECTRICAL LTD - Lenovo ThinkPad E14 laptop"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "vat_invoice",
+              "volt-receipt.txt",
+              "VOLT ELECTRICAL LTD - Lenovo ThinkPad E14 laptop"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 59.2,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "northern-fibre-invoice-NFB-88213.pdf",
+              "Northern Fibre: Business Fibre 500, October 2026",
+              "R5 VAT from the document"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [
+        "failed step: Looking at row 1",
+        "failed step: Looking at row 2",
+        "failed step: Looking at row 0"
+      ],
+      "posted_problems": [],
+      "steps": 12,
+      "failed_steps": [
+        "Looking at row 1",
+        "Looking at row 2",
+        "Looking at row 0"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "northbridge",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 116.4,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "after answers",
+            "code": "2110",
+            "expected": "-22.50",
+            "actual": "-108.00",
+            "difference": "-85.50"
+          },
+          {
+            "stage": "after answers",
+            "code": "2201",
+            "expected": "72.11",
+            "actual": "27.07",
+            "difference": "-45.04"
+          },
+          {
+            "stage": "after answers",
+            "code": "7500",
+            "expected": "200.00",
+            "actual": "0.00",
+            "difference": "-200.00"
+          },
+          {
+            "stage": "after answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "107.67",
+            "difference": "32.54"
+          },
+          {
+            "stage": "after answers",
+            "code": "9998",
+            "expected": "0.00",
+            "actual": "298.00",
+            "difference": "298.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "2110",
+            "expected": "-22.50",
+            "actual": "-108.00",
+            "difference": "-85.50"
+          },
+          {
+            "stage": "before answers",
+            "code": "2201",
+            "expected": "32.11",
+            "actual": "27.07",
+            "difference": "-5.04"
+          },
+          {
+            "stage": "before answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "107.67",
+            "difference": "32.54"
+          },
+          {
+            "stage": "before answers",
+            "code": "9998",
+            "expected": "240.00",
+            "actual": "298.00",
+            "difference": "58.00"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall",
+              "R1 Date from the person"
+            ]
+          },
+          {
+            "missing": [
+              "costco-receipt-21-10.txt",
+              "Costco: copier paper, box files, milk, coffee and tea",
+              "R2 Duplicate: kept the receipt"
+            ]
+          },
+          {
+            "missing": [
+              "costco-receipt-21-10.txt",
+              "Costco: copier paper, box files, milk, coffee and tea",
+              "R3 Mixed VAT: split by rate"
+            ]
+          },
+          {
+            "missing": [
+              "inkwell-invoice-INK-4471.pdf",
+              "Inkwell: HP 305XL black ink cartridges x2",
+              "R4 Conflict: used the invoice"
+            ]
+          },
+          {
+            "missing": [
+              "inkwell-invoice-INK-4471.pdf",
+              "Inkwell: HP 305XL black ink cartridges x2",
+              "R5 VAT from the document"
+            ]
+          },
+          {
+            "missing": [
+              "parking-photo.png",
+              "NCP parking, Leeds Wellington Street (up to 3 hours)",
+              "R1 Date from the bank"
+            ]
+          },
+          {
+            "unexpected": [
+              "parking-photo.png",
+              "NCP parking, Leeds Wellington Street car park",
+              "R1 Date from the bank"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "missing": [
+              "date",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "missing": [
+              "receipt_or_invoice",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "date",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs, taxi journey Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs, taxi journey Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT, bill payment (printing)"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "COSTCO WHOLESALE, card purchase"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "staff-expenses-october.xlsx",
+              "Priya Shah - Inkwell, printer ink"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "receipt_or_invoice",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT, bill payment (printing)"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "date",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs, taxi journey Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs, taxi journey Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT, bill payment (printing)"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "COSTCO WHOLESALE, card purchase"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "staff-expenses-october.xlsx",
+              "Priya Shah - Inkwell, printer ink"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "receipt_or_invoice",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT, bill payment (printing)"
+            ]
+          }
+        ]
+      },
+      "problems": [
+        "answer not applied: 0 rows are named {'file': 'IMG_20261009_081502.png', 'description': 'Leeds City Cabs taxi, Leeds Station to Kirkstall'}, not one.",
+        "answer not applied: 0 rows are named {'file': 'barclays-october.csv', 'description': 'BRIGHTLINE PRINT'}, not one."
+      ],
+      "posted_problems": [],
+      "steps": 20,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [
+        "0 rows are named {'file': 'IMG_20261009_081502.png', 'description': 'Leeds City Cabs taxi, Leeds Station to Kirkstall'}, not one.",
+        "0 rows are named {'file': 'barclays-october.csv', 'description': 'BRIGHTLINE PRINT'}, not one."
+      ],
+      "run": 1
+    }
+  ]
+}

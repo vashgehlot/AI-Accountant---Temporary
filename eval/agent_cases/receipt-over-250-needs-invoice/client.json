@@ -1,0 +1,14 @@
+{
+  "name": "Northbridge Consulting Ltd",
+  "business_type": "limited_company",
+  "contact_name": "Test Contact",
+  "contact_email": "northbridge-receipt-over-250-needs-invoice@example.com",
+  "vat_registered": true,
+  "first_year_end": "2027-03-31",
+  "bank_accounts": [
+    {
+      "name": "Barclays current account",
+      "kind": "current"
+    }
+  ]
+}

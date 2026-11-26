@@ -1,0 +1,13 @@
+Key unreviewed: an accountant has not yet checked these treatments
+PASS tb_balances: every column sums to 0
+PASS bank_recs_tie: all tie
+PASS vat_control_ties: every return agrees
+PASS debtors_creditors_tie: both tie every month
+PASS printed_figures: every figure is printed
+PASS statements_parse: every line is there
+PASS statement_balances_chain: every balance chains
+PASS payroll_controls_clear: all clear
+PASS opening_matches_prior_tb: skipped: no previous accountant's trial balance
+PASS answers_after_arrival: all after
+PASS fixed_assets_tie: register ties
+PASS catalogue_refs: all known

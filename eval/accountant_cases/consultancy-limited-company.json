@@ -1,0 +1,33 @@
+{
+  "about": "A one-director consultancy, VAT registered: fees, coffee on the go, a client lunch on the director's claim, a laptop and a mouse.",
+  "client": {"name": "Okafor Advisory Ltd", "business_type": "limited_company", "contact_name": "Chidi Okafor",
+             "first_year_end": "2027-03-31", "vat_registered": true,
+             "owners": [{"name": "Chidi Okafor"}]},
+  "uploads": [
+    {"name": "fees-invoice.pdf", "rows": [
+      {"date": "2026-10-01", "description": "Strategy review, September", "counterparty": "Lumen Retail Ltd",
+       "direction": "in", "gross": "6000.00", "vat": "1000.00", "account_code": "4000", "document_type": "invoice",
+       "expect": {"never": ["meal_check"]}}]},
+    {"name": "pret.jpg", "rows": [
+      {"date": "2026-10-06", "description": "Pret A Manger, flat white", "counterparty": "Pret A Manger",
+       "direction": "out", "gross": "3.45", "account_code": "7406", "bought": "food_to_go",
+       "expect": {"never": ["meal_check"], "notes": ["meal_decided"]}}]},
+    {"name": "expense-claim-october.xlsx", "rows": [
+      {"date": "2026-10-14", "description": "Chidi Okafor - lunch with client Lumen Retail at Dishoom",
+       "counterparty": "Chidi Okafor", "direction": "out", "gross": "86.40", "account_code": "7406",
+       "document_type": "expense_claim", "document_ref": "claim-oct"}]},
+    {"name": "dishoom.jpg", "rows": [
+      {"date": "2026-10-14", "description": "Dishoom, lunch for two", "counterparty": "Dishoom", "direction": "out",
+       "gross": "86.40", "vat": "14.40", "account_code": "7406", "bought": "meal_out", "people": "several",
+       "expect": {"never": ["meal_check"], "account": "7403"}}]},
+    {"name": "laptop.pdf", "rows": [
+      {"date": "2026-10-20", "description": "Apple MacBook Air", "counterparty": "Apple", "direction": "out",
+       "gross": "1099.00", "vat": "183.17", "account_code": "0030", "document_type": "invoice",
+       "supplier_vat_number": "GB117223643",
+       "expect": {"never": ["small_asset", "meal_check"], "account": "0030"}}]},
+    {"name": "mouse.jpg", "rows": [
+      {"date": "2026-10-21", "description": "Currys, wireless mouse", "counterparty": "Currys", "direction": "out",
+       "gross": "12.99", "vat": "2.17", "account_code": "0030",
+       "expect": {"asks": ["small_asset"]}}]}
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "about": "A sole-trader builder, not VAT registered: materials, fuel, food on site, one pub meal for several.",
+  "client": {"name": "Harlow Build", "business_type": "sole_trader", "contact_name": "Dan Harlow",
+             "first_year_end": "2027-03-31", "vat_registered": false},
+  "uploads": [
+    {"name": "harlow-homes-invoice.pdf", "rows": [
+      {"date": "2026-10-01", "description": "Harlow Homes Ltd, kitchen refit labour", "counterparty": "Harlow Homes Ltd",
+       "direction": "in", "gross": "4000.00", "account_code": "4000", "document_type": "invoice",
+       "expect": {"never": ["meal_check", "meal_decided"]}}]},
+    {"name": "travis-perkins.jpg", "rows": [
+      {"date": "2026-10-03", "description": "Travis Perkins, plasterboard and timber", "counterparty": "Travis Perkins",
+       "direction": "out", "gross": "486.20", "account_code": "5000",
+       "expect": {"never": ["meal_check", "meal_decided", "sundry_check"]}}]},
+    {"name": "greggs.jpg", "rows": [
+      {"date": "2026-10-03", "description": "Greggs, sausage roll and tea", "counterparty": "Greggs", "direction": "out",
+       "gross": "3.10", "account_code": "7406", "bought": "food_to_go",
+       "expect": {"never": ["meal_check"], "notes": ["meal_decided"]}}]},
+    {"name": "cafe.jpg", "rows": [
+      {"date": "2026-10-04", "description": "Rosie's Cafe, full English", "counterparty": "Rosie's Cafe",
+       "direction": "out", "gross": "9.80", "account_code": "7406", "bought": "meal_out", "people": "one",
+       "expect": {"never": ["meal_check"], "notes": ["meal_decided"]}}]},
+    {"name": "the-plough.jpg", "rows": [
+      {"date": "2026-10-09", "description": "The Plough, 4 mains and drinks", "counterparty": "The Plough",
+       "direction": "out", "gross": "74.50", "account_code": "7406", "bought": "meal_out", "people": "several",
+       "expect": {"asks": ["meal_check"]}}]},
+    {"name": "shell.jpg", "rows": [
+      {"date": "2026-10-10", "description": "Shell, diesel", "counterparty": "Shell", "direction": "out",
+       "gross": "60.00", "account_code": "7300", "expect": {"never": ["meal_check", "meal_decided"]}}]}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "resolutions": [],
+  "automatic": [
+    {
+      "action": "set_date",
+      "rule": "R1 Date from the bank",
+      "actor": "rules",
+      "row": {
+        "file": "parking-photo.png",
+        "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+      },
+      "date": "2026-10-14",
+      "evidence": [
+        {
+          "file": "barclays-october.csv",
+          "quote": "NCP LEEDS"
+        }
+      ]
+    }
+  ],
+  "from_answers": []
+}

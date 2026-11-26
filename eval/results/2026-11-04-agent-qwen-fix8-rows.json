@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-04",
+  "read": "rows",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 34.9,
+      "client_id": 145,
+      "thread_id": "ecf9233c62494abda378ce3baa9746eb",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "vat-on-invoice-missing-from-entry-r1.json"
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 46.3,
+      "client_id": 146,
+      "thread_id": "e34f2c9e5c6043dfae97af204132449c",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 10,
+      "failed_steps": [
+        "Looking at row 1"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2,
+      "transcript": "vat-on-invoice-missing-from-entry-r2.json"
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 22.3,
+      "client_id": 147,
+      "thread_id": "12a6cc9e709d4cfab36594bc7182c9ec",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3,
+      "transcript": "vat-on-invoice-missing-from-entry-r3.json"
+    }
+  ]
+}

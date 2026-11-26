@@ -1,0 +1,22 @@
+{
+  "file": "parking-photo.png",
+  "kind": "image",
+  "bank_account": null,
+  "transactions": [
+    {
+      "description": "NCP parking, Leeds Wellington Street (up to 3 hours)",
+      "direction": "out",
+      "gross": "6.50",
+      "vat": "1.08",
+      "account_code": "7400",
+      "source": "image",
+      "method": "llm",
+      "document_type": "receipt",
+      "counterparty": "NCP",
+      "document_number": "0048213",
+      "document_total": "6.50",
+      "supplier_vat_number": "GB999118230",
+      "document_ref": "ncp-0048213"
+    }
+  ]
+}

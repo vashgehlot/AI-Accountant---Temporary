@@ -1,0 +1,35 @@
+{
+  "resolutions": [
+    {
+      "action": "use_primary",
+      "rule": "R4 Conflict: used the invoice",
+      "row": {
+        "file": "pagecraft-invoice-PC-5512.pdf",
+        "description": "Pagecraft: Brother TN-2420 toner cartridge"
+      },
+      "arguments": {
+        "primary": {
+          "file": "pagecraft-invoice-PC-5512.pdf",
+          "description": "Pagecraft: Brother TN-2420 toner cartridge"
+        },
+        "other": {
+          "file": "staff-expenses-october.xlsx",
+          "description": "Pagecraft - toner cartridge"
+        }
+      },
+      "evidence": [
+        {
+          "file": "pagecraft-invoice-PC-5512.pdf",
+          "quote": "Invoice total: £46.80"
+        },
+        {
+          "file": "staff-expenses-october.xlsx",
+          "quote": "Pagecraft - toner cartridge"
+        }
+      ],
+      "reason": "Invoice PC-5512 says £46.80 and the expenses sheet says £42.00 for the same toner. The invoice ranks above the sheet, and Barclays paid £46.80 on 9 Oct. Used the invoice."
+    }
+  ],
+  "automatic": [],
+  "from_answers": []
+}

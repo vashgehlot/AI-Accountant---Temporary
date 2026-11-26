@@ -1,0 +1,16 @@
+{
+  "resolutions": [],
+  "automatic": [],
+  "from_answers": [
+    {
+      "action": "set_date",
+      "rule": "R1 Date from the person",
+      "actor": "user",
+      "row": {
+        "file": "IMG_20261009_081502.png",
+        "description": "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+      },
+      "date": "2026-10-08"
+    }
+  ]
+}

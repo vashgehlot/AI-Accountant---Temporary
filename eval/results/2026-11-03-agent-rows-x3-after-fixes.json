@@ -1,0 +1,1187 @@
+{
+  "date": "2026-11-03",
+  "read": "rows",
+  "model": "openai/gpt-oss-120b",
+  "runs": [
+    {
+      "case": "clean-month",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 22.3,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 7,
+      "failed_steps": [
+        "Looking at row 1"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "clean-month",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 92.7,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "",
+              ""
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "",
+              ""
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 17,
+      "failed_steps": [
+        "Looking at row 1",
+        "Looking at row 100",
+        "Looking at row 6",
+        "Looking at row 5"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "clean-month",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 8.4,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 3,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "combined-vat",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 104.1,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "7801",
+            "expected": "38.00",
+            "actual": "56.40",
+            "difference": "18.40"
+          },
+          {
+            "code": "8205",
+            "expected": "18.40",
+            "actual": "0.00",
+            "difference": "-18.40"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "combined-vat",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 73.2,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "7504",
+            "expected": "0.00",
+            "actual": "18.40",
+            "difference": "18.40"
+          },
+          {
+            "code": "8205",
+            "expected": "18.40",
+            "actual": "0.00",
+            "difference": "-18.40"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "combined-vat",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 59.2,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "7504",
+            "expected": "0.00",
+            "actual": "18.40",
+            "difference": "18.40"
+          },
+          {
+            "code": "8205",
+            "expected": "18.40",
+            "actual": "0.00",
+            "difference": "-18.40"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 29.5,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "2110",
+            "expected": "-18.00",
+            "actual": "-60.00",
+            "difference": "-42.00"
+          },
+          {
+            "code": "2201",
+            "expected": "7.80",
+            "actual": "0.00",
+            "difference": "-7.80"
+          },
+          {
+            "code": "7504",
+            "expected": "39.00",
+            "actual": "88.80",
+            "difference": "49.80"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R4 Conflict: used the invoice",
+              "row": {
+                "file": "pagecraft-invoice-PC-5512.pdf",
+                "description": "Pagecraft: Brother TN-2420 toner cartridge"
+              }
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "pagecraft-invoice-PC-5512.pdf",
+              "Pagecraft: Brother TN-2420 toner cartridge"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "pagecraft-invoice-PC-5512.pdf",
+              "Pagecraft: Brother TN-2420 toner cartridge"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 10,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 29.7,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "2110",
+            "expected": "-18.00",
+            "actual": "-60.00",
+            "difference": "-42.00"
+          },
+          {
+            "code": "2201",
+            "expected": "7.80",
+            "actual": "0.00",
+            "difference": "-7.80"
+          },
+          {
+            "code": "7504",
+            "expected": "39.00",
+            "actual": "88.80",
+            "difference": "49.80"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R4 Conflict: used the invoice",
+              "row": {
+                "file": "pagecraft-invoice-PC-5512.pdf",
+                "description": "Pagecraft: Brother TN-2420 toner cartridge"
+              }
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 7,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 80.2,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 14,
+      "failed_steps": [
+        "Didn't change row 312",
+        "Didn't change row 312"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "\"42\" is too short to show anything: quote 4 characters or more."
+        },
+        {
+          "rule": "R4 Conflict",
+          "reason": "The expenses sheet line doesn't rank above the invoice."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 75.2,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [
+        "Didn't change row 315"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R2 Duplicate",
+          "reason": "Keep one row and drop others, row 315 among them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 46.1,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "staples-receipt.txt",
+                "description": "Staples: A4 printer paper and toner"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                320,
+                321,
+                323
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 63.4,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "unexpected": {
+              "row_ids": [
+                325,
+                328
+              ],
+              "rule": "R4 Conflict: used the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 17,
+      "failed_steps": [
+        "Didn't change row 326"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R2 Duplicate",
+          "reason": "\"Staples: A4 printer paper and toner\" isn't in staples-receipt.txt."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 29.3,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 10,
+      "failed_steps": [
+        "Looking at row 1"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 6.3,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 2,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 15.2,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 5,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "missing-date-must-ask",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 25.1,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 6,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "missing-date-must-ask",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 17.7,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 5,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "missing-date-must-ask",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 24.5,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "no-invoice-over-50-suspense",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 28.7,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 5,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "no-invoice-over-50-suspense",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 20.6,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 5,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "no-invoice-over-50-suspense",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 22.8,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 4,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "receipt-over-250-needs-invoice",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 23.8,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 7,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "receipt-over-250-needs-invoice",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 30.4,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 6,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "receipt-over-250-needs-invoice",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 21.4,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 6,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 30.5,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 33.2,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 36.8,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "northbridge",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 111.8,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "after answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "97.13",
+            "difference": "22.00"
+          },
+          {
+            "stage": "after answers",
+            "code": "8205",
+            "expected": "22.00",
+            "actual": "0.00",
+            "difference": "-22.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "97.13",
+            "difference": "22.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "8205",
+            "expected": "22.00",
+            "actual": "0.00",
+            "difference": "-22.00"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                397,
+                401,
+                406
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 18,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "northbridge",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 171.9,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "after answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "97.13",
+            "difference": "22.00"
+          },
+          {
+            "stage": "after answers",
+            "code": "8205",
+            "expected": "22.00",
+            "actual": "0.00",
+            "difference": "-22.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "97.13",
+            "difference": "22.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "8205",
+            "expected": "22.00",
+            "actual": "0.00",
+            "difference": "-22.00"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                424,
+                428,
+                433
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 21,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "northbridge",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 175.7,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "after answers",
+            "code": "1200",
+            "expected": "17404.34",
+            "actual": "17462.34",
+            "difference": "58.00"
+          },
+          {
+            "stage": "after answers",
+            "code": "2110",
+            "expected": "-22.50",
+            "actual": "-80.50",
+            "difference": "-58.00"
+          },
+          {
+            "stage": "after answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "97.13",
+            "difference": "22.00"
+          },
+          {
+            "stage": "after answers",
+            "code": "8205",
+            "expected": "22.00",
+            "actual": "0.00",
+            "difference": "-22.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "1200",
+            "expected": "17404.34",
+            "actual": "17462.34",
+            "difference": "58.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "2110",
+            "expected": "-22.50",
+            "actual": "-80.50",
+            "difference": "-58.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "97.13",
+            "difference": "22.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "8205",
+            "expected": "22.00",
+            "actual": "0.00",
+            "difference": "-22.00"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": {
+              "rule": "R2 Duplicate: kept the receipt",
+              "row": {
+                "file": "costco-receipt-21-10.txt",
+                "description": "Costco: copier paper, box files, milk, coffee and tea"
+              }
+            }
+          },
+          {
+            "unexpected": {
+              "row_ids": [
+                451,
+                455
+              ],
+              "rule": "R2 Duplicate: kept the receipt"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 21,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    }
+  ]
+}

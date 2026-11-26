@@ -1,0 +1,72 @@
+{
+  "file": "barclays-october.csv",
+  "kind": "table",
+  "bank_account": "1200",
+  "transactions": [
+    {
+      "date": "2026-10-01",
+      "description": "J NORTH LOAN TO COMPANY",
+      "direction": "in",
+      "gross": "1000.00",
+      "account_code": "2250",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "J North",
+      "document_ref": "bk-01"
+    },
+    {
+      "date": "2026-10-02",
+      "description": "ARDENT PROPERTY",
+      "direction": "out",
+      "gross": "750.00",
+      "account_code": "7100",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Ardent Property",
+      "document_ref": "bk-02"
+    },
+    {
+      "date": "2026-10-03",
+      "description": "BT GROUP PLC",
+      "direction": "out",
+      "gross": "42.00",
+      "account_code": "7502",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "BT Group",
+      "document_ref": "bk-03"
+    },
+    {
+      "date": "2026-10-13",
+      "description": "PRET A MANGER",
+      "direction": "out",
+      "gross": "8.45",
+      "account_code": "7406",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Pret A Manger",
+      "document_ref": "bk-04"
+    },
+    {
+      "date": "2026-10-30",
+      "description": "BARCLAYS ACCOUNT FEE",
+      "direction": "out",
+      "gross": "8.50",
+      "account_code": "7901",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Barclays",
+      "document_ref": "bk-05"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "file": "bulkbuy-receipt.txt",
+  "kind": "text",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-19",
+      "description": "Bulkbuy: cleaning supplies, tea, coffee, milk and sugar",
+      "direction": "out",
+      "gross": "64.00",
+      "vat": "7.60",
+      "account_code": "7801",
+      "source": "text",
+      "method": "llm",
+      "document_type": "receipt",
+      "counterparty": "Bulkbuy Cash & Carry Ltd",
+      "document_total": "64.00",
+      "supplier_vat_number": "GB999553076",
+      "document_ref": "bulkbuy-1910",
+      "issues": [
+        {
+          "code": "mixed_items",
+          "message": "Items of different kinds with one VAT total: kept as one row.",
+          "severity": "warning",
+          "related": []
+        }
+      ]
+    }
+  ]
+}

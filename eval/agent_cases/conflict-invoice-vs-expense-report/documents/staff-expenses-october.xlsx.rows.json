@@ -1,0 +1,31 @@
+{
+  "file": "staff-expenses-october.xlsx",
+  "kind": "table",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-06",
+      "description": "Pagecraft - toner cartridge",
+      "direction": "out",
+      "gross": "42.00",
+      "account_code": "7504",
+      "source": "table",
+      "method": "llm",
+      "document_type": "expense_claim",
+      "counterparty": "Priya Shah",
+      "document_ref": "sheet-01"
+    },
+    {
+      "date": "2026-10-16",
+      "description": "Mileage - client visit Harrogate, 40 miles at 45p",
+      "direction": "out",
+      "gross": "18.00",
+      "account_code": "7400",
+      "source": "table",
+      "method": "llm",
+      "document_type": "expense_claim",
+      "counterparty": "Priya Shah",
+      "document_ref": "sheet-02"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Greywell Surveying Ltd",
+  "business_type": "limited_company",
+  "contact_name": "Test Contact",
+  "contact_email": "greywell-transfer@example.com",
+  "vat_registered": true,
+  "first_year_end": "2027-03-31",
+  "bank_accounts": [
+    {
+      "name": "Business current account",
+      "kind": "current"
+    },
+    {
+      "name": "Business savings account",
+      "kind": "savings"
+    }
+  ],
+  "statements": {
+    "current-account-october.csv": "Business current account",
+    "savings-account-october.csv": "Business savings account"
+  }
+}

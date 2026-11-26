@@ -1,0 +1,62 @@
+{
+  "lines": [
+    {
+      "code": "0030",
+      "debit": "3200.00",
+      "credit": "0.00"
+    },
+    {
+      "code": "0031",
+      "debit": "0.00",
+      "credit": "1100.00"
+    },
+    {
+      "code": "1100",
+      "debit": "6000.00",
+      "credit": "0.00"
+    },
+    {
+      "code": "1200",
+      "debit": "12450.00",
+      "credit": "0.00"
+    },
+    {
+      "code": "2250",
+      "debit": "0.00",
+      "credit": "1500.00"
+    },
+    {
+      "code": "2320",
+      "debit": "0.00",
+      "credit": "2850.00"
+    },
+    {
+      "code": "3000",
+      "debit": "0.00",
+      "credit": "100.00"
+    },
+    {
+      "code": "3200",
+      "debit": "0.00",
+      "credit": "16100.00"
+    }
+  ],
+  "unpaid": [
+    {
+      "id": "NB-1031",
+      "direction": "in",
+      "counterparty": "Brightwell Ltd",
+      "amount": "3600.00",
+      "number": "NB-1031",
+      "date": "2026-03-20"
+    },
+    {
+      "id": "NB-1032",
+      "direction": "in",
+      "counterparty": "Harbour & Lane Ltd",
+      "amount": "2400.00",
+      "number": "NB-1032",
+      "date": "2026-03-27"
+    }
+  ]
+}

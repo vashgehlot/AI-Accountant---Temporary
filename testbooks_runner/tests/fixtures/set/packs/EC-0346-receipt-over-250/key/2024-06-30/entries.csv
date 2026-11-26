@@ -1,0 +1,25 @@
+entry_id,journal_id,date,account,account_name,debit,credit,vat_code,vat,counterparty,deal_id,doc_ids,line_ids,stakes,also_ok,phase,cases
+E00001,OPENING,2024-06-01,1200,Bank current account,5000.00,0.00,,0.00,,,,,,,opening,
+E00002,OPENING,2024-06-01,3200,Profit and loss account,0.00,5000.00,,0.00,,,,,,,opening,
+E00003,PK-0001,2024-06-03,4010,Sales - projects,0.00,2500.00,standard,500.00,Ridgeway Garden Centre Ltd,PK-0001,PK-D0001,hsbc-2024-06-0001,accounts,,books,
+E00004,PK-0001,2024-06-03,2200,VAT on sales,0.00,500.00,standard,500.00,Ridgeway Garden Centre Ltd,PK-0001,PK-D0001,hsbc-2024-06-0001,accounts,,books,
+E00005,PK-0001,2024-06-03,1100,Debtors control,3000.00,0.00,,0.00,Ridgeway Garden Centre Ltd,PK-0001,PK-D0001,hsbc-2024-06-0001,,,books,
+E00006,PK-0002,2024-06-10,7504,Office stationery and small equipment,266.67,0.00,none,0.00,Wharfside Office Interiors,PK-0002,PK-D0002,hsbc-2024-06-0002,accounts,,books,EC-0346
+E00007,PK-0002,2024-06-10,9998,Suspense,53.33,0.00,outside,0.00,Wharfside Office Interiors,PK-0002,PK-D0002,hsbc-2024-06-0002,accounts,7504,books,EC-0346
+E00008,PK-0002,2024-06-10,1200,Bank current account,0.00,320.00,,0.00,Wharfside Office Interiors,PK-0002,PK-D0002,hsbc-2024-06-0002,,,books,EC-0346
+E00009,PK-0003,2024-06-11,7406,Subsistence,10.33,0.00,standard,2.07,The Brunswick Cafe,PK-0003,PK-D0004,hsbc-2024-06-0003,accounts,,books,
+E00010,PK-0003,2024-06-11,2201,VAT on purchases,2.07,0.00,standard,2.07,The Brunswick Cafe,PK-0003,PK-D0004,hsbc-2024-06-0003,accounts,,books,
+E00011,PK-0003,2024-06-11,1200,Bank current account,0.00,12.40,,0.00,The Brunswick Cafe,PK-0003,PK-D0004,hsbc-2024-06-0003,,,books,
+E00012,ANSWER-PK-0002,2024-06-14,2201,VAT on purchases,53.33,0.00,standard,53.33,Wharfside Office Interiors,PK-0002,PK-D0002,hsbc-2024-06-0002,accounts,,answers,EC-0346
+E00013,ANSWER-PK-0002,2024-06-14,9998,Suspense,0.00,53.33,,0.00,Wharfside Office Interiors,PK-0002,PK-D0002,hsbc-2024-06-0002,accounts,,answers,EC-0346
+E00014,PK-0001/hsbc-2024-06-0001,2024-06-17,1200,Bank current account,3000.00,0.00,,0.00,Ridgeway Garden Centre Ltd,PK-0001,PK-D0001,hsbc-2024-06-0001,,,books,
+E00015,PK-0001/hsbc-2024-06-0001,2024-06-17,1100,Debtors control,0.00,3000.00,,0.00,Ridgeway Garden Centre Ltd,PK-0001,PK-D0001,hsbc-2024-06-0001,,,books,
+E00016,PK-0004,2024-06-19,7406,Subsistence,7.46,0.00,standard,1.49,Kingsholm Deli,PK-0004,PK-D0005,hsbc-2024-06-0004,accounts,,books,
+E00017,PK-0004,2024-06-19,2201,VAT on purchases,1.49,0.00,standard,1.49,Kingsholm Deli,PK-0004,PK-D0005,hsbc-2024-06-0004,accounts,,books,
+E00018,PK-0004,2024-06-19,1200,Bank current account,0.00,8.95,,0.00,Kingsholm Deli,PK-0004,PK-D0005,hsbc-2024-06-0004,,,books,
+E00019,VAT-2024-06-30,2024-06-30,2200,VAT on sales,500.00,0.00,,0.00,,,,,,,books,
+E00020,VAT-2024-06-30,2024-06-30,2202,VAT liability,0.00,500.00,,0.00,,,,,,,books,
+E00021,VAT-2024-06-30,2024-06-30,2201,VAT on purchases,0.00,3.56,,0.00,,,,,,,books,
+E00022,VAT-2024-06-30,2024-06-30,2202,VAT liability,3.56,0.00,,0.00,,,,,,,books,
+E00023,VAT-2024-06-30-ANSWERS,2024-06-30,2201,VAT on purchases,0.00,53.33,,0.00,,,,,,,answers,
+E00024,VAT-2024-06-30-ANSWERS,2024-06-30,2202,VAT liability,53.33,0.00,,0.00,,,,,,,answers,

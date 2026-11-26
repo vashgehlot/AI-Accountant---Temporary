@@ -1,0 +1,23 @@
+{
+  "file": "northern-fibre-invoice-NFB-88213.pdf",
+  "kind": "pdf",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-01",
+      "description": "Northern Fibre: Business Fibre 500, October 2026",
+      "direction": "out",
+      "gross": "72.00",
+      "account_code": "7502",
+      "source": "pdf",
+      "method": "llm",
+      "document_type": "invoice",
+      "counterparty": "Northern Fibre Broadband Ltd",
+      "document_number": "NFB-88213",
+      "document_total": "72.00",
+      "document_net": "60.00",
+      "supplier_vat_number": "GB999609328",
+      "document_ref": "fibre-nfb88213"
+    }
+  ]
+}

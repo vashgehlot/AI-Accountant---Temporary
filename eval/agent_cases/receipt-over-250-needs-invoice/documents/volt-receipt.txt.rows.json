@@ -1,0 +1,23 @@
+{
+  "file": "volt-receipt.txt",
+  "kind": "text",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-22",
+      "description": "Lenovo ThinkPad E14 laptop",
+      "direction": "out",
+      "gross": "499.00",
+      "vat": "83.17",
+      "account_code": "0030",
+      "source": "text",
+      "method": "llm",
+      "document_type": "receipt",
+      "counterparty": "Volt Electrical Ltd",
+      "document_number": "2210-0457",
+      "document_total": "499.00",
+      "supplier_vat_number": "GB999145066",
+      "document_ref": "volt-2210-0457"
+    }
+  ]
+}

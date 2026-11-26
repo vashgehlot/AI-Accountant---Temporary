@@ -1,0 +1,11 @@
+key_code,label,reverse_charge
+standard,VAT at 20%,N
+reduced,VAT at 5%,N
+zero,zero-rated,N
+exempt,exempt,N
+outside,outside the scope of VAT,N
+none,no VAT reclaimed,N
+reverse_charge,reverse charge,Y
+blocked,VAT blocked,N
+blocked_half,half the VAT blocked,N
+flat_rate,flat rate scheme,N

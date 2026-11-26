@@ -1,0 +1,23 @@
+{
+  "file": "seatwise-receipt.txt",
+  "kind": "text",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-27",
+      "description": "Ergonomic office chair, black",
+      "direction": "out",
+      "gross": "250.00",
+      "vat": "41.67",
+      "account_code": "0040",
+      "source": "text",
+      "method": "llm",
+      "document_type": "receipt",
+      "counterparty": "Seatwise Office Furniture Ltd",
+      "document_number": "88120",
+      "document_total": "250.00",
+      "supplier_vat_number": "GB999337691",
+      "document_ref": "seatwise-88120"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import datetime as dt
 from decimal import Decimal
 
+from helpers import row
 from ledgersync.models import Transaction
 from ledgersync.statements import check_statement
 
@@ -63,3 +64,21 @@ def test_checking_again_replaces_the_earlier_warnings():
     once, _ = check_statement([line("out", "20.00", "980.00"), line("out", "30.00", "900.00")])
     twice, _ = check_statement(once)
     assert [len(tx.issues) for tx in twice] == [0, 1]
+
+
+def test_a_credit_card_statement_adds_up_when_spending_raises_the_balance():
+    lines = [row(gross=Decimal("40.00"), document_type="statement", balance=Decimal("140.00"),
+                 opening_balance=Decimal("100.00")),
+             row(gross=Decimal("10.00"), document_type="statement", balance=Decimal("150.00"),
+                 closing_balance=Decimal("150.00"))]
+    _, check = check_statement(lines, credit_card=True)
+    assert check.status == "ok"
+    _, as_a_bank = check_statement(lines)
+    assert as_a_bank.status == "gap"
+
+
+def test_paying_off_a_credit_card_lowers_what_is_owed_on_it():
+    lines = [row(direction="in", gross=Decimal("150.00"), document_type="statement", balance=Decimal("0.00"),
+                 opening_balance=Decimal("150.00"), closing_balance=Decimal("0.00"))]
+    _, check = check_statement(lines, credit_card=True)
+    assert check.status == "ok"

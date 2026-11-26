@@ -1,0 +1,14 @@
+{
+  "name": "Kestrel Joinery Ltd",
+  "business_type": "limited_company",
+  "contact_name": "Test Contact",
+  "contact_email": "kestrel-payroll@example.com",
+  "vat_registered": true,
+  "first_year_end": "2027-03-31",
+  "bank_accounts": [
+    {
+      "name": "Bank current account",
+      "kind": "current"
+    }
+  ]
+}

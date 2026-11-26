@@ -31,11 +31,11 @@ def root_logger():
         logging.getLogger(name).setLevel(level)
 
 
-def test_debug_log_level_never_logs_pdf_text(root_logger, caplog):
+def test_debug_log_level_never_logs_pdf_text(root_logger, caplog, mongo_store):
     # pytest attaches its own handlers before the test body runs; remove them so create_app
     # configures logging exactly as in a real `python server.py` start.
     root_logger.handlers = []
-    create_app(Settings(log_level="DEBUG", warmup=False), model_client=FakeModel())
+    create_app(Settings(log_level="DEBUG", warmup=False), model_client=FakeModel(), store=mongo_store)
     root_logger.addHandler(caplog.handler)
     doc = pymupdf.open()
     doc.new_page().insert_text((72, 72), "MRS CLIENT SECRET invoice total 120.00")

@@ -1,0 +1,41 @@
+{
+  "resolutions": [
+    {
+      "action": "split_vat",
+      "rule": "R3 Mixed VAT: split by rate",
+      "row": {
+        "file": "bulkbuy-receipt.txt",
+        "description": "Bulkbuy: cleaning supplies, tea, coffee, milk and sugar"
+      },
+      "arguments": {
+        "parts": [
+          {
+            "description": "Cleaning supplies: washing-up liquid, bin bags, kitchen roll, antibac spray",
+            "account_code": "7801",
+            "gross": "45.60",
+            "rate": "standard"
+          },
+          {
+            "description": "Tea, coffee, milk and sugar for the office",
+            "account_code": "8205",
+            "gross": "18.40",
+            "rate": "zero"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "file": "bulkbuy-receipt.txt",
+          "quote": "S 20% 38.00 7.60 45.60"
+        },
+        {
+          "file": "bulkbuy-receipt.txt",
+          "quote": "Z 0% 18.40 0.00 18.40"
+        }
+      ],
+      "reason": "The receipt's VAT summary puts £7.60 VAT on £45.60 of standard-rated cleaning supplies and none on £18.40 of zero-rated food and drink. Split by rate."
+    }
+  ],
+  "automatic": [],
+  "from_answers": []
+}

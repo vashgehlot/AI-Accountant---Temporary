@@ -17,6 +17,21 @@ def transactions_json(*rows: dict) -> str:
     return json.dumps({"transactions": list(rows)})
 
 
+def as_coding(reply):
+    """A reader's answer (a "transactions" list) as the answer to coding a statement read in code (a "lines" list):
+    the same accounts and payees, line by line. A reply already in that shape is left as it is."""
+    try:
+        parsed = json.loads(reply)
+    except (TypeError, ValueError):
+        return reply
+    if not isinstance(parsed, dict) or "transactions" not in parsed:
+        return reply
+    return json.dumps({"lines": [{"n": n, "account": t.get("account", "9998"), "counterparty": t.get("counterparty"),
+                                  "alternatives": t.get("alternatives", []), "bought": t.get("bought"),
+                                  "people": t.get("people")}
+                                 for n, t in enumerate(parsed["transactions"], start=1)]})
+
+
 class FakeModel:
     """Stands in for ModelClient: chat_json returns (or raises) `replies` in order."""
 
@@ -35,12 +50,13 @@ class FakeModel:
         if not self.healthy:
             raise ModelUnavailable(OFFLINE)
 
-    def chat_json(self, messages, schema, images=None) -> str:
-        self.calls.append({"messages": messages, "schema": schema, "images": images})
+    def chat_json(self, messages, schema, images=None, reasoning_effort=None) -> str:
+        self.calls.append({"messages": messages, "schema": schema, "images": images,
+                           "reasoning_effort": reasoning_effort})
         reply = self.replies.pop(0)
         if isinstance(reply, Exception):
             raise reply
-        return reply
+        return as_coding(reply) if "lines" in schema.get("properties", {}) else reply
 
     def warm_up(self) -> None:
         pass
@@ -58,6 +74,8 @@ class FakeUrlopen:
         outcome = self.outcomes.pop(0)
         if isinstance(outcome, BaseException):
             raise outcome
+        if isinstance(outcome, _Stream) or (req.data and json.loads(req.data).get("stream") and "choices" in outcome):
+            return outcome if isinstance(outcome, _Stream) else _Stream.of(outcome)
         return _JsonResponse(outcome)
 
     def payload(self, n: int = -1) -> dict:
@@ -76,6 +94,44 @@ class _JsonResponse:
 
     def __exit__(self, *exc):
         return False
+
+
+class _Stream:
+    """A chat completion as server-sent events, one line at a time, as a streamed answer arrives; `read_lines` counts
+    the lines the client took, so a test can see it stopped early."""
+    def __init__(self, lines: list[bytes]):
+        self._lines, self.read_lines = lines, 0
+
+    @classmethod
+    def of(cls, answer: dict, piece: int = 8) -> "_Stream":
+        choice = answer["choices"][0]
+        content = choice["message"]["content"]
+        chunks = [{"choices": [{"index": 0, "delta": {"content": content[i:i + piece]}}]}
+                  for i in range(0, len(content), piece)] or [{"choices": [{"index": 0, "delta": {}}]}]
+        chunks[-1]["choices"][0]["finish_reason"] = choice.get("finish_reason")
+        for chunk in chunks:
+            if answer.get("provider"):
+                chunk["provider"] = answer["provider"]
+        return cls([f"data: {json.dumps(c)}\n".encode() for c in chunks] + [b"data: [DONE]\n"])
+
+    def __iter__(self):
+        for line in self._lines:
+            self.read_lines += 1
+            yield line
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+
+def streamed(*pieces: str, finish_reason=None) -> _Stream:
+    """An answer streamed in these pieces, ending with finish_reason (None: the stream is cut before it ends)."""
+    chunks = [{"choices": [{"index": 0, "delta": {"content": p}}]} for p in pieces]
+    if finish_reason:
+        chunks[-1]["choices"][0]["finish_reason"] = finish_reason
+    return _Stream([f"data: {json.dumps(c)}\n".encode() for c in chunks] + [b"data: [DONE]\n"])
 
 
 def http_error(code: int, message: str = "failed", retry_after=None) -> urllib.error.HTTPError:

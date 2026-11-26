@@ -1,0 +1,37 @@
+{
+  "resolutions": [
+    {
+      "action": "keep_one",
+      "rule": "R2 Duplicate: kept the receipt",
+      "row": {
+        "file": "staples-receipt.txt",
+        "description": "Staples: A4 printer paper and toner"
+      },
+      "arguments": {
+        "keep": {
+          "file": "staples-receipt.txt",
+          "description": "Staples: A4 printer paper and toner"
+        },
+        "drop": [
+          {
+            "file": "staff-expenses-october.xlsx",
+            "description": "Staples - printer paper and toner"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "file": "staples-receipt.txt",
+          "quote": "TOTAL 64.80"
+        },
+        {
+          "file": "staff-expenses-october.xlsx",
+          "quote": "Staples - printer paper and toner"
+        }
+      ],
+      "reason": "The Staples receipt of 13 Oct for £64.80 and the expenses sheet line are the same purchase, paid by card from Barclays the same day. Kept the receipt; the sheet line comes out."
+    }
+  ],
+  "automatic": [],
+  "from_answers": []
+}

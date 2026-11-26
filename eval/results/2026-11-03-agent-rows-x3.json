@@ -1,0 +1,1407 @@
+{
+  "date": "2026-11-03",
+  "read": "rows",
+  "model": "openai/gpt-oss-120b",
+  "runs": [
+    {
+      "case": "clean-month",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 51.9,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [
+        "failed step: Looking at row 1"
+      ],
+      "posted_problems": [],
+      "steps": 15,
+      "failed_steps": [
+        "Looking at row 1"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "clean-month",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 11.1,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 6,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "clean-month",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 39.0,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [
+        "failed step: Looking at row 1"
+      ],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [
+        "Looking at row 1"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "combined-vat",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 52.6,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "7801",
+            "expected": "38.00",
+            "actual": "56.40",
+            "difference": "18.40"
+          },
+          {
+            "code": "8205",
+            "expected": "18.40",
+            "actual": "0.00",
+            "difference": "-18.40"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "combined-vat",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 47.4,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "7801",
+            "expected": "38.00",
+            "actual": "56.40",
+            "difference": "18.40"
+          },
+          {
+            "code": "8205",
+            "expected": "18.40",
+            "actual": "0.00",
+            "difference": "-18.40"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "combined-vat",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 49.7,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "7801",
+            "expected": "38.00",
+            "actual": "56.40",
+            "difference": "18.40"
+          },
+          {
+            "code": "8205",
+            "expected": "18.40",
+            "actual": "0.00",
+            "difference": "-18.40"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 88.6,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "code": "2110",
+            "expected": "-18.00",
+            "actual": "-60.00",
+            "difference": "-42.00"
+          },
+          {
+            "code": "2201",
+            "expected": "7.80",
+            "actual": "0.00",
+            "difference": "-7.80"
+          },
+          {
+            "code": "7504",
+            "expected": "39.00",
+            "actual": "88.80",
+            "difference": "49.80"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "pagecraft-invoice-PC-5512.pdf",
+              "Pagecraft: Brother TN-2420 toner cartridge",
+              "R4 Conflict: used the invoice"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "pagecraft-invoice-PC-5512.pdf",
+              "Pagecraft: Brother TN-2420 toner cartridge"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "pagecraft-invoice-PC-5512.pdf",
+              "Pagecraft: Brother TN-2420 toner cartridge"
+            ]
+          }
+        ]
+      },
+      "problems": [
+        "failed step: Didn't change row 109"
+      ],
+      "posted_problems": [],
+      "steps": 16,
+      "failed_steps": [
+        "Didn't change row 109"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 109, 110, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 138.3,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [
+        "failed step: Looking at row 116",
+        "failed step: Looking at row 117",
+        "failed step: Didn't change row 113"
+      ],
+      "posted_problems": [],
+      "steps": 22,
+      "failed_steps": [
+        "Looking at row 116",
+        "Looking at row 117",
+        "Didn't change row 113"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R4 Conflict",
+          "reason": "barclays-october.csv holds none of rows 113, 114, nor a record matched with them."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "conflict-invoice-vs-expense-report",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 64.9,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 11,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 52.4,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "staples-receipt.txt",
+              "Staples: A4 printer paper and toner",
+              "R2 Duplicate: kept the receipt"
+            ]
+          },
+          {
+            "unexpected": [
+              "staff-expenses-october.xlsx",
+              "Staples - printer paper and toner",
+              "R2 Duplicate: kept the receipt"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 50.1,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "staples-receipt.txt",
+              "Staples: A4 printer paper and toner",
+              "R2 Duplicate: kept the receipt"
+            ]
+          },
+          {
+            "unexpected": [
+              "barclays-october.csv",
+              "STAPLES",
+              "R2 Duplicate: kept the receipt"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "duplicate-receipt-spreadsheet",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 51.4,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "staples-receipt.txt",
+              "Staples: A4 printer paper and toner",
+              "R2 Duplicate: kept the receipt"
+            ]
+          },
+          {
+            "unexpected": [
+              "barclays-october.csv",
+              "STAPLES",
+              "R2 Duplicate: kept the receipt"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [
+        "failed step: Didn't change row 131"
+      ],
+      "posted_problems": [],
+      "steps": 13,
+      "failed_steps": [
+        "Didn't change row 131"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R2 Duplicate",
+          "reason": "\"STAPLES                    64.80\" isn't in barclays-october.csv."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 10.9,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 5,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 52.2,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [
+        "failed step: Looking at row 1",
+        "failed step: Looking at row 2",
+        "failed step: Looking at row 4",
+        "failed step: Looking at row 0"
+      ],
+      "posted_problems": [],
+      "steps": 14,
+      "failed_steps": [
+        "Looking at row 1",
+        "Looking at row 2",
+        "Looking at row 4",
+        "Looking at row 0"
+      ],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "missing-date-from-bank",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 13.0,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 5,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "missing-date-must-ask",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 33.6,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 7,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "missing-date-must-ask",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 32.3,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "missing-date-must-ask",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 23.8,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 6,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "no-invoice-over-50-suspense",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 24.0,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "AMAZON MKTPLACE"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "AMAZON MKTPLACE"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 5,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "no-invoice-over-50-suspense",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 20.5,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "AMAZON MKTPLACE"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "AMAZON MKTPLACE"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 5,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "no-invoice-over-50-suspense",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 27.1,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "AMAZON MKTPLACE"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "AMAZON MKTPLACE"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 6,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "receipt-over-250-needs-invoice",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 17.7,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "volt-receipt.txt",
+              "Lenovo ThinkPad E14 laptop"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "volt-receipt.txt",
+              "Lenovo ThinkPad E14 laptop"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 7,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "receipt-over-250-needs-invoice",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 15.2,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "volt-receipt.txt",
+              "Lenovo ThinkPad E14 laptop"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "volt-receipt.txt",
+              "Lenovo ThinkPad E14 laptop"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 7,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "receipt-over-250-needs-invoice",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 16.3,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "volt-receipt.txt",
+              "Lenovo ThinkPad E14 laptop"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "volt-receipt.txt",
+              "Lenovo ThinkPad E14 laptop"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 7,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 31.0,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 38.9,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 30.1,
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": []
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 8,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 3
+    },
+    {
+      "case": "northbridge",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 99.8,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "after answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "97.13",
+            "difference": "22.00"
+          },
+          {
+            "stage": "after answers",
+            "code": "8205",
+            "expected": "22.00",
+            "actual": "0.00",
+            "difference": "-22.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "97.13",
+            "difference": "22.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "8205",
+            "expected": "22.00",
+            "actual": "0.00",
+            "difference": "-22.00"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "costco-receipt-21-10.txt",
+              "Costco: copier paper, box files, milk, coffee and tea",
+              "R3 Mixed VAT: split by rate"
+            ]
+          },
+          {
+            "missing": [
+              "inkwell-invoice-INK-4471.pdf",
+              "Inkwell: HP 305XL black ink cartridges x2",
+              "R4 Conflict: used the invoice"
+            ]
+          },
+          {
+            "unexpected": [
+              "barclays-october.csv",
+              "COSTCO WHOLESALE",
+              "R4 Conflict: used the receipt"
+            ]
+          },
+          {
+            "unexpected": [
+              "inkwell-invoice-INK-4471.pdf",
+              "Inkwell: HP 305XL black ink cartridges x2",
+              "R2 Duplicate: kept the invoice"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT"
+            ]
+          }
+        ]
+      },
+      "problems": [],
+      "posted_problems": [],
+      "steps": 26,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1
+    },
+    {
+      "case": "northbridge",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 99.8,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "after answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "97.13",
+            "difference": "22.00"
+          },
+          {
+            "stage": "after answers",
+            "code": "8205",
+            "expected": "22.00",
+            "actual": "0.00",
+            "difference": "-22.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "97.13",
+            "difference": "22.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "8205",
+            "expected": "22.00",
+            "actual": "0.00",
+            "difference": "-22.00"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "costco-receipt-21-10.txt",
+              "Costco: copier paper, box files, milk, coffee and tea",
+              "R2 Duplicate: kept the receipt"
+            ]
+          },
+          {
+            "missing": [
+              "costco-receipt-21-10.txt",
+              "Costco: copier paper, box files, milk, coffee and tea",
+              "R3 Mixed VAT: split by rate"
+            ]
+          },
+          {
+            "unexpected": [
+              "barclays-october.csv",
+              "COSTCO WHOLESALE",
+              "R2 Duplicate: kept the receipt"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT"
+            ]
+          }
+        ]
+      },
+      "problems": [
+        "failed step: Didn't change row 228"
+      ],
+      "posted_problems": [],
+      "steps": 20,
+      "failed_steps": [
+        "Didn't change row 228"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R2 Duplicate",
+          "reason": "\"Costco: copier paper, box files, milk, coffee and tea\" isn't in costco-receipt-21-10.txt."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 2
+    },
+    {
+      "case": "northbridge",
+      "model": "openai/gpt-oss-120b",
+      "seconds": 131.1,
+      "trial_balance": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "after answers",
+            "code": "1200",
+            "expected": "17404.34",
+            "actual": "17462.34",
+            "difference": "58.00"
+          },
+          {
+            "stage": "after answers",
+            "code": "2110",
+            "expected": "-22.50",
+            "actual": "-80.50",
+            "difference": "-58.00"
+          },
+          {
+            "stage": "after answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "97.13",
+            "difference": "22.00"
+          },
+          {
+            "stage": "after answers",
+            "code": "8205",
+            "expected": "22.00",
+            "actual": "0.00",
+            "difference": "-22.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "1200",
+            "expected": "17404.34",
+            "actual": "17462.34",
+            "difference": "58.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "2110",
+            "expected": "-22.50",
+            "actual": "-80.50",
+            "difference": "-58.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "7504",
+            "expected": "75.13",
+            "actual": "97.13",
+            "difference": "22.00"
+          },
+          {
+            "stage": "before answers",
+            "code": "8205",
+            "expected": "22.00",
+            "actual": "0.00",
+            "difference": "-22.00"
+          }
+        ]
+      },
+      "decisions": {
+        "passed": false,
+        "differences": [
+          {
+            "missing": [
+              "costco-receipt-21-10.txt",
+              "Costco: copier paper, box files, milk, coffee and tea",
+              "R2 Duplicate: kept the receipt"
+            ]
+          },
+          {
+            "unexpected": [
+              "barclays-october.csv",
+              "COSTCO WHOLESALE",
+              "R2 Duplicate: kept the receipt"
+            ]
+          }
+        ]
+      },
+      "questions": {
+        "passed": false,
+        "differences": [
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "before answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "IMG_20261009_081502.png",
+              "Leeds City Cabs taxi, Leeds Station to Kirkstall"
+            ]
+          },
+          {
+            "stage": "after answers",
+            "unexpected": [
+              "other",
+              "barclays-october.csv",
+              "BRIGHTLINE PRINT"
+            ]
+          }
+        ]
+      },
+      "problems": [
+        "failed step: Didn't change row 257",
+        "failed step: Didn't change row 257"
+      ],
+      "posted_problems": [],
+      "steps": 25,
+      "failed_steps": [
+        "Didn't change row 257",
+        "Didn't change row 257"
+      ],
+      "error_events": [],
+      "refused_decisions": [
+        {
+          "rule": "R2 Duplicate",
+          "reason": "\"Costco: copier paper, box files, milk, coffee and tea\" isn't in costco-receipt-21-10.txt."
+        },
+        {
+          "rule": "R2 Duplicate",
+          "reason": "\"-58.00, Card Purchase, COSTCO WHOLESALE\" isn't in barclays-october.csv."
+        }
+      ],
+      "answers_not_applied": [],
+      "run": 3
+    }
+  ]
+}

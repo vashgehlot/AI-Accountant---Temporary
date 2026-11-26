@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-04",
+  "read": "model",
+  "model": "qwen/qwen3.8-27b",
+  "runs": [
+    {
+      "case": "vat-on-invoice-missing-from-entry",
+      "model": "qwen/qwen3.8-27b",
+      "seconds": 45.6,
+      "client_id": 154,
+      "thread_id": "a5645d4d2adc46e0bf0b2d3b7e0d0baf",
+      "trial_balance": {
+        "passed": true,
+        "differences": []
+      },
+      "decisions": {
+        "passed": true,
+        "differences": [],
+        "already_in_reading": [
+          {
+            "rule": "R5 VAT from the document",
+            "row": {
+              "file": "northern-fibre-invoice-NFB-88213.pdf",
+              "description": "Northern Fibre: Business Fibre 500, October 2026"
+            }
+          }
+        ]
+      },
+      "questions": {
+        "passed": true,
+        "differences": []
+      },
+      "problems": [],
+      "row_fallbacks": [
+        {
+          "expected": {
+            "file": "northern-fibre-invoice-NFB-88213.pdf",
+            "description": "Northern Fibre: Business Fibre 500, October 2026"
+          },
+          "found": {
+            "file": "northern-fibre-invoice-NFB-88213.pdf",
+            "description": "Northern Fibre Broadband Ltd, Business Fibre 500 October 2026"
+          }
+        }
+      ],
+      "unmatched_names": [],
+      "posted_problems": [],
+      "steps": 9,
+      "failed_steps": [],
+      "error_events": [],
+      "refused_decisions": [],
+      "answers_not_applied": [],
+      "run": 1,
+      "transcript": "vat-on-invoice-missing-from-entry-r1.json"
+    }
+  ]
+}

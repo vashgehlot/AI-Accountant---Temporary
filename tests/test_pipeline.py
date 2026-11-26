@@ -99,10 +99,16 @@ def test_photos_go_to_the_model_as_images():
     assert ex.calls[0]["text"] is None and len(ex.calls[0]["images"]) == 1
 
 
-def test_a_sideways_phone_photo_is_sent_upright_small_and_as_jpeg():
-    # EXIF orientation 6: the phone was turned 90 degrees; the pixels are stored sideways.
+def test_a_sideways_phone_photo_is_sent_upright_at_most_2000_pixels_and_as_jpeg():
+    # EXIF orientation 6: the phone was turned 90 degrees; the pixels are stored sideways. 2000, not 1200: at 1200 a
+    # receipt's small print (its VAT number) was lost.
     sent = Image.open(io.BytesIO(base64.b64decode(prepare_image(photo((3000, 1000), orientation=6)))))
-    assert sent.format == "JPEG" and max(sent.size) == 1200 and sent.size[0] < sent.size[1]
+    assert sent.format == "JPEG" and max(sent.size) == 2000 and sent.size[0] < sent.size[1]
+
+
+def test_a_photo_smaller_than_the_limit_is_not_enlarged():
+    sent = Image.open(io.BytesIO(base64.b64decode(prepare_image(photo((800, 600))))))
+    assert sent.size == (800, 600)
 
 
 def test_scanned_pages_go_three_per_request_and_warnings_name_their_pages():
@@ -186,3 +192,56 @@ class HostsExtractor(RecordingExtractor):
 def test_pages_read_by_different_hosts_name_each_host_once():
     result = analyze(Intake("pdf", data=scanned_pdf(7)), HostsExtractor(), ctx())   # pages 1-3, 4-6 and 7
     assert result.model == "fake-model via DeepInfra; fake-model via Parasail"
+
+
+# ─── Bank and payment exports read in code (design of 2026-11-23) ─────────────
+
+import json as _json  # noqa: E402
+
+from fakes import FakeModel  # noqa: E402
+
+from ledgersync.extractor import TransactionExtractor  # noqa: E402
+
+HSBC_CSV = ("Date,Type,Description,Amount,Balance\n28 Apr 2023,BP,LEAH MORGAN SALARY,-3149.87,8263.46\n"
+            "29 Apr 2023,DD,BT GROUP,-72.00,8191.46\n")
+STRIPE_CSV = ("automatic_payout_id,automatic_payout_effective_at,balance_transaction_id,created_utc,currency,gross,"
+              "fee,net,reporting_category,description,customer_name\n"
+              ",,txn_1,2023-04-04 12:00:00,gbp,720.00,11.00,709.00,charge,Retainer Apr 2023,Moss & Pine Florists\n")
+
+
+def test_a_recognised_csv_is_read_in_code_and_coded():
+    fake = FakeModel([_json.dumps({"lines": [
+        {"n": 1, "account": "2220", "counterparty": "Leah Morgan", "alternatives": [], "bought": None, "people": None},
+        {"n": 2, "account": "7502", "counterparty": "BT", "alternatives": [], "bought": None, "people": None}]})])
+    result = analyze(Intake("table", text=HSBC_CSV), TransactionExtractor(fake), ctx(), name="hsbc.csv",
+                     account="1200")
+    assert len(fake.calls) == 1 and set(fake.calls[0]["schema"]["properties"]) == {"lines"}
+    assert [(r.amount, r.account) for r in result.data] == [(3149.87, "2220"), (72.0, "7502")]
+    assert result.warnings[0] == "Read in code: 2 lines"
+
+
+def test_a_processor_export_needs_no_model():
+    extractor = RecordingExtractor()
+    result = analyze(Intake("table", text=STRIPE_CSV), extractor, ctx(), name="stripe-statement.csv", account="1200")
+    assert extractor.calls == [] and len(result.data) == 2 and result.agent == "Stripe"
+
+
+def test_an_unrecognised_table_is_read_as_today():
+    extractor = RecordingExtractor()
+    result = analyze(Intake("table", text="Name,Notes\nA,B\n"), extractor, ctx(), name="notes.csv", account="1200")
+    assert len(extractor.calls) == 1 and result.warnings[0] == "Columns not recognised: read by the model"
+
+
+def test_a_card_issuers_export_on_a_bank_account_is_left_to_the_model():
+    # A client whose only account is current: an Amex file would be read with the bank's signs.
+    extractor = RecordingExtractor()
+    analyze(Intake("table", text="Date,Description,Amount\n09/04/2023,STREAMFLIX.COM,10.99\n"), extractor, ctx(),
+            name="amex-statement.csv", account="1200")
+    assert len(extractor.calls) == 1
+
+
+def test_an_empty_statement_needs_no_model():
+    extractor = RecordingExtractor()
+    result = analyze(Intake("table", text="Date,Type,Description,Amount,Balance\n"), extractor, ctx(),
+                     name="savings-statement.csv", account="1210")
+    assert extractor.calls == [] and result.data == [] and result.warnings == ["Read in code: 0 lines"]

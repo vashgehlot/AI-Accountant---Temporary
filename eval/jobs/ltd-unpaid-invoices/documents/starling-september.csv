@@ -1,0 +1,6 @@
+Date,Counter Party,Reference,Type,Amount (GBP),Balance (GBP),Spending Category,Notes
+01/09/2026,Opening Balance,,,0.00,3200.00,,
+03/09/2026,WeWork,Desk rental September,DIRECT DEBIT,-295.00,2905.00,BILLS_AND_SERVICES,
+07/09/2026,Hartley & Co,Invoice 2026-288,FASTER PAYMENT,-360.00,2545.00,GENERAL,
+15/09/2026,Brightwell Ltd,INV NB-0112,FASTER PAYMENT,2100.00,4645.00,INCOME,
+23/09/2026,Avanti West Coast,Rail,CARD,-64.30,4580.70,TRANSPORT,

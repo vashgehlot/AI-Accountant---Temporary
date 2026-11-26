@@ -1,0 +1,23 @@
+{
+  "file": "inkwell-invoice-INK-4471.pdf",
+  "kind": "pdf",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-07",
+      "description": "Inkwell: HP 305XL black ink cartridges x2",
+      "direction": "out",
+      "gross": "30.22",
+      "account_code": "7504",
+      "source": "pdf",
+      "method": "llm",
+      "document_type": "invoice",
+      "counterparty": "Inkwell Supplies Ltd",
+      "document_number": "INK-4471",
+      "document_total": "30.22",
+      "document_net": "25.18",
+      "supplier_vat_number": "GB999774519",
+      "document_ref": "inkwell-ink4471"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "about": "A cafe, a VAT-registered limited company: food bought for resale is stock, not anyone's meal.",
+  "client": {"name": "Bean There Ltd", "business_type": "limited_company", "contact_name": "Ana Silva",
+             "first_year_end": "2027-03-31", "vat_registered": true},
+  "uploads": [
+    {"name": "takings-october.pdf", "rows": [
+      {"date": "2026-10-31", "description": "Till takings, October", "counterparty": "Card and cash takings",
+       "direction": "in", "gross": "3200.00", "vat": "533.33", "account_code": "4000", "document_type": "invoice",
+       "expect": {"never": ["meal_check"]}}]},
+    {"name": "booker.pdf", "rows": [
+      {"date": "2026-10-02", "description": "Booker Wholesale, milk, bread, eggs, cheese for the cafe",
+       "counterparty": "Booker Wholesale", "direction": "out", "gross": "640.00", "account_code": "5000",
+       "bought": "groceries", "document_type": "invoice",
+       "expect": {"never": ["meal_check", "meal_decided"], "account": "5000"}}]},
+    {"name": "tesco-milk.jpg", "rows": [
+      {"date": "2026-10-12", "description": "Tesco, milk for the cafe", "counterparty": "Tesco", "direction": "out",
+       "gross": "12.40", "account_code": "5000", "bought": "groceries",
+       "expect": {"never": ["meal_check", "meal_decided"], "account": "5000"}}]},
+    {"name": "christmas-party.pdf", "rows": [
+      {"date": "2026-12-12", "description": "The Ivy, staff Christmas party", "counterparty": "The Ivy",
+       "direction": "out", "gross": "420.00", "vat": "70.00", "account_code": "8206", "bought": "meal_out",
+       "people": "several", "document_type": "invoice", "supplier_vat_number": "GB123456789",
+       "expect": {"never": ["meal_check"], "account": "8206"}}]}
+  ]
+}

@@ -444,11 +444,10 @@ CASES: tuple[Case, ...] = (
          (Tx("2026-09-16", "Shell Westway fuel", "-68.39", "7300", vat="11.40"),), document_type="receipt"),
     Case("img-train-ticket", "image", "input.png", lambda: _receipt_png(TRAIN),
          (Tx("2026-09-17", "Trainline London Euston to Manchester Piccadilly", "-87.50", "7400"),), document_type="receipt"),
-    # Zero-rated food plus standard-rated household goods: only 0.70 of the 7.95 is VAT. Two accounts
-    # (groceries, cleaning supplies) and a VAT summary that divides by rate give two rows.
+    # Zero-rated food plus standard-rated household goods: only 0.70 of the 7.95 is VAT. The VAT summary divides by
+    # rate, not by account, so the reader keeps it whole (mixed_items) for the agent to split.
     Case("img-supermarket-mixed-vat", "image", "input.png", lambda: _receipt_png(MIXED_VAT),
-         (Tx("2026-09-18", "Sainsbury's Local groceries", "-3.75", "8205", vat="0.00"),
-          Tx("2026-09-18", "Sainsbury's Local cleaning supplies", "-4.20", "7801", vat="0.70")), document_type="receipt"),
+         (Tx("2026-09-18", "Sainsbury's Local", "-7.95", "7801", vat="0.70"),), document_type="receipt"),
     # Two kinds of expense and no VAT shown: one row per account.
     Case("text-expense-note-mixed", "text", "input.txt",
          _text("Expenses 12/09/2026\nBreakfast £18.00\nTaxi to client £32.00\nTotal £50.00"),

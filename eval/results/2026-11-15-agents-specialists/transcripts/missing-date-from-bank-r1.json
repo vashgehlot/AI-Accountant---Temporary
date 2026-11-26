@@ -1,0 +1,1498 @@
+{
+  "case": "missing-date-from-bank",
+  "run": 1,
+  "thread_id": "48e793bf4f504d49b1420a10f39a44ba",
+  "client_id": 5,
+  "hosts": [
+    "Claude Platform on AWS"
+  ],
+  "messages": [
+    {
+      "type": "human",
+      "content": "Review these documents"
+    },
+    {
+      "type": "ai",
+      "content": "",
+      "reasoning": [
+        {
+          "from": "additional_kwargs.reasoning_content",
+          "text": "I'm reviewing the documents, and the overview shows four rows across two documents with nothing flagged. I'll check the document list and issues list in parallel to confirm.\n\n"
+        },
+        {
+          "from": "additional_kwargs.reasoning_details",
+          "details": [
+            {
+              "type": "reasoning.text",
+              "format": "anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1",
+              "index": 0,
+              "text": "I'm reviewing the documents, and the overview shows four rows across two documents with nothing flagged. I'll check the document list and issues list in parallel to confirm.\n\n",
+              "signature": "CAQS2gYKEAgTGAI4AUIIdGhpbmtpbmcSDJUEZLi+cREQGFGX2BoM5f4h6+g+zNgAGgAzIjCScZUcRqJlUnYOr288lvmlejkkKqKVNbvphLd87IHapCuSXeUKfciPP4I5ZB4a21Eq9wUD7qUxz+YLPlnhDCCpAzXW0CE+JpEjGChkHmvfKuxK2nsqduiULMSzpJ6+8bjLaLxZ0SeGXdHjBvWhOneBlbOSVWSVdelgCGNAvQsiYmOto28hdTZmFoATe+iW5oOzW3U43oM7tXM+bXat9KLZZGqhVeXz5ZFjPx1dlV5I0+iUdomw9UXJ9wQUj+l4JyVxxgp8c0FJCxz3kY72AyK4uUdjH9i8+ByeQF17JkXkvXRp2TkM8bjH/aCGCz5Fgh9xkjstcKJqaeha/fYvmzJC5hLwvx+qDun7P7fRs1GZjeJEIQ+ALK+D+/tig7pwiyGaxtgaxLpED/cIZ1m54gvembc+zUJ6lcD2ivzpTpQ654SjU4imuEYZYU2UdZILLtkVE0qzdTHX2DKVnWwBNH0ieefzarEGsK7ySWNzuMsIwy0PS6yo7rVbHIUH0wPG1jW/4tZxDDV2aQ7SARB0CO2WyXeJkAGqewdoZX8F+l1Cjvh26WzzF2SEzCTgLUtykflKnCQbxPcmpqfkYv6Ucv5vOkhn+be06QXaWFoq4/1YCzTXRTay+YZkj68prasw71PQ2EZgsWTQNVXN4kU43RfIzVaHm3BZg4tE0R86eTWpe96lP6fRb4rhqJ/dsWi62kVIDQUZ7X4lOYv5DENHFf/+sENbYPZzTUz5gwIwKC68/IY1pCDp6vq1JR3q0vgyzymykm7aDOiL0+sA1cvxlqQxJt8sfP/wP71xOuef5BwKAUb5/iybWBMRgfiUdVp8mwEXNgIf5fElnNhQoqH0O40ay5QSEQC0gZRc5iIy8aC69wX/y1v+ZRWpR+NsjiNwM7QRO7npUt8HSWJEGLBEfs2NJ3Wp8USwGp9g85v34Yk11qk9fYMdbBf8vG2uTgW5E7h6WaUTEoAmd0bbYsWZXzlw91NfMY41ZQkDAP1kro+EitUVr/Udf+xWIULdmSswiJQ78lnDePjT+8ZEMD4tGTZEZtXf22iu+wr8m5vbFmBz9J4/ZWGZo+VAJEMYAQ==.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "list_documents",
+          "args": {},
+          "id": "toolu_01AfZPEgh6RoLdEpgBBN78oe"
+        },
+        {
+          "name": "list_issues",
+          "args": {},
+          "id": "toolu_01RFtUG9eBFRemY6NyVegzPz"
+        },
+        {
+          "name": "list_rows",
+          "args": {},
+          "id": "toolu_013pdStC5xNjsUBTN2pVvnbP"
+        }
+      ],
+      "finish_reason": "tool_calls",
+      "served_by": {
+        "model_name": "anthropic/claude-haiku-5.5",
+        "generation_id": "gen-1794741986-0BPv4SR062QFi91pWxlw",
+        "provider": "Claude Platform on AWS",
+        "latency_ms": 1437,
+        "generation_time_ms": 1437
+      }
+    },
+    {
+      "type": "tool",
+      "content": "{\"documents\": [{\"upload_id\": 14, \"name\": \"parking-photo.png\", \"kind\": \"image\", \"rows\": 1, \"added\": \"2026-11-15T11:26:26+00:00\"}, {\"upload_id\": 13, \"name\": \"barclays-october.csv\", \"kind\": \"table\", \"rows\": 3, \"added\": \"2026-11-15T11:26:26+00:00\", \"bank_account\": \"1200\", \"statement_check\": {\"status\": \"none\"}}]}",
+      "name": "list_documents",
+      "tool_call_id": "toolu_01AfZPEgh6RoLdEpgBBN78oe",
+      "status": "success"
+    },
+    {
+      "type": "tool",
+      "content": "{}",
+      "name": "list_issues",
+      "tool_call_id": "toolu_01RFtUG9eBFRemY6NyVegzPz",
+      "status": "success"
+    },
+    {
+      "type": "tool",
+      "content": "{\"rows\": [{\"row_id\": 22, \"upload_id\": 13, \"file\": \"barclays-october.csv\", \"kind\": \"statement\", \"date\": \"2026-10-03\", \"description\": \"BT GROUP PLC\", \"counterparty\": \"BT Group\", \"direction\": \"out\", \"gross\": \"42.00\", \"account_code\": \"7502\", \"account_name\": \"Telephone and Internet\", \"issues\": [{\"code\": \"vat_unclaimed\", \"family\": \"other\", \"severity\": \"info\", \"message\": \"No VAT reclaimed: booked from the bank line. Add its receipt or invoice to reclaim up to £7.00.\"}], \"booked\": true}, {\"row_id\": 23, \"upload_id\": 13, \"file\": \"barclays-october.csv\", \"kind\": \"statement\", \"date\": \"2026-10-14\", \"description\": \"NCP LEEDS\", \"counterparty\": \"NCP Leeds\", \"direction\": \"out\", \"gross\": \"6.50\", \"account_code\": \"7400\", \"account_name\": \"Travel\", \"booked\": false}, {\"row_id\": 24, \"upload_id\": 13, \"file\": \"barclays-october.csv\", \"kind\": \"statement\", \"date\": \"2026-10-30\", \"description\": \"BARCLAYS ACCOUNT FEE\", \"counterparty\": \"Barclays\", \"direction\": \"out\", \"gross\": \"8.50\", \"account_code\": \"7901\", \"account_name\": \"Bank Charges\", \"booked\": true}, {\"row_id\": 25, \"upload_id\": 14, \"file\": \"parking-photo.png\", \"kind\": \"receipt\", \"date\": \"2026-10-14\", \"description\": \"NCP parking, Leeds Wellington Street (up to 3 hours)\", \"counterparty\": \"NCP\", \"direction\": \"out\", \"gross\": \"6.50\", \"vat\": \"1.08\", \"account_code\": \"7400\", \"account_name\": \"Travel\", \"issues\": [{\"code\": \"date_from_bank\", \"family\": \"other\", \"severity\": \"info\", \"message\": \"No date on the receipt; dated 14 Oct 2026 from the bank.\"}], \"booked\": true}]}",
+      "name": "list_rows",
+      "tool_call_id": "toolu_013pdStC5xNjsUBTN2pVvnbP",
+      "status": "success"
+    },
+    {
+      "type": "ai",
+      "content": "",
+      "reasoning": [
+        {
+          "from": "additional_kwargs.reasoning_content",
+          "text": "Row 23 is booked as false, which should be recorded by row 25, and row 25 is booked, so that's fine. The VAT of 1.08 on 6.50 checks out at one sixth, and the bank-date info needs no action. Nothing here needs resolving, so I'm thinking about whether to check row 23 once more.\n\nI'm going to pull rows 23 and 25 to confirm that row 25 is what records row 23.\n\n"
+        },
+        {
+          "from": "additional_kwargs.reasoning_details",
+          "details": [
+            {
+              "type": "reasoning.text",
+              "format": "anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1",
+              "index": 0,
+              "text": "Row 23 is booked as false, which should be recorded by row 25, and row 25 is booked, so that's fine. The VAT of 1.08 on 6.50 checks out at one sixth, and the bank-date info needs no action. Nothing here needs resolving, so I'm thinking about whether to check row 23 once more.\n\nI'm going to pull rows 23 and 25 to confirm that row 25 is what records row 23.\n\n",
+              "signature": "CAQShQgKEAgTGAI4AUIIdGhpbmtpbmcSDDIq9IUutnMsoH3btBoMkOXeVrtHvCrXL+tVIjAbTJdy3IQbLxmY06WXGxA+tFgaCmgsLFuuUJ+MMwsdkKr0zKzJ7q3+LlLkI8WMmNwqogeJaSNW7onug7YFoHzXwZg/qrJHQMEA8DOYglFu9YjhchvMvEI3S6iLnR54ZzbqJmRtwd33byn744ORv+FeeWyfcKx8L9NW0EvUbQO1Fw+kiJa8uO0pCDXV3lu51y9Z60cWBAiy0Ex2izwowNNEIdyC2IPWfY8m+5GSa29fgFzZAgq8kb9UEMyK3QbtGDDBNqSvnHMNZk3PaYKtGmztOkP0gcg/mnRxjDSc0k1CezmsrSOkclqmfG97tQvmWt4iJ05wAAhfERF2QRyUorYWpuY0zMNgEXatkAqEylZlJAI8TK88b/vtIm+82MTtcd2g3jW1geOh92ZhOJbocaBxNpAiy9Uwk4O/wb9agA3LVoBF+/879SxEYGxbE9Mhzp/nQZPIi5gnVFmNW0pzts/uW0Qon0phtrMxLqBil/WxQOx013xCoTIyvsuM80G348fvyHDemDq/NiowQkwFWYBSwLRs35qLdQ0c3quS9kFcpbTvftQb9Kr4ZJuuGu/md7TvGl0+mjvoRKK17zJly0AgfUjuKv0+D8AsU3gfa28DqhPYsd8ho9QmFr9WP8LqNYU1IM5nLyliYpytHOxuMN+x0TGrCqKGjsH3PLJIKpCwb1b04pTDi3rjOEfkFb5TF5q4b6/qIcam/b8o5JzrPZBJbQhJd1xmLboa24zDA0Yzkyur/Ram2coSsEOvtKjECIbBjx6Tcy0UXuZ69tTqR5nKme3GwEhlg6wIvENA1Y/a6Ut736QSfwEEzeTWIh4ghks0ZS9iP/Hlh0cMjtZwRx9Xyz0b+Cz8PRGr+EnLTpcIQtSrSXJGpdFJmbZfOUDWyI54YryNJlipL8rtFqZ336doX+lqC3wBQ2H6TCWuXtdKfE8vUPNu/LZxH73aFMlLVnbOqMV4k3pxSrPwYp9s+Ec3uZ75Wk0BxDsOsg4F8190NO95/swP4fwVu3IpCglx7cKRS8fdapZUHp6jIAioGN7S46B+LiiSuLuoRzKOw51JybHDkWrYLLKbFj2nF2/leq1m6Y8zQPaFps7hWeUpPpJhvWsQfKZX7AIfVPfV/lh7MApy/kSvlX2Vmzvyw6tq82RhW6vkAWsO0ra/MMxzeanfYe89evPgVH0VvRTAVqp41VTxvmTtDawZdts5n3UdEm8KSk1maSSqLwKyLg0WtB6sWmyhJE36izs9NTlEdPtHLukEvBEnY2h2Q9DS/7/6qLaWk2+UPEjbXT3qz0+VDN+EzWnvbP4YAQ==.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      ],
+      "tool_calls": [
+        {
+          "name": "get_row",
+          "args": {
+            "row_id": 23
+          },
+          "id": "toolu_01Ax1MgUQSRSHENCYzGmhN1Z"
+        },
+        {
+          "name": "get_row",
+          "args": {
+            "row_id": 25
+          },
+          "id": "toolu_01QXJVmaerxdJ6uaTUQaafrT"
+        }
+      ],
+      "finish_reason": "tool_calls",
+      "served_by": {
+        "model_name": "anthropic/claude-haiku-5.5",
+        "generation_id": "gen-1794741987-y2aVhZbEsH4LNxkKyovH",
+        "provider": "Claude Platform on AWS",
+        "latency_ms": 2616,
+        "generation_time_ms": 2619
+      }
+    },
+    {
+      "type": "tool",
+      "content": "{\"row_id\": 23, \"upload_id\": 13, \"file\": \"barclays-october.csv\", \"kind\": \"statement\", \"date\": \"2026-10-14\", \"description\": \"NCP LEEDS\", \"counterparty\": \"NCP Leeds\", \"direction\": \"out\", \"gross\": \"6.50\", \"account_code\": \"7400\", \"account_name\": \"Travel\", \"booked\": false, \"vat_posted\": \"0.00\", \"net\": \"6.50\", \"contra_account_code\": \"1200\", \"recorded_by\": {\"ref\": \"ncp-0048213\", \"amount\": \"6.50\", \"date\": null, \"description\": \"NCP parking, Leeds Wellington Street (up to 3 hours)\", \"kind\": \"receipt\"}, \"related\": [{\"row_id\": 25, \"upload_id\": 14, \"file\": \"parking-photo.png\", \"kind\": \"receipt\", \"date\": \"2026-10-14\", \"description\": \"NCP parking, Leeds Wellington Street (up to 3 hours)\", \"counterparty\": \"NCP\", \"direction\": \"out\", \"gross\": \"6.50\", \"vat\": \"1.08\", \"account_code\": \"7400\", \"account_name\": \"Travel\", \"issues\": [{\"code\": \"date_from_bank\", \"family\": \"other\", \"severity\": \"info\", \"message\": \"No date on the receipt; dated 14 Oct 2026 from the bank.\"}]}]}",
+      "name": "get_row",
+      "tool_call_id": "toolu_01Ax1MgUQSRSHENCYzGmhN1Z",
+      "status": "success"
+    },
+    {
+      "type": "tool",
+      "content": "{\"row_id\": 25, \"upload_id\": 14, \"file\": \"parking-photo.png\", \"kind\": \"receipt\", \"date\": \"2026-10-14\", \"description\": \"NCP parking, Leeds Wellington Street (up to 3 hours)\", \"counterparty\": \"NCP\", \"direction\": \"out\", \"gross\": \"6.50\", \"vat\": \"1.08\", \"account_code\": \"7400\", \"account_name\": \"Travel\", \"issues\": [{\"code\": \"date_from_bank\", \"family\": \"other\", \"severity\": \"info\", \"message\": \"No date on the receipt; dated 14 Oct 2026 from the bank.\"}], \"booked\": true, \"vat_posted\": \"1.08\", \"net\": \"5.42\", \"contra_account_code\": \"1200\", \"document_number\": \"0048213\", \"document_total\": \"6.50\", \"supplier_vat_number\": \"GB999118230\", \"paid_by\": [{\"ref\": \"bk-02\", \"amount\": \"6.50\", \"date\": \"2026-10-14\", \"description\": \"NCP LEEDS\", \"kind\": \"statement\"}], \"related\": [{\"row_id\": 23, \"upload_id\": 13, \"file\": \"barclays-october.csv\", \"kind\": \"statement\", \"date\": \"2026-10-14\", \"description\": \"NCP LEEDS\", \"counterparty\": \"NCP Leeds\", \"direction\": \"out\", \"gross\": \"6.50\", \"account_code\": \"7400\", \"account_name\": \"Travel\"}]}",
+      "name": "get_row",
+      "tool_call_id": "toolu_01QXJVmaerxdJ6uaTUQaafrT",
+      "status": "success"
+    },
+    {
+      "type": "ai",
+      "content": "I reviewed both documents: the Barclays October statement (three lines) and the NCP parking receipt. Nothing needs a decision from you.\n\nThe NCP receipt of £6.50 on 14 Oct 2026 is booked to Travel with £1.08 VAT reclaimed. It matches the £6.50 bank line on the same date, so the bank line posts nothing and the receipt carries the entry. The receipt has no date of its own, so it took 14 Oct 2026 from the bank line, as the rules do automatically. The BT Group line (£42.00, 3 Oct 2026) and the Barclays account fee (£8.50, 30 Oct 2026) are booked from the bank, with no VAT claimed because no receipt or invoice is on file. The BT line carries an info note that up to £7.00 could be reclaimed if its invoice is added. The Barclays account still has no matching statement for April to September 2026, which the books already list for you.",
+      "reasoning": [
+        {
+          "from": "additional_kwargs.reasoning_content",
+          "text": "The receipt is already matched to its bank line and marked as not yet booked. I'm checking the VAT next: £6.50 gross at 20% gives £1.08, which matches, and the supplier's VAT number is there too.\n\nI'll go with the VAT check as it stands: £1.08 on £6.50 gross already matches at 20%, and the supplier number is there. The date comes from the bank line, which the rules allow for an undated receipt. Rows 22 and 24 are informational, so there's nothing to open.\n\n"
+        },
+        {
+          "from": "additional_kwargs.reasoning_details",
+          "details": [
+            {
+              "type": "reasoning.text",
+              "format": "anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1anthropic-claude-v1",
+              "index": 0,
+              "text": "The receipt is already matched to its bank line and marked as not yet booked. I'm checking the VAT next: £6.50 gross at 20% gives £1.08, which matches, and the supplier's VAT number is there too.\n\nI'll go with the VAT check as it stands: £1.08 on £6.50 gross already matches at 20%, and the supplier number is there. The date comes from the bank line, which the rules allow for an undated receipt. Rows 22 and 24 are informational, so there's nothing to open.\n\n",
+              "signature": "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.eyJlbmRwb2ludF9zbHVnIjoiYW50aHJvcGljL2NsYXVkZS1oYWlrdS01LjUtMjAyNjEwMDd8Y2xhdWRlLW9uLWF3cyJ9"
+            }
+          ]
+        }
+      ],
+      "tool_calls": [],
+      "finish_reason": "stop",
+      "served_by": {
+        "model_name": "anthropic/claude-haiku-5.5",
+        "generation_id": "gen-1794741990-AGyIcKAJavvfYlobt3R1",
+        "provider": "Claude Platform on AWS",
+        "latency_ms": 1803,
+        "generation_time_ms": 3852
+      }
+    }
+  ],
+  "events": [
+    [
+      "status",
+      {
+        "text": "Reading 2 files…"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-0",
+        "text": "Reading barclays-october.csv…",
+        "state": "running",
+        "file": "barclays-october.csv"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-1",
+        "text": "Reading parking-photo.png…",
+        "state": "running",
+        "file": "parking-photo.png"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-0",
+        "text": "Read barclays-october.csv (3 rows)",
+        "state": "done",
+        "file": "barclays-october.csv",
+        "rows": 3
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "read-1",
+        "text": "Read parking-photo.png (1 row)",
+        "state": "done",
+        "file": "parking-photo.png",
+        "rows": 1
+      }
+    ],
+    [
+      "status",
+      {
+        "text": "Reviewing the books…"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01AfZPEgh6RoLdEpgBBN78oe",
+        "text": "Listing the documents…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01RFtUG9eBFRemY6NyVegzPz",
+        "text": "Listing what needs a look…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_013pdStC5xNjsUBTN2pVvnbP",
+        "text": "Listing the rows…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01AfZPEgh6RoLdEpgBBN78oe",
+        "text": "Listed 2 documents",
+        "state": "done"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01RFtUG9eBFRemY6NyVegzPz",
+        "text": "Found 0 rows that need a look",
+        "state": "done"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_013pdStC5xNjsUBTN2pVvnbP",
+        "text": "Listed 4 rows",
+        "state": "done"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01Ax1MgUQSRSHENCYzGmhN1Z",
+        "text": "Looking at row 23…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01QXJVmaerxdJ6uaTUQaafrT",
+        "text": "Looking at row 25…",
+        "state": "running"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01QXJVmaerxdJ6uaTUQaafrT",
+        "text": "Looked at row 25",
+        "state": "done"
+      }
+    ],
+    [
+      "step",
+      {
+        "id": "toolu_01Ax1MgUQSRSHENCYzGmhN1Z",
+        "text": "Looked at row 23",
+        "state": "done"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "I"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " reviewed both docum"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ents: the"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Barclays October statement ("
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "three"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " lines) and the NCP"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " parking receipt."
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Nothing needs a"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " decision from"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " you.\n\nThe"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " N"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "CP receipt of"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " £6.50 on"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " 14 Oct 2"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "026 is booked to"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Travel with £"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "1"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": ".08 VAT recl"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "aimed. It mat"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ches the £"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "6.50 bank line on"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " the same date"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": ", so the"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " bank line pos"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ts nothing and the receip"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "t car"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ries the ent"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ry. The receipt has no"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " date of"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " its own, so it"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " took"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " 14 Oct 2026"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " from the bank line, as"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " the r"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ules do"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " autom"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "atically. The BT Group"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " line"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " ("
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "£42.00, 3"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Oct 2026)"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " and the"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Barclays account"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " fee (£8.50,"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " 30 Oct 2"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "026) are booked from"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " the bank, with no VA"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "T cla"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "imed because no"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " receipt or"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " invoice is on file. The"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " BT line car"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ries an info note that"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " up"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " to £7.00 could"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " be reclaimed if its"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " inv"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "oice is added."
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " The"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " Barclays account still has"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " no mat"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": "ching statement for"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " April to September 2026, which"
+      }
+    ],
+    [
+      "token",
+      {
+        "text": " the books already list for you."
+      }
+    ],
+    [
+      "status",
+      {
+        "text": "Posting the books…"
+      }
+    ],
+    [
+      "result",
+      {
+        "sorted": [
+          {
+            "client_id": 5,
+            "thread_id": "48e793bf4f504d49b1420a10f39a44ba",
+            "year_start": "2026-04-01",
+            "action": "set_date",
+            "rule": "R1 Date from the bank",
+            "status": "applied",
+            "row_ids": [
+              25
+            ],
+            "evidence": [
+              {
+                "upload_id": 13,
+                "upload_name": "barclays-october.csv",
+                "quote": "NCP LEEDS"
+              }
+            ],
+            "reason": "No date on the receipt; dated 14 Oct 2026 from the bank line NCP LEEDS for £6.50.",
+            "before": {
+              "25": {
+                "date": null
+              }
+            },
+            "after": {
+              "25": {
+                "date": "2026-10-14"
+              }
+            },
+            "actor": "rules",
+            "reverses": null,
+            "trigger": "chat",
+            "review_id": null,
+            "resolution": null,
+            "id": "680ec367a2df4c86a5e9f35023db9898",
+            "created_at": "2026-11-15T11:26:34+00:00",
+            "prev_hash": "",
+            "hash": "3d5078a3eac6e10d456a8ac2775893925748a95c4fcc009cd87c17ef30a211e6"
+          }
+        ],
+        "questions": [],
+        "trial_balance": {
+          "lines": [
+            {
+              "code": "1200",
+              "name": "Bank Current Account",
+              "type": "asset",
+              "heading": "Cash at bank and in hand",
+              "tax": null,
+              "debit": "0.00",
+              "credit": "57.00"
+            },
+            {
+              "code": "7400",
+              "name": "Travel",
+              "type": "expense",
+              "heading": "Administrative expenses",
+              "tax": "allowable",
+              "debit": "5.42",
+              "credit": "0.00"
+            },
+            {
+              "code": "7502",
+              "name": "Telephone and Internet",
+              "type": "expense",
+              "heading": "Administrative expenses",
+              "tax": "check",
+              "debit": "42.00",
+              "credit": "0.00"
+            },
+            {
+              "code": "7901",
+              "name": "Bank Charges",
+              "type": "expense",
+              "heading": "Administrative expenses",
+              "tax": "allowable",
+              "debit": "8.50",
+              "credit": "0.00"
+            },
+            {
+              "code": "2201",
+              "name": "Purchase VAT",
+              "type": "liability",
+              "heading": "Creditors: amounts falling due within one year",
+              "tax": null,
+              "debit": "1.08",
+              "credit": "0.00"
+            }
+          ],
+          "opening": [],
+          "total_debits": "57.00",
+          "total_credits": "57.00",
+          "is_balanced": true,
+          "journal": [
+            {
+              "transaction": 22,
+              "code": "7502",
+              "debit": "42.00",
+              "credit": "0.00",
+              "description": "BT GROUP PLC"
+            },
+            {
+              "transaction": 22,
+              "code": "1200",
+              "debit": "0.00",
+              "credit": "42.00",
+              "description": "BT GROUP PLC"
+            },
+            {
+              "transaction": 24,
+              "code": "7901",
+              "debit": "8.50",
+              "credit": "0.00",
+              "description": "BARCLAYS ACCOUNT FEE"
+            },
+            {
+              "transaction": 24,
+              "code": "1200",
+              "debit": "0.00",
+              "credit": "8.50",
+              "description": "BARCLAYS ACCOUNT FEE"
+            },
+            {
+              "transaction": 25,
+              "code": "7400",
+              "debit": "5.42",
+              "credit": "0.00",
+              "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+            },
+            {
+              "transaction": 25,
+              "code": "2201",
+              "debit": "1.08",
+              "credit": "0.00",
+              "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+            },
+            {
+              "transaction": 25,
+              "code": "1200",
+              "debit": "0.00",
+              "credit": "6.50",
+              "description": "NCP parking, Leeds Wellington Street (up to 3 hours)"
+            }
+          ],
+          "total_income": "0.00",
+          "total_expenses": "55.92",
+          "net_profit": "-55.92",
+          "total_assets": "-57.00",
+          "total_liabilities": "-1.08",
+          "left_out": [],
+          "suspense": [],
+          "unposted_changes": 0,
+          "problems": []
+        },
+        "post": {
+          "batch_id": "c5239c98046a45a3947362c778b8aaad",
+          "entries_added": 7,
+          "reversals_added": 0,
+          "total_debits": "57.00",
+          "total_credits": "57.00",
+          "problems": []
+        }
+      }
+    ],
+    [
+      "done",
+      {}
+    ]
+  ],
+  "answers": [],
+  "rows_after_review": [
+    {
+      "id": 22,
+      "upload_id": 13,
+      "date": "2026-10-03",
+      "description": "BT GROUP PLC",
+      "direction": "out",
+      "gross": "42.00",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7502",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "BT Group",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-01",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Telephone and Internet",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 23,
+      "upload_id": 13,
+      "date": "2026-10-14",
+      "description": "NCP LEEDS",
+      "direction": "out",
+      "gross": "6.50",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7400",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "NCP Leeds",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-02",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Travel",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 24,
+      "upload_id": 13,
+      "date": "2026-10-30",
+      "description": "BARCLAYS ACCOUNT FEE",
+      "direction": "out",
+      "gross": "8.50",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7901",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "Barclays",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-03",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Bank Charges",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 25,
+      "upload_id": 14,
+      "date": null,
+      "description": "NCP parking, Leeds Wellington Street (up to 3 hours)",
+      "direction": "out",
+      "gross": "6.50",
+      "vat": "1.08",
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7400",
+      "contra_account_code": "1200",
+      "bank_account": null,
+      "currency": "GBP",
+      "source": "image",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "receipt",
+      "counterparty": "NCP",
+      "document_number": "0048213",
+      "agent": null,
+      "owed_to": null,
+      "document_total": "6.50",
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "ncp-0048213",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": "GB999118230",
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Travel",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    }
+  ],
+  "questions_after_review": [],
+  "rows_final": [
+    {
+      "id": 22,
+      "upload_id": 13,
+      "date": "2026-10-03",
+      "description": "BT GROUP PLC",
+      "direction": "out",
+      "gross": "42.00",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7502",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "BT Group",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-01",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Telephone and Internet",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 23,
+      "upload_id": 13,
+      "date": "2026-10-14",
+      "description": "NCP LEEDS",
+      "direction": "out",
+      "gross": "6.50",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7400",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "NCP Leeds",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-02",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Travel",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 24,
+      "upload_id": 13,
+      "date": "2026-10-30",
+      "description": "BARCLAYS ACCOUNT FEE",
+      "direction": "out",
+      "gross": "8.50",
+      "vat": null,
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7901",
+      "contra_account_code": "1200",
+      "bank_account": "1200",
+      "currency": "GBP",
+      "source": "table",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "statement",
+      "counterparty": "Barclays",
+      "document_number": null,
+      "agent": null,
+      "owed_to": null,
+      "document_total": null,
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "bk-03",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": null,
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Bank Charges",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    },
+    {
+      "id": 25,
+      "upload_id": 14,
+      "date": null,
+      "description": "NCP parking, Leeds Wellington Street (up to 3 hours)",
+      "direction": "out",
+      "gross": "6.50",
+      "vat": "1.08",
+      "vat_treatment": null,
+      "vat_posted": null,
+      "net": null,
+      "reverse_vat": null,
+      "account_code": "7400",
+      "contra_account_code": "1200",
+      "bank_account": null,
+      "currency": "GBP",
+      "source": "image",
+      "method": "llm",
+      "evidence": null,
+      "document_type": "receipt",
+      "counterparty": "NCP",
+      "document_number": "0048213",
+      "agent": null,
+      "owed_to": null,
+      "document_total": "6.50",
+      "document_net": null,
+      "not_vat_invoice": false,
+      "cis_deducted": null,
+      "total_worked_out": false,
+      "document_ref": "ncp-0048213",
+      "include": false,
+      "excluded": false,
+      "superseded_by": null,
+      "decision_ids": [],
+      "supplier_vat_number": "GB999118230",
+      "addressed_to": null,
+      "accepted": [],
+      "reverse_charge": false,
+      "apart_from": [],
+      "without_document": null,
+      "vat_stated": false,
+      "vat_from_claim": false,
+      "vat_confirmed": false,
+      "vat_not_reclaimed": null,
+      "vat_not_reclaimed_why": null,
+      "link": null,
+      "balance": null,
+      "opening_balance": null,
+      "closing_balance": null,
+      "paid_against": null,
+      "pays": [],
+      "candidates": [],
+      "owed": null,
+      "document_direction": null,
+      "paid_by": [],
+      "in_opening": false,
+      "copy_of": null,
+      "recorded_by": null,
+      "claimed_in": null,
+      "documented_by": null,
+      "vat_found": null,
+      "date_found": null,
+      "amount_found": null,
+      "issues": [],
+      "account_name": "Travel",
+      "contra_account_name": "Bank Current Account",
+      "paid_against_name": null,
+      "edited": false
+    }
+  ],
+  "decisions": [
+    {
+      "client_id": 5,
+      "thread_id": "48e793bf4f504d49b1420a10f39a44ba",
+      "year_start": "2026-04-01",
+      "action": "set_date",
+      "rule": "R1 Date from the bank",
+      "status": "applied",
+      "row_ids": [
+        25
+      ],
+      "evidence": [
+        {
+          "upload_id": 13,
+          "upload_name": "barclays-october.csv",
+          "quote": "NCP LEEDS"
+        }
+      ],
+      "reason": "No date on the receipt; dated 14 Oct 2026 from the bank line NCP LEEDS for £6.50.",
+      "before": {
+        "25": {
+          "date": null
+        }
+      },
+      "after": {
+        "25": {
+          "date": "2026-10-14"
+        }
+      },
+      "actor": "rules",
+      "reverses": null,
+      "trigger": "chat",
+      "review_id": null,
+      "resolution": null,
+      "id": "680ec367a2df4c86a5e9f35023db9898",
+      "created_at": "2026-11-15T11:26:34+00:00",
+      "prev_hash": "",
+      "hash": "3d5078a3eac6e10d456a8ac2775893925748a95c4fcc009cd87c17ef30a211e6"
+    }
+  ],
+  "result": {
+    "case": "missing-date-from-bank",
+    "model": "qwen/qwen3.8-27b",
+    "seconds": 8.4,
+    "client_id": 5,
+    "thread_id": "48e793bf4f504d49b1420a10f39a44ba",
+    "trial_balance": {
+      "passed": true,
+      "differences": []
+    },
+    "decisions": {
+      "passed": true,
+      "differences": [],
+      "already_in_reading": []
+    },
+    "questions": {
+      "passed": true,
+      "differences": []
+    },
+    "problems": [],
+    "row_fallbacks": [],
+    "unmatched_names": [],
+    "posted_problems": [],
+    "steps": 7,
+    "failed_steps": [],
+    "error_events": [],
+    "refused_decisions": [],
+    "answers_not_applied": [],
+    "run": 1,
+    "hosts": [
+      "Claude Platform on AWS"
+    ]
+  }
+}

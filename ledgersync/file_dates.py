@@ -10,7 +10,8 @@ from typing import Optional
 from .checks import issue, long_date
 from .models import Transaction
 
-_YEAR_FIRST = re.compile(r"(?<!\d)(20\d{2})[-_.]?(\d{2})[-_.]?(\d{2})(?!\d)")
+# The same separator both times, or none: "2026-09-09" and "20260909", but not "PE-2026-0619", an invoice number.
+_YEAR_FIRST = re.compile(r"(?<!\d)(20\d{2})(?P<sep>[-_.]?)(\d{2})(?P=sep)(\d{2})(?!\d)")
 _DAY_FIRST = re.compile(r"(?<!\d)(\d{2})[-_.](\d{2})[-_.](20\d{2})(?!\d)")
 NEAR = dt.timedelta(days=3)   # a file named a day or two after the purchase is the same purchase
 
@@ -18,7 +19,7 @@ NEAR = dt.timedelta(days=3)   # a file named a day or two after the purchase is 
 def date_in_name(name: str) -> Optional[dt.date]:
     """The one date a file name holds, year first or day first; None when it holds none, or more than one."""
     found = set()
-    for pattern, year, month, day in ((_YEAR_FIRST, 1, 2, 3), (_DAY_FIRST, 3, 2, 1)):
+    for pattern, year, month, day in ((_YEAR_FIRST, 1, 3, 4), (_DAY_FIRST, 3, 2, 1)):
         for match in pattern.finditer(name):
             try:
                 found.add(dt.date(int(match.group(year)), int(match.group(month)), int(match.group(day))))
@@ -35,6 +36,8 @@ def check_file_date(rows: list[Transaction], name: str) -> list[Transaction]:
     if named is None or not rows or len({tx.document_ref for tx in rows}) != 1:
         return rows
     first = rows[0]
+    if "file_date" in first.accepted:   # a person, or the AI from the document, said the date read is right
+        return rows
     if first.document_type not in ("receipt", "invoice") or any(
             tx.date_found or tx.claimed_in or (tx.document_type == "receipt" and tx.paid_by) for tx in rows):
         return rows

@@ -1,0 +1,24 @@
+{
+  "file": "brightline-invoice-BP-2210.pdf",
+  "kind": "pdf",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-19",
+      "description": "Brightline: business cards and A5 brochures",
+      "direction": "out",
+      "gross": "240.00",
+      "vat": "40.00",
+      "account_code": "7500",
+      "source": "pdf",
+      "method": "llm",
+      "document_type": "invoice",
+      "counterparty": "Brightline Print Ltd",
+      "document_number": "BP-2210",
+      "document_total": "240.00",
+      "document_net": "200.00",
+      "supplier_vat_number": "GB999225861",
+      "document_ref": "brightline-bp2210"
+    }
+  ]
+}

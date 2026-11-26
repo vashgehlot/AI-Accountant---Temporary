@@ -1,0 +1,14 @@
+{
+  "name": "Sam Rivers",
+  "business_type": "sole_trader",
+  "contact_name": "Sam Rivers",
+  "contact_email": "sam.rivers@example.com",
+  "vat_registered": false,
+  "first_year_end": "2027-03-31",
+  "bank_accounts": [
+    {
+      "name": "Bank current account",
+      "kind": "current"
+    }
+  ]
+}

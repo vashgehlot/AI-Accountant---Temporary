@@ -1,0 +1,19 @@
+{
+  "about": "A landlord letting one flat through an agent: rent, a repair, and an annual insurance policy.",
+  "client": {"name": "Priya Nair (property)", "business_type": "sole_trader", "contact_name": "Priya Nair",
+             "first_year_end": "2027-03-31", "vat_registered": false},
+  "uploads": [
+    {"name": "agent-statement.pdf", "rows": [
+      {"date": "2026-10-05", "description": "Rent, Flat 2, 14 Park Road, October", "counterparty": "Castle Lettings",
+       "direction": "in", "gross": "1450.00", "account_code": "4904", "document_type": "invoice",
+       "expect": {"never": ["meal_check"]}}]},
+    {"name": "plumber.pdf", "rows": [
+      {"date": "2026-10-20", "description": "A1 Plumbing, boiler repair at Flat 2", "counterparty": "A1 Plumbing",
+       "direction": "out", "gross": "220.00", "account_code": "7800", "document_type": "invoice",
+       "expect": {"never": ["meal_check", "sundry_check"]}}]},
+    {"name": "insurance.pdf", "rows": [
+      {"date": "2027-01-15", "description": "Direct Line, landlord insurance, annual policy", "counterparty": "Direct Line",
+       "direction": "out", "gross": "360.00", "account_code": "8204", "document_type": "invoice",
+       "expect": {"asks": ["prepayment"]}}]}
+  ]
+}

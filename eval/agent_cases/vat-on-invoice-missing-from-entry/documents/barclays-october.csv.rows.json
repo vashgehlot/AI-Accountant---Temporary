@@ -1,0 +1,33 @@
+{
+  "file": "barclays-october.csv",
+  "kind": "table",
+  "bank_account": "1200",
+  "transactions": [
+    {
+      "date": "2026-10-15",
+      "description": "NORTHERN FIBRE BROADBAND",
+      "direction": "out",
+      "gross": "72.00",
+      "account_code": "7502",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Northern Fibre Broadband",
+      "document_ref": "bk-01"
+    },
+    {
+      "date": "2026-10-30",
+      "description": "BARCLAYS ACCOUNT FEE",
+      "direction": "out",
+      "gross": "8.50",
+      "account_code": "7901",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Barclays",
+      "document_ref": "bk-02"
+    }
+  ]
+}

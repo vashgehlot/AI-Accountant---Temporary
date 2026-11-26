@@ -1,0 +1,23 @@
+{
+  "name": "premier-inn-receipt-15-09.txt",
+  "kind": "text",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-09-15",
+      "description": "Premier Inn Leeds City Centre: one night, room only",
+      "direction": "out",
+      "gross": "96.00",
+      "vat": "16.00",
+      "account_code": "7402",
+      "source": "text",
+      "method": "llm",
+      "document_type": "receipt",
+      "counterparty": "Premier Inn",
+      "document_number": "PI-77310",
+      "document_total": "96.00",
+      "supplier_vat_number": "GB999661004",
+      "document_ref": "premier-1509"
+    }
+  ]
+}

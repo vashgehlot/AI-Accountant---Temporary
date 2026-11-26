@@ -1,0 +1,85 @@
+{
+  "name": "barclays-september.csv",
+  "kind": "table",
+  "bank_account": "1200",
+  "transactions": [
+    {
+      "date": "2026-09-01",
+      "description": "HARBOUR & LANE LTD",
+      "direction": "in",
+      "gross": "2400.00",
+      "account_code": "4000",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Harbour & Lane",
+      "document_ref": "sep-01"
+    },
+    {
+      "date": "2026-09-04",
+      "description": "BT GROUP PLC",
+      "direction": "out",
+      "gross": "42.00",
+      "account_code": "7502",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "BT Group",
+      "document_ref": "sep-02"
+    },
+    {
+      "date": "2026-09-11",
+      "description": "STAPLES UK",
+      "direction": "out",
+      "gross": "23.94",
+      "account_code": "7504",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Staples",
+      "document_ref": "sep-03"
+    },
+    {
+      "date": "2026-09-15",
+      "description": "PREMIER INN",
+      "direction": "out",
+      "gross": "96.00",
+      "account_code": "7402",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Premier Inn",
+      "document_ref": "sep-04"
+    },
+    {
+      "date": "2026-09-25",
+      "description": "XERO UK",
+      "direction": "out",
+      "gross": "36.00",
+      "account_code": "8201",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Xero",
+      "document_ref": "sep-05"
+    },
+    {
+      "date": "2026-09-30",
+      "description": "BARCLAYS ACCOUNT FEE",
+      "direction": "out",
+      "gross": "8.50",
+      "account_code": "7901",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Barclays",
+      "document_ref": "sep-06"
+    }
+  ]
+}

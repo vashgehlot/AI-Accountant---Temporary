@@ -1,0 +1,14 @@
+PAYROLL SUMMARY
+Kestrel Joinery Ltd
+Pay period: October 2026
+Pay date: 28/10/2026
+Employees paid: 2
+
+Gross pay                         4,000.00
+Income tax (PAYE)                   450.00
+Employee National Insurance         180.00
+Employee pension contribution       120.00
+Net pay                           3,250.00
+
+Employer National Insurance         395.00
+Employer pension contribution       160.00

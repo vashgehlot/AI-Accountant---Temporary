@@ -1,0 +1,21 @@
+{
+  "file": "ardent-rent-invoice-AP-10-2026.pdf",
+  "kind": "pdf",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-01",
+      "description": "Ardent Property: office rent, Suite 3, 14 Wharf Street, October 2026",
+      "direction": "out",
+      "gross": "750.00",
+      "account_code": "7100",
+      "source": "pdf",
+      "method": "llm",
+      "document_type": "invoice",
+      "counterparty": "Ardent Property Ltd",
+      "document_number": "AP-10-2026",
+      "document_total": "750.00",
+      "document_ref": "ardent-ap102026"
+    }
+  ]
+}

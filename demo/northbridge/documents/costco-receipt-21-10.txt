@@ -1,0 +1,20 @@
+COSTCO WHOLESALE UK LTD
+Leeds warehouse
+VAT Reg No: GB 999 4021 87
+
+Date: 21/10/2026   Time: 11:42
+Member 111 2223 33   NORTHBRIDGE CONSULTING LTD
+
+A4 COPIER PAPER 5 REAMS          24.00 A
+BOX FILES PACK OF 10             12.00 A
+SEMI SKIMMED MILK 4PT             1.65 Z
+GROUND COFFEE 1KG                14.00 Z
+TEA BAGS 240                      6.35 Z
+
+TOTAL                            58.00
+VISA DEBIT                       58.00
+
+VAT ANALYSIS     NET     VAT    GROSS
+A 20.00%        30.00    6.00   36.00
+Z  0.00%        22.00    0.00   22.00
+TOTAL VAT                6.00

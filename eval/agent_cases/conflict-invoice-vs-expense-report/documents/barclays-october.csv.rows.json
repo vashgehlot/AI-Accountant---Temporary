@@ -1,0 +1,20 @@
+{
+  "file": "barclays-october.csv",
+  "kind": "table",
+  "bank_account": "1200",
+  "transactions": [
+    {
+      "date": "2026-10-09",
+      "description": "PAGECRAFT STATIONERS",
+      "direction": "out",
+      "gross": "46.80",
+      "account_code": "7504",
+      "bank_account": "1200",
+      "source": "table",
+      "method": "llm",
+      "document_type": "statement",
+      "counterparty": "Pagecraft Stationers",
+      "document_ref": "bk-01"
+    }
+  ]
+}

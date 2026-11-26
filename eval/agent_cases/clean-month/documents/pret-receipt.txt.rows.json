@@ -1,0 +1,22 @@
+{
+  "file": "pret-receipt.txt",
+  "kind": "text",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-13",
+      "description": "Pret A Manger: chicken caesar baguette and flat white",
+      "direction": "out",
+      "gross": "8.45",
+      "vat": "1.41",
+      "account_code": "7406",
+      "source": "text",
+      "method": "llm",
+      "document_type": "receipt",
+      "counterparty": "Pret A Manger",
+      "document_total": "8.45",
+      "supplier_vat_number": "GB999881245",
+      "document_ref": "pret-1310"
+    }
+  ]
+}

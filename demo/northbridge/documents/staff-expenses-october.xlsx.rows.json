@@ -1,0 +1,43 @@
+{
+  "file": "staff-expenses-october.xlsx",
+  "kind": "table",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-07",
+      "description": "Inkwell - printer ink",
+      "direction": "out",
+      "gross": "27.50",
+      "account_code": "7504",
+      "source": "table",
+      "method": "llm",
+      "document_type": "expense_claim",
+      "counterparty": "Priya Shah",
+      "document_ref": "sheet-01"
+    },
+    {
+      "date": "2026-10-16",
+      "description": "Mileage - client visit York, 50 miles at 45p",
+      "direction": "out",
+      "gross": "22.50",
+      "account_code": "7400",
+      "source": "table",
+      "method": "llm",
+      "document_type": "expense_claim",
+      "counterparty": "Priya Shah",
+      "document_ref": "sheet-02"
+    },
+    {
+      "date": "2026-10-21",
+      "description": "Costco - office supplies and kitchen",
+      "direction": "out",
+      "gross": "58.00",
+      "account_code": "7504",
+      "source": "table",
+      "method": "llm",
+      "document_type": "expense_claim",
+      "counterparty": "Priya Shah",
+      "document_ref": "sheet-03"
+    }
+  ]
+}

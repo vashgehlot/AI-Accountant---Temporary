@@ -1,0 +1,39 @@
+{
+  "before_answers": [
+    {
+      "kind": "receipt_or_invoice",
+      "row": {
+        "file": "barclays-october.csv",
+        "description": "AMAZON MKTPLACE"
+      },
+      "status": "open"
+    },
+    {
+      "kind": "receipt_or_invoice",
+      "row": {
+        "file": "barclays-october.csv",
+        "description": "BRIGHTLINE PRINT"
+      },
+      "status": "open"
+    }
+  ],
+  "after_answers": [
+    {
+      "kind": "receipt_or_invoice",
+      "row": {
+        "file": "barclays-october.csv",
+        "description": "AMAZON MKTPLACE"
+      },
+      "status": "open"
+    },
+    {
+      "kind": "receipt_or_invoice",
+      "row": {
+        "file": "barclays-october.csv",
+        "description": "BRIGHTLINE PRINT"
+      },
+      "status": "waiting",
+      "answer": "I don't have it"
+    }
+  ]
+}

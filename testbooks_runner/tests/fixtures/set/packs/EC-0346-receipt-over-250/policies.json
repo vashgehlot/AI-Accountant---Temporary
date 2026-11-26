@@ -1,0 +1,13 @@
+{
+  "accounts_standard": "FRS 105",
+  "accrue_from": "250",
+  "basis": "accruals",
+  "capitalise_from": "500",
+  "depreciation_years": {
+    "computer": 3,
+    "furniture": 5
+  },
+  "known_accruals": [],
+  "pension_ee": "0.00",
+  "pension_er": "0.00"
+}

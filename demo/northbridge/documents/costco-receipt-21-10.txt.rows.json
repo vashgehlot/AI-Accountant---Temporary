@@ -1,0 +1,30 @@
+{
+  "file": "costco-receipt-21-10.txt",
+  "kind": "text",
+  "bank_account": null,
+  "transactions": [
+    {
+      "date": "2026-10-21",
+      "description": "Costco: copier paper, box files, milk, coffee and tea",
+      "direction": "out",
+      "gross": "58.00",
+      "vat": "6.00",
+      "account_code": "7504",
+      "source": "text",
+      "method": "llm",
+      "document_type": "receipt",
+      "counterparty": "Costco Wholesale UK Ltd",
+      "document_total": "58.00",
+      "supplier_vat_number": "GB999402187",
+      "document_ref": "costco-2110",
+      "issues": [
+        {
+          "code": "mixed_items",
+          "message": "Items of different kinds with one VAT total: kept as one row.",
+          "severity": "warning",
+          "related": []
+        }
+      ]
+    }
+  ]
+}
